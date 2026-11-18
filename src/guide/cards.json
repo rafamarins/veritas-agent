@@ -1,0 +1,601 @@
+[
+  {
+    "id": "decide/life",
+    "topic": "Rent or buy?",
+    "question": "Will buying fit your plans?",
+    "answer": "Think about work, family and whether you might move. These plans affect where you buy and how long a home will suit you. If you may move soon, include the cost of selling in your decision.",
+    "links": [
+      "https://www.settled.govt.nz/buying-a-home/thinking-of-buying/thinking-about-your-finances-when-buying/",
+      "https://www.linz.govt.nz/guidance/overseas-investment/buying-residential-property-live"
+    ]
+  },
+  {
+    "id": "decide/compare",
+    "topic": "Rent or buy?",
+    "question": "Compare renting and owning.",
+    "answer": "Rent buys flexibility. Ownership brings control, responsibility and costs. Compare both against your plans, not just this month’s payment. A mortgage payment is not the whole cost of owning.",
+    "links": [
+      "https://www.settled.govt.nz/buying-a-home/thinking-of-buying/thinking-about-your-finances-when-buying/",
+      "https://www.linz.govt.nz/guidance/overseas-investment/buying-residential-property-live"
+    ]
+  },
+  {
+    "id": "decide/together",
+    "topic": "Rent or buy?",
+    "question": "Agree before you commit.",
+    "answer": "Different contributions, family help and residency can change the arrangement. Ask your lawyer what applies before you promise anything. A loan approval does not confirm your legal eligibility to buy.",
+    "links": [
+      "https://www.settled.govt.nz/buying-a-home/thinking-of-buying/thinking-about-your-finances-when-buying/",
+      "https://www.linz.govt.nz/guidance/overseas-investment/buying-residential-property-live"
+    ]
+  },
+  {
+    "id": "budget/buying",
+    "topic": "The whole cost",
+    "question": "Budget for the cost of buying.",
+    "answer": "Legal work, reports, inspections, valuations and moving can cost money before or around settlement. Get quotes for your situation. You may pay for checks on a home you do not end up buying.",
+    "links": [
+      "https://www.settled.govt.nz/buying-a-home/thinking-of-buying/thinking-about-your-finances-when-buying/",
+      "https://www.settled.govt.nz/buying-a-home/researching-the-property/doing-your-homework/"
+    ]
+  },
+  {
+    "id": "budget/ongoing",
+    "topic": "The whole cost",
+    "question": "Add the less obvious bills.",
+    "answer": "Start with repayments, then add rates, insurance and upkeep. Check shared levies, ground rent, water and transport where relevant. Council rates and mortgage interest rates are different bills.",
+    "links": [
+      "https://www.settled.govt.nz/buying-a-home/thinking-of-buying/thinking-about-your-finances-when-buying/",
+      "https://www.settled.govt.nz/buying-a-home/researching-the-property/doing-your-homework/"
+    ]
+  },
+  {
+    "id": "budget/buffer",
+    "topic": "The whole cost",
+    "question": "Allow for higher costs and repairs.",
+    "answer": "Set your own comfortable limit. Try higher repayments and lower income, and allow for repairs identified by the inspection. The bank’s maximum is not a spending target.",
+    "links": [
+      "https://www.settled.govt.nz/buying-a-home/thinking-of-buying/thinking-about-your-finances-when-buying/",
+      "https://www.settled.govt.nz/buying-a-home/researching-the-property/doing-your-homework/"
+    ]
+  },
+  {
+    "id": "deposit/savings",
+    "topic": "Deposit & KiwiSaver",
+    "question": "Count confirmed money.",
+    "answer": "List savings and agreed help. A family gift, loan and guarantee create different obligations: tell your lender and lawyer which applies. The sales deposit is an early part-payment, not an extra purchase price.",
+    "links": [
+      "https://www.govt.nz/browse/housing-and-property/buying-or-selling-a-home/buying-your-first-home/",
+      "https://www.ird.govt.nz/kiwisaver/kiwisaver-individuals/getting-my-kiwisaver-funds-early/getting-my-kiwisaver-for-my-first-home",
+      "https://www.settled.govt.nz/buying-a-home/making-an-offer/understanding-the-sale-and-purchase-agreement-when-buying/"
+    ]
+  },
+  {
+    "id": "deposit/kiwisaver",
+    "topic": "Deposit & KiwiSaver",
+    "question": "Ask your provider early.",
+    "answer": "Generally, three years of membership is needed. Your provider confirms eligibility, the usable amount and the withdrawal process. Your KiwiSaver balance is not automatically the amount you can withdraw.",
+    "links": [
+      "https://www.govt.nz/browse/housing-and-property/buying-or-selling-a-home/buying-your-first-home/",
+      "https://www.ird.govt.nz/kiwisaver/kiwisaver-individuals/getting-my-kiwisaver-funds-early/getting-my-kiwisaver-for-my-first-home",
+      "https://www.settled.govt.nz/buying-a-home/making-an-offer/understanding-the-sale-and-purchase-agreement-when-buying/"
+    ]
+  },
+  {
+    "id": "deposit/support",
+    "topic": "Deposit & KiwiSaver",
+    "question": "Check first-home support.",
+    "answer": "Eligible buyers may use a First Home Loan with a smaller deposit. Check current criteria with Kāinga Ora and a participating lender. The First Home Grant ended in May 2024; old buying guides may still mention it.",
+    "links": [
+      "https://www.govt.nz/browse/housing-and-property/buying-or-selling-a-home/buying-your-first-home/",
+      "https://www.ird.govt.nz/kiwisaver/kiwisaver-individuals/getting-my-kiwisaver-funds-early/getting-my-kiwisaver-for-my-first-home",
+      "https://www.settled.govt.nz/buying-a-home/making-an-offer/understanding-the-sale-and-purchase-agreement-when-buying/"
+    ]
+  },
+  {
+    "id": "team/compare",
+    "topic": "Bank & broker chats",
+    "question": "Who do you compare?",
+    "answer": "Ask which lenders the adviser works with and why they recommend an option. You can also compare a direct bank offer. A broker does not necessarily search the whole market.",
+    "links": [
+      "https://www.fma.govt.nz/consumer/getting-advice/mortgage-advice/",
+      "https://www.settled.govt.nz/buying-a-home/making-an-offer/confirming-your-finances/"
+    ]
+  },
+  {
+    "id": "team/paid",
+    "topic": "Bank & broker chats",
+    "question": "Know what you could owe.",
+    "answer": "Ask about commissions, direct fees and charges if you leave early. Get the circumstances and amounts in writing. Cashback repayment and an adviser’s clawback fee are different things.",
+    "links": [
+      "https://www.fma.govt.nz/consumer/getting-advice/mortgage-advice/",
+      "https://www.settled.govt.nz/buying-a-home/making-an-offer/confirming-your-finances/"
+    ]
+  },
+  {
+    "id": "team/prepare",
+    "topic": "Bank & broker chats",
+    "question": "Gather your financial documents.",
+    "answer": "Gather income, spending, debts and deposit evidence. Choose your own property lawyer early, and ask the lender about pre-approval conditions. Pre-approval still needs the property and final loan to be approved.",
+    "links": [
+      "https://www.fma.govt.nz/consumer/getting-advice/mortgage-advice/",
+      "https://www.settled.govt.nz/buying-a-home/making-an-offer/confirming-your-finances/"
+    ]
+  },
+  {
+    "id": "mortgage/repayments",
+    "topic": "Understand the loan",
+    "question": "Compare repayments, rates and terms.",
+    "answer": "A principal-and-interest payment covers interest and reduces debt. Change the example loan, rate and term to see the relationship. The calculator is an illustration, not current rates or a lending decision.",
+    "links": [
+      "https://sorted.org.nz/guides/home-buying/mortgage-types/",
+      "https://www.fma.govt.nz/consumer/getting-advice/mortgage-advice/",
+      "https://www.settled.govt.nz/buying-a-home/making-an-offer/confirming-your-finances/"
+    ]
+  },
+  {
+    "id": "mortgage/structure",
+    "topic": "Understand the loan",
+    "question": "Ask what changes, and when.",
+    "answer": "Fixed, floating, split and offset options behave differently. Ask your adviser to explain how each would work for your spending and income. A two-year fixed rate does not mean a two-year loan.",
+    "links": [
+      "https://sorted.org.nz/guides/home-buying/mortgage-types/",
+      "https://www.fma.govt.nz/consumer/getting-advice/mortgage-advice/",
+      "https://www.settled.govt.nz/buying-a-home/making-an-offer/confirming-your-finances/"
+    ]
+  },
+  {
+    "id": "mortgage/exit",
+    "topic": "Understand the loan",
+    "question": "Read the exit terms.",
+    "answer": "A low headline rate or cashback can come with conditions. Ask what happens if you repay early, sell or switch lenders. Switching early can trigger more than one charge.",
+    "links": [
+      "https://sorted.org.nz/guides/home-buying/mortgage-types/",
+      "https://www.fma.govt.nz/consumer/getting-advice/mortgage-advice/",
+      "https://www.settled.govt.nz/buying-a-home/making-an-offer/confirming-your-finances/"
+    ]
+  },
+  {
+    "id": "neighbourhood/travel",
+    "topic": "The neighbourhood",
+    "question": "Try your everyday trip.",
+    "answer": "Walk, drive or take public transport at the time you would actually use it. Check the whole trip, not just a map. A quiet Sunday visit can hide a difficult weekday commute.",
+    "links": [
+      "https://www.settled.govt.nz/buying-a-home/researching-the-property/learning-about-the-neighbourhood/",
+      "https://www.settled.govt.nz/buying-a-home/researching-the-property/understanding-the-impact-of-natural-hazards/"
+    ]
+  },
+  {
+    "id": "neighbourhood/times",
+    "topic": "The neighbourhood",
+    "question": "Come back at another time.",
+    "answer": "Notice sun, traffic, noise and activity around the home. Think about the season as well as the time of day. A bright open home does not show you every season.",
+    "links": [
+      "https://www.settled.govt.nz/buying-a-home/researching-the-property/learning-about-the-neighbourhood/",
+      "https://www.settled.govt.nz/buying-a-home/researching-the-property/understanding-the-impact-of-natural-hazards/"
+    ]
+  },
+  {
+    "id": "neighbourhood/local",
+    "topic": "The neighbourhood",
+    "question": "Look beyond the boundary.",
+    "answer": "Ask about nearby development, local services and land hazards. Use council information and your own checks alongside the agent’s description. A view or empty neighbouring section may change.",
+    "links": [
+      "https://www.settled.govt.nz/buying-a-home/researching-the-property/learning-about-the-neighbourhood/",
+      "https://www.settled.govt.nz/buying-a-home/researching-the-property/understanding-the-impact-of-natural-hazards/"
+    ]
+  },
+  {
+    "id": "homes/needs",
+    "topic": "Home & ownership types",
+    "question": "Choose your real must-haves.",
+    "answer": "Separate essentials from preferences. Existing homes, new builds, off-plan purchases and fixer-uppers each bring different checks and trade-offs. A new home still needs careful contract and completion checks.",
+    "links": [
+      "https://www.settled.govt.nz/buying-a-home/finding-a-property/considering-your-property-options/",
+      "https://www.settled.govt.nz/buying-a-home/finding-a-property/understanding-types-of-ownership/",
+      "https://www.unittitles.govt.nz/buying-or-selling-a-unit-title/buying-or-selling-a-unit-title/buying-a-unit-title/"
+    ]
+  },
+  {
+    "id": "homes/title",
+    "topic": "Home & ownership types",
+    "question": "Find out what you own.",
+    "answer": "Freehold, cross lease, leasehold and unit title mean different arrangements. Ask your lawyer about boundaries, restrictions, shared areas and permissions. A cheaper leasehold price can come with ongoing ground rent.",
+    "links": [
+      "https://www.settled.govt.nz/buying-a-home/finding-a-property/considering-your-property-options/",
+      "https://www.settled.govt.nz/buying-a-home/finding-a-property/understanding-types-of-ownership/",
+      "https://www.unittitles.govt.nz/buying-or-selling-a-unit-title/buying-or-selling-a-unit-title/buying-a-unit-title/"
+    ]
+  },
+  {
+    "id": "homes/shared",
+    "topic": "Home & ownership types",
+    "question": "Read the shared commitments.",
+    "answer": "For a unit title, examine disclosure, body corporate records and maintenance funding. For other shared arrangements, ask who pays and decides. A maintenance plan is not proof that enough money has been saved.",
+    "links": [
+      "https://www.settled.govt.nz/buying-a-home/finding-a-property/considering-your-property-options/",
+      "https://www.settled.govt.nz/buying-a-home/finding-a-property/understanding-types-of-ownership/",
+      "https://www.unittitles.govt.nz/buying-or-selling-a-unit-title/buying-or-selling-a-unit-title/buying-a-unit-title/"
+    ]
+  },
+  {
+    "id": "agents/roles",
+    "topic": "Real estate agents",
+    "question": "Ask who the agent represents.",
+    "answer": "The listing agent represents the seller. A buyer’s agent you hire represents you under a separate written agreement. Ask who the agent represents and who pays them. In a conjunctional sale, two agencies may share the seller’s commission. The agent who introduces you to the home can still be working for the seller.",
+    "links": [
+      "https://www.settled.govt.nz/buying-a-home/finding-a-property/buying-with-an-agent-or-privately/",
+      "https://www.rea.govt.nz/glossary/",
+      "https://www.rea.govt.nz/real-estate-professionals/industry-guidance-and-information/buyers-agent-information/",
+      "https://publicregister.rea.govt.nz/",
+      "https://www.settled.govt.nz/assets/Uploads/Resources/Guides/Code-of-conduct.pdf"
+    ]
+  },
+  {
+    "id": "agents/disclosures",
+    "topic": "Real estate agents",
+    "question": "Ask for disclosures and records.",
+    "answer": "Ask about defects, repairs, consents, hazards and included items. Agents must deal fairly and disclose relevant problems; still arrange your own checks. Check the agent’s answers with your own inspector and lawyer.",
+    "links": [
+      "https://www.settled.govt.nz/buying-a-home/finding-a-property/buying-with-an-agent-or-privately/",
+      "https://www.rea.govt.nz/glossary/",
+      "https://www.rea.govt.nz/real-estate-professionals/industry-guidance-and-information/buyers-agent-information/",
+      "https://publicregister.rea.govt.nz/",
+      "https://www.settled.govt.nz/assets/Uploads/Resources/Guides/Code-of-conduct.pdf"
+    ]
+  },
+  {
+    "id": "agents/your-agent",
+    "topic": "Real estate agents",
+    "question": "Know what you are hiring.",
+    "answer": "Before hiring a buyer’s agent, check their licence, services, fees, conflicts and authority to negotiate or bid. Have your lawyer review the agreement. An agent introducing you to another agency’s listing may still be working for the seller.",
+    "links": [
+      "https://www.settled.govt.nz/buying-a-home/finding-a-property/buying-with-an-agent-or-privately/",
+      "https://www.rea.govt.nz/glossary/",
+      "https://www.rea.govt.nz/real-estate-professionals/industry-guidance-and-information/buyers-agent-information/",
+      "https://publicregister.rea.govt.nz/",
+      "https://www.settled.govt.nz/assets/Uploads/Resources/Guides/Code-of-conduct.pdf"
+    ]
+  },
+  {
+    "id": "viewing/notice",
+    "topic": "At a home visit",
+    "question": "Look past the styling.",
+    "answer": "Notice stains, smells, ventilation and condition. Ask before testing fittings or taking photos, and record questions while they are fresh. Fresh paint can cover signs of damage. Ask about repairs and arrange an independent inspection.",
+    "links": [
+      "https://www.settled.govt.nz/buying-a-home/finding-a-property/viewing-an-open-home/",
+      "https://www.settled.govt.nz/buying-a-home/researching-the-property/doing-your-homework/",
+      "https://www.settled.govt.nz/buying-a-home/making-an-offer/understanding-the-sale-and-purchase-agreement-when-buying/"
+    ]
+  },
+  {
+    "id": "viewing/questions",
+    "topic": "At a home visit",
+    "question": "Ask what has happened here.",
+    "answer": "Ask about repairs, alterations, known defects, claims and what stays with the property. Request documents for important answers. The selling agent works for the seller; get your own advice.",
+    "links": [
+      "https://www.settled.govt.nz/buying-a-home/finding-a-property/viewing-an-open-home/",
+      "https://www.settled.govt.nz/buying-a-home/researching-the-property/doing-your-homework/",
+      "https://www.settled.govt.nz/buying-a-home/making-an-offer/understanding-the-sale-and-purchase-agreement-when-buying/"
+    ]
+  },
+  {
+    "id": "viewing/compare",
+    "topic": "At a home visit",
+    "question": "Use the same checks each time.",
+    "answer": "Compare each home against your must-haves and keep notes together. Arrange a further viewing when you need more time or a specialist. A viewing cannot replace an independent building inspection.",
+    "links": [
+      "https://www.settled.govt.nz/buying-a-home/finding-a-property/viewing-an-open-home/",
+      "https://www.settled.govt.nz/buying-a-home/researching-the-property/doing-your-homework/",
+      "https://www.settled.govt.nz/buying-a-home/making-an-offer/understanding-the-sale-and-purchase-agreement-when-buying/"
+    ]
+  },
+  {
+    "id": "inspection/scope",
+    "topic": "The inspection",
+    "question": "What couldn’t be checked?",
+    "answer": "Agree the inspection scope and read its limitations. Ask which areas were inaccessible and which concerns need a specialist. An inspection report has limits; it is not a guarantee.",
+    "links": [
+      "https://www.settled.govt.nz/buying-a-home/researching-the-property/doing-your-homework/",
+      "https://www.settled.govt.nz/buying-a-home/researching-the-property/understanding-the-impact-of-natural-hazards/",
+      "https://www.settled.govt.nz/buying-a-home/finding-a-property/viewing-an-open-home/"
+    ]
+  },
+  {
+    "id": "inspection/water",
+    "topic": "The inspection",
+    "question": "Ask what caused the damp.",
+    "answer": "Ask about roof, drainage, moisture, insulation and ventilation. An unexplained sign needs investigation rather than a cosmetic estimate. A dry viewing day does not prove a dry house.",
+    "links": [
+      "https://www.settled.govt.nz/buying-a-home/researching-the-property/doing-your-homework/",
+      "https://www.settled.govt.nz/buying-a-home/researching-the-property/understanding-the-impact-of-natural-hazards/",
+      "https://www.settled.govt.nz/buying-a-home/finding-a-property/viewing-an-open-home/"
+    ]
+  },
+  {
+    "id": "inspection/repairs",
+    "topic": "The inspection",
+    "question": "Get repair costs before committing.",
+    "answer": "Discuss concerns with the inspector and your lawyer. Get significant work assessed and priced before committing beyond your agreed protections. Do not assume you can rely on a report commissioned for someone else.",
+    "links": [
+      "https://www.settled.govt.nz/buying-a-home/researching-the-property/doing-your-homework/",
+      "https://www.settled.govt.nz/buying-a-home/researching-the-property/understanding-the-impact-of-natural-hazards/",
+      "https://www.settled.govt.nz/buying-a-home/finding-a-property/viewing-an-open-home/"
+    ]
+  },
+  {
+    "id": "records/council",
+    "topic": "Records & consents",
+    "question": "What does the council know?",
+    "answer": "A LIM is a report of council-held property information. Ask for it and the property file; review hazards, plans and approvals with your lawyer. A LIM is not a physical inspection of the building.",
+    "links": [
+      "https://www.building.govt.nz/getting-started/your-rights-and-obligations/homeowner-rights-and-obligations/buying-a-house/what-can-the-council-tell-you-about-the-house",
+      "https://lrs.linz.govt.nz/",
+      "https://www.building.govt.nz/projects-and-consents/planning-a-successful-build/scope-and-design/check-if-you-need-consents",
+      "https://www.legislation.govt.nz/act/public/2004/72/en/latest/"
+    ]
+  },
+  {
+    "id": "records/alterations",
+    "topic": "Records & consents",
+    "question": "Do the changes add up?",
+    "answer": "Ask for consent and completion records for alterations. Get advice on missing paperwork and whether other permissions were needed. Building consent, a code compliance certificate (CCC) and a certificate of acceptance are different documents.",
+    "links": [
+      "https://www.building.govt.nz/getting-started/your-rights-and-obligations/homeowner-rights-and-obligations/buying-a-house/what-can-the-council-tell-you-about-the-house",
+      "https://lrs.linz.govt.nz/",
+      "https://www.building.govt.nz/projects-and-consents/planning-a-successful-build/scope-and-design/check-if-you-need-consents",
+      "https://www.legislation.govt.nz/act/public/2004/72/en/latest/"
+    ]
+  },
+  {
+    "id": "records/rights",
+    "topic": "Records & consents",
+    "question": "Can you use it as planned?",
+    "answer": "Ask your lawyer to explain easements, covenants and shared responsibilities. Confirm services and access, especially for unusual or rural properties. A building approval does not override a restriction on the title.",
+    "links": [
+      "https://www.building.govt.nz/getting-started/your-rights-and-obligations/homeowner-rights-and-obligations/buying-a-house/what-can-the-council-tell-you-about-the-house",
+      "https://lrs.linz.govt.nz/",
+      "https://www.building.govt.nz/projects-and-consents/planning-a-successful-build/scope-and-design/check-if-you-need-consents",
+      "https://www.legislation.govt.nz/act/public/2004/72/en/latest/"
+    ]
+  },
+  {
+    "id": "insurance/hazards",
+    "topic": "Hazards & insurance",
+    "question": "What could affect this site?",
+    "answer": "Look into flooding, slips, coastal and earthquake hazards. In Auckland, start by entering the address in the council’s Flood Viewer. Elsewhere, check your local council’s hazard maps and records. An address with no mapped flooding can still flood. Check the LIM and ask about past flooding.",
+    "links": [
+      "https://experience.arcgis.com/experience/cbde7f2134404f4d90adce5396a0a630",
+      "https://www.settled.govt.nz/buying-a-home/researching-the-property/understanding-the-impact-of-natural-hazards/",
+      "https://www.naturalhazards.govt.nz/insurance-and-claims/claims/buying-or-selling-a-home-with-previous-claims/",
+      "https://www.settled.govt.nz/buying-a-home/making-an-offer/confirming-your-finances/"
+    ]
+  },
+  {
+    "id": "insurance/cover",
+    "topic": "Hazards & insurance",
+    "question": "Can you insure this home?",
+    "answer": "Ask an insurer about cover, exclusions, excesses and rebuild estimates. Confirm any lender requirements before committing unconditionally or bidding. The seller’s insurance is not proof that you can get the same cover.",
+    "links": [
+      "https://experience.arcgis.com/experience/cbde7f2134404f4d90adce5396a0a630",
+      "https://www.settled.govt.nz/buying-a-home/researching-the-property/understanding-the-impact-of-natural-hazards/",
+      "https://www.naturalhazards.govt.nz/insurance-and-claims/claims/buying-or-selling-a-home-with-previous-claims/",
+      "https://www.settled.govt.nz/buying-a-home/making-an-offer/confirming-your-finances/"
+    ]
+  },
+  {
+    "id": "insurance/claims",
+    "topic": "Hazards & insurance",
+    "question": "Follow the claim and the repair.",
+    "answer": "Ask about previous NHC/EQC claims and repairs. Have your lawyer review unresolved matters and any transfer of claims. A settled claim does not prove all repairs were completed.",
+    "links": [
+      "https://experience.arcgis.com/experience/cbde7f2134404f4d90adce5396a0a630",
+      "https://www.settled.govt.nz/buying-a-home/researching-the-property/understanding-the-impact-of-natural-hazards/",
+      "https://www.naturalhazards.govt.nz/insurance-and-claims/claims/buying-or-selling-a-home-with-previous-claims/",
+      "https://www.settled.govt.nz/buying-a-home/making-an-offer/confirming-your-finances/"
+    ]
+  },
+  {
+    "id": "sales/process",
+    "topic": "Ways to buy",
+    "question": "Which process is this?",
+    "answer": "Negotiation, deadline, tender and auction change when you offer and what must be checked first. Get the exact rules for this property. At auction, complete your checks and confirm finance and insurance before bidding.",
+    "links": [
+      "https://www.settled.govt.nz/buying-a-home/making-an-offer/buying-by-negotiation/",
+      "https://www.settled.govt.nz/buying-a-home/making-an-offer/buying-by-deadline/",
+      "https://www.settled.govt.nz/buying-a-home/making-an-offer/buying-by-tender/",
+      "https://www.settled.govt.nz/buying-a-home/making-an-offer/buying-by-auction/",
+      "https://www.settled.govt.nz/buying-a-home/making-an-offer/understanding-a-multi-offer-process/",
+      "https://www.settled.govt.nz/blog/buying-from-a-private-seller/",
+      "https://www.settled.govt.nz/buying-a-home/finding-a-property/buying-with-an-agent-or-privately/",
+      "https://www.settled.govt.nz/buying-a-home/finding-a-property/considering-your-property-options/",
+      "https://www.settled.govt.nz/selling-a-home/thinking-of-selling/planning-to-sell/"
+    ]
+  },
+  {
+    "id": "sales/competition",
+    "topic": "Ways to buy",
+    "question": "A price guide is not a promise.",
+    "answer": "An asking price, BEO or “offers over” is a guide, not acceptance of your offer. Multiple written offers can create a multi-offer process. You may not get another chance to improve an offer. Keep the protections you need.",
+    "links": [
+      "https://www.settled.govt.nz/buying-a-home/making-an-offer/buying-by-negotiation/",
+      "https://www.settled.govt.nz/buying-a-home/making-an-offer/buying-by-deadline/",
+      "https://www.settled.govt.nz/buying-a-home/making-an-offer/buying-by-tender/",
+      "https://www.settled.govt.nz/buying-a-home/making-an-offer/buying-by-auction/",
+      "https://www.settled.govt.nz/buying-a-home/making-an-offer/understanding-a-multi-offer-process/",
+      "https://www.settled.govt.nz/blog/buying-from-a-private-seller/",
+      "https://www.settled.govt.nz/buying-a-home/finding-a-property/buying-with-an-agent-or-privately/",
+      "https://www.settled.govt.nz/buying-a-home/finding-a-property/considering-your-property-options/",
+      "https://www.settled.govt.nz/selling-a-home/thinking-of-selling/planning-to-sell/"
+    ]
+  },
+  {
+    "id": "sales/private",
+    "topic": "Ways to buy",
+    "question": "Buying directly from the owner",
+    "answer": "If you find a home through a Facebook group, a sign or word of mouth, you can arrange a viewing and talk price with the owner. Check recent comparable sales and involve your own lawyer before you make an offer. REA’s agent complaints process does not cover a private, unlicensed seller.",
+    "links": [
+      "https://www.settled.govt.nz/buying-a-home/making-an-offer/buying-by-negotiation/",
+      "https://www.settled.govt.nz/buying-a-home/making-an-offer/buying-by-deadline/",
+      "https://www.settled.govt.nz/buying-a-home/making-an-offer/buying-by-tender/",
+      "https://www.settled.govt.nz/buying-a-home/making-an-offer/buying-by-auction/",
+      "https://www.settled.govt.nz/buying-a-home/making-an-offer/understanding-a-multi-offer-process/",
+      "https://www.settled.govt.nz/blog/buying-from-a-private-seller/",
+      "https://www.settled.govt.nz/buying-a-home/finding-a-property/buying-with-an-agent-or-privately/",
+      "https://www.settled.govt.nz/buying-a-home/finding-a-property/considering-your-property-options/",
+      "https://www.settled.govt.nz/selling-a-home/thinking-of-selling/planning-to-sell/"
+    ]
+  },
+  {
+    "id": "sales/special",
+    "topic": "Ways to buy",
+    "question": "Check who has authority to sell.",
+    "answer": "A lender selling under a mortgage or a person selling for an estate or trust can mean different checks and contract terms. Bring your lawyer in early. A mortgagee sale is not automatically a bargain.",
+    "links": [
+      "https://www.settled.govt.nz/buying-a-home/making-an-offer/buying-by-negotiation/",
+      "https://www.settled.govt.nz/buying-a-home/making-an-offer/buying-by-deadline/",
+      "https://www.settled.govt.nz/buying-a-home/making-an-offer/buying-by-tender/",
+      "https://www.settled.govt.nz/buying-a-home/making-an-offer/buying-by-auction/",
+      "https://www.settled.govt.nz/buying-a-home/making-an-offer/understanding-a-multi-offer-process/",
+      "https://www.settled.govt.nz/blog/buying-from-a-private-seller/",
+      "https://www.settled.govt.nz/buying-a-home/finding-a-property/buying-with-an-agent-or-privately/",
+      "https://www.settled.govt.nz/buying-a-home/finding-a-property/considering-your-property-options/",
+      "https://www.settled.govt.nz/selling-a-home/thinking-of-selling/planning-to-sell/"
+    ]
+  },
+  {
+    "id": "offer/method",
+    "topic": "Offers & contracts",
+    "question": "Know the rules of this sale.",
+    "answer": "Negotiation, tender, deadline and multi-offer processes differ. Ask about the exact timetable and whether the seller can accept an earlier offer. Pressure from another buyer does not remove the need for your checks.",
+    "links": [
+      "https://www.settled.govt.nz/buying-a-home/making-an-offer/understanding-the-sale-and-purchase-agreement-when-buying/",
+      "https://www.settled.govt.nz/buying-a-home/making-an-offer/buying-by-auction/",
+      "https://www.consumerprotection.govt.nz/help-product-service/buying-or-renting-a-house/prepare-make-an-offer"
+    ]
+  },
+  {
+    "id": "offer/auction",
+    "topic": "Offers & contracts",
+    "question": "Do the checks before bidding.",
+    "answer": "An auction purchase is unconditional. Have finance, insurance, property checks and legal advice arranged before you bid. Winning the auction commits you to the purchase.",
+    "links": [
+      "https://www.settled.govt.nz/buying-a-home/making-an-offer/understanding-the-sale-and-purchase-agreement-when-buying/",
+      "https://www.settled.govt.nz/buying-a-home/making-an-offer/buying-by-auction/",
+      "https://www.consumerprotection.govt.nz/help-product-service/buying-or-renting-a-house/prepare-make-an-offer"
+    ]
+  },
+  {
+    "id": "offer/contract",
+    "topic": "Offers & contracts",
+    "question": "Understand what binds you.",
+    "answer": "Have your lawyer review conditions, deadlines, deposit, included items and settlement. Ask what must happen before any condition is satisfied or waived. A conditional contract is still binding; it is not a free cancellation window.",
+    "links": [
+      "https://www.settled.govt.nz/buying-a-home/making-an-offer/understanding-the-sale-and-purchase-agreement-when-buying/",
+      "https://www.settled.govt.nz/buying-a-home/making-an-offer/buying-by-auction/",
+      "https://www.consumerprotection.govt.nz/help-product-service/buying-or-renting-a-house/prepare-make-an-offer"
+    ]
+  },
+  {
+    "id": "settlement/inspection",
+    "topic": "Getting the keys",
+    "question": "Check it against the agreement.",
+    "answer": "Use the pre-settlement inspection to check agreed condition and included items. Tell your lawyer promptly about missing items or new damage. Do not leave a problem until you collect the keys.",
+    "links": [
+      "https://www.settled.govt.nz/buying-a-home/settling-and-moving-in/planning-for-settlement-day-when-buying/",
+      "https://www.lawsociety.org.nz/news/newsroom/email-fraud-targets-lawyers/",
+      "https://www.settled.govt.nz/buying-a-home/making-an-offer/understanding-the-sale-and-purchase-agreement-when-buying/"
+    ]
+  },
+  {
+    "id": "settlement/money",
+    "topic": "Getting the keys",
+    "question": "Get everything ready on time.",
+    "answer": "Confirm loan documents, KiwiSaver timing, remaining funds and insurance with your lawyer and lender. Verify payment instructions using a trusted contact method. An email changing bank details can be a scam.",
+    "links": [
+      "https://www.settled.govt.nz/buying-a-home/settling-and-moving-in/planning-for-settlement-day-when-buying/",
+      "https://www.lawsociety.org.nz/news/newsroom/email-fraud-targets-lawyers/",
+      "https://www.settled.govt.nz/buying-a-home/making-an-offer/understanding-the-sale-and-purchase-agreement-when-buying/"
+    ]
+  },
+  {
+    "id": "settlement/keys",
+    "topic": "Getting the keys",
+    "question": "Wait for settlement confirmation.",
+    "answer": "Your lawyer coordinates settlement. Arrange keys after confirmation, with some flexibility around movers and access. Keys are not guaranteed first thing on settlement morning.",
+    "links": [
+      "https://www.settled.govt.nz/buying-a-home/settling-and-moving-in/planning-for-settlement-day-when-buying/",
+      "https://www.lawsociety.org.nz/news/newsroom/email-fraud-targets-lawyers/",
+      "https://www.settled.govt.nz/buying-a-home/making-an-offer/understanding-the-sale-and-purchase-agreement-when-buying/"
+    ]
+  },
+  {
+    "id": "living/care",
+    "topic": "Life as an owner",
+    "question": "Start with the urgent things.",
+    "answer": "Use your inspection report to plan maintenance. Address safety and water problems before cosmetic improvements, using appropriate tradespeople. Small water problems can become expensive when ignored.",
+    "links": [
+      "https://www.settled.govt.nz/buying-a-home/thinking-of-buying/thinking-about-your-finances-when-buying/",
+      "https://www.unittitles.govt.nz/buying-or-selling-a-unit-title/buying-or-selling-a-unit-title/buying-a-unit-title/",
+      "https://sorted.org.nz/guides/home-buying/mortgage-types/"
+    ]
+  },
+  {
+    "id": "living/review",
+    "topic": "Life as an owner",
+    "question": "Put the dates in your calendar.",
+    "answer": "Revisit insurance, loan terms and maintenance savings as the property or your circumstances change. Ask for help early if repayments become difficult. The right loan and cover can change as your life changes.",
+    "links": [
+      "https://www.settled.govt.nz/buying-a-home/thinking-of-buying/thinking-about-your-finances-when-buying/",
+      "https://www.unittitles.govt.nz/buying-or-selling-a-unit-title/buying-or-selling-a-unit-title/buying-a-unit-title/",
+      "https://sorted.org.nz/guides/home-buying/mortgage-types/"
+    ]
+  },
+  {
+    "id": "living/shared",
+    "topic": "Life as an owner",
+    "question": "Keep talking to the other owners.",
+    "answer": "Know how shared maintenance and decisions work. Read notices, understand proposed work and keep your own records. Shared ownership can involve costs beyond your own front door.",
+    "links": [
+      "https://www.settled.govt.nz/buying-a-home/thinking-of-buying/thinking-about-your-finances-when-buying/",
+      "https://www.unittitles.govt.nz/buying-or-selling-a-unit-title/buying-or-selling-a-unit-title/buying-a-unit-title/",
+      "https://sorted.org.nz/guides/home-buying/mortgage-types/"
+    ]
+  },
+  {
+    "id": "renovate/permissions",
+    "topic": "Renovate thoughtfully",
+    "question": "Check consents and ownership restrictions.",
+    "answer": "Ask the council about building and resource consents. Check title restrictions and any other owners’ approvals before work starts. No building consent does not mean no rules apply.",
+    "links": [
+      "https://www.building.govt.nz/projects-and-consents/planning-a-successful-build/scope-and-design/check-if-you-need-consents",
+      "https://www.building.govt.nz/getting-started/stages-of-the-building-process/renovations-differ-to-new-builds",
+      "https://www.healthnz.govt.nz/health-topics/keeping-healthy/healthy-homes-environments/hazardous-substances/asbestos/dealing-with-asbestos",
+      "https://www.legislation.govt.nz/act/public/2004/72/en/latest/"
+    ]
+  },
+  {
+    "id": "renovate/scope",
+    "topic": "Renovate thoughtfully",
+    "question": "Price the hidden work too.",
+    "answer": "Get a clear scope, written quotes and appropriate professional advice. Allow for unknown conditions and tell your insurer about planned work. A cosmetic project can reveal structural or moisture problems.",
+    "links": [
+      "https://www.building.govt.nz/projects-and-consents/planning-a-successful-build/scope-and-design/check-if-you-need-consents",
+      "https://www.building.govt.nz/getting-started/stages-of-the-building-process/renovations-differ-to-new-builds",
+      "https://www.healthnz.govt.nz/health-topics/keeping-healthy/healthy-homes-environments/hazardous-substances/asbestos/dealing-with-asbestos",
+      "https://www.legislation.govt.nz/act/public/2004/72/en/latest/"
+    ]
+  },
+  {
+    "id": "renovate/finish",
+    "topic": "Renovate thoughtfully",
+    "question": "Keep approvals and completion records.",
+    "answer": "Check suspected hazardous materials before disturbing them. Use appropriate specialists and retain required approvals, inspections, warranties and completion records. Do not cut, sand or remove suspected asbestos without appropriate advice.",
+    "links": [
+      "https://www.building.govt.nz/projects-and-consents/planning-a-successful-build/scope-and-design/check-if-you-need-consents",
+      "https://www.building.govt.nz/getting-started/stages-of-the-building-process/renovations-differ-to-new-builds",
+      "https://www.healthnz.govt.nz/health-topics/keeping-healthy/healthy-homes-environments/hazardous-substances/asbestos/dealing-with-asbestos",
+      "https://www.legislation.govt.nz/act/public/2004/72/en/latest/"
+    ]
+  }
+]

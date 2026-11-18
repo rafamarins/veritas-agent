@@ -1,0 +1,386 @@
+[
+  {
+    "id": "ref-1",
+    "publisher": "Auckland Council",
+    "title": "Auckland Flood Viewer",
+    "url": "https://experience.arcgis.com/experience/cbde7f2134404f4d90adce5396a0a630",
+    "kind": "lookup"
+  },
+  {
+    "id": "ref-2",
+    "publisher": "Kāinga Ora",
+    "title": "KiwiSaver first-home withdrawal",
+    "url": "https://kaingaora.govt.nz/en_NZ/home-ownership/kiwisaver-first-home-withdrawal/",
+    "excerpt": "If you are a first-home buyer, please contact your KiwiSaver provider or complying fund provider to apply.",
+    "checkedOn": "2026-11-19"
+  },
+  {
+    "id": "ref-3",
+    "publisher": "Land Information New Zealand",
+    "title": "Land Record Search",
+    "url": "https://lrs.linz.govt.nz/",
+    "kind": "lookup"
+  },
+  {
+    "id": "ref-4",
+    "publisher": "Auckland Council",
+    "title": "Rating Valuation – frequently asked questions",
+    "url": "https://ourauckland.aucklandcouncil.govt.nz/news/2025/06/rating-valuation/",
+    "excerpt": "Council valuations do not reflect a property’s current market value and should not be used for insurance or mortgage purposes.",
+    "checkedOn": "2026-11-19"
+  },
+  {
+    "id": "ref-5",
+    "publisher": "Real Estate Authority",
+    "title": "Public register of licensed real estate agents",
+    "url": "https://publicregister.rea.govt.nz/",
+    "kind": "lookup"
+  },
+  {
+    "id": "ref-6",
+    "publisher": "Sorted",
+    "title": "Types of mortgages in New Zealand, and how to choose",
+    "url": "https://sorted.org.nz/guides/home-buying/mortgage-types/",
+    "excerpt": "A mortgage (home loan) is money you borrow from a lender (like a bank) to buy a property.",
+    "checkedOn": "2026-11-19"
+  },
+  {
+    "id": "ref-7",
+    "publisher": "Banking Ombudsman Scheme",
+    "title": "Bank had discretion about whether to enforce repayment of cash contribution",
+    "url": "https://www.bankomb.org.nz/guides-and-cases/case-notes/84963",
+    "excerpt": "The bank was entitled to decide on a case-by-case basis whether to seek reimbursement of a cash contribution.",
+    "checkedOn": "2026-11-19"
+  },
+  {
+    "id": "ref-8",
+    "publisher": "MBIE Building Performance",
+    "title": "Renovations differ to new builds",
+    "url": "https://www.building.govt.nz/getting-started/stages-of-the-building-process/renovations-differ-to-new-builds",
+    "excerpt": "You need to tell the council about a change of use, even if it doesn't involve building work.",
+    "checkedOn": "2026-11-19"
+  },
+  {
+    "id": "ref-9",
+    "publisher": "MBIE Building Performance",
+    "title": "What can the council tell you about the house?",
+    "url": "https://www.building.govt.nz/getting-started/your-rights-and-obligations/homeowner-rights-and-obligations/buying-a-house/what-can-the-council-tell-you-about-the-house",
+    "excerpt": "Remember, however, that the LIM provides information only about those things reported to the council.",
+    "checkedOn": "2026-11-19"
+  },
+  {
+    "id": "ref-10",
+    "publisher": "MBIE Building Performance",
+    "title": "Check if you need consents",
+    "url": "https://www.building.govt.nz/projects-and-consents/planning-a-successful-build/scope-and-design/check-if-you-need-consents",
+    "excerpt": "Your council can tell you about any district or regional plans that may require you to get resource consent or other permits.",
+    "checkedOn": "2026-11-19"
+  },
+  {
+    "id": "ref-11",
+    "publisher": "MBIE Building Performance",
+    "title": "Certificate of acceptance",
+    "url": "https://www.building.govt.nz/projects-and-consents/sign-off-and-maintenance/completing-your-project/certificate-of-acceptance",
+    "excerpt": "In many circumstances, it's not possible to see everything so the certificate will only specify the elements of the building that can be approved.",
+    "checkedOn": "2026-11-19"
+  },
+  {
+    "id": "ref-12",
+    "publisher": "MBIE Building Performance",
+    "title": "Can I build it?",
+    "url": "https://www.canibuildit.govt.nz/",
+    "kind": "lookup"
+  },
+  {
+    "id": "ref-13",
+    "publisher": "Consumer Protection",
+    "title": "Prepare to make an offer",
+    "url": "https://www.consumerprotection.govt.nz/help-product-service/buying-or-renting-a-house/prepare-make-an-offer",
+    "excerpt": "Get your lawyer or conveyancer on board as soon as you decide to start looking.",
+    "checkedOn": "2026-11-19"
+  },
+  {
+    "id": "ref-14",
+    "publisher": "Financial Markets Authority",
+    "title": "Disputes and consumer protection",
+    "url": "https://www.fma.govt.nz/consumer/everyday-finance/disputes-and-consumer-protection/",
+    "excerpt": "All businesses that offer financial services to retail customers must belong to an independent dispute resolution scheme.",
+    "checkedOn": "2026-11-19"
+  },
+  {
+    "id": "ref-15",
+    "publisher": "Financial Markets Authority",
+    "title": "Mortgage advice",
+    "url": "https://www.fma.govt.nz/consumer/getting-advice/mortgage-advice/",
+    "excerpt": "A mortgage adviser typically deals with banks or other lenders to find a suitable home loan for you.",
+    "checkedOn": "2026-11-19"
+  },
+  {
+    "id": "ref-16",
+    "publisher": "New Zealand Government",
+    "title": "Buying your first home",
+    "url": "https://www.govt.nz/browse/housing-and-property/buying-or-selling-a-home/buying-your-first-home/",
+    "excerpt": "You still need to apply directly to your scheme provider for the KiwiSaver first-home withdrawal.",
+    "checkedOn": "2026-11-19"
+  },
+  {
+    "id": "ref-17",
+    "publisher": "Health New Zealand",
+    "title": "Dealing with asbestos",
+    "url": "https://www.healthnz.govt.nz/health-topics/keeping-healthy/healthy-homes-environments/hazardous-substances/asbestos/dealing-with-asbestos",
+    "excerpt": "If the material is poorly bonded, damaged or deteriorating, fibres may be released in the air.",
+    "checkedOn": "2026-11-19"
+  },
+  {
+    "id": "ref-18",
+    "publisher": "Inland Revenue",
+    "title": "Te whiwhi i taku pūtea KiwiSaver mō tōku kāinga tuatahi Getting my KiwiSaver savings for my first home",
+    "url": "https://www.ird.govt.nz/kiwisaver/kiwisaver-individuals/getting-my-kiwisaver-funds-early/getting-my-kiwisaver-for-my-first-home",
+    "excerpt": "You must be in KiwiSaver for at least 3 years before you withdraw funds for your first home.",
+    "checkedOn": "2026-11-19"
+  },
+  {
+    "id": "ref-19",
+    "publisher": "New Zealand Law Society",
+    "title": "Email fraud targets lawyers",
+    "url": "https://www.lawsociety.org.nz/news/newsroom/email-fraud-targets-lawyers/",
+    "excerpt": "you should contact them on their registered number as it appears on their website or in the Yellow Pages, not on an email",
+    "checkedOn": "2026-11-19"
+  },
+  {
+    "id": "ref-20",
+    "publisher": "New Zealand Legislation",
+    "title": "Building Act 2004",
+    "url": "https://www.legislation.govt.nz/act/public/2004/72/en/latest/",
+    "excerpt": "All building work must comply with the building code to the extent required by this Act",
+    "checkedOn": "2026-11-19",
+    "scope": "excerpt"
+  },
+  {
+    "id": "ref-21",
+    "publisher": "New Zealand Legislation",
+    "title": "Unit Titles Act 2010",
+    "url": "https://www.legislation.govt.nz/act/public/2010/0022/latest/DLM1160440.html",
+    "excerpt": "A body corporate must establish and regularly maintain a long-term maintenance plan.",
+    "checkedOn": "2026-11-19",
+    "scope": "excerpt"
+  },
+  {
+    "id": "ref-22",
+    "publisher": "Land Information New Zealand",
+    "title": "Buying residential property to live in",
+    "url": "https://www.linz.govt.nz/guidance/overseas-investment/buying-residential-property-live",
+    "excerpt": "New Zealand citizens and permanent residents of New Zealand who meet the requirements to be ‘ordinarily resident’ can buy property without restrictions.",
+    "checkedOn": "2026-11-19"
+  },
+  {
+    "id": "ref-23",
+    "publisher": "Natural Hazards Commission",
+    "title": "Buying or selling a home with previous claims",
+    "url": "https://www.naturalhazards.govt.nz/insurance-and-claims/claims/buying-or-selling-a-home-with-previous-claims/",
+    "excerpt": "The Natural Hazard Portal claims map shows all settled EQCover and NHCover claims on properties in New Zealand from 1997 onwards.",
+    "checkedOn": "2026-11-19"
+  },
+  {
+    "id": "ref-24",
+    "publisher": "Real Estate Authority",
+    "title": "Glossary: conjunctional agreement",
+    "url": "https://www.rea.govt.nz/glossary/",
+    "excerpt": "The most common arrangement is when an agent introduces a buyer to the listing agent, and both agents receive a share of the commission.",
+    "checkedOn": "2026-11-19",
+    "scope": "excerpt"
+  },
+  {
+    "id": "ref-25",
+    "publisher": "Real Estate Authority",
+    "title": "Buyer's agent information",
+    "url": "https://www.rea.govt.nz/real-estate-professionals/industry-guidance-and-information/buyers-agent-information/",
+    "excerpt": "Buyers’ agents are agents who work on behalf of a buyer and are paid by the buyer.",
+    "checkedOn": "2026-11-19"
+  },
+  {
+    "id": "ref-26",
+    "publisher": "Settled",
+    "title": "Real Estate Agents Act (Professional Conduct and Client Care) Rules 2012",
+    "url": "https://www.settled.govt.nz/assets/Uploads/Resources/Guides/Code-of-conduct.pdf",
+    "excerpt": "A licensee is not required to discover hidden or underlying defects in land but must disclose known defects to a customer.",
+    "checkedOn": "2026-11-19",
+    "scope": "excerpt"
+  },
+  {
+    "id": "ref-27",
+    "publisher": "Settled",
+    "title": "Buying from a private seller",
+    "url": "https://www.settled.govt.nz/blog/buying-from-a-private-seller/",
+    "excerpt": "Get your lawyer on board early and they can help you through the process.",
+    "checkedOn": "2026-11-19"
+  },
+  {
+    "id": "ref-28",
+    "publisher": "Settled",
+    "title": "Buying with an agent or privately",
+    "url": "https://www.settled.govt.nz/buying-a-home/finding-a-property/buying-with-an-agent-or-privately/",
+    "excerpt": "The real estate agent works for the seller.",
+    "checkedOn": "2026-11-19"
+  },
+  {
+    "id": "ref-29",
+    "publisher": "Settled",
+    "title": "Considering your property options",
+    "url": "https://www.settled.govt.nz/buying-a-home/finding-a-property/considering-your-property-options/",
+    "excerpt": "Identifying your priorities helps you figure out what’s non-negotiable and what you’re willing to compromise on.",
+    "checkedOn": "2026-11-19"
+  },
+  {
+    "id": "ref-30",
+    "publisher": "Settled",
+    "title": "Understanding the types of ownership",
+    "url": "https://www.settled.govt.nz/buying-a-home/finding-a-property/understanding-types-of-ownership/",
+    "excerpt": "There are four main types of property ownership in New Zealand – freehold, leasehold, unit title and cross lease.",
+    "checkedOn": "2026-11-19"
+  },
+  {
+    "id": "ref-31",
+    "publisher": "Settled",
+    "title": "Viewing an open home",
+    "url": "https://www.settled.govt.nz/buying-a-home/finding-a-property/viewing-an-open-home/",
+    "excerpt": "At an open home or viewing, have a good look around to check for problems and to make sure it meets your needs.",
+    "checkedOn": "2026-11-19"
+  },
+  {
+    "id": "ref-32",
+    "publisher": "Settled",
+    "title": "Buying by auction",
+    "url": "https://www.settled.govt.nz/buying-a-home/making-an-offer/buying-by-auction/",
+    "excerpt": "Because auctions are unconditional, you need to confirm your finances before you attend the auction.",
+    "checkedOn": "2026-11-19"
+  },
+  {
+    "id": "ref-33",
+    "publisher": "Settled",
+    "title": "Buying by deadline",
+    "url": "https://www.settled.govt.nz/buying-a-home/making-an-offer/buying-by-deadline/",
+    "excerpt": "Deadline sale is where a property is marketed for a set period with an advertised end date.",
+    "checkedOn": "2026-11-19"
+  },
+  {
+    "id": "ref-34",
+    "publisher": "Settled",
+    "title": "Buying by negotiation",
+    "url": "https://www.settled.govt.nz/buying-a-home/making-an-offer/buying-by-negotiation/",
+    "excerpt": "If there is more than one offer, the sale may become a multi-offer process.",
+    "checkedOn": "2026-11-19"
+  },
+  {
+    "id": "ref-35",
+    "publisher": "Settled",
+    "title": "Buying by tender",
+    "url": "https://www.settled.govt.nz/buying-a-home/making-an-offer/buying-by-tender/",
+    "excerpt": "When a property is for sale by tender, buyers give confidential written offers to the agent before a specified end date.",
+    "checkedOn": "2026-11-19"
+  },
+  {
+    "id": "ref-36",
+    "publisher": "Settled",
+    "title": "Confirming your finances",
+    "url": "https://www.settled.govt.nz/buying-a-home/making-an-offer/confirming-your-finances/",
+    "excerpt": "Even if you have conditional pre-approval, most banks and lenders will ask for information about the property before confirming the home loan.",
+    "checkedOn": "2026-11-19"
+  },
+  {
+    "id": "ref-37",
+    "publisher": "Settled",
+    "title": "Understanding a multi-offer process",
+    "url": "https://www.settled.govt.nz/buying-a-home/making-an-offer/understanding-a-multi-offer-process/",
+    "excerpt": "A multi-offer process happens when more than one buyer makes a written offer on a property.",
+    "checkedOn": "2026-11-19"
+  },
+  {
+    "id": "ref-38",
+    "publisher": "Settled",
+    "title": "Understanding the sale and purchase agreement when buying",
+    "url": "https://www.settled.govt.nz/buying-a-home/making-an-offer/understanding-the-sale-and-purchase-agreement-when-buying/",
+    "excerpt": "Always check your sale and purchase agreement with a lawyer or conveyancer before signing.",
+    "checkedOn": "2026-11-19"
+  },
+  {
+    "id": "ref-39",
+    "publisher": "Settled",
+    "title": "Doing your homework",
+    "url": "https://www.settled.govt.nz/buying-a-home/researching-the-property/doing-your-homework/",
+    "excerpt": "Compare what is on the file to how the property looks now to identify any alterations.",
+    "checkedOn": "2026-11-19"
+  },
+  {
+    "id": "ref-40",
+    "publisher": "Settled",
+    "title": "Learning about the neighbourhood",
+    "url": "https://www.settled.govt.nz/buying-a-home/researching-the-property/learning-about-the-neighbourhood/",
+    "excerpt": "Arrange to visit the property at different times of day and at the weekend to check the sun, traffic and activity in the neighbourhood.",
+    "checkedOn": "2026-11-19"
+  },
+  {
+    "id": "ref-41",
+    "publisher": "Settled",
+    "title": "Understanding the impact of natural hazards",
+    "url": "https://www.settled.govt.nz/buying-a-home/researching-the-property/understanding-the-impact-of-natural-hazards/",
+    "excerpt": "Seek legal advice and clarification from the insurance provider before signing a sale and purchase agreement.",
+    "checkedOn": "2026-11-19"
+  },
+  {
+    "id": "ref-42",
+    "publisher": "Settled",
+    "title": "Planning for settlement day when buying",
+    "url": "https://www.settled.govt.nz/buying-a-home/settling-and-moving-in/planning-for-settlement-day-when-buying/",
+    "excerpt": "You should arrange to inspect the property before settlement day.",
+    "checkedOn": "2026-11-19"
+  },
+  {
+    "id": "ref-43",
+    "publisher": "Settled",
+    "title": "Settling on settlement day when buying",
+    "url": "https://www.settled.govt.nz/buying-a-home/settling-and-moving-in/settling-on-settlement-day-when-buying/",
+    "excerpt": "Settlement day is the day you pay the balance of the purchase price and the property becomes yours.",
+    "checkedOn": "2026-11-19"
+  },
+  {
+    "id": "ref-44",
+    "publisher": "Settled",
+    "title": "Thinking about your finances when buying",
+    "url": "https://www.settled.govt.nz/buying-a-home/thinking-of-buying/thinking-about-your-finances-when-buying/",
+    "excerpt": "It’s important to investigate and understand your loan options before you take out a home loan.",
+    "checkedOn": "2026-11-19"
+  },
+  {
+    "id": "ref-45",
+    "publisher": "Settled",
+    "title": "Understanding the home buying journey",
+    "url": "https://www.settled.govt.nz/buying-a-home/thinking-of-buying/understanding-the-home-buying-journey/",
+    "excerpt": "You’ll need a lawyer, an insurer and a bank or mortgage broker.",
+    "checkedOn": "2026-11-19"
+  },
+  {
+    "id": "ref-46",
+    "publisher": "Settled",
+    "title": "Planning to sell",
+    "url": "https://www.settled.govt.nz/selling-a-home/thinking-of-selling/planning-to-sell/",
+    "excerpt": "We recommend you talk to a lawyer first if the property is part of a deceased estate or held in a trust.",
+    "checkedOn": "2026-11-19"
+  },
+  {
+    "id": "ref-47",
+    "publisher": "Unit Titles Services",
+    "title": "Unit title maintenance",
+    "url": "https://www.unittitles.govt.nz/body-corporate-money-and-maintenance/unit-title-maintenance/",
+    "excerpt": "The body corporate repairs and maintains the common property.",
+    "checkedOn": "2026-11-19"
+  },
+  {
+    "id": "ref-48",
+    "publisher": "Unit Titles Services",
+    "title": "Buying a unit title",
+    "url": "https://www.unittitles.govt.nz/buying-or-selling-a-unit-title/buying-or-selling-a-unit-title/buying-a-unit-title/",
+    "excerpt": "The owner of a unit title (such as an apartment) must give you information about the unit before you agree to buying it.",
+    "checkedOn": "2026-11-19"
+  }
+]

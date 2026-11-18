@@ -1,0 +1,24 @@
+node_modules/
+dist/
+.cloudflare/
+.wrangler/
+.dev.vars*
+.env*
+.DS_Store
+test-results/
+src/guide/reference-index.json
+src/guide/reference-index.json.*.tmp
+
+# Local credentials and runtime data
+.npmrc
+*.pem
+*.key
+*.p12
+*.pfx
+*.sqlite*
+*.db
+*.db-*
+*.log
+playwright-report/
+evals/results/
+.promptfoo/

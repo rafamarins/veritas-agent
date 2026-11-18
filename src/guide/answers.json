@@ -1,0 +1,1806 @@
+[
+  {
+    "id": "decide-1",
+    "topic": "decide",
+    "question": "Is renting really “dead money”?",
+    "answer": "Rent pays for a place to live and flexibility. Owning also has costs that do not build equity: interest, rates, insurance and upkeep. Compare your likely years in the home, the full costs and what you could do with your savings. Neither choice wins for everyone.",
+    "source": "Settled · finances and costs",
+    "url": "https://www.settled.govt.nz/buying-a-home/thinking-of-buying/thinking-about-your-finances-when-buying/",
+    "translations": {
+      "pt-BR": {
+        "question": "Aluguel é mesmo dinheiro jogado fora?",
+        "answer": "O aluguel paga por um lugar para morar e por flexibilidade. Ter um imóvel também traz custos que não aumentam sua participação no patrimônio: juros, taxas municipais, seguro e manutenção. Compare quanto tempo pretende morar ali, os custos totais e o que poderia fazer com suas economias. Nenhuma opção é a melhor para todo mundo."
+      },
+      "es": {
+        "question": "¿Alquilar es realmente tirar el dinero?",
+        "answer": "El alquiler paga un lugar donde vivir y flexibilidad. Ser propietario también tiene costos que no aumentan tu patrimonio: intereses, tasas municipales, seguro y mantenimiento. Compara los años que probablemente vivirás allí, los costos completos y qué podrías hacer con tus ahorros. Ninguna opción es la mejor para todo el mundo."
+      },
+      "zh-Hans": {
+        "question": "租金真的是“白花的钱”吗？",
+        "answer": "租金换来的是居住空间和灵活性。持有房产也有不会增加房产净值的开支，例如利息、地税（rates）、保险和维护费。比较你预计会住多久、所有费用，以及存款还可以怎样使用。没有一种选择适合所有人。"
+      }
+    }
+  },
+  {
+    "id": "decide-2",
+    "topic": "decide",
+    "question": "Why is rent versus mortgage repayment an unfair comparison?",
+    "answer": "A mortgage repayment is only part of owning. Add council rates, insurance, maintenance and any body corporate or ground-rent charges. Also allow for buying and later selling costs. Part of a principal-and-interest repayment reduces your debt; rent and interest do not.",
+    "source": "Settled · finances and costs",
+    "url": "https://www.settled.govt.nz/buying-a-home/thinking-of-buying/thinking-about-your-finances-when-buying/",
+    "translations": {
+      "pt-BR": {
+        "question": "Por que comparar aluguel com a parcela do financiamento é injusto?",
+        "answer": "A parcela do financiamento é só uma parte do custo de ter um imóvel. Some taxas municipais, seguro, manutenção e eventuais contribuições à entidade dos proprietários (body corporate) ou aluguel do terreno. Considere também os custos da compra e de uma futura venda. Parte de uma parcela com amortização e juros reduz sua dívida; aluguel e juros não."
+      },
+      "es": {
+        "question": "¿Por qué no es justo comparar alquiler y cuota hipotecaria?",
+        "answer": "La cuota hipotecaria es solo una parte del costo de ser propietario. Añade tasas municipales, seguro, mantenimiento y cualquier cuota de la entidad de propietarios (body corporate) o alquiler del terreno. Incluye también los gastos de compra y de una futura venta. Parte de una cuota de capital e intereses reduce tu deuda; el alquiler y los intereses no."
+      },
+      "zh-Hans": {
+        "question": "为什么不能只比较租金和房贷还款额？",
+        "answer": "房贷还款只是持有房产的一部分开支。还要加上地税、保险、维护费，以及可能的业主法人团体（body corporate）费用或地租。也要考虑买房和日后卖房的费用。本金加利息的还款中，一部分会减少你的债务；租金和利息则不会。"
+      }
+    }
+  },
+  {
+    "id": "decide-3",
+    "topic": "decide",
+    "question": "What if we buy together but contribute different amounts?",
+    "answer": "Agree the arrangement before you buy. Ask your lawyer to record contributions, ownership shares, payments, decisions and what happens if someone wants out, separates or dies. Ask the lender how each borrower is responsible for the loan; your private agreement does not rewrite the bank’s contract.",
+    "source": "Settled · finances and costs",
+    "url": "https://www.settled.govt.nz/buying-a-home/thinking-of-buying/thinking-about-your-finances-when-buying/",
+    "translations": {
+      "pt-BR": {
+        "question": "E se comprarmos juntos, mas com contribuições diferentes?",
+        "answer": "Combinem o arranjo antes de comprar. Peça ao advogado que registre contribuições, participações na propriedade, pagamentos, decisões e o que acontece se alguém quiser sair, se separar ou falecer. Pergunte ao banco como cada devedor responde pelo empréstimo; o acordo entre vocês não altera o contrato do banco."
+      },
+      "es": {
+        "question": "¿Y si compramos juntos pero aportamos cantidades distintas?",
+        "answer": "Acuerden el arreglo antes de comprar. Pide a tu abogado que registre aportes, porcentajes de propiedad, pagos, decisiones y qué ocurre si alguien quiere salir, se separa o fallece. Pregunta al banco cómo responde cada prestatario por el préstamo; su acuerdo privado no modifica el contrato del banco."
+      },
+      "zh-Hans": {
+        "question": "一起买房，但各自出资不同，怎么办？",
+        "answer": "买房前先商定安排。请律师记录各方出资、产权比例、付款责任、决策方式，以及有人想退出、双方分开或有人去世时怎么办。向贷款机构确认每位借款人对贷款承担什么责任；你们的私人协议不会改变银行合同。"
+      }
+    }
+  },
+  {
+    "id": "decide-4",
+    "topic": "decide",
+    "question": "Does a residence visa automatically mean I can buy?",
+    "answer": "Do not assume it does. Eligibility depends on citizenship, residence status, ordinary residence and sometimes consent. Ask your lawyer to check your circumstances before you commit. Being able to get a mortgage and being legally eligible to buy are separate questions.",
+    "source": "LINZ · buying residential property to live in",
+    "url": "https://www.linz.govt.nz/guidance/overseas-investment/buying-residential-property-live",
+    "translations": {
+      "pt-BR": {
+        "question": "Um visto de residência significa automaticamente que posso comprar?",
+        "answer": "Não presuma isso. A elegibilidade depende de cidadania, status de residência, residência habitual e, às vezes, autorização. Peça ao advogado que verifique sua situação antes de assumir compromissos. Conseguir financiamento e ter direito legal de comprar são questões separadas."
+      },
+      "es": {
+        "question": "¿Una visa de residencia significa automáticamente que puedo comprar?",
+        "answer": "No lo des por hecho. La elegibilidad depende de la ciudadanía, el estatus de residencia, la residencia habitual y, a veces, una autorización. Pide a tu abogado que revise tu situación antes de comprometerte. Poder obtener una hipoteca y tener derecho legal a comprar son cuestiones separadas."
+      },
+      "zh-Hans": {
+        "question": "有居民签证就一定可以买房吗？",
+        "answer": "不要这样假设。资格取决于国籍、居留身份、是否通常居住在新西兰（ordinarily resident），有时还需要许可。作出承诺前，请律师根据你的情况核实。能否获得房贷与是否在法律上有购房资格，是两个不同的问题。"
+      }
+    }
+  },
+  {
+    "id": "decide-5",
+    "topic": "decide",
+    "question": "Can I use first-home help if I have owned before?",
+    "answer": "Possibly. Some previous homeowners may qualify for a KiwiSaver first-home withdrawal if they meet the relevant financial-position criteria. Do not count the money until eligibility and the available amount are confirmed. Ask Kāinga Ora and your KiwiSaver provider which process applies to you.",
+    "source": "Kāinga Ora · KiwiSaver withdrawal",
+    "url": "https://kaingaora.govt.nz/en_NZ/home-ownership/kiwisaver-first-home-withdrawal/",
+    "translations": {
+      "pt-BR": {
+        "question": "Posso usar apoio para o primeiro imóvel se já tive um antes?",
+        "answer": "Talvez. Alguns antigos proprietários podem se qualificar para o saque do KiwiSaver para o primeiro imóvel se atenderem aos critérios pertinentes de situação financeira. Não conte com o dinheiro antes de confirmar a elegibilidade e o valor disponível. Pergunte à Kāinga Ora e ao seu provedor de KiwiSaver qual processo se aplica a você."
+      },
+      "es": {
+        "question": "¿Puedo recibir ayuda para la primera vivienda si ya tuve una?",
+        "answer": "Es posible. Algunos antiguos propietarios pueden acceder al retiro de KiwiSaver para primera vivienda si cumplen los criterios económicos correspondientes. No cuentes con el dinero hasta confirmar la elegibilidad y el importe disponible. Pregunta a Kāinga Ora y a tu proveedor de KiwiSaver qué proceso te corresponde."
+      },
+      "zh-Hans": {
+        "question": "以前有过房产，还能申请首次购房帮助吗？",
+        "answer": "有可能。有些曾经拥有房产的人，如果符合相关财务状况标准，也可能符合 KiwiSaver 首次购房提款资格。在资格和可提取金额确认前，不要把这笔钱算进可用资金。向 Kāinga Ora 和你的 KiwiSaver 管理机构确认适用的流程。"
+      }
+    }
+  },
+  {
+    "id": "decide-6",
+    "topic": "decide",
+    "question": "Where do I start, and what order do I do things in?",
+    "answer": "Start with your needs and a comfortable budget. Talk to a lender or mortgage adviser and choose your lawyer before getting serious about a property. Then shortlist homes and plan the property checks. Have your lawyer review any offer and its conditions before signing. Finish the required checks, finance and insurance before going unconditional, then prepare for settlement. For an auction, complete those checks before bidding. Expect to revisit earlier steps.",
+    "source": "Settled · the buying journey",
+    "url": "https://www.settled.govt.nz/buying-a-home/thinking-of-buying/understanding-the-home-buying-journey/",
+    "translations": {
+      "pt-BR": {
+        "question": "Por onde começo e em que ordem faço as coisas?",
+        "answer": "Comece pelas suas necessidades e por um orçamento confortável. Converse com um banco ou assessor de financiamento e escolha seu advogado antes de avançar de verdade com um imóvel. Depois, selecione imóveis e planeje as verificações. Peça ao advogado que revise qualquer proposta e suas condições antes de assinar. Conclua as verificações exigidas, o financiamento e o seguro antes de a compra se tornar incondicional; depois, prepare a conclusão da compra. Em leilões, conclua essas verificações antes de dar lances. É normal voltar a etapas anteriores."
+      },
+      "es": {
+        "question": "¿Por dónde empiezo y en qué orden hago las cosas?",
+        "answer": "Empieza por tus necesidades y un presupuesto cómodo. Habla con un banco o asesor hipotecario y elige a tu abogado antes de avanzar en serio con una propiedad. Después, selecciona viviendas y planifica las comprobaciones. Pide a tu abogado que revise cualquier oferta y sus condiciones antes de firmar. Completa las comprobaciones exigidas, la financiación y el seguro antes de que la compra sea incondicional; luego prepara el cierre. En una subasta, completa esas comprobaciones antes de pujar. Es normal volver a pasos anteriores."
+      },
+      "zh-Hans": {
+        "question": "应该从哪里开始？各个步骤按什么顺序进行？",
+        "answer": "先明确自己的需求和能安心负担的预算。在认真考虑某套房产之前，先与贷款机构或房贷顾问沟通，并选好律师。然后筛选房源，安排房产核查。签字前，请律师审查报价和附带条件。在合同变为无条件前，完成所需检查、融资和保险安排，然后准备交割。如果参加拍卖，这些检查必须在竞价前完成。过程中可能需要回头重新考虑之前的步骤。"
+      }
+    }
+  },
+  {
+    "id": "deposit-1",
+    "topic": "deposit",
+    "question": "Do I need a 20% deposit?",
+    "answer": "Twenty percent is a common target, not a universal rule. Some lenders consider smaller deposits, with their own criteria and possible extra costs. Eligible buyers may use a First Home Loan with 5%. A deposit is only one test: the lender must also assess repayments and the property.",
+    "source": "NZ Government · buying your first home",
+    "url": "https://www.govt.nz/browse/housing-and-property/buying-or-selling-a-home/buying-your-first-home/",
+    "translations": {
+      "pt-BR": {
+        "question": "Preciso de uma entrada de 20%?",
+        "answer": "Vinte por cento é uma meta comum, não uma regra universal. Alguns bancos consideram entradas menores, com critérios próprios e possíveis custos extras. Compradores elegíveis podem usar o programa de empréstimo para o primeiro imóvel (First Home Loan) com uma entrada de 5%. A entrada é só um dos critérios: o banco também precisa avaliar a capacidade de pagamento e o imóvel."
+      },
+      "es": {
+        "question": "¿Necesito un aporte inicial del 20%?",
+        "answer": "El veinte por ciento es una meta habitual, no una regla universal. Algunas entidades aceptan aportes menores, con sus propios criterios y posibles costos adicionales. Quienes cumplan los requisitos pueden usar un préstamo para primera vivienda (First Home Loan) con un aporte inicial del 5%. El aporte inicial es solo un criterio: el banco también debe evaluar la capacidad de pago y la propiedad."
+      },
+      "zh-Hans": {
+        "question": "首付一定要达到 20% 吗？",
+        "answer": "20% 是常见目标，并非统一规定。有些贷款机构会考虑较低首付，但有各自的标准，也可能收取额外费用。符合条件的买家可以通过 首次购房贷款计划（First Home Loan），以 5% 首付购房。首付只是审核的一部分：贷款机构还要评估还款能力和房产本身。"
+      }
+    }
+  },
+  {
+    "id": "deposit-2",
+    "topic": "deposit",
+    "question": "How does a KiwiSaver first-home withdrawal work?",
+    "answer": "Generally, you need at least three years of KiwiSaver membership, must intend to live in the home and must leave $1,000 in your account. Your provider confirms eligibility, the available amount, paperwork and timing. The money is handled through the purchase process; do not assume it will be available instantly.",
+    "source": "Kāinga Ora · KiwiSaver withdrawal",
+    "url": "https://kaingaora.govt.nz/en_NZ/home-ownership/kiwisaver-first-home-withdrawal/",
+    "translations": {
+      "pt-BR": {
+        "question": "Como funciona o saque do KiwiSaver para o primeiro imóvel?",
+        "answer": "Em geral, você precisa ter pelo menos três anos de participação no KiwiSaver, pretender morar no imóvel e deixar $1.000 na conta. Seu provedor confirma a elegibilidade, o valor disponível, os documentos e os prazos. O dinheiro é tratado dentro do processo de compra; não presuma que estará disponível imediatamente."
+      },
+      "es": {
+        "question": "¿Cómo funciona el retiro de KiwiSaver para la primera vivienda?",
+        "answer": "Por lo general, necesitas al menos tres años de afiliación a KiwiSaver, intención de vivir en la vivienda y dejar $1.000 en la cuenta. Tu proveedor confirma los requisitos, el importe disponible, los documentos y los plazos. El dinero se gestiona dentro del proceso de compra; no supongas que estará disponible al instante."
+      },
+      "zh-Hans": {
+        "question": "KiwiSaver 首次购房提款怎么办理？",
+        "answer": "通常，你需要参加 KiwiSaver 至少三年，打算自住，并在账户中保留 $1,000。管理机构会确认资格、可提取金额、所需文件和办理时间。这笔款项会通过购房流程处理，不要假设能立即到账。"
+      }
+    }
+  },
+  {
+    "id": "deposit-3",
+    "topic": "deposit",
+    "question": "Are the bank deposit and sales deposit two separate costs?",
+    "answer": "They mean different things. Your overall contribution plus the mortgage funds the price. The sales deposit is the portion paid earlier under the purchase contract, usually toward that same price. It is not an extra deposit on top. Ask your lawyer to confirm the amount, due date and where the money will come from.",
+    "source": "Settled · sale and purchase agreement",
+    "url": "https://www.settled.govt.nz/buying-a-home/making-an-offer/understanding-the-sale-and-purchase-agreement-when-buying/",
+    "translations": {
+      "pt-BR": {
+        "question": "A entrada do financiamento e o sinal do contrato são dois custos separados?",
+        "answer": "São conceitos diferentes. Sua contribuição total, somada ao financiamento, paga o preço. O sinal do contrato (sales deposit) é a parte paga antes, conforme o contrato de compra, normalmente abatida desse mesmo preço. Não é uma entrada extra. Peça ao advogado que confirme o valor, o vencimento e de onde virá o dinheiro."
+      },
+      "es": {
+        "question": "¿El aporte inicial y la señal del contrato son dos gastos separados?",
+        "answer": "Significan cosas diferentes. Tu aporte total más la hipoteca cubren el precio. La señal del contrato (sales deposit) es la parte que se paga antes según el acuerdo de compra, normalmente a cuenta de ese mismo precio. No es un aporte adicional. Pide a tu abogado que confirme importe, vencimiento y procedencia del dinero."
+      },
+      "zh-Hans": {
+        "question": "银行说的首付和买卖合同中的预付款，是两笔独立费用吗？",
+        "answer": "它们指的是不同概念。你投入的全部自有资金加上房贷，用来支付房价。合同预付款（sales deposit）是按照购房合同提前支付的一部分款项，通常计入同一笔房价，并不是在首付之外再多付一笔。请律师确认金额、到期日，以及这笔钱从哪里来。"
+      }
+    }
+  },
+  {
+    "id": "deposit-4",
+    "topic": "deposit",
+    "question": "Is the First Home Grant still available?",
+    "answer": "No. The First Home Grant closed in May 2024. KiwiSaver first-home withdrawals and First Home Loans are separate forms of help with their own eligibility rules. Old articles, videos and someone else’s buying experience may describe support that no longer exists.",
+    "source": "NZ Government · buying your first home",
+    "url": "https://www.govt.nz/browse/housing-and-property/buying-or-selling-a-home/buying-your-first-home/",
+    "translations": {
+      "pt-BR": {
+        "question": "O subsídio First Home Grant ainda está disponível?",
+        "answer": "Não. O subsídio First Home Grant foi encerrado em maio de 2024. O saque do KiwiSaver para o primeiro imóvel e o programa de empréstimo para o primeiro imóvel (First Home Loan) são formas de apoio separadas, com regras próprias de elegibilidade. Artigos, vídeos antigos e a experiência de outras pessoas podem descrever apoios que já não existem."
+      },
+      "es": {
+        "question": "¿Sigue disponible la subvención First Home Grant?",
+        "answer": "No. La subvención First Home Grant cerró en mayo de 2024. Los retiros de KiwiSaver para primera vivienda y los préstamos para primera vivienda (First Home Loan) son ayudas distintas, con sus propios requisitos. Los artículos o videos antiguos y la experiencia de otras personas pueden describir apoyos que ya no existen."
+      },
+      "zh-Hans": {
+        "question": "首次购房补助（First Home Grant）还可以申请吗？",
+        "answer": "不可以。首次购房补助（First Home Grant） 已于 2024 年 5 月停止。KiwiSaver 首次购房提款和 首次购房贷款计划（First Home Loan） 是另外两种帮助，各有资格要求。旧文章、视频或别人的购房经历中提到的资助，现在可能已经不存在。"
+      }
+    }
+  },
+  {
+    "id": "deposit-5",
+    "topic": "deposit",
+    "question": "Can family help with the deposit?",
+    "answer": "They may be able to, but a gift, loan, guarantee and shared purchase are different arrangements. Tell the lender and lawyer exactly which one it is. Get the terms documented, including whether money must be repaid. A guarantor or co-borrower can take on significant obligations: get independent advice first.",
+    "source": "Settled · finances and costs",
+    "url": "https://www.settled.govt.nz/buying-a-home/thinking-of-buying/thinking-about-your-finances-when-buying/",
+    "translations": {
+      "pt-BR": {
+        "question": "A família pode ajudar com a entrada?",
+        "answer": "Pode ser possível, mas doação, empréstimo, garantia e compra conjunta são arranjos diferentes. Diga ao banco e ao advogado exatamente qual é o caso. Documente as condições, inclusive se o dinheiro precisa ser devolvido. Um garantidor ou codevedor pode assumir obrigações importantes: busque orientação independente primeiro."
+      },
+      "es": {
+        "question": "¿Puede mi familia ayudar con el aporte inicial?",
+        "answer": "Puede ser posible, pero una donación, un préstamo, una garantía y una compra compartida son arreglos distintos. Explica al banco y al abogado exactamente de cuál se trata. Documenta las condiciones, incluido si hay que devolver el dinero. Un garante o coprestatario puede asumir obligaciones importantes: busca primero asesoramiento independiente."
+      },
+      "zh-Hans": {
+        "question": "家人可以帮忙付首付吗？",
+        "answer": "可能可以，但赠款、借款、担保和共同购房是不同安排。必须向贷款机构和律师说明究竟是哪一种。把条款写下来，包括是否需要还款。担保人或共同借款人可能承担重大责任，应先取得独立意见。"
+      }
+    }
+  },
+  {
+    "id": "budget-1",
+    "topic": "budget",
+    "question": "What do I pay before I even get the keys?",
+    "answer": "Allow for legal work, property reports, building and specialist inspections, any required valuation, insurance and moving. Some costs arise before an offer succeeds and may be repeated for another property. Ask for quotes and check what is included. Keep this money outside the purchase deposit.",
+    "source": "Settled · finances and costs",
+    "url": "https://www.settled.govt.nz/buying-a-home/thinking-of-buying/thinking-about-your-finances-when-buying/",
+    "translations": {
+      "pt-BR": {
+        "question": "O que pago antes mesmo de receber as chaves?",
+        "answer": "Considere advogado, relatórios do imóvel, inspeções prediais e especializadas, eventual avaliação exigida, seguro e mudança. Alguns custos surgem antes de uma proposta dar certo e podem se repetir em outro imóvel. Peça orçamentos e confira o que está incluído. Mantenha esse dinheiro separado da entrada."
+      },
+      "es": {
+        "question": "¿Qué pago antes de recibir las llaves?",
+        "answer": "Prevé abogado, informes de la propiedad, inspecciones del edificio y de especialistas, cualquier valoración exigida, seguro y mudanza. Algunos gastos aparecen antes de que prospere una oferta y pueden repetirse para otra propiedad. Pide presupuestos y comprueba qué incluyen. Mantén este dinero separado del aporte para la compra."
+      },
+      "zh-Hans": {
+        "question": "还没拿到钥匙，就要支付哪些费用？",
+        "answer": "要准备法律服务、房产资料报告、验房及专项检查、可能要求的估价、保险和搬家费用。有些费用在出价成功前就会发生，换一套房子时可能还要再付一次。先索取报价，确认包含什么服务。这笔钱要在购房首付之外另留。"
+      }
+    }
+  },
+  {
+    "id": "budget-2",
+    "topic": "budget",
+    "question": "What are council rates? Are they the mortgage interest rate?",
+    "answer": "Different things. Council rates are property charges that help fund local services. Mortgage interest is the cost of borrowing from the lender. Your home budget needs both. Check the property’s current council rates and whether water, regional rates or other charges are billed separately.",
+    "source": "Settled · finances and costs",
+    "url": "https://www.settled.govt.nz/buying-a-home/thinking-of-buying/thinking-about-your-finances-when-buying/",
+    "translations": {
+      "pt-BR": {
+        "question": "O que são as taxas municipais? São os juros do financiamento?",
+        "answer": "São coisas diferentes. As taxas municipais (council rates) são cobranças sobre o imóvel que ajudam a financiar serviços locais. Os juros do financiamento são o custo de tomar dinheiro emprestado. Seu orçamento precisa dos dois. Confira as taxas atuais do imóvel e se água, taxas regionais ou outras cobranças são faturadas separadamente."
+      },
+      "es": {
+        "question": "¿Qué son las tasas municipales? ¿Son el interés hipotecario?",
+        "answer": "Son cosas distintas. Las tasas municipales (council rates) son cargos sobre la propiedad que ayudan a financiar servicios locales. El interés hipotecario es el costo de pedir dinero prestado. Tu presupuesto necesita ambos. Consulta las tasas actuales de la propiedad y si el agua, las tasas regionales u otros cargos se facturan aparte."
+      },
+      "zh-Hans": {
+        "question": "地税（rates）是什么？和房贷利率一样吗？",
+        "answer": "不是一回事。地税是房产相关收费，用于支持当地公共服务。房贷利息则是向贷款机构借钱的成本。住房预算需要同时考虑这两项。查清该房产当前的地税，并确认水费、区域政府收费或其他费用是否另行收取。"
+      }
+    }
+  },
+  {
+    "id": "budget-3",
+    "topic": "budget",
+    "question": "Which costs keep coming after I move in?",
+    "answer": "Repayments, rates, insurance and maintenance keep going. Depending on the property, add body corporate levies, ground rent, water or shared-service costs. Utilities and transport may change too. Ask for property-specific figures, and allow for future increases rather than freezing today’s bills in your budget.",
+    "source": "Settled · finances and costs",
+    "url": "https://www.settled.govt.nz/buying-a-home/thinking-of-buying/thinking-about-your-finances-when-buying/",
+    "translations": {
+      "pt-BR": {
+        "question": "Quais custos continuam depois da mudança?",
+        "answer": "Parcelas, taxas municipais, seguro e manutenção continuam. Conforme o imóvel, acrescente contribuições à entidade dos proprietários (body corporate), aluguel do terreno, água ou serviços compartilhados. Contas de consumo e transporte também podem mudar. Peça valores específicos do imóvel e considere aumentos futuros, em vez de manter as contas de hoje congeladas no orçamento."
+      },
+      "es": {
+        "question": "¿Qué gastos continúan después de mudarme?",
+        "answer": "Continúan las cuotas, las tasas municipales, el seguro y el mantenimiento. Según la propiedad, añade cuotas de la entidad de propietarios (body corporate), alquiler del terreno, agua o servicios compartidos. Los suministros y el transporte también pueden cambiar. Pide cifras concretas del inmueble y prevé aumentos futuros, en vez de mantener congeladas las facturas actuales en tu presupuesto."
+      },
+      "zh-Hans": {
+        "question": "搬进去以后，还有哪些持续费用？",
+        "answer": "还款、地税、保险和维护费都会继续。根据房产情况，可能还要加上业主法人团体费用、地租、水费或共用服务费。水电等生活费用和交通费用也可能变化。索取该房产的实际金额，并考虑未来上涨，不要假设账单永远停留在今天的水平。"
+      }
+    }
+  },
+  {
+    "id": "budget-4",
+    "topic": "budget",
+    "question": "How much repair or emergency money should I keep?",
+    "answer": "There is no amount that fits every buyer. Base the repair allowance on the building’s age, condition and inspection findings; keep an emergency buffer for other surprises too. A roof nearing replacement needs a different plan from a recently repaired one. Ask specialists to price major work before committing.",
+    "source": "Settled · doing your homework",
+    "url": "https://www.settled.govt.nz/buying-a-home/researching-the-property/doing-your-homework/",
+    "translations": {
+      "pt-BR": {
+        "question": "Quanto devo guardar para reparos ou emergências?",
+        "answer": "Não existe um valor que sirva para todo comprador. Baseie a reserva de reparos na idade, no estado do imóvel e nos achados da inspeção; mantenha também uma reserva para outros imprevistos. Um telhado perto de precisar de troca exige um plano diferente de um recém-reparado. Peça a especialistas que orcem obras importantes antes de assumir o compromisso."
+      },
+      "es": {
+        "question": "¿Cuánto debo guardar para reparaciones o emergencias?",
+        "answer": "No hay una cantidad adecuada para todos. Basa la reserva de reparaciones en la antigüedad, el estado y los resultados de la inspección; guarda también un colchón para otros imprevistos. Un techo próximo a necesitar sustitución requiere un plan distinto de uno recién reparado. Pide a especialistas que presupuesten las obras importantes antes de comprometerte."
+      },
+      "zh-Hans": {
+        "question": "应该留多少维修费或应急资金？",
+        "answer": "没有适合所有买家的固定金额。根据建筑年龄、房屋状况和检查结果安排维修预算，同时为其他意外保留应急资金。屋顶即将需要更换，与刚刚维修过的屋顶，所需计划不同。作出承诺前，请专业人士估算大项工程的费用。"
+      }
+    }
+  },
+  {
+    "id": "budget-5",
+    "topic": "budget",
+    "question": "Is the council valuation what the home is worth?",
+    "answer": "A council rating valuation is used for rates. It is not a current market appraisal, a bank valuation or an insurance rebuild estimate. These figures have different purposes and dates. Use recent comparable sales and appropriate professional advice; do not make an offer just because it is below the CV or RV.",
+    "source": "Auckland Council · what a rating valuation means",
+    "url": "https://ourauckland.aucklandcouncil.govt.nz/news/2025/06/rating-valuation/",
+    "translations": {
+      "pt-BR": {
+        "question": "A avaliação da prefeitura é o valor de mercado do imóvel?",
+        "answer": "A avaliação municipal para fins de taxas serve para calcular essas cobranças. Não é uma avaliação atual de mercado, uma avaliação para o banco nem uma estimativa de reconstrução para o seguro. Esses valores têm finalidades e datas diferentes. Use vendas recentes de imóveis comparáveis e orientação profissional adequada; não faça uma proposta só porque está abaixo do CV ou RV."
+      },
+      "es": {
+        "question": "¿La valoración municipal es lo que vale la vivienda?",
+        "answer": "La valoración municipal para tasas se usa para calcular esas tasas. No es una valoración actual de mercado, una tasación bancaria ni una estimación de reconstrucción para el seguro. Esas cifras tienen finalidades y fechas diferentes. Usa ventas recientes comparables y asesoramiento profesional adecuado; no ofrezcas solo porque el precio esté por debajo del CV o RV."
+      },
+      "zh-Hans": {
+        "question": "地方政府估值就是房子的市场价值吗？",
+        "answer": "地方政府的物业税估值（rating valuation）用于计算物业税。它不是当前市场估价、银行估值，也不是保险重建成本估算。这些数字的用途和估值日期各不相同。应参考近期类似房产的成交记录，并取得合适的专业意见；不要仅仅因为价格低于 CV 或 RV 就出价。"
+      }
+    }
+  },
+  {
+    "id": "budget-6",
+    "topic": "budget",
+    "question": "How do I know if the repayments will be comfortable?",
+    "answer": "Start with take-home income and realistic spending, debts and commitments. Add all ownership costs, then try higher repayments and lower-income scenarios. Leave room for ordinary life and surprises. The lender makes its own assessment; your comfortable limit can be lower than the amount it offers.",
+    "source": "Settled · finances and costs",
+    "url": "https://www.settled.govt.nz/buying-a-home/thinking-of-buying/thinking-about-your-finances-when-buying/",
+    "translations": {
+      "pt-BR": {
+        "question": "Como saber se as parcelas serão confortáveis?",
+        "answer": "Comece pela renda líquida e por gastos, dívidas e compromissos realistas. Some todos os custos de ter o imóvel e simule parcelas maiores e renda menor. Deixe espaço para a vida normal e os imprevistos. O banco faz sua própria avaliação; seu limite confortável pode ser menor que o valor oferecido."
+      },
+      "es": {
+        "question": "¿Cómo sé si las cuotas serán cómodas?",
+        "answer": "Empieza por los ingresos netos y gastos, deudas y compromisos realistas. Añade todos los costos de ser propietario y prueba escenarios con cuotas mayores e ingresos menores. Deja espacio para la vida cotidiana y las sorpresas. El banco hace su propia evaluación; tu límite cómodo puede ser inferior al importe que te ofrece."
+      },
+      "zh-Hans": {
+        "question": "怎么判断还款额是否在自己舒适的承受范围内？",
+        "answer": "先看税后收入、实际生活开支、债务和其他付款责任。加上持有房产的全部费用，再试算还款增加或收入减少的情况。给日常生活和意外留出空间。贷款机构有自己的评估；你觉得舒适的上限，可以低于它愿意借给你的金额。"
+      }
+    }
+  },
+  {
+    "id": "team-1",
+    "topic": "team",
+    "question": "Should I go straight to a bank or use a mortgage broker?",
+    "answer": "Either can work. A mortgage adviser can explain options and approach the lenders they work with. Ask which lenders they cover, which they do not, how they are paid and what you will pay. You can also compare a direct bank offer. A broker does not necessarily search the whole market.",
+    "source": "FMA · mortgage advice",
+    "url": "https://www.fma.govt.nz/consumer/getting-advice/mortgage-advice/",
+    "translations": {
+      "pt-BR": {
+        "question": "Devo falar direto com o banco ou usar um assessor de financiamento?",
+        "answer": "As duas opções podem funcionar. Um assessor pode explicar as opções e consultar os bancos com que trabalha. Pergunte quais bancos ele cobre, quais não cobre, como é remunerado e o que você vai pagar. Você também pode comparar uma oferta direta de banco. O assessor não necessariamente pesquisa o mercado inteiro."
+      },
+      "es": {
+        "question": "¿Debo acudir directamente a un banco o usar un asesor hipotecario?",
+        "answer": "Ambas opciones pueden funcionar. Un asesor hipotecario puede explicar opciones y consultar a las entidades con las que trabaja. Pregunta cuáles incluye, cuáles no, cómo cobra y qué pagarás tú. También puedes comparar una oferta directa del banco. Un asesor no necesariamente busca en todo el mercado."
+      },
+      "zh-Hans": {
+        "question": "应该直接找银行，还是找房贷中介？",
+        "answer": "两种方式都可以。房贷顾问可以解释选择，并联系与其合作的贷款机构。问清他们覆盖哪些机构、不覆盖哪些机构、如何获得报酬，以及你需要付多少钱。也可以拿银行的直接报价作比较。中介不一定会搜索整个市场。"
+      }
+    }
+  },
+  {
+    "id": "team-2",
+    "topic": "team",
+    "question": "Are brokers free? What should I ask about fees?",
+    "answer": "Do not assume every service is free. Ask for fees, commissions, conflicts and any early-exit or commission-clawback charge in writing. Ask what advice and ongoing help are included. Understand when you could owe money if you refinance or repay early.",
+    "source": "FMA · mortgage advice",
+    "url": "https://www.fma.govt.nz/consumer/getting-advice/mortgage-advice/",
+    "translations": {
+      "pt-BR": {
+        "question": "Assessores são gratuitos? O que devo perguntar sobre tarifas?",
+        "answer": "Não presuma que todo serviço é gratuito. Peça por escrito honorários, comissões, conflitos de interesse e qualquer cobrança por saída antecipada ou recuperação de comissão (clawback). Pergunte que orientação e apoio contínuo estão incluídos. Entenda quando pode ter de pagar se refinanciar ou quitar antes do prazo."
+      },
+      "es": {
+        "question": "¿Los asesores son gratuitos? ¿Qué debo preguntar sobre los cargos?",
+        "answer": "No supongas que todos los servicios son gratuitos. Pide por escrito honorarios, comisiones, conflictos de interés y cualquier cargo por salida anticipada o recuperación de comisión (clawback). Pregunta qué asesoramiento y apoyo continuo incluye. Entiende cuándo podrías deber dinero si refinancias o pagas antes de tiempo."
+      },
+      "zh-Hans": {
+        "question": "房贷中介免费吗？费用方面要问什么？",
+        "answer": "不要假设所有服务都免费。要求对方书面说明费用、佣金、利益冲突，以及提前结束服务或追回佣金时可能向你收取的费用。问清包含哪些建议和后续支持。了解如果你转贷或提前还款，什么情况下可能需要付钱。"
+      }
+    }
+  },
+  {
+    "id": "team-3",
+    "topic": "team",
+    "question": "What does a bank want to see?",
+    "answer": "Expect questions and evidence about income, spending, debts, existing commitments and where your deposit comes from. The exact documents depend on the lender and your circumstances. Give accurate information about your income, spending and debts. Ask what changes could affect an approval while you search.",
+    "source": "Settled · confirming your finances",
+    "url": "https://www.settled.govt.nz/buying-a-home/making-an-offer/confirming-your-finances/",
+    "translations": {
+      "pt-BR": {
+        "question": "O que o banco quer verificar?",
+        "answer": "Espere perguntas e comprovantes sobre renda, gastos, dívidas, compromissos existentes e a origem da entrada. Os documentos exatos dependem do banco e da sua situação. Informe sua renda, seus gastos e suas dívidas com precisão. Pergunte que mudanças podem afetar a aprovação enquanto você procura um imóvel."
+      },
+      "es": {
+        "question": "¿Qué quiere comprobar el banco?",
+        "answer": "Espera preguntas y pruebas sobre ingresos, gastos, deudas, compromisos existentes y origen del aporte inicial. Los documentos exactos dependen del banco y de tu situación. Da información precisa sobre tus ingresos, gastos y deudas. Pregunta qué cambios podrían afectar a una aprobación mientras buscas."
+      },
+      "zh-Hans": {
+        "question": "银行想看哪些资料？",
+        "answer": "通常会询问并要求你提供收入、开支、债务、已有付款责任和首付来源的证明。具体文件取决于贷款机构和你的情况。如实提供收入、开支和债务资料。问清在看房期间，哪些变化可能影响贷款批准。"
+      }
+    }
+  },
+  {
+    "id": "team-4",
+    "topic": "team",
+    "question": "What does pre-approval actually approve?",
+    "answer": "It is conditional lending approval, with terms and an expiry date. The bank still needs to accept the particular property and final loan, and may require more information or a valuation. Ask what remains outstanding. Get finance confirmed before an unconditional commitment, including an auction bid.",
+    "source": "Settled · confirming your finances",
+    "url": "https://www.settled.govt.nz/buying-a-home/making-an-offer/confirming-your-finances/",
+    "translations": {
+      "pt-BR": {
+        "question": "O que a pré-aprovação realmente aprova?",
+        "answer": "É uma aprovação condicional de crédito, com condições e prazo de validade. O banco ainda precisa aceitar o imóvel específico e o financiamento final, e pode pedir mais informações ou uma avaliação. Pergunte o que está pendente. Confirme o financiamento antes de assumir um compromisso incondicional, inclusive dar um lance em leilão."
+      },
+      "es": {
+        "question": "¿Qué aprueba realmente la preaprobación?",
+        "answer": "Es una aprobación de préstamo condicional, con condiciones y fecha de vencimiento. El banco todavía debe aceptar la propiedad concreta y el préstamo final, y puede pedir más información o una valoración. Pregunta qué queda pendiente. Confirma la financiación antes de comprometerte sin condiciones, incluida una puja en subasta."
+      },
+      "zh-Hans": {
+        "question": "贷款预批到底批准了什么？",
+        "answer": "它是附带条件的贷款批准，有具体条款和到期日。银行仍须接受你选定的房产和最终贷款，也可能要求补充资料或估价。问清还有哪些事项未完成。作出无条件承诺前，包括在拍卖中出价前，必须确认融资安排。"
+      }
+    }
+  },
+  {
+    "id": "team-5",
+    "topic": "team",
+    "question": "What if I have a complaint about my broker, bank or insurer?",
+    "answer": "Raise it with the provider and use its complaints process. Its disclosure documents should name the independent dispute resolution scheme, which is free to use if you cannot resolve the issue. Keep records. The FMA can consider regulatory concerns but does not resolve individual disputes.",
+    "source": "FMA · disputes and consumer protection",
+    "url": "https://www.fma.govt.nz/consumer/everyday-finance/disputes-and-consumer-protection/",
+    "translations": {
+      "pt-BR": {
+        "question": "E se eu tiver uma reclamação sobre meu assessor, banco ou seguradora?",
+        "answer": "Apresente a reclamação à empresa e use o processo dela. Os documentos de divulgação devem indicar o serviço independente de resolução de disputas, que é gratuito se o problema não for resolvido. Guarde registros. A FMA pode analisar questões regulatórias, mas não resolve disputas individuais."
+      },
+      "es": {
+        "question": "¿Y si tengo una queja sobre mi asesor, banco o aseguradora?",
+        "answer": "Plantea la queja al proveedor y usa su proceso de reclamaciones. Sus documentos de divulgación deben identificar el servicio independiente de resolución de disputas, que es gratuito si no logran resolver el problema. Guarda registros. La FMA puede considerar cuestiones regulatorias, pero no resuelve disputas individuales."
+      },
+      "zh-Hans": {
+        "question": "对中介、银行或保险公司不满意，如何投诉？",
+        "answer": "先向服务机构提出问题，并使用其投诉流程。它的披露文件应注明所属的独立争议解决机构；如果问题无法解决，可以免费使用该机构的争议解决服务。保留记录。FMA 可以考虑监管方面的问题，但不处理个人争议。"
+      }
+    }
+  },
+  {
+    "id": "team-6",
+    "topic": "team",
+    "question": "Who is on my side: the agent, broker or lawyer?",
+    "answer": "The selling agent works for the seller. Your lawyer reviews the legal risks and agreement; your mortgage adviser advises on borrowing within their scope. An inspector assesses the building within their agreed scope. Use each for their own job, and choose your own advisers rather than relying only on the seller’s team.",
+    "source": "Settled · doing your homework",
+    "url": "https://www.settled.govt.nz/buying-a-home/researching-the-property/doing-your-homework/",
+    "translations": {
+      "pt-BR": {
+        "question": "Quem está do meu lado: corretor, assessor ou advogado?",
+        "answer": "O corretor da venda trabalha para o vendedor. Seu advogado revisa os riscos jurídicos e o contrato; seu assessor orienta sobre crédito dentro do escopo do serviço. O inspetor avalia o imóvel dentro do escopo combinado. Use cada um para sua função e escolha seus próprios profissionais, em vez de depender só da equipe do vendedor."
+      },
+      "es": {
+        "question": "¿Quién está de mi lado: el agente, el asesor o el abogado?",
+        "answer": "El agente de venta trabaja para el vendedor. Tu abogado revisa los riesgos legales y el contrato; tu asesor hipotecario orienta sobre préstamos dentro de su ámbito. El inspector evalúa el edificio dentro del alcance acordado. Recurre a cada uno para su función y elige a tus propios asesores en lugar de depender solo del equipo del vendedor."
+      },
+      "zh-Hans": {
+        "question": "房产中介、房贷顾问和律师，谁代表我的利益？",
+        "answer": "卖方房产中介为卖方工作。你的律师审查法律风险和合同；你的房贷顾问在其服务范围内提供借贷建议。验房师在约定范围内评估建筑。让每个人负责自己的专业工作，并选择你自己的顾问，不要只依靠卖方的团队。"
+      }
+    }
+  },
+  {
+    "id": "search-1",
+    "topic": "search",
+    "question": "What should I check about the location?",
+    "answer": "Try the real commute, not just a map estimate. Visit at different times for traffic, noise, parking and sun. Check access to shops, transport and services that matter to you. Look into council plans and natural hazards. A quiet Sunday open home may not show an ordinary weekday.",
+    "source": "Settled · viewing an open home",
+    "url": "https://www.settled.govt.nz/buying-a-home/finding-a-property/viewing-an-open-home/",
+    "translations": {
+      "pt-BR": {
+        "question": "O que devo verificar sobre a localização?",
+        "answer": "Teste o trajeto real, não só a estimativa do mapa. Visite em horários diferentes para observar trânsito, barulho, estacionamento e sol. Confira acesso a lojas, transporte e serviços importantes para você. Pesquise planos municipais e riscos naturais. Uma visita tranquila no domingo pode não mostrar um dia comum de semana."
+      },
+      "es": {
+        "question": "¿Qué debo comprobar sobre la ubicación?",
+        "answer": "Prueba el trayecto real, no solo la estimación del mapa. Visita a distintas horas para observar tráfico, ruido, estacionamiento y sol. Comprueba el acceso a tiendas, transporte y servicios importantes para ti. Investiga los planes municipales y riesgos naturales. Una visita tranquila el domingo puede no reflejar un día laboral normal."
+      },
+      "zh-Hans": {
+        "question": "地段方面应该查什么？",
+        "answer": "实际走一遍通勤路线，不只看地图估算。在不同时间了解交通、噪音、停车和日照。确认商店、交通设施和你重视的服务是否方便。了解地方政府规划和自然灾害风险。星期日安静的开放看房，未必代表平常工作日的情况。"
+      }
+    }
+  },
+  {
+    "id": "search-2",
+    "topic": "search",
+    "question": "Freehold, leasehold, cross lease, unit title: what changes?",
+    "answer": "Freehold usually includes land and buildings, subject to restrictions. Leasehold gives rights for a lease term, often with ground rent. Cross lease combines shared land ownership and lease rights. Unit title includes a unit and shared common property. Ask your lawyer what you own, pay for and need permission to change.",
+    "source": "Settled · types of ownership",
+    "url": "https://www.settled.govt.nz/buying-a-home/finding-a-property/understanding-types-of-ownership/",
+    "translations": {
+      "pt-BR": {
+        "question": "Freehold, leasehold, cross-lease e unit title: o que muda?",
+        "answer": "Freehold normalmente inclui terreno e construções, sujeitos a restrições. Leasehold dá direitos por um prazo de arrendamento, muitas vezes com aluguel do terreno. Cross-lease combina copropriedade do terreno e direitos de arrendamento. Unit title inclui uma unidade e partes comuns compartilhadas. Pergunte ao advogado o que é seu, o que você paga e o que precisa de autorização para alterar."
+      },
+      "es": {
+        "question": "Freehold, leasehold, cross-lease y unit title: ¿qué cambia?",
+        "answer": "Freehold suele incluir terreno y edificios, sujetos a restricciones. Leasehold da derechos durante un plazo de arrendamiento, a menudo con alquiler del terreno. Cross-lease combina propiedad compartida del terreno y derechos de arrendamiento. Unit title incluye una unidad y zonas comunes compartidas. Pregunta a tu abogado qué posees, qué pagas y qué requiere permiso para modificar."
+      },
+      "zh-Hans": {
+        "question": "永久产权、租赁产权、交叉租赁和单元产权，有什么不同？",
+        "answer": "永久产权（freehold）通常包括土地和建筑，但仍可能受限制。租赁产权（leasehold）提供租期内的权利，通常要付地租。交叉租赁（cross lease）结合共有土地权益与租赁权。单元产权（unit title）包括独立单元和共有部分的权益。请律师说明你拥有什么、需要支付什么，以及哪些改动须取得许可。"
+      }
+    }
+  },
+  {
+    "id": "search-3",
+    "topic": "search",
+    "question": "What can make an apartment unexpectedly expensive?",
+    "answer": "Body corporate costs go beyond the advertised levy. Ask for disclosure documents, meeting minutes, accounts, insurance, the long-term maintenance plan, funding and proposed work. Major repairs may mean special levies. Check building defects, disputes and restrictions, and have your lawyer explain the documents before you commit.",
+    "source": "Unit Titles Services · buying a unit title",
+    "url": "https://www.unittitles.govt.nz/buying-or-selling-a-unit-title/buying-or-selling-a-unit-title/buying-a-unit-title/",
+    "translations": {
+      "pt-BR": {
+        "question": "O que pode tornar um apartamento mais caro do que parece?",
+        "answer": "Os custos da entidade dos proprietários (body corporate) vão além da contribuição anunciada. Peça documentos de divulgação, atas, contas, seguro, plano de manutenção de longo prazo, informações sobre os fundos e recursos disponíveis e obras propostas. Grandes reparos podem gerar contribuições extras. Confira defeitos, disputas e restrições, e peça ao advogado que explique os documentos antes de assumir compromissos."
+      },
+      "es": {
+        "question": "¿Qué puede hacer que un apartamento resulte más caro de lo esperado?",
+        "answer": "Los costos de la entidad de propietarios (body corporate) van más allá de la cuota anunciada. Pide documentos de divulgación, actas, cuentas, seguro, plan de mantenimiento a largo plazo, fondos y obras previstas. Las reparaciones importantes pueden exigir cuotas extraordinarias. Revisa defectos del edificio, disputas y restricciones, y pide a tu abogado que explique los documentos antes de comprometerte."
+      },
+      "zh-Hans": {
+        "question": "什么会让公寓的实际费用远超预期？",
+        "answer": "业主法人团体（body corporate）的成本不止广告上列出的日常费用。索取披露文件、会议记录、账目、保险、长期维护计划、资金安排和拟进行的工程资料。大规模维修可能需要特别征费。查清建筑缺陷、纠纷和限制，并在作出承诺前请律师解释这些文件。"
+      }
+    }
+  },
+  {
+    "id": "search-4",
+    "topic": "search",
+    "question": "Is a new build or an off-plan home simpler?",
+    "answer": "It can have different risks rather than fewer checks. Review the developer, plans, specifications, completion dates, deposit protection, warranties and contract terms with your lawyer. Ask what happens if completion is delayed, costs change or finance expires. A show home is not proof of what your contract includes.",
+    "source": "Settled · property options",
+    "url": "https://www.settled.govt.nz/buying-a-home/finding-a-property/considering-your-property-options/",
+    "translations": {
+      "pt-BR": {
+        "question": "Comprar imóvel novo ou na planta é mais simples?",
+        "answer": "Pode trazer riscos diferentes, não necessariamente menos verificações. Revise com seu advogado a incorporadora, plantas, especificações, datas de conclusão, proteção do sinal, garantias e condições contratuais. Pergunte o que acontece se a obra atrasar, os custos mudarem ou o financiamento vencer. Um imóvel decorado de demonstração não comprova o que seu contrato inclui."
+      },
+      "es": {
+        "question": "¿Es más sencillo comprar una vivienda nueva o sobre plano?",
+        "answer": "Puede tener riesgos diferentes, no menos comprobaciones. Revisa con tu abogado al promotor, planos, especificaciones, fechas de finalización, protección de la señal, garantías y condiciones del contrato. Pregunta qué pasa si la obra se retrasa, cambian los costos o vence la financiación. Una vivienda de muestra no demuestra lo que incluye tu contrato."
+      },
+      "zh-Hans": {
+        "question": "买新房或楼花更简单吗？",
+        "answer": "它们可能带来不同风险，而不是减少核查。与律师一起审查开发商、图纸、规格、完工日期、预付款保障、保修和合同条款。问清如果完工延迟、费用变化或贷款批准到期，会怎样处理。样板房不能证明合同包含哪些内容。"
+      }
+    }
+  },
+  {
+    "id": "search-5",
+    "topic": "search",
+    "question": "What are easements, covenants and shared driveways?",
+    "answer": "These are rights or restrictions that can affect how you use the land. A shared driveway can come with access and maintenance obligations; a covenant may limit building or other uses. Ask your lawyer to explain the title and documents in plain English, including boundaries and anything that affects your plans.",
+    "source": "Settled · types of ownership",
+    "url": "https://www.settled.govt.nz/buying-a-home/finding-a-property/understanding-types-of-ownership/",
+    "translations": {
+      "pt-BR": {
+        "question": "O que são servidões, restrições e acessos compartilhados?",
+        "answer": "São direitos ou restrições que podem afetar o uso do terreno. Um acesso compartilhado pode trazer obrigações de passagem e manutenção; um covenant pode limitar construções ou outros usos. Peça ao advogado que explique o título e os documentos em linguagem simples, incluindo limites e tudo que afete seus planos."
+      },
+      "es": {
+        "question": "¿Qué son las servidumbres, las restricciones y los accesos compartidos?",
+        "answer": "Son derechos o restricciones que pueden afectar al uso del terreno. Un acceso compartido puede implicar obligaciones de paso y mantenimiento; un covenant puede limitar la construcción u otros usos. Pide a tu abogado que explique el título y los documentos en lenguaje claro, incluidos los límites y todo lo que afecte a tus planes."
+      },
+      "zh-Hans": {
+        "question": "地役权、限制性契约和共用车道是什么？",
+        "answer": "这些权利或限制可能影响你使用土地的方式。共用车道可能附带通行和维护义务；限制性契约（covenant）可能限制建筑或其他用途。请律师用容易理解的话解释产权和相关文件，包括边界以及任何会影响你计划的内容。"
+      }
+    }
+  },
+  {
+    "id": "search-6",
+    "topic": "search",
+    "question": "Does the body corporate’s maintenance plan mean repairs are paid for?",
+    "answer": "No. A plan and enough money to carry it out are different things. Ask what is funded, what work is due, whether owners have opted out of a maintenance fund and whether extra levies are likely. Read the minutes and accounts, and ask about known defects and disputes.",
+    "source": "Unit Titles Services · maintenance plans and funds",
+    "url": "https://www.unittitles.govt.nz/body-corporate-money-and-maintenance/unit-title-maintenance/",
+    "translations": {
+      "pt-BR": {
+        "question": "O plano de manutenção da entidade dos proprietários (body corporate) significa que os reparos já estão pagos?",
+        "answer": "Não. Ter um plano e ter dinheiro suficiente para executá-lo são coisas diferentes. Pergunte o que tem recursos garantidos, quais obras estão previstas, se os proprietários optaram por não manter um fundo de manutenção e se são prováveis contribuições extras. Leia atas e contas e pergunte sobre defeitos conhecidos e disputas."
+      },
+      "es": {
+        "question": "¿El plan de mantenimiento de la entidad de propietarios (body corporate) significa que las reparaciones están pagadas?",
+        "answer": "No. Tener un plan y tener dinero suficiente para ejecutarlo son cosas distintas. Pregunta qué está financiado, qué obras se acercan, si los propietarios han optado por no tener un fondo de mantenimiento y si es probable que haya cuotas adicionales. Lee actas y cuentas, y pregunta por defectos conocidos y disputas."
+      },
+      "zh-Hans": {
+        "question": "业主法人团体有维护计划，是否代表维修费已经准备好了？",
+        "answer": "不是。有计划和有足够资金执行计划，是两回事。问清哪些项目已有资金、哪些工程即将到期、业主是否选择不设维护基金，以及是否可能额外征费。阅读会议记录和账目，并询问已知缺陷和纠纷。"
+      }
+    }
+  },
+  {
+    "id": "search-7",
+    "topic": "search",
+    "question": "What about septic tanks, tank water, drainage or retaining walls?",
+    "answer": "Check who owns each system, its condition, maintenance needs and any relevant approvals. Ask whether inspections need a drainage, wastewater, water-quality or engineering specialist. Confirm boundaries and access rights through your lawyer. A general building inspection may not cover these systems. Ask what needs a specialist check.",
+    "source": "Settled · doing your homework",
+    "url": "https://www.settled.govt.nz/buying-a-home/researching-the-property/doing-your-homework/",
+    "translations": {
+      "pt-BR": {
+        "question": "E quanto a fossas sépticas, água de reservatório, drenagem ou muros de contenção?",
+        "answer": "Confira a quem pertence cada sistema, seu estado, manutenção necessária e aprovações pertinentes. Pergunte se as inspeções precisam de especialistas em drenagem, esgoto, qualidade da água ou engenharia. Confirme limites e direitos de acesso com seu advogado. Uma inspeção geral pode não cobrir esses sistemas. Pergunte o que precisa de avaliação especializada."
+      },
+      "es": {
+        "question": "¿Qué pasa con fosas sépticas, agua de depósito, drenajes o muros de contención?",
+        "answer": "Comprueba a quién pertenece cada sistema, su estado, sus necesidades de mantenimiento y las aprobaciones pertinentes. Pregunta si las inspecciones necesitan especialistas en drenaje, aguas residuales, calidad del agua o ingeniería. Confirma límites y derechos de acceso con tu abogado. Una inspección general puede no cubrir estos sistemas. Pregunta qué necesita una revisión especializada."
+      },
+      "zh-Hans": {
+        "question": "化粪池、水箱供水、排水或挡土墙要注意什么？",
+        "answer": "确认每项设施归谁所有、现况如何、有什么维护需要，以及相关审批情况。问清是否需要排水、污水、水质或工程专业人员检查。通过律师确认边界和通行权。一般验房可能不包括这些设施。问清哪些项目需要专业检查。"
+      }
+    }
+  },
+  {
+    "id": "search-8",
+    "topic": "search",
+    "question": "What if tenants already live in the home?",
+    "answer": "Ask your lawyer to check the tenancy and vacant-possession terms before signing. Settlement and the date you can move in may differ. If vacant possession is required, the seller must follow the lawful tenancy process and respect the tenants’ rights. Do not assume buying the home automatically ends their tenancy.",
+    "source": "Settled · sale and purchase agreement",
+    "url": "https://www.settled.govt.nz/buying-a-home/making-an-offer/understanding-the-sale-and-purchase-agreement-when-buying/",
+    "translations": {
+      "pt-BR": {
+        "question": "E se já houver inquilinos morando no imóvel?",
+        "answer": "Peça ao advogado que confira a locação e as condições de entrega desocupada antes de assinar. A data da conclusão da compra e a data em que você pode se mudar podem ser diferentes. Se for exigida entrega desocupada, o vendedor deve seguir o processo legal de locação e respeitar os direitos dos inquilinos. Não presuma que a compra encerra automaticamente a locação."
+      },
+      "es": {
+        "question": "¿Y si ya viven inquilinos en la casa?",
+        "answer": "Pide a tu abogado que revise el arrendamiento y las condiciones de entrega desocupada antes de firmar. El cierre de la compra y la fecha en que puedes mudarte pueden ser distintos. Si se requiere entrega desocupada, el vendedor debe seguir el proceso legal de arrendamiento y respetar los derechos de los inquilinos. No supongas que comprar termina automáticamente su contrato."
+      },
+      "zh-Hans": {
+        "question": "房子里已经有租客，怎么办？",
+        "answer": "签字前请律师检查租约和空置交付（vacant possession）条款。交割日不一定就是你可以搬入的日子。如果需要空置交付，卖方必须遵循合法租赁程序并尊重租客权利。不要以为买下房子就会自动终止租约。"
+      }
+    }
+  },
+  {
+    "id": "search-9",
+    "topic": "search",
+    "question": "What should I notice during an open home?",
+    "answer": "Look beyond the staging: damp smells, water staining, windows, ventilation, sun, storage, drainage and visible damage. Ask what stays with the property. Check what you can safely access, without disturbing materials. Your viewing helps you choose what to investigate; it does not replace a professional inspection.",
+    "source": "Settled · viewing an open home",
+    "url": "https://www.settled.govt.nz/buying-a-home/finding-a-property/viewing-an-open-home/",
+    "translations": {
+      "pt-BR": {
+        "question": "O que devo observar em uma visita aberta?",
+        "answer": "Olhe além da decoração: cheiro de umidade, manchas de água, janelas, ventilação, sol, armazenamento, drenagem e danos visíveis. Pergunte o que fica no imóvel. Verifique o que consegue acessar com segurança, sem mexer nos materiais. A visita ajuda a escolher o que investigar; não substitui uma inspeção profissional."
+      },
+      "es": {
+        "question": "¿En qué debo fijarme durante una visita abierta?",
+        "answer": "Mira más allá de la decoración: olores a humedad, manchas de agua, ventanas, ventilación, sol, almacenamiento, drenaje y daños visibles. Pregunta qué se queda en la propiedad. Comprueba a qué puedes acceder de forma segura, sin alterar materiales. La visita ayuda a decidir qué investigar; no sustituye una inspección profesional."
+      },
+      "zh-Hans": {
+        "question": "开放看房时应该留意什么？",
+        "answer": "不要只看布置：留意潮湿气味、水渍、窗户、通风、日照、储物空间、排水和可见损坏。问清哪些物品随房出售。只检查可以安全到达的地方，不要扰动材料。看房能帮助你决定要进一步调查什么，但不能代替专业验房。"
+      }
+    }
+  },
+  {
+    "id": "inspect-1",
+    "topic": "inspect",
+    "question": "Do I need a LIM as well as a building inspection?",
+    "answer": "They do different jobs. A LIM contains council-held information; a building inspection assesses condition within its scope. The title records ownership and interests. A property file can add plans and consent records. None guarantees a defect-free home. Ask your lawyer and inspector which reports and specialist checks this property needs.",
+    "source": "Settled · doing your homework",
+    "url": "https://www.settled.govt.nz/buying-a-home/researching-the-property/doing-your-homework/",
+    "translations": {
+      "pt-BR": {
+        "question": "Preciso de um LIM além da inspeção do imóvel?",
+        "answer": "Eles têm funções diferentes. O LIM reúne informações mantidas pela prefeitura; a inspeção avalia o estado dentro do seu escopo. O título registra a propriedade e os direitos incidentes. O arquivo do imóvel pode acrescentar plantas e registros de autorizações. Nenhum garante um imóvel sem defeitos. Pergunte ao advogado e ao inspetor quais relatórios e verificações especializadas este imóvel precisa."
+      },
+      "es": {
+        "question": "¿Necesito un LIM además de una inspección del edificio?",
+        "answer": "Cumplen funciones distintas. Un LIM contiene información que conserva el municipio; una inspección evalúa el estado dentro de su alcance. El título registra la propiedad y los derechos que la afectan. El expediente del inmueble puede añadir planos y permisos. Ninguno garantiza una vivienda sin defectos. Pregunta a tu abogado e inspector qué informes y revisiones especializadas necesita esta propiedad."
+      },
+      "zh-Hans": {
+        "question": "有了验房报告，还需要 LIM 吗？",
+        "answer": "它们作用不同。土地信息备忘录（LIM）包含地方政府持有的信息；验房是在约定范围内评估房屋状况。产权记录说明所有权和相关权益。房产档案（property file）可以补充图纸和审批记录。任何一种都不能保证房子没有缺陷。请律师和验房师判断，这套房子需要哪些报告和专项检查。"
+      }
+    }
+  },
+  {
+    "id": "inspect-2",
+    "topic": "inspect",
+    "question": "Can I rely on the seller’s building report?",
+    "answer": "Check who commissioned it, its scope, date, exclusions and whether you can rely on it legally. An independent inspection gives you a chance to ask your own questions. Reports may exclude inaccessible areas or specialist systems. Ask about moisture, roof, drainage, foundations, wiring and any signs that need a specialist.",
+    "source": "Settled · doing your homework",
+    "url": "https://www.settled.govt.nz/buying-a-home/researching-the-property/doing-your-homework/",
+    "translations": {
+      "pt-BR": {
+        "question": "Posso confiar no relatório de inspeção do vendedor?",
+        "answer": "Confira quem o contratou, o escopo, a data, as exclusões e se você pode se apoiar juridicamente nele. Uma inspeção independente dá a chance de fazer suas próprias perguntas. Relatórios podem excluir áreas inacessíveis ou sistemas especializados. Pergunte sobre umidade, telhado, drenagem, fundações, fiação e sinais que exijam um especialista."
+      },
+      "es": {
+        "question": "¿Puedo basarme en el informe del edificio que aporta el vendedor?",
+        "answer": "Comprueba quién lo encargó, su alcance, fecha, exclusiones y si puedes apoyarte en él legalmente. Una inspección independiente te permite hacer tus propias preguntas. Los informes pueden excluir zonas inaccesibles o sistemas especializados. Pregunta por humedad, techo, drenaje, cimientos, cableado y señales que requieran un especialista."
+      },
+      "zh-Hans": {
+        "question": "可以依赖卖方提供的验房报告吗？",
+        "answer": "查清是谁委托的、检查范围、日期、排除项目，以及你在法律上能否依赖这份报告。独立验房让你有机会提出自己的问题。报告可能不包含无法进入的区域或专业系统。询问潮湿、屋顶、排水、地基、电线，以及哪些迹象需要专业人员进一步调查。"
+      }
+    }
+  },
+  {
+    "id": "inspect-3",
+    "topic": "inspect",
+    "question": "How do I check flood, landslip or earthquake risks?",
+    "answer": "Use council hazard information, the LIM, available hazard maps and specialist advice where needed. Investigate past natural-hazard claims and repairs: ask what was damaged, what was paid and what work was completed. No recorded claim does not mean no risk. Ask your lawyer about transferring any relevant claim rights.",
+    "source": "Natural Hazards Commission · previous claims",
+    "url": "https://www.naturalhazards.govt.nz/insurance-and-claims/claims/buying-or-selling-a-home-with-previous-claims/",
+    "translations": {
+      "pt-BR": {
+        "question": "Como verifico riscos de inundação, deslizamento ou terremoto?",
+        "answer": "Use informações municipais sobre riscos, o LIM, mapas disponíveis e orientação especializada quando necessário. Investigue sinistros anteriores por riscos naturais e reparos: pergunte o que foi danificado, o que foi pago e quais obras foram concluídas. Não haver sinistro registrado não significa ausência de risco. Pergunte ao advogado sobre a transferência de direitos de sinistros pertinentes."
+      },
+      "es": {
+        "question": "¿Cómo reviso los riesgos de inundación, deslizamiento o terremoto?",
+        "answer": "Usa la información municipal de riesgos, el LIM, mapas disponibles y asesoramiento especializado cuando haga falta. Investiga reclamaciones anteriores por riesgos naturales y reparaciones: pregunta qué se dañó, qué se pagó y qué obras se completaron. No tener reclamaciones registradas no significa no tener riesgo. Consulta a tu abogado sobre la cesión de derechos de reclamación pertinentes."
+      },
+      "zh-Hans": {
+        "question": "怎么检查洪水、滑坡或地震风险？",
+        "answer": "查看地方政府的灾害信息、LIM、可用的灾害地图，并在需要时取得专业意见。调查过去的自然灾害理赔和维修：哪里受损、赔了多少钱、完成了哪些工程。没有理赔记录不等于没有风险。请律师说明相关理赔权利如何转让。"
+      }
+    }
+  },
+  {
+    "id": "inspect-4",
+    "topic": "inspect",
+    "question": "Why check insurance before my offer is unconditional?",
+    "answer": "The lender usually requires suitable insurance, and a quote may reveal exclusions, high excesses or cover problems. Tell the insurer about known hazards, defects and planned works. Confirm acceptable cover and when it must begin before you commit unconditionally. The seller having insurance does not guarantee you can obtain equivalent cover.",
+    "source": "Settled · natural hazards",
+    "url": "https://www.settled.govt.nz/buying-a-home/researching-the-property/understanding-the-impact-of-natural-hazards/",
+    "translations": {
+      "pt-BR": {
+        "question": "Por que verificar o seguro antes de a proposta se tornar incondicional?",
+        "answer": "O banco normalmente exige seguro adequado, e uma cotação pode revelar exclusões, franquias altas ou problemas de cobertura. Informe à seguradora os riscos conhecidos, defeitos e obras planejadas. Confirme cobertura aceitável e quando ela precisa começar antes de assumir compromisso incondicional. O seguro do vendedor não garante que você consiga cobertura equivalente."
+      },
+      "es": {
+        "question": "¿Por qué revisar el seguro antes de que mi oferta sea incondicional?",
+        "answer": "El banco suele exigir un seguro adecuado, y una cotización puede revelar exclusiones, deducibles altos o problemas de cobertura. Informa a la aseguradora sobre riesgos conocidos, defectos y obras previstas. Confirma una cobertura aceptable y cuándo debe comenzar antes de comprometerte sin condiciones. Que el vendedor tenga seguro no garantiza que puedas obtener uno equivalente."
+      },
+      "zh-Hans": {
+        "question": "为什么要在合同变为无条件前检查保险？",
+        "answer": "贷款机构通常要求适当保险，报价也可能暴露除外责任、高额自付额或承保问题。向保险公司说明已知灾害风险、缺陷和计划进行的工程。在作出无条件承诺前，确认有可接受的保障，以及何时必须生效。卖方有保险，不代表你一定能获得同等保障。"
+      }
+    }
+  },
+  {
+    "id": "inspect-5",
+    "topic": "inspect",
+    "question": "How do I investigate a potentially leaky home?",
+    "answer": "Do not judge weather-tightness by fresh paint or a dry viewing. Tell the inspector about any cladding, roof, balcony, moisture or repair concerns and ask whether specialist investigation is needed. Understand inaccessible areas and report limits. Price any identified remedial work and check the implications with the lender, insurer and lawyer.",
+    "source": "Settled · doing your homework",
+    "url": "https://www.settled.govt.nz/buying-a-home/researching-the-property/doing-your-homework/",
+    "translations": {
+      "pt-BR": {
+        "question": "Como investigar um imóvel que pode ter problemas de infiltração?",
+        "answer": "Não julgue a estanqueidade pela tinta nova ou por uma visita em dia seco. Informe ao inspetor preocupações com revestimento externo, telhado, varanda, umidade ou reparos e pergunte se precisa de investigação especializada. Entenda as áreas inacessíveis e os limites do relatório. Orce os reparos identificados e confira as implicações com banco, seguradora e advogado."
+      },
+      "es": {
+        "question": "¿Cómo investigo una casa que podría tener filtraciones?",
+        "answer": "No juzgues la estanqueidad por pintura nueva o una visita en un día seco. Comenta al inspector cualquier preocupación por revestimiento exterior, techo, balcón, humedad o reparaciones, y pregunta si requiere investigación especializada. Entiende las zonas inaccesibles y los límites del informe. Presupuesta las reparaciones identificadas y consulta las implicaciones con banco, aseguradora y abogado."
+      },
+      "zh-Hans": {
+        "question": "怀疑房子有渗漏问题，应该怎么调查？",
+        "answer": "不要凭新油漆或一次干燥天气下的看房来判断防水性能。把有关外墙、屋顶、阳台、潮湿或维修的疑问告诉验房师，询问是否需要专项调查。弄清无法检查的区域和报告的局限。估算已发现的修复工程费用，并与贷款机构、保险公司和律师确认影响。"
+      }
+    }
+  },
+  {
+    "id": "inspect-6",
+    "topic": "inspect",
+    "question": "How do I check whether the home will be warm and dry?",
+    "answer": "Look at sun, insulation, heating, ventilation, condensation and damp smells. Ask the inspector what they can assess and what remains inaccessible. Ask about roof leaks and underfloor moisture too. Ask how the home is heated in winter and what improvements it may need.",
+    "source": "Settled · viewing an open home",
+    "url": "https://www.settled.govt.nz/buying-a-home/finding-a-property/viewing-an-open-home/",
+    "translations": {
+      "pt-BR": {
+        "question": "Como verificar se a casa será quente e seca?",
+        "answer": "Observe sol, isolamento, aquecimento, ventilação, condensação e cheiro de umidade. Pergunte ao inspetor o que ele consegue avaliar e o que permanece inacessível. Pergunte também sobre vazamentos no telhado e umidade sob o piso. Pergunte como a casa é aquecida no inverno e quais melhorias podem ser necessárias."
+      },
+      "es": {
+        "question": "¿Cómo compruebo si la casa será cálida y seca?",
+        "answer": "Observa sol, aislamiento, calefacción, ventilación, condensación y olores a humedad. Pregunta al inspector qué puede evaluar y qué sigue inaccesible. Pregunta también por goteras y humedad bajo el suelo. Pregunta cómo se calienta la casa en invierno y qué mejoras podría necesitar."
+      },
+      "zh-Hans": {
+        "question": "怎么判断房子是否保暖、干燥？",
+        "answer": "留意日照、保温、供暖、通风、冷凝水和潮湿气味。问验房师能评估哪些内容，还有哪些地方无法进入。也要询问屋顶漏水和地板下潮湿情况。询问冬季如何供暖，以及房屋可能需要哪些改善。"
+      }
+    }
+  },
+  {
+    "id": "inspect-7",
+    "topic": "inspect",
+    "question": "The home has been renovated. What paperwork matters?",
+    "answer": "Check the work against council records, required building consents and code compliance certificates. Ask about alterations not shown in the records or cross-lease plan. A certificate of acceptance has limits and is not the same as a retrospective building consent. Get your lawyer, inspector and council to clarify unresolved work before buying.",
+    "source": "Building Performance · certificate of acceptance",
+    "url": "https://www.building.govt.nz/projects-and-consents/sign-off-and-maintenance/completing-your-project/certificate-of-acceptance",
+    "translations": {
+      "pt-BR": {
+        "question": "O imóvel foi reformado. Quais documentos importam?",
+        "answer": "Compare a obra com os registros municipais, as autorizações de obra exigidas e os certificados de conformidade (CCC). Pergunte sobre alterações que não aparecem nos registros ou na planta do cross-lease. Um certificado de aceitação (certificate of acceptance) tem limites e não equivale a uma autorização de obra retroativa. Peça ao advogado, ao inspetor e à prefeitura que esclareçam obras pendentes de regularização antes da compra."
+      },
+      "es": {
+        "question": "La casa se ha reformado. ¿Qué documentos importan?",
+        "answer": "Compara la obra con los registros municipales, los permisos de construcción requeridos y los certificados de cumplimiento del código (CCC). Pregunta por modificaciones que no aparezcan en los registros o en el plano del cross-lease. Un certificado de aceptación (certificate of acceptance) tiene límites y no equivale a un permiso de obra retroactivo. Pide a abogado, inspector y municipio que aclaren las obras pendientes de resolver antes de comprar."
+      },
+      "zh-Hans": {
+        "question": "房子翻新过，哪些文件重要？",
+        "answer": "将工程与地方政府记录、所需建筑许可（building consent）和建筑合规证书（code compliance certificate）核对。询问记录或交叉租赁图纸中没有显示的改建。工程认可证书（certificate of acceptance）有其局限，并不等于事后补发的建筑许可。买房前，请律师、验房师和地方政府弄清尚未解决的工程问题。"
+      }
+    }
+  },
+  {
+    "id": "inspect-8",
+    "topic": "inspect",
+    "question": "When should I pay for reports and inspections?",
+    "answer": "Ask your lawyer which checks you need and when. For an auction or an unconditional offer, complete due diligence before you commit. With a conditional offer, some reports may be obtained during the agreed condition period, but only if the contract gives you suitable protection and enough time. Confirm the wording before signing, and book professionals early. You may still pay for reports on a home you do not buy.",
+    "source": "Settled · sale and purchase agreement",
+    "url": "https://www.settled.govt.nz/buying-a-home/making-an-offer/understanding-the-sale-and-purchase-agreement-when-buying/",
+    "translations": {
+      "pt-BR": {
+        "question": "Quando devo pagar pelos relatórios e pelas inspeções?",
+        "answer": "Pergunte ao advogado quais verificações você precisa fazer e quando. Em leilões ou propostas incondicionais, conclua as verificações antes de assumir o compromisso. Em uma proposta condicional, alguns relatórios podem ser obtidos durante o prazo da condição acordada, mas só se o contrato oferecer proteção adequada e tempo suficiente. Confirme a redação antes de assinar e agende os profissionais cedo. Você ainda pode pagar por relatórios de um imóvel que acabar não comprando."
+      },
+      "es": {
+        "question": "¿Cuándo debo pagar los informes y las inspecciones?",
+        "answer": "Pregunta a tu abogado qué comprobaciones necesitas y cuándo. En una subasta o una oferta incondicional, completa las comprobaciones antes de comprometerte. Con una oferta condicional, algunos informes pueden obtenerse durante el plazo acordado para la condición, pero solo si el contrato te da protección adecuada y tiempo suficiente. Confirma la redacción antes de firmar y reserva pronto a los profesionales. Aun así, puedes pagar informes de una vivienda que finalmente no compres."
+      },
+      "zh-Hans": {
+        "question": "什么时候应该付费获取报告和安排检查？",
+        "answer": "请律师说明需要哪些检查，以及何时完成。参加拍卖或作出无条件报价时，要在作出承诺前完成尽职调查。如果是附条件报价，有些报告可以在约定的条件期内取得，但前提是合同提供适当保障，并留有足够时间。签字前确认条款措辞，并尽早预约专业人士。即使最后没有买下那套房子，你也可能已经支付了报告费用。"
+      }
+    }
+  },
+  {
+    "id": "offer-1",
+    "topic": "offer",
+    "question": "How do negotiation, tender and deadline sales differ?",
+    "answer": "Negotiation allows offers and counteroffers. A tender usually invites confidential written offers by a set time. A deadline sale asks for offers by a date, but the property may sell earlier if the terms allow it. Ask how this particular sale works and what conditions are allowed. The highest offer is not automatically accepted.",
+    "source": "Consumer Protection · preparing an offer",
+    "url": "https://www.consumerprotection.govt.nz/help-product-service/buying-or-renting-a-house/prepare-make-an-offer",
+    "translations": {
+      "pt-BR": {
+        "question": "Qual a diferença entre negociação, tender e deadline sale?",
+        "answer": "Na negociação, há propostas e contrapropostas. Um tender normalmente recebe propostas escritas e confidenciais até um horário definido. Uma deadline sale pede propostas até uma data, mas o imóvel pode ser vendido antes se as regras permitirem. Pergunte como funciona esta venda e quais condições são aceitas. A maior proposta não é aceita automaticamente."
+      },
+      "es": {
+        "question": "¿En qué se diferencian negociación, tender y deadline sale?",
+        "answer": "La negociación permite ofertas y contraofertas. Un tender suele solicitar ofertas escritas y confidenciales hasta una hora fijada. Una deadline sale pide ofertas hasta una fecha, pero la propiedad puede venderse antes si las condiciones lo permiten. Pregunta cómo funciona esta venta y qué condiciones se admiten. La oferta más alta no se acepta automáticamente."
+      },
+      "zh-Hans": {
+        "question": "议价、招标和截止日期销售有什么区别？",
+        "answer": "议价允许买卖双方报价和还价。招标（tender）通常要求在指定时间前提交保密的书面报价。截止日期销售（deadline sale）要求在指定日期前出价，但如果销售条款允许，也可能提前售出。问清这次销售如何进行，以及允许附带什么条件。最高报价不一定会被接受。"
+      }
+    }
+  },
+  {
+    "id": "offer-2",
+    "topic": "offer",
+    "question": "What is the big auction gotcha?",
+    "answer": "A successful auction purchase is unconditional. Complete legal checks, inspections, property-specific finance and insurance checks before bidding, and know how you will pay the deposit. Set a hard limit in advance. Do not assume you can add a finance or building condition after winning.",
+    "source": "Consumer Protection · preparing an offer",
+    "url": "https://www.consumerprotection.govt.nz/help-product-service/buying-or-renting-a-house/prepare-make-an-offer",
+    "translations": {
+      "pt-BR": {
+        "question": "Qual é o grande cuidado com leilões?",
+        "answer": "Uma compra arrematada em leilão é incondicional. Conclua verificações jurídicas, inspeções, financiamento específico do imóvel e seguro antes de dar lances, e saiba como vai pagar o sinal. Defina um limite firme antes. Não presuma que poderá incluir uma condição de financiamento ou inspeção depois de vencer."
+      },
+      "es": {
+        "question": "¿Cuál es el gran riesgo de una subasta?",
+        "answer": "Una compra ganadora en subasta es incondicional. Completa revisiones legales, inspecciones y verificaciones de financiación y seguro para esa propiedad antes de pujar, y ten claro cómo pagarás la señal. Fija un límite firme de antemano. No supongas que podrás añadir una condición de financiación o inspección después de ganar."
+      },
+      "zh-Hans": {
+        "question": "拍卖最大的注意点是什么？",
+        "answer": "拍卖成功买入的交易是无条件的。竞价前完成法律审查、验房，以及针对这套房产的贷款和保险核查，并明确预付款如何支付。事先设定不可超出的上限。不要以为拍得后还能加上融资或验房条件。"
+      }
+    }
+  },
+  {
+    "id": "offer-3",
+    "topic": "offer",
+    "question": "Can I walk away from a conditional offer?",
+    "answer": "Not simply because you changed your mind. A signed and accepted conditional agreement is binding; the exact conditions, required steps and deadlines matter. Ask your lawyer how each condition works and what happens if it is not met. Do not remove conditions until the relevant checks and advice are complete.",
+    "source": "Settled · sale and purchase agreement",
+    "url": "https://www.settled.govt.nz/buying-a-home/making-an-offer/understanding-the-sale-and-purchase-agreement-when-buying/",
+    "translations": {
+      "pt-BR": {
+        "question": "Posso desistir de uma proposta condicional?",
+        "answer": "Não simplesmente porque mudou de ideia. Um acordo condicional assinado e aceito é vinculante; importam as condições exatas, as etapas exigidas e os prazos. Pergunte ao advogado como cada condição funciona e o que acontece se não for atendida. Não dispense condições antes de concluir as verificações e orientações pertinentes."
+      },
+      "es": {
+        "question": "¿Puedo retirarme de una oferta condicional?",
+        "answer": "No solo porque hayas cambiado de opinión. Un acuerdo condicional firmado y aceptado es vinculante; importan las condiciones exactas, los pasos exigidos y los plazos. Pregunta a tu abogado cómo funciona cada condición y qué pasa si no se cumple. No renuncies a condiciones hasta completar las revisiones y el asesoramiento pertinentes."
+      },
+      "zh-Hans": {
+        "question": "附条件报价可以随时退出吗？",
+        "answer": "不能仅仅因为改变主意就退出。已签署并被接受的附条件协议有约束力；具体条件、所需步骤和截止时间都很重要。请律师说明每项条件如何运作，以及未满足时会怎样。在完成相关核查并取得专业意见前，不要同意放弃合同中的条件。"
+      }
+    }
+  },
+  {
+    "id": "offer-4",
+    "topic": "offer",
+    "question": "What should be written into the agreement?",
+    "answer": "Your lawyer should check price, deposit, settlement date, conditions, title details, included chattels and any agreed work or promises. If an appliance, repair or other item matters, do not rely on a conversation. Confirm its treatment in the written agreement before signing.",
+    "source": "Settled · sale and purchase agreement",
+    "url": "https://www.settled.govt.nz/buying-a-home/making-an-offer/understanding-the-sale-and-purchase-agreement-when-buying/",
+    "translations": {
+      "pt-BR": {
+        "question": "O que deve constar no contrato?",
+        "answer": "Seu advogado deve conferir preço, sinal, data da conclusão da compra, condições, dados do título, bens incluídos e obras ou promessas acordadas. Se um eletrodoméstico, reparo ou outro item é importante, não dependa de uma conversa. Confirme como ele aparece no contrato escrito antes de assinar."
+      },
+      "es": {
+        "question": "¿Qué debe quedar escrito en el contrato?",
+        "answer": "Tu abogado debe revisar precio, señal, fecha de cierre, condiciones, datos del título, bienes incluidos y cualquier obra o promesa acordada. Si un electrodoméstico, reparación u otro elemento es importante, no dependas de una conversación. Confirma cómo se trata en el contrato escrito antes de firmar."
+      },
+      "zh-Hans": {
+        "question": "协议里应该写清哪些内容？",
+        "answer": "律师应检查价格、预付款、交割日期、条件、产权资料、随房动产（chattels），以及约定的工程或承诺。如果某件电器、维修或其他项目对你很重要，不要只依赖口头沟通。签字前确认书面协议如何约定。"
+      }
+    }
+  },
+  {
+    "id": "offer-5",
+    "topic": "offer",
+    "question": "Can I make offers on two homes at once?",
+    "answer": "You could become committed to buying both if both offers are accepted. Before signing another offer, ask your lawyer to confirm the first offer’s status and advise on expiry or withdrawal. Waiting for a reply does not make an offer harmless, and conditions are not a free cancellation option.",
+    "source": "Settled · sale and purchase agreement",
+    "url": "https://www.settled.govt.nz/buying-a-home/making-an-offer/understanding-the-sale-and-purchase-agreement-when-buying/",
+    "translations": {
+      "pt-BR": {
+        "question": "Posso fazer propostas por dois imóveis ao mesmo tempo?",
+        "answer": "Você pode ficar obrigado a comprar os dois se ambas forem aceitas. Antes de assinar outra proposta, peça ao advogado que confirme a situação da primeira e oriente sobre vencimento ou retirada. Esperar uma resposta não torna uma proposta inofensiva, e condições não são uma opção de cancelamento livre."
+      },
+      "es": {
+        "question": "¿Puedo hacer ofertas por dos viviendas a la vez?",
+        "answer": "Podrías quedar obligado a comprar ambas si aceptan las dos ofertas. Antes de firmar otra, pide a tu abogado que confirme el estado de la primera y te asesore sobre su vencimiento o retirada. Esperar respuesta no hace que una oferta sea inocua, y las condiciones no son una opción de cancelación libre."
+      },
+      "zh-Hans": {
+        "question": "可以同时对两套房子出价吗？",
+        "answer": "如果两份报价都被接受，你可能必须买下两套房子。签另一份报价前，请律师确认第一份报价的状态，并就到期或撤回提供意见。等待回复并不代表报价没有风险，附带条件也不是随意取消的通行证。"
+      }
+    }
+  },
+  {
+    "id": "offer-6",
+    "topic": "offer",
+    "question": "How can I negotiate without getting swept along?",
+    "answer": "Set a limit using your budget and the property evidence. Ask your lawyer or adviser about price, conditions and settlement timing as a whole. In a multi-offer situation, understand the process and make an offer you can live with. Pressure and fear of missing out are not reasons to skip your checks.",
+    "source": "Consumer Protection · preparing an offer",
+    "url": "https://www.consumerprotection.govt.nz/help-product-service/buying-or-renting-a-house/prepare-make-an-offer",
+    "translations": {
+      "pt-BR": {
+        "question": "Como negociar sem me deixar levar?",
+        "answer": "Defina um limite com base no orçamento e nas evidências sobre o imóvel. Converse com seu advogado ou assessor sobre preço, condições e prazo de conclusão como um conjunto. Em uma disputa com várias propostas, entenda o processo e faça uma proposta com a qual consiga conviver. Pressão e medo de perder a oportunidade não justificam pular verificações."
+      },
+      "es": {
+        "question": "¿Cómo puedo negociar sin dejarme llevar?",
+        "answer": "Fija un límite con tu presupuesto y la información de la propiedad. Habla con tu abogado o asesor sobre precio, condiciones y fecha de cierre como un conjunto. Si hay varias ofertas, entiende el proceso y presenta una con la que puedas vivir. La presión y el miedo a perder la oportunidad no justifican saltarse comprobaciones."
+      },
+      "zh-Hans": {
+        "question": "怎样谈价才不容易被带着走？",
+        "answer": "根据预算和房产证据设定上限。请律师或顾问把价格、条件和交割时间放在一起考虑。如果有多方竞价，先理解流程，再给出你能接受的报价。压力和怕错过的心情，都不是跳过检查的理由。"
+      }
+    }
+  },
+  {
+    "id": "offer-7",
+    "topic": "offer",
+    "question": "What stays with the house: curtains, appliances and other chattels?",
+    "answer": "Do not assume everything at the viewing is included. Ask which curtains, blinds, appliances and other items stay, and have your lawyer check the written chattels list before signing. Record important makes, models and agreed condition. Check the agreed items at the pre-settlement inspection and tell your lawyer promptly about anything missing or changed.",
+    "source": "Settled · sale and purchase agreement",
+    "url": "https://www.settled.govt.nz/buying-a-home/making-an-offer/understanding-the-sale-and-purchase-agreement-when-buying/",
+    "translations": {
+      "pt-BR": {
+        "question": "O que fica na casa: cortinas, eletrodomésticos e outros bens?",
+        "answer": "Não presuma que tudo o que viu na visita está incluído. Pergunte quais cortinas, persianas, eletrodomésticos e outros itens ficam, e peça ao advogado que confira a lista escrita de bens incluídos (chattels) antes de assinar. Registre marcas, modelos e o estado acordado dos itens importantes. Confira os itens combinados na inspeção antes da conclusão da compra e avise rapidamente seu advogado se algo estiver faltando ou tiver mudado."
+      },
+      "es": {
+        "question": "¿Qué se queda en la casa: cortinas, electrodomésticos y otros bienes?",
+        "answer": "No supongas que todo lo que viste en la visita está incluido. Pregunta qué cortinas, persianas, electrodomésticos y otros elementos se quedan, y pide a tu abogado que revise la lista escrita de bienes incluidos (chattels) antes de firmar. Registra las marcas, los modelos y el estado acordado de los elementos importantes. Comprueba los bienes acordados en la inspección previa al cierre y avisa pronto a tu abogado si falta algo o ha cambiado."
+      },
+      "zh-Hans": {
+        "question": "哪些东西随房出售：窗帘、电器和其他动产？",
+        "answer": "不要以为看房时看到的东西都包含在房价中。问清哪些窗帘、百叶帘、电器和其他物品会留下，并在签字前请律师检查书面的随房动产清单（chattels list）。记录重要物品的品牌、型号和约定状态。在交割前检查时核对这些物品；如果有缺失或变化，尽快告诉律师。"
+      }
+    }
+  },
+  {
+    "id": "mortgage-1",
+    "topic": "mortgage",
+    "question": "What are principal and interest?",
+    "answer": "Principal is the amount you owe. Interest is the cost of borrowing it. A principal-and-interest repayment does both jobs: pays interest and reduces the debt. Early in a long loan, interest can take a large share. Interest-only payments generally do not reduce the principal during that period.",
+    "source": "Sorted · mortgage types",
+    "url": "https://sorted.org.nz/guides/home-buying/mortgage-types/",
+    "translations": {
+      "pt-BR": {
+        "question": "O que são principal e juros?",
+        "answer": "Principal é o valor que você deve. Juros são o custo de tomar esse dinheiro emprestado. Uma parcela com amortização e juros faz as duas coisas: paga juros e reduz a dívida. No início de um empréstimo longo, os juros podem representar uma parcela grande. Pagamentos só de juros geralmente não reduzem o principal durante esse período."
+      },
+      "es": {
+        "question": "¿Qué son capital e intereses?",
+        "answer": "El capital es el importe que debes. Los intereses son el costo de pedirlo prestado. Una cuota de capital e intereses hace ambas cosas: paga intereses y reduce la deuda. Al principio de un préstamo largo, los intereses pueden ocupar una gran parte. Los pagos de solo intereses generalmente no reducen el capital durante ese período."
+      },
+      "zh-Hans": {
+        "question": "本金和利息是什么？",
+        "answer": "本金是你欠的金额。利息是借用这笔钱的成本。本金加利息还款会同时支付利息并减少债务。长期贷款初期，利息可能占还款额的较大部分。只付利息的还款方式，通常不会在该期间减少本金。"
+      }
+    }
+  },
+  {
+    "id": "mortgage-2",
+    "topic": "mortgage",
+    "question": "Does fixing for two years mean I repay the loan in two years?",
+    "answer": "No. The fixed period is how long that interest rate applies. The loan term is the overall repayment period, which may be much longer. When the fixed period ends you need a new rate arrangement. Ask what happens automatically and plan for repayments being different at the next rate.",
+    "source": "Sorted · mortgage types",
+    "url": "https://sorted.org.nz/guides/home-buying/mortgage-types/",
+    "translations": {
+      "pt-BR": {
+        "question": "Fixar a taxa por dois anos significa quitar em dois anos?",
+        "answer": "Não. O período fixo é o tempo em que aquela taxa vale. O prazo do empréstimo é o período total de pagamento, que pode ser muito maior. Ao terminar o período fixo, você precisa de uma nova definição de taxa. Pergunte o que acontece automaticamente e se prepare para parcelas diferentes na próxima taxa."
+      },
+      "es": {
+        "question": "¿Fijar la tasa por dos años significa pagar el préstamo en dos años?",
+        "answer": "No. El período fijo es el tiempo durante el que se aplica esa tasa. El plazo del préstamo es el período total de devolución, que puede ser mucho mayor. Cuando termina el período fijo necesitas un nuevo acuerdo de tasa. Pregunta qué ocurre automáticamente y prevé cuotas distintas con la siguiente tasa."
+      },
+      "zh-Hans": {
+        "question": "固定利率两年，是指两年内还清贷款吗？",
+        "answer": "不是。固定利率期是该利率适用的时间。贷款期限是整体还款期，可能长得多。固定利率期结束后，你需要新的利率安排。问清届时系统会自动怎么处理，并为新利率下还款额可能变化作准备。"
+      }
+    }
+  },
+  {
+    "id": "mortgage-3",
+    "topic": "mortgage",
+    "question": "Fixed, floating or split: which is best?",
+    "answer": "Fixed provides rate certainty for a period, with limits and possible costs for early repayment. Floating rates can change and usually offer more repayment flexibility. Splitting combines arrangements. The useful mix depends on your income, savings and plans; ask your adviser to explain the trade-offs for you.",
+    "source": "Sorted · mortgage types",
+    "url": "https://sorted.org.nz/guides/home-buying/mortgage-types/",
+    "translations": {
+      "pt-BR": {
+        "question": "Taxa fixa, variável ou combinada: qual é melhor?",
+        "answer": "A fixa dá previsibilidade da taxa por um período, com limites e possíveis custos de pagamento antecipado. A variável pode mudar e costuma oferecer mais flexibilidade para pagar. A combinada mistura arranjos. A combinação útil depende de renda, economias e planos; peça ao assessor que explique as vantagens e desvantagens para você."
+      },
+      "es": {
+        "question": "¿Qué conviene más: fijo, variable o mixto?",
+        "answer": "El fijo da certeza de tasa durante un período, con límites y posibles costos por pago anticipado. Las tasas variables pueden cambiar y suelen ofrecer más flexibilidad de pago. Un préstamo mixto combina arreglos. La combinación útil depende de ingresos, ahorros y planes; pide a tu asesor que explique las ventajas y desventajas para ti."
+      },
+      "zh-Hans": {
+        "question": "固定、浮动还是组合贷款更合适？",
+        "answer": "固定利率让一段时间内的利率明确，但提前还款会有限制，也可能有费用。浮动利率可以变化，通常有更大的还款灵活性。组合贷款把不同安排结合起来。合适的搭配取决于你的收入、存款和计划；请顾问解释对你而言的利弊。"
+      }
+    }
+  },
+  {
+    "id": "mortgage-4",
+    "topic": "mortgage",
+    "question": "Can I negotiate with the bank?",
+    "answer": "Ask what rate and fee options are available, and compare equivalent written offers. Discuss repayment flexibility, low-deposit charges, cashback conditions and what it costs to leave or repay early. A lower rate or cash incentive may have conditions. Ask for the total cost and obligations, not just the headline.",
+    "source": "FMA · mortgage advice",
+    "url": "https://www.fma.govt.nz/consumer/getting-advice/mortgage-advice/",
+    "translations": {
+      "pt-BR": {
+        "question": "Posso negociar com o banco?",
+        "answer": "Pergunte quais opções de taxas e tarifas estão disponíveis e compare ofertas equivalentes por escrito. Converse sobre flexibilidade de pagamento, cobranças por entrada baixa, condições do incentivo em dinheiro (cashback) e custos de sair ou quitar antes. Uma taxa menor ou incentivo em dinheiro pode ter condições. Pergunte o custo total e as obrigações, não só o número anunciado."
+      },
+      "es": {
+        "question": "¿Puedo negociar con el banco?",
+        "answer": "Pregunta qué opciones de tasas y cargos hay y compara ofertas equivalentes por escrito. Habla de flexibilidad de pago, cargos por aporte inicial bajo, condiciones del incentivo en efectivo (cashback) y costo de salir o pagar anticipadamente. Una tasa menor o un incentivo en efectivo pueden tener condiciones. Pregunta por el costo total y las obligaciones, no solo por la cifra anunciada."
+      },
+      "zh-Hans": {
+        "question": "可以和银行谈条件吗？",
+        "answer": "询问有哪些利率和费用选择，并比较条件相当的书面报价。讨论还款灵活性、低首付附加费用、返现条件，以及转出或提前还款的成本。较低利率或现金奖励可能附带条件。应问清总成本和责任，而不只看宣传数字。"
+      }
+    }
+  },
+  {
+    "id": "mortgage-5",
+    "topic": "mortgage",
+    "question": "How do offset and revolving-credit loans work?",
+    "answer": "An offset loan uses eligible linked account balances to reduce the amount on which interest is calculated. A revolving-credit loan works more like an overdraft secured on your home, with income and spending moving the balance. Features and rates vary. Before choosing either, ask how repayments work, what fees apply and how you will keep the debt reducing.",
+    "source": "Sorted · mortgage types",
+    "url": "https://sorted.org.nz/guides/home-buying/mortgage-types/",
+    "translations": {
+      "pt-BR": {
+        "question": "Como funcionam financiamentos offset e revolving credit?",
+        "answer": "O offset usa saldos de contas vinculadas elegíveis para reduzir o valor sobre o qual os juros são calculados. O revolving credit funciona mais como um limite de crédito garantido pelo imóvel, cujo saldo muda com receitas e gastos. Recursos e taxas variam. Antes de escolher, pergunte como funcionam os pagamentos, quais tarifas se aplicam e como manter a dívida diminuindo."
+      },
+      "es": {
+        "question": "¿Cómo funcionan los préstamos offset y revolving credit?",
+        "answer": "Un préstamo offset usa saldos elegibles de cuentas vinculadas para reducir el importe sobre el que se calculan intereses. Un revolving credit funciona más como una línea de crédito garantizada por la vivienda, cuyo saldo cambia con ingresos y gastos. Las características y tasas varían. Antes de elegir, pregunta cómo funcionan los pagos, qué cargos se aplican y cómo seguir reduciendo la deuda."
+      },
+      "zh-Hans": {
+        "question": "抵息贷款和循环信贷如何运作？",
+        "answer": "抵息贷款（offset loan）利用符合条件的关联账户余额，减少计算利息的贷款金额。循环信贷（revolving credit）更像以住房担保的透支账户，收入和支出会改变余额。功能和利率因产品而异。选择前，问清还款方式、适用费用，以及如何让债务持续减少。"
+      }
+    }
+  },
+  {
+    "id": "mortgage-6",
+    "topic": "mortgage",
+    "question": "Is an estate agent’s appraisal enough for the bank?",
+    "answer": "Not necessarily. Your lender may require a valuation that meets its own requirements. Ask before ordering one: the valuer, instructions or process may need to be lender-approved. An asking price, council valuation and agent appraisal are not interchangeable with a valuation the lender accepts.",
+    "source": "Settled · confirming your finances",
+    "url": "https://www.settled.govt.nz/buying-a-home/making-an-offer/confirming-your-finances/",
+    "translations": {
+      "pt-BR": {
+        "question": "A avaliação do corretor basta para o banco?",
+        "answer": "Não necessariamente. O banco pode exigir uma avaliação que atenda aos critérios dele. Pergunte antes de contratar: avaliador, instruções ou processo podem precisar da aprovação do banco. Preço anunciado, avaliação municipal e estimativa do corretor não substituem uma avaliação aceita pelo banco."
+      },
+      "es": {
+        "question": "¿La valoración del agente inmobiliario basta para el banco?",
+        "answer": "No necesariamente. Tu banco puede exigir una valoración que cumpla sus propios requisitos. Pregunta antes de encargarla: el tasador, las instrucciones o el proceso pueden necesitar aprobación del banco. Un precio anunciado, una valoración municipal y la estimación del agente no sustituyen una valoración aceptada por la entidad."
+      },
+      "zh-Hans": {
+        "question": "房产中介的估价足够满足银行要求吗？",
+        "answer": "不一定。贷款机构可能要求符合自身标准的估值。委托估价前先询问：估价师、委托要求或流程可能需要贷款机构认可。叫价、地方政府估值和房产中介估价，不能与贷款机构接受的估值互相替代。"
+      }
+    }
+  },
+  {
+    "id": "mortgage-7",
+    "topic": "mortgage",
+    "question": "What happens if I repay early or refinance?",
+    "answer": "Your fixed loan may have early-repayment or break costs. A cashback offer or adviser arrangement may also require repayment of money if you leave within a specified period. Get written figures from the lender and adviser before deciding. Check whether you can make smaller extra repayments without a charge.",
+    "source": "Banking Ombudsman · cashback repayment case",
+    "url": "https://www.bankomb.org.nz/guides-and-cases/case-notes/84963",
+    "translations": {
+      "pt-BR": {
+        "question": "O que acontece se eu quitar antes ou refinanciar?",
+        "answer": "Seu empréstimo de taxa fixa pode ter custos de pagamento antecipado ou encerramento. Uma oferta de incentivo em dinheiro (cashback) ou o acordo com o assessor também pode exigir devolução de dinheiro se você sair dentro de determinado período. Peça valores por escrito ao banco e ao assessor antes de decidir. Confira se pode fazer pagamentos extras menores sem cobrança."
+      },
+      "es": {
+        "question": "¿Qué pasa si pago antes de tiempo o refinancio?",
+        "answer": "Tu préstamo fijo puede tener costos de pago anticipado o cancelación. Una oferta de incentivo en efectivo (cashback) o el acuerdo con el asesor también puede exigir devolver dinero si sales dentro de un período determinado. Obtén cifras por escrito del banco y del asesor antes de decidir. Comprueba si puedes hacer pagos adicionales menores sin cargo."
+      },
+      "zh-Hans": {
+        "question": "提前还款或转贷会怎样？",
+        "answer": "固定利率贷款可能有提前还款费或提前终止费用（break costs）。返现方案或顾问服务安排也可能要求你在指定期限内离开时退还款项。决定前，向贷款机构和顾问取得书面金额。也要确认能否免费进行较小金额的额外还款。"
+      }
+    }
+  },
+  {
+    "id": "settlement-1",
+    "topic": "settlement",
+    "question": "What happens on settlement day?",
+    "answer": "Your lawyer manages the legal and money steps with the seller’s lawyer and lender. After settlement is confirmed, the keys can be released as arranged. The exact timing can vary. Keep in touch and leave some flexibility in moving plans rather than assuming access at the start of the day.",
+    "source": "Settled · planning settlement day",
+    "url": "https://www.settled.govt.nz/buying-a-home/settling-and-moving-in/planning-for-settlement-day-when-buying/",
+    "translations": {
+      "pt-BR": {
+        "question": "O que acontece no dia da conclusão da compra?",
+        "answer": "Seu advogado conduz as etapas jurídicas e financeiras com o advogado do vendedor e o banco. Após a confirmação da conclusão (settlement), as chaves podem ser liberadas conforme combinado. O horário exato pode variar. Mantenha contato e deixe flexibilidade na mudança, em vez de contar com acesso logo no início do dia."
+      },
+      "es": {
+        "question": "¿Qué pasa el día del cierre de la compra?",
+        "answer": "Tu abogado gestiona los pasos legales y económicos con el abogado del vendedor y el banco. Una vez confirmado el cierre (settlement), se pueden entregar las llaves según lo acordado. La hora exacta puede variar. Mantén el contacto y algo de flexibilidad en la mudanza, en lugar de dar por hecho el acceso al empezar el día."
+      },
+      "zh-Hans": {
+        "question": "交割日会发生什么？",
+        "answer": "你的律师会与卖方律师及贷款机构处理法律和资金步骤。确认交割完成后，才按约定交付钥匙。具体时间可能不同。保持联系，给搬家计划留一些弹性，不要假设当天一早就能进屋。"
+      }
+    }
+  },
+  {
+    "id": "settlement-2",
+    "topic": "settlement",
+    "question": "What do I check at the pre-settlement inspection?",
+    "answer": "Check the property’s agreed condition, included chattels and any work the seller agreed to complete. Compare with the contract and raise concerns with your lawyer promptly. This is not a replacement for your earlier building inspection. Arrange it early enough for issues to be addressed before settlement.",
+    "source": "Settled · planning settlement day",
+    "url": "https://www.settled.govt.nz/buying-a-home/settling-and-moving-in/planning-for-settlement-day-when-buying/",
+    "translations": {
+      "pt-BR": {
+        "question": "O que verifico na inspeção antes da conclusão?",
+        "answer": "Confira o estado acordado do imóvel, os bens incluídos e as obras que o vendedor se comprometeu a concluir. Compare com o contrato e leve as dúvidas rapidamente ao advogado. Essa visita não substitui a inspeção predial anterior. Agende com antecedência suficiente para que os problemas possam ser tratados antes da conclusão."
+      },
+      "es": {
+        "question": "¿Qué reviso en la inspección previa al cierre?",
+        "answer": "Comprueba el estado acordado, los bienes incluidos y las obras que el vendedor aceptó completar. Compara con el contrato y plantea las dudas a tu abogado cuanto antes. No sustituye la inspección anterior del edificio. Organízala con tiempo suficiente para poder tratar los problemas antes del cierre."
+      },
+      "zh-Hans": {
+        "question": "交割前检查要看什么？",
+        "answer": "核对房屋是否处于约定状态、随房物品是否齐全，以及卖方承诺完成的工程是否已做。对照合同，发现问题尽快通知律师。这不能代替此前的验房。尽早安排，给交割前解决问题留出时间。"
+      }
+    }
+  },
+  {
+    "id": "settlement-3",
+    "topic": "settlement",
+    "question": "What if something is broken or missing before settlement?",
+    "answer": "Tell your lawyer immediately and keep clear evidence. They can assess your rights under the agreement and discuss a remedy with the seller’s lawyer. Do not assume you can delay settlement, withhold money or cancel on your own. The contract and circumstances determine your options.",
+    "source": "Settled · planning settlement day",
+    "url": "https://www.settled.govt.nz/buying-a-home/settling-and-moving-in/planning-for-settlement-day-when-buying/",
+    "translations": {
+      "pt-BR": {
+        "question": "E se algo estiver quebrado ou faltando antes da conclusão?",
+        "answer": "Avise seu advogado imediatamente e guarde provas claras. Ele pode avaliar seus direitos no contrato e discutir uma solução com o advogado do vendedor. Não presuma que pode atrasar a conclusão, reter dinheiro ou cancelar por conta própria. O contrato e as circunstâncias determinam suas opções."
+      },
+      "es": {
+        "question": "¿Y si algo está roto o falta antes del cierre?",
+        "answer": "Avisa inmediatamente a tu abogado y guarda pruebas claras. Puede evaluar tus derechos según el contrato y hablar de una solución con el abogado del vendedor. No supongas que puedes retrasar el cierre, retener dinero o cancelar por tu cuenta. El contrato y las circunstancias determinan tus opciones."
+      },
+      "zh-Hans": {
+        "question": "交割前发现东西坏了或不见了，怎么办？",
+        "answer": "立即告诉律师，并保留清楚的证据。律师可以评估你在协议下的权利，并与卖方律师讨论补救方式。不要自行认定可以推迟交割、扣留款项或取消交易。你的选择取决于合同和具体情况。"
+      }
+    }
+  },
+  {
+    "id": "settlement-4",
+    "topic": "settlement",
+    "question": "When does my KiwiSaver money need to be ready?",
+    "answer": "Your provider and lawyer need time for the withdrawal paperwork and transfer. Confirm their deadlines well before any payment depends on the money. If you want to use it toward a contractual sales deposit, ask about the required arrangements early. It is not an instant withdrawal to your everyday account.",
+    "source": "Kāinga Ora · KiwiSaver withdrawal",
+    "url": "https://kaingaora.govt.nz/en_NZ/home-ownership/kiwisaver-first-home-withdrawal/",
+    "translations": {
+      "pt-BR": {
+        "question": "Quando o dinheiro do KiwiSaver precisa estar pronto?",
+        "answer": "Seu provedor e seu advogado precisam de tempo para os documentos do saque e a transferência. Confirme os prazos bem antes de qualquer pagamento depender desse dinheiro. Se quiser usá-lo no sinal previsto no contrato, pergunte cedo sobre os arranjos necessários. Não é um saque instantâneo para sua conta do dia a dia."
+      },
+      "es": {
+        "question": "¿Cuándo debe estar listo mi dinero de KiwiSaver?",
+        "answer": "Tu proveedor y tu abogado necesitan tiempo para los documentos del retiro y la transferencia. Confirma sus plazos mucho antes de que un pago dependa de ese dinero. Si quieres usarlo para la señal contractual, pregunta pronto por los arreglos necesarios. No es un retiro instantáneo a tu cuenta habitual."
+      },
+      "zh-Hans": {
+        "question": "KiwiSaver 资金什么时候要准备好？",
+        "answer": "管理机构和律师需要时间处理提款文件和转账。在任何付款需要这笔资金之前，就确认好各自的截止时间。如果想用于支付合同预付款，应尽早询问所需安排。这不是即时提取到日常银行账户的提款。"
+      }
+    }
+  },
+  {
+    "id": "settlement-5",
+    "topic": "settlement",
+    "question": "How do I avoid sending my deposit to a scammer?",
+    "answer": "Verify payment details directly with your lawyer or the intended recipient before transferring money. Call a trusted, independently checked number, not the number in an unexpected payment email. Treat changed account details and urgency as reasons to stop and check. An email that looks familiar can still be fraudulent.",
+    "source": "New Zealand Law Society · email payment fraud",
+    "url": "https://www.lawsociety.org.nz/news/newsroom/email-fraud-targets-lawyers/",
+    "translations": {
+      "pt-BR": {
+        "question": "Como evitar mandar meu sinal para um golpista?",
+        "answer": "Verifique os dados de pagamento diretamente com seu advogado ou com o destinatário pretendido antes de transferir. Ligue para um número confiável, conferido de forma independente, não para o número de um e-mail inesperado de pagamento. Mudança de conta e urgência são motivos para parar e conferir. Um e-mail familiar ainda pode ser fraudulento."
+      },
+      "es": {
+        "question": "¿Cómo evito enviar mi señal a un estafador?",
+        "answer": "Verifica los datos de pago directamente con tu abogado o el destinatario previsto antes de transferir. Llama a un número fiable comprobado de forma independiente, no al de un correo de pago inesperado. Los cambios de cuenta y la urgencia son motivos para detenerte y comprobar. Un correo de apariencia familiar también puede ser fraudulento."
+      },
+      "zh-Hans": {
+        "question": "怎样避免把预付款转给骗子？",
+        "answer": "转账前，直接向律师或预定收款人核实付款信息。拨打可信且经过独立核实的电话号码，不要使用意外收到的付款邮件中的号码。遇到收款账户变更或催促付款，应停下来核实。看起来熟悉的邮件也可能是诈骗。"
+      }
+    }
+  },
+  {
+    "id": "settlement-6",
+    "topic": "settlement",
+    "question": "Why is the final settlement amount different from the balance?",
+    "answer": "The settlement statement can include adjustments for items such as rates already paid by the seller, alongside the purchase balance and other agreed amounts. Your legal fees and disbursements also need paying. Ask your lawyer to explain the statement and exactly how much cleared money is needed and when.",
+    "source": "Settled · planning settlement day",
+    "url": "https://www.settled.govt.nz/buying-a-home/settling-and-moving-in/planning-for-settlement-day-when-buying/",
+    "translations": {
+      "pt-BR": {
+        "question": "Por que o valor final da conclusão é diferente do saldo da compra?",
+        "answer": "O demonstrativo de conclusão pode incluir acertos, como taxas municipais já pagas pelo vendedor, além do saldo da compra e de outros valores acordados. Honorários e despesas adiantadas pelo advogado também precisam ser pagos. Peça que ele explique o demonstrativo e exatamente quanto dinheiro disponível é necessário e quando."
+      },
+      "es": {
+        "question": "¿Por qué el importe final del cierre difiere del saldo pendiente?",
+        "answer": "El estado de liquidación puede incluir ajustes como tasas municipales ya pagadas por el vendedor, además del saldo de compra y otros importes acordados. También hay que pagar honorarios y gastos adelantados por el abogado. Pídele que explique el documento y exactamente cuánto dinero disponible hace falta y cuándo."
+      },
+      "zh-Hans": {
+        "question": "为什么最终交割金额与剩余房款不同？",
+        "answer": "交割结算单除了剩余房款和其他约定金额，可能还有费用调整，例如卖方已预付的地税。律师费和代垫费用也需要支付。请律师解释结算单，并明确说明需要多少已结清、可用的资金，以及何时到账。"
+      }
+    }
+  },
+  {
+    "id": "settlement-7",
+    "topic": "settlement",
+    "question": "What if settlement is delayed and I cannot get the keys?",
+    "answer": "Contact your lawyer promptly if funds, paperwork or the seller delay settlement. Let the lawyers confirm what is holding things up, your contractual position and any agreed arrangements. Do not assume you can move in, cancel or claim a particular payment. Keep movers, storage and temporary accommodation flexible, and confirm any insurance implications. Wait for confirmation that settlement is complete before collecting keys as arranged.",
+    "source": "Settled · settlement day",
+    "url": "https://www.settled.govt.nz/buying-a-home/settling-and-moving-in/settling-on-settlement-day-when-buying/",
+    "translations": {
+      "pt-BR": {
+        "question": "E se a conclusão da compra atrasar e eu não conseguir as chaves?",
+        "answer": "Fale rapidamente com seu advogado se recursos, documentos ou o vendedor atrasarem a conclusão da compra. Deixe que os advogados confirmem a causa do atraso, sua situação contratual e quaisquer arranjos acordados. Não presuma que você pode se mudar, cancelar ou exigir determinado pagamento. Mantenha flexibilidade nos planos de mudança, armazenamento e hospedagem temporária, e confirme eventuais efeitos no seguro. Espere a confirmação de que a compra foi concluída antes de retirar as chaves conforme combinado."
+      },
+      "es": {
+        "question": "¿Y si se retrasa el cierre y no puedo recibir las llaves?",
+        "answer": "Contacta pronto a tu abogado si los fondos, los documentos o el vendedor retrasan el cierre. Deja que los abogados confirmen la causa del retraso, tu situación contractual y cualquier arreglo acordado. No supongas que puedes mudarte, cancelar o exigir un pago concreto. Mantén flexibilidad en la mudanza, el almacenamiento y el alojamiento temporal, y confirma las posibles implicaciones para el seguro. Espera la confirmación de que el cierre se ha completado antes de recoger las llaves según lo acordado."
+      },
+      "zh-Hans": {
+        "question": "如果交割延迟，拿不到钥匙，怎么办？",
+        "answer": "如果资金、文件或卖方方面的问题导致交割延迟，尽快联系律师。让双方律师确认延误原因、你在合同下的权利和义务，以及任何商定安排。不要假设自己可以搬入、取消交易，或要求某笔特定款项。搬家、仓储和临时住宿的安排要留有弹性，并确认对保险有何影响。等到确认交割完成后，再按约定领取钥匙。"
+      }
+    }
+  },
+  {
+    "id": "living-1",
+    "topic": "living",
+    "question": "Can I renovate as soon as I own the place?",
+    "answer": "Check first. Some work needs building consent, and other approvals or ownership restrictions may apply too. Consent-exempt work must still meet applicable requirements. Cross-lease, unit-title or leasehold arrangements can add permissions. Use the official consent tool, then confirm your plans with the council and appropriate professionals.",
+    "source": "MBIE · Can I build it?",
+    "url": "https://www.canibuildit.govt.nz/",
+    "translations": {
+      "pt-BR": {
+        "question": "Posso reformar assim que o imóvel for meu?",
+        "answer": "Confira antes. Algumas obras precisam de autorização de construção (building consent), e outras aprovações ou restrições da propriedade também podem valer. Obras dispensadas dessa autorização ainda devem cumprir os requisitos aplicáveis. Cross-lease, unit title ou leasehold podem exigir permissões adicionais. Use a ferramenta oficial de autorizações e depois confirme seus planos com a prefeitura e profissionais adequados."
+      },
+      "es": {
+        "question": "¿Puedo reformar en cuanto sea propietario?",
+        "answer": "Comprueba primero. Algunas obras necesitan permiso de construcción (building consent), y también pueden aplicarse otras aprobaciones o restricciones de propiedad. Las obras exentas deben cumplir los requisitos aplicables. Cross-lease, unit title o leasehold pueden añadir permisos. Usa la herramienta oficial y después confirma tus planes con el municipio y los profesionales adecuados."
+      },
+      "zh-Hans": {
+        "question": "买下房子就可以马上翻新吗？",
+        "answer": "先核实。有些工程需要建筑许可，其他审批或产权限制也可能适用。免于建筑许可的工程仍必须满足相关要求。交叉租赁、单元产权或租赁产权可能还需要额外许可。先使用官方审批查询工具，再与地方政府和适当的专业人士确认计划。"
+      }
+    }
+  },
+  {
+    "id": "living-2",
+    "topic": "living",
+    "question": "Are building consent and resource consent the same?",
+    "answer": "No. Building consent concerns compliance of building work with the Building Code. Resource consent concerns planning rules and environmental effects. A project may need one, both or neither, depending on the work and site. Exemption from building consent does not remove other requirements. Confirm the specific project with your council.",
+    "source": "MBIE · Can I build it?",
+    "url": "https://www.canibuildit.govt.nz/",
+    "translations": {
+      "pt-BR": {
+        "question": "Building consent e resource consent são a mesma coisa?",
+        "answer": "Não. Building consent trata da conformidade da obra com o código de construção (Building Code). Resource consent trata de regras de planejamento e efeitos ambientais. Um projeto pode precisar de uma, das duas ou de nenhuma, conforme a obra e o local. A dispensa de building consent não elimina outros requisitos. Confirme o projeto específico com a prefeitura."
+      },
+      "es": {
+        "question": "¿Building consent y resource consent son lo mismo?",
+        "answer": "No. Building consent trata del cumplimiento de la obra con el código de construcción (Building Code). Resource consent trata de normas urbanísticas y efectos ambientales. Un proyecto puede necesitar uno, ambos o ninguno, según la obra y el lugar. La exención de building consent no elimina otros requisitos. Confirma tu proyecto concreto con el municipio."
+      },
+      "zh-Hans": {
+        "question": "建筑许可和资源许可是一回事吗？",
+        "answer": "不是。建筑许可（building consent）关注建筑工程是否符合建筑规范（Building Code）。资源许可（resource consent）关注规划规则和环境影响。根据工程和地点不同，项目可能需要其中一种、两种都需要，或两种都不需要。免于建筑许可，并不意味着其他要求也免除。向地方政府确认你的具体项目。"
+      }
+    }
+  },
+  {
+    "id": "living-3",
+    "topic": "living",
+    "question": "What is a CCC, and is it the same as a certificate of acceptance?",
+    "answer": "A code compliance certificate confirms building work complies with its building consent. A certificate of acceptance applies in different circumstances and can cover only what the council can assess. It is not retrospective building consent or a whole-house guarantee. Ask your lawyer and council what the particular document does and does not cover.",
+    "source": "Building Performance · certificate of acceptance",
+    "url": "https://www.building.govt.nz/projects-and-consents/sign-off-and-maintenance/completing-your-project/certificate-of-acceptance",
+    "translations": {
+      "pt-BR": {
+        "question": "O que é um CCC? É igual a um certificado de aceitação (certificate of acceptance)?",
+        "answer": "O certificado de conformidade com o código de construção (CCC) confirma que a obra cumpre sua autorização. O certificado de aceitação (certificate of acceptance) se aplica em outras circunstâncias e só pode abranger o que a prefeitura consegue avaliar. Não é uma autorização de obra retroativa nem uma garantia da casa inteira. Pergunte ao advogado e à prefeitura o que o documento específico cobre e o que deixa de fora."
+      },
+      "es": {
+        "question": "¿Qué es un CCC? ¿Es lo mismo que un certificado de aceptación (certificate of acceptance)?",
+        "answer": "El certificado de cumplimiento del código de construcción (CCC) confirma que la obra cumple su permiso de construcción. Un certificado de aceptación (certificate of acceptance) se aplica en otras circunstancias y solo puede cubrir lo que el municipio puede evaluar. No es un permiso retroactivo ni una garantía de toda la casa. Pregunta al abogado y al municipio qué cubre el documento concreto y qué no."
+      },
+      "zh-Hans": {
+        "question": "CCC 是什么？和工程认可证书一样吗？",
+        "answer": "建筑合规证书（code compliance certificate，CCC）确认建筑工程符合其建筑许可。工程认可证书（certificate of acceptance）适用于不同情况，只能覆盖地方政府能够评估的内容。它不是事后补发的建筑许可，也不是整栋房屋的保证。请律师和地方政府说明这份具体文件涵盖什么、不涵盖什么。"
+      }
+    }
+  },
+  {
+    "id": "living-4",
+    "topic": "living",
+    "question": "How do I budget for a renovation?",
+    "answer": "Get the scope and quotes clear, check approvals, and allow for hidden conditions and changes. Existing buildings can reveal problems only when work starts. Include professional fees, consent costs, insurance implications and somewhere to live if needed. Do not treat a quick cosmetic estimate as a price for structural or weather-tightness repairs.",
+    "source": "Building Performance · renovating an existing home",
+    "url": "https://www.building.govt.nz/getting-started/stages-of-the-building-process/renovations-differ-to-new-builds",
+    "translations": {
+      "pt-BR": {
+        "question": "Como faço o orçamento de uma reforma?",
+        "answer": "Defina bem o escopo e os orçamentos, confira aprovações e reserve margem para condições ocultas e mudanças. Imóveis existentes podem revelar problemas só quando a obra começa. Inclua honorários profissionais, custos de autorizações, efeitos no seguro e um lugar para morar, se necessário. Não trate uma estimativa estética rápida como orçamento para reparos estruturais ou de estanqueidade."
+      },
+      "es": {
+        "question": "¿Cómo preparo el presupuesto de una reforma?",
+        "answer": "Define bien el alcance y los presupuestos, comprueba aprobaciones y deja margen para condiciones ocultas y cambios. Los edificios existentes pueden revelar problemas solo al empezar la obra. Incluye honorarios profesionales, permisos, implicaciones para el seguro y alojamiento si hace falta. No trates una estimación estética rápida como precio de reparaciones estructurales o de estanqueidad."
+      },
+      "zh-Hans": {
+        "question": "怎么做翻新预算？",
+        "answer": "明确工程范围和报价，核实审批，并为隐藏问题和变更预留空间。现有建筑的问题有时要开工后才会发现。预算应包括专业服务费、审批费、对保险的影响，以及必要时的临时住处费用。不要把简单外观翻新的粗略估算，当作结构或防渗漏维修的价格。"
+      }
+    }
+  },
+  {
+    "id": "living-5",
+    "topic": "living",
+    "question": "What if I find asbestos or suspect unsafe materials?",
+    "answer": "Do not drill, sand, break or remove suspect material to find out. Get appropriate assessment and advice from qualified professionals. Disturbing asbestos can release harmful fibres; specialist handling may be needed. Before buying an older fixer-upper, investigate whether likely work will disturb materials and include that in the scope and budget.",
+    "source": "Health New Zealand · dealing with asbestos",
+    "url": "https://www.healthnz.govt.nz/health-topics/keeping-healthy/healthy-homes-environments/hazardous-substances/asbestos/dealing-with-asbestos",
+    "translations": {
+      "pt-BR": {
+        "question": "E se eu encontrar amianto ou suspeitar de materiais perigosos?",
+        "answer": "Não fure, lixe, quebre nem remova material suspeito para descobrir. Busque avaliação e orientação adequadas de profissionais qualificados. Mexer no amianto pode liberar fibras nocivas; pode ser necessário manejo especializado. Antes de comprar um imóvel antigo para reformar, investigue se a obra provável vai mexer nesses materiais e inclua isso no escopo e no orçamento."
+      },
+      "es": {
+        "question": "¿Y si encuentro amianto o sospecho materiales peligrosos?",
+        "answer": "No taladres, lijes, rompas ni retires material sospechoso para averiguarlo. Busca evaluación y asesoramiento adecuados de profesionales cualificados. Alterar amianto puede liberar fibras dañinas; puede necesitar manejo especializado. Antes de comprar una vivienda antigua para reformar, investiga si las obras previstas alterarán materiales e inclúyelo en el alcance y presupuesto."
+      },
+      "zh-Hans": {
+        "question": "发现石棉或怀疑有不安全材料，怎么办？",
+        "answer": "不要为了确认而钻孔、打磨、敲碎或移除可疑材料。请合资格专业人士作适当评估并提供意见。扰动石棉可能释放有害纤维，需要专业处理。购买需要翻修的旧房前，调查计划工程是否会扰动这些材料，并把处理工作计入范围和预算。"
+      }
+    }
+  },
+  {
+    "id": "living-6",
+    "topic": "living",
+    "question": "What should I do about maintenance and insurance?",
+    "answer": "Use the building report to prioritise repairs and preventive maintenance. Keep records and tell your insurer about changes or planned works that could affect cover. Review cover, excesses and rebuilding assumptions at renewal. Being insured does not remove the need to maintain the home or understand policy exclusions.",
+    "source": "Settled · natural hazards",
+    "url": "https://www.settled.govt.nz/buying-a-home/researching-the-property/understanding-the-impact-of-natural-hazards/",
+    "translations": {
+      "pt-BR": {
+        "question": "O que devo fazer sobre manutenção e seguro?",
+        "answer": "Use o relatório do imóvel para priorizar reparos e manutenção preventiva. Guarde registros e informe à seguradora mudanças ou obras planejadas que possam afetar a cobertura. Na renovação, revise cobertura, franquias e premissas de reconstrução. Ter seguro não elimina a necessidade de manter o imóvel nem de entender as exclusões da apólice."
+      },
+      "es": {
+        "question": "¿Qué debo hacer sobre mantenimiento y seguro?",
+        "answer": "Usa el informe del edificio para priorizar reparaciones y mantenimiento preventivo. Guarda registros e informa a tu aseguradora de cambios u obras previstas que puedan afectar a la cobertura. Al renovar, revisa cobertura, deducibles y supuestos de reconstrucción. Tener seguro no elimina la necesidad de mantener la vivienda ni entender las exclusiones."
+      },
+      "zh-Hans": {
+        "question": "维护和保险方面要做什么？",
+        "answer": "根据验房报告安排维修和预防性维护的优先顺序。保存记录，并向保险公司说明可能影响保障的变更或计划工程。续保时检查保障、自付额和重建估算所依据的假设。有保险并不意味着可以忽略房屋维护，也不能省略对除外责任的了解。"
+      }
+    }
+  },
+  {
+    "id": "living-7",
+    "topic": "living",
+    "question": "What if repayments become difficult?",
+    "answer": "Contact your lender or mortgage adviser early rather than waiting for missed payments. Explain what has changed and ask about available options and their longer-term costs. Before a fixed period ends, review the next rate and your budget. A longer loan term may lower payments but can increase total interest.",
+    "source": "FMA · mortgage advice",
+    "url": "https://www.fma.govt.nz/consumer/getting-advice/mortgage-advice/",
+    "translations": {
+      "pt-BR": {
+        "question": "E se ficar difícil pagar as parcelas?",
+        "answer": "Fale cedo com seu banco ou assessor, em vez de esperar atrasar pagamentos. Explique o que mudou e pergunte as opções disponíveis e seus custos de longo prazo. Antes de acabar o período fixo, revise a próxima taxa e seu orçamento. Um prazo maior pode reduzir as parcelas, mas aumentar os juros totais."
+      },
+      "es": {
+        "question": "¿Y si me cuesta pagar las cuotas?",
+        "answer": "Contacta pronto a tu banco o asesor hipotecario en lugar de esperar a incumplir pagos. Explica qué ha cambiado y pregunta por las opciones disponibles y sus costos a largo plazo. Antes de terminar un período fijo, revisa la siguiente tasa y tu presupuesto. Un plazo mayor puede reducir las cuotas, pero aumentar los intereses totales."
+      },
+      "zh-Hans": {
+        "question": "还款开始有困难，怎么办？",
+        "answer": "尽早联系贷款机构或房贷顾问，不要等到逾期。说明发生了什么变化，询问可用方案及其长期成本。固定利率期结束前，重新检查下一期利率和预算。延长贷款期限可能降低每期还款，但也可能增加总利息。"
+      }
+    }
+  },
+  {
+    "id": "agents-1",
+    "topic": "agents",
+    "question": "Who does the real estate agent work for?",
+    "answer": "The listing agent acts for the seller, who normally pays the commission. They must still treat buyers fairly and honestly. You hire and pay your own buyer’s agent under a separate written agreement. Keep your lawyer involved: none of these roles replaces independent legal or building advice.",
+    "source": "Settled · agents and private sales",
+    "url": "https://www.settled.govt.nz/buying-a-home/finding-a-property/buying-with-an-agent-or-privately/",
+    "translations": {
+      "pt-BR": {
+        "question": "Para quem o corretor imobiliário trabalha?",
+        "answer": "O corretor responsável pelo anúncio atua para o vendedor, que normalmente paga a comissão. Mesmo assim, deve tratar compradores com justiça e honestidade. Você contrata e paga seu próprio corretor do comprador por meio de um contrato escrito separado. Mantenha seu advogado envolvido: nenhum desses papéis substitui orientação jurídica ou técnica sobre a construção de forma independente."
+      },
+      "es": {
+        "question": "¿Para quién trabaja el agente inmobiliario?",
+        "answer": "El agente que anuncia el inmueble actúa para el vendedor, que normalmente paga la comisión. Aun así, debe tratar a los compradores con justicia y honestidad. Tú contratas y pagas a tu propio agente del comprador mediante un contrato escrito aparte. Mantén a tu abogado involucrado: ninguno de estos papeles sustituye el asesoramiento legal o técnico sobre la construcción de forma independiente."
+      },
+      "zh-Hans": {
+        "question": "房地产中介为谁工作？",
+        "answer": "挂牌中介代表卖家，佣金通常由卖家支付。他们仍必须公平、诚实地对待买家。你通过单独的书面协议聘请自己的买方中介，并支付其费用。让律师持续参与：这些角色都不能替代独立的法律或建筑专业意见。"
+      }
+    }
+  },
+  {
+    "id": "agents-2",
+    "topic": "agents",
+    "question": "Is an agent who shows me homes my buyer’s agent?",
+    "answer": "Not necessarily. Helping you find a listing, or sharing a sale with another agency, does not by itself mean they represent you. Ask who their client is. A buyer’s agency agreement should explain services, fees and authority. Check the licence and have your lawyer review it before signing. The same agency must not represent both sides in the same transaction.",
+    "source": "REA · buyer’s agents",
+    "url": "https://www.rea.govt.nz/real-estate-professionals/industry-guidance-and-information/buyers-agent-information/",
+    "translations": {
+      "pt-BR": {
+        "question": "Um corretor que me mostra imóveis é meu corretor do comprador?",
+        "answer": "Não necessariamente. Ajudar a encontrar um anúncio ou dividir uma venda com outra imobiliária não significa, por si só, que ele representa você. Pergunte quem é o cliente dele. Um contrato de representação do comprador deve explicar serviços, honorários e poderes. Confira a licença e peça ao seu advogado que revise o contrato antes de assinar. A mesma imobiliária não pode representar os dois lados na mesma transação."
+      },
+      "es": {
+        "question": "¿El agente que me enseña viviendas es mi agente del comprador?",
+        "answer": "No necesariamente. Ayudarte a encontrar un anuncio o compartir una venta con otra agencia no significa por sí solo que te represente. Pregunta quién es su cliente. Un contrato de representación del comprador debe explicar servicios, honorarios y poderes. Comprueba la licencia y pide a tu abogado que lo revise antes de firmar. La misma agencia no puede representar a ambas partes en la misma operación."
+      },
+      "zh-Hans": {
+        "question": "带我看房的中介就是我的买方中介吗？",
+        "answer": "不一定。帮你找房源，或与另一家中介合作完成出售，本身不代表他们代理你。问清他们的客户是谁。买方代理协议应说明服务、费用与权限。核查执照，并在签署前请律师审查。同一家中介机构不得在同一交易中同时代理买卖双方。"
+      }
+    }
+  },
+  {
+    "id": "agents-3",
+    "topic": "agents",
+    "question": "What must an agent disclose, and what should I still check?",
+    "answer": "Agents cannot mislead buyers or withhold information that must be provided. They must disclose known defects and alert buyers to likely hidden-defect risks. Ask for written information about repairs, consents, hazards, inclusions and any connection to the seller. Verify important points with your lawyer, inspector and council; disclosure is not a guarantee that every defect is known.",
+    "source": "REA · conduct and client care rules",
+    "url": "https://www.settled.govt.nz/assets/Uploads/Resources/Guides/Code-of-conduct.pdf",
+    "translations": {
+      "pt-BR": {
+        "question": "O que o corretor deve informar e o que ainda preciso verificar?",
+        "answer": "Corretores não podem enganar compradores nem omitir informações que precisam ser fornecidas. Devem informar defeitos conhecidos e alertar sobre riscos prováveis de defeitos ocultos. Peça informações por escrito sobre reparos, autorizações, riscos, itens incluídos e qualquer ligação com o vendedor. Confirme pontos importantes com seu advogado, inspetor e council (prefeitura local); essas informações não garantem que todos os defeitos sejam conhecidos."
+      },
+      "es": {
+        "question": "¿Qué debe comunicar el agente y qué debo seguir comprobando?",
+        "answer": "Los agentes no pueden engañar a los compradores ni ocultar información que deba facilitarse. Deben comunicar los defectos conocidos y advertir de riesgos probables de defectos ocultos. Pide información por escrito sobre reparaciones, permisos, riesgos, elementos incluidos y cualquier vínculo con el vendedor. Verifica los puntos importantes con tu abogado, inspector y council (ayuntamiento local); esta información no garantiza que se conozcan todos los defectos."
+      },
+      "zh-Hans": {
+        "question": "中介必须披露什么？我还要核查什么？",
+        "answer": "中介不得误导买家，也不得隐瞒必须提供的信息。他们必须披露已知缺陷，并提醒买家注意可能存在的隐蔽缺陷风险。要求提供有关维修、建筑许可、风险、包含物品以及与卖家任何关系的书面信息。与律师、验房师及 council（地方政府）核实重要事项；已作披露并不保证所有缺陷都已被发现。"
+      }
+    }
+  },
+  {
+    "id": "agents-4",
+    "topic": "agents",
+    "question": "Should I tell the selling agent my maximum budget?",
+    "answer": "You can state what you are prepared to offer without volunteering your absolute ceiling. Do not assume the seller’s agent is giving you confidential buying advice. Ask how information will be used, be truthful about your position, and keep your own budget limit separate from sales pressure.",
+    "source": "Settled · agents and private sales",
+    "url": "https://www.settled.govt.nz/buying-a-home/finding-a-property/buying-with-an-agent-or-privately/",
+    "translations": {
+      "pt-BR": {
+        "question": "Devo contar ao corretor da venda meu orçamento máximo?",
+        "answer": "Você pode dizer quanto está disposto a oferecer sem revelar seu limite absoluto. Não presuma que o corretor do vendedor esteja dando orientação confidencial de compra. Pergunte como as informações serão usadas, seja honesto sobre sua situação e mantenha seu limite de orçamento separado da pressão da venda."
+      },
+      "es": {
+        "question": "¿Debo decir al agente de la venta cuál es mi presupuesto máximo?",
+        "answer": "Puedes indicar cuánto estás dispuesto a ofrecer sin revelar tu límite absoluto. No supongas que el agente del vendedor te da asesoramiento de compra confidencial. Pregunta cómo se usará la información, explica tu situación con honestidad y mantén tu límite de presupuesto al margen de la presión de la venta."
+      },
+      "zh-Hans": {
+        "question": "我该告诉卖方中介自己的最高预算吗？",
+        "answer": "你可以说明愿意出多少钱，而不必主动透露绝对上限。不要以为卖方中介是在向你提供保密的购房建议。询问信息将如何使用，如实说明自身情况，并把自己的预算上限与销售压力分开考虑。"
+      }
+    }
+  },
+  {
+    "id": "agents-5",
+    "topic": "agents",
+    "question": "How do I check an agent’s licence or raise a concern?",
+    "answer": "Use REA’s public register to check the person’s current licence and available disciplinary information. Keep messages and documents if something concerns you. Raise the issue with the agency or supervising manager, and use REA’s complaints guidance where appropriate. A private unlicensed seller is outside REA’s agent-complaints process; ask your lawyer what options you have.",
+    "source": "Settled · agents and private sales",
+    "url": "https://www.settled.govt.nz/buying-a-home/finding-a-property/buying-with-an-agent-or-privately/",
+    "translations": {
+      "pt-BR": {
+        "question": "Como verifico a licença de um corretor ou relato um problema?",
+        "answer": "Use o registro público da REA para conferir a licença atual e as informações disciplinares disponíveis. Guarde mensagens e documentos se algo preocupar você. Leve o problema à imobiliária ou ao gerente responsável e, quando adequado, siga as orientações da REA para reclamações. Um proprietário particular que vende sem licença de corretor fica fora do processo de reclamações da REA contra corretores; pergunte ao seu advogado quais opções você tem."
+      },
+      "es": {
+        "question": "¿Cómo compruebo la licencia de un agente o planteo una queja?",
+        "answer": "Usa el registro público de REA para comprobar la licencia vigente y la información disciplinaria disponible. Guarda mensajes y documentos si algo te preocupa. Plantea el problema a la agencia o al responsable de supervisión y utiliza las orientaciones de REA sobre reclamaciones cuando corresponda. Un propietario particular que vende sin licencia de agente queda fuera del proceso de reclamaciones de REA contra agentes; pregunta a tu abogado qué opciones tienes."
+      },
+      "zh-Hans": {
+        "question": "如何核查中介执照或反映问题？",
+        "answer": "通过 REA 公开名册核查此人当前的执照及可查的纪律处分信息。如有疑虑，保存消息和文件。向中介机构或监督经理反映，并在适当情况下参考 REA 的投诉指引。不持中介执照的私人卖家不属于 REA 的中介投诉程序范围；请律师说明你有哪些选择。"
+      }
+    }
+  },
+  {
+    "id": "sales-1",
+    "topic": "sales",
+    "question": "How do negotiation, deadline, tender and auction differ?",
+    "answer": "Negotiation allows offers and counteroffers. A deadline sale invites offers by a date and may allow an earlier sale. A tender invites confidential written offers under its tender terms. An auction uses open bidding; a successful auction purchase is unconditional. For each property, confirm the actual documents, dates, conditions and deposit arrangements with your lawyer.",
+    "source": "Settled · negotiation and price guides",
+    "url": "https://www.settled.govt.nz/buying-a-home/making-an-offer/buying-by-negotiation/",
+    "translations": {
+      "pt-BR": {
+        "question": "Qual é a diferença entre negociação, deadline, tender e leilão?",
+        "answer": "Na negociação, há propostas e contrapropostas. Uma deadline sale recebe propostas até uma data e pode permitir venda antecipada. Um tender recebe propostas escritas confidenciais conforme suas regras. No leilão, os lances são abertos; uma compra concluída em leilão é incondicional. Para cada imóvel, confirme com seu advogado os documentos, datas, condições e arranjos do sinal aplicáveis."
+      },
+      "es": {
+        "question": "¿En qué se diferencian negociación, deadline, tender y subasta?",
+        "answer": "La negociación permite ofertas y contraofertas. Una deadline sale recibe ofertas hasta una fecha y puede permitir una venta anticipada. Un tender recibe ofertas escritas confidenciales según sus reglas. Una subasta utiliza pujas abiertas; una compra adjudicada en subasta es incondicional. Para cada inmueble, confirma con tu abogado los documentos, fechas, condiciones y acuerdos sobre la señal aplicables."
+      },
+      "zh-Hans": {
+        "question": "协商、限期报价、密封投标和拍卖有何区别？",
+        "answer": "协商允许报价与还价。限期报价出售（deadline sale）邀请买家在指定日期前报价，也可能允许提前售出。密封投标（tender）按投标规则接收保密的书面报价。拍卖采用公开竞价；拍卖成交的购买是无条件的。每套房都应请律师确认实际文件、日期、条件及合同预付款安排。"
+      }
+    }
+  },
+  {
+    "id": "sales-2",
+    "topic": "sales",
+    "question": "Does an asking price, BEO, BBO or “offers over” guarantee acceptance?",
+    "answer": "No. These are ways of indicating price expectations, not a promise to accept your offer. BEO means buyer enquiry over; BBO means buyer budget over. POA means price on application. Ask about the seller’s expectations, compare evidence and your own budget, and negotiate price and terms through a properly reviewed agreement.",
+    "source": "Settled · negotiation and price guides",
+    "url": "https://www.settled.govt.nz/buying-a-home/making-an-offer/buying-by-negotiation/",
+    "translations": {
+      "pt-BR": {
+        "question": "Preço pedido, BEO, BBO ou “offers over” garantem aceitação?",
+        "answer": "Não. São formas de indicar a expectativa de preço, não uma promessa de aceitar sua proposta. BEO significa buyer enquiry over (consultas de compradores acima do valor indicado); BBO significa buyer budget over (orçamento do comprador acima do valor indicado). POA significa price on application (preço sob consulta). Pergunte sobre a expectativa do vendedor, compare as informações e seu orçamento e negocie preço e termos em um contrato devidamente revisado."
+      },
+      "es": {
+        "question": "¿El precio anunciado, BEO, BBO u “offers over” garantizan la aceptación?",
+        "answer": "No. Son formas de indicar expectativas de precio, no una promesa de aceptar tu oferta. BEO significa buyer enquiry over (consultas de compradores por encima del importe indicado); BBO significa buyer budget over (presupuesto del comprador por encima del importe indicado). POA significa price on application (precio a consultar). Pregunta por las expectativas del vendedor, compara los datos y tu presupuesto, y negocia precio y términos mediante un contrato debidamente revisado."
+      },
+      "zh-Hans": {
+        "question": "挂牌价、BEO、BBO 或“offers over”保证报价会被接受吗？",
+        "answer": "不保证。这些是表达价格预期的方式，不是接受你报价的承诺。BEO 是 buyer enquiry over，表示欢迎高于标示金额的买家询价；BBO 是 buyer budget over，表示买家预算需高于标示金额。POA 是 price on application，即价格需询问。了解卖家预期，比较相关资料与自身预算，并通过经过妥善审查的协议协商价格与条款。"
+      }
+    }
+  },
+  {
+    "id": "sales-3",
+    "topic": "sales",
+    "question": "Can a deadline or tender property sell before the closing date?",
+    "answer": "It may, if the process and terms permit an earlier sale. Look for “unless sold prior” and ask the agent directly. Register your interest and request notice of an early offer or changed closing time. Do not assume an advertised deadline guarantees you time to finish your checks.",
+    "source": "Settled · deadline sales",
+    "url": "https://www.settled.govt.nz/buying-a-home/making-an-offer/buying-by-deadline/",
+    "translations": {
+      "pt-BR": {
+        "question": "Um imóvel em deadline ou tender pode ser vendido antes do encerramento?",
+        "answer": "Pode, se o processo e as regras permitirem uma venda antecipada. Procure “unless sold prior” (salvo venda anterior) e pergunte diretamente ao corretor. Registre seu interesse e peça aviso de proposta antecipada ou alteração no horário de encerramento. Não presuma que o prazo anunciado garanta tempo para concluir suas verificações."
+      },
+      "es": {
+        "question": "¿Puede venderse una vivienda en deadline o tender antes del cierre?",
+        "answer": "Puede, si el proceso y las reglas permiten una venta anticipada. Busca “unless sold prior” (salvo venta previa) y pregunta directamente al agente. Registra tu interés y pide que te avisen de una oferta anticipada o un cambio de hora de cierre. No supongas que el plazo anunciado te garantiza tiempo para terminar tus comprobaciones."
+      },
+      "zh-Hans": {
+        "question": "限期报价或密封投标的房产能在截止前售出吗？",
+        "answer": "如果流程和条款允许，就有可能。留意“unless sold prior”（除非提前售出），并直接询问中介。登记你的购买意向，要求在出现提前报价或截止时间变更时通知你。不要以为广告上的截止日期就保证你有足够时间完成核查。"
+      }
+    }
+  },
+  {
+    "id": "sales-4",
+    "topic": "sales",
+    "question": "What should I check before submitting a tender?",
+    "answer": "Have your lawyer review the tender documents, any conditions, offer validity and withdrawal rules. A deposit is usually submitted with the tender; confirm the amount, timing and how it will be held. Ask whether an early sale is possible. The seller need not accept the highest offer, or any offer.",
+    "source": "Settled · tenders",
+    "url": "https://www.settled.govt.nz/buying-a-home/making-an-offer/buying-by-tender/",
+    "translations": {
+      "pt-BR": {
+        "question": "O que devo verificar antes de apresentar um tender?",
+        "answer": "Peça ao seu advogado que revise os documentos do tender, as condições, a validade da proposta e as regras de retirada. Normalmente, o sinal é apresentado junto com o tender; confirme valor, prazo e como ficará guardado. Pergunte se pode haver venda antecipada. O vendedor não é obrigado a aceitar a maior proposta nem qualquer proposta."
+      },
+      "es": {
+        "question": "¿Qué debo revisar antes de presentar un tender?",
+        "answer": "Pide a tu abogado que revise los documentos del tender, las condiciones, la vigencia de la oferta y las reglas para retirarla. Normalmente se presenta una señal junto con el tender; confirma el importe, el plazo y cómo se custodiará. Pregunta si es posible una venta anticipada. El vendedor no tiene que aceptar la oferta más alta ni ninguna otra."
+      },
+      "zh-Hans": {
+        "question": "提交密封投标前应核查什么？",
+        "answer": "请律师审查投标文件、任何附加条件、报价有效期及撤回规则。通常需随投标提交合同预付款；确认金额、时间及款项如何保管。询问是否可能提前出售。卖家不必接受最高报价，也可以不接受任何报价。"
+      }
+    }
+  },
+  {
+    "id": "sales-5",
+    "topic": "sales",
+    "question": "What if an auction passes in, or an offer arrives before auction day?",
+    "answer": "Passing in means the property did not sell under the auction process at that point; negotiations may follow. Ask what process and contract will now apply. Auction rules may continue, so a later offer may still need to be unconditional. An early offer may change the auction timetable. Do not assume you can add conditions after a successful bid; ask your lawyer before making a pre-auction offer or a later negotiated commitment.",
+    "source": "Settled · buying at auction",
+    "url": "https://www.settled.govt.nz/buying-a-home/making-an-offer/buying-by-auction/",
+    "translations": {
+      "pt-BR": {
+        "question": "E se o imóvel não for vendido no leilão ou chegar uma proposta antes?",
+        "answer": "“Passing in” significa que o imóvel não foi vendido pelo processo de leilão naquele momento; pode haver negociação depois. Pergunte qual processo e contrato passarão a valer. As regras do leilão podem continuar valendo, então uma proposta posterior ainda pode precisar ser incondicional. Uma proposta antecipada pode mudar a data do leilão. Não presuma que poderá acrescentar condições depois de um lance vencedor; consulte seu advogado antes de fazer uma proposta pré-leilão ou assumir um compromisso negociado depois."
+      },
+      "es": {
+        "question": "¿Qué ocurre si la subasta queda sin adjudicar o llega una oferta antes?",
+        "answer": "“Passing in” significa que el inmueble no se vendió por el proceso de subasta en ese momento; después puede haber negociaciones. Pregunta qué proceso y contrato se aplicarán ahora. Las reglas de la subasta pueden seguir vigentes, por lo que una oferta posterior aún podría tener que ser incondicional. Una oferta anticipada puede cambiar el calendario de la subasta. No supongas que puedes añadir condiciones tras una puja ganadora; consulta a tu abogado antes de hacer una oferta previa a la subasta o asumir después un compromiso negociado."
+      },
+      "zh-Hans": {
+        "question": "拍卖流拍，或拍卖日前收到报价，会怎样？",
+        "answer": "“Passing in”表示房产在当时的拍卖流程中未售出，之后可能进行协商。询问接下来适用什么流程和合同。拍卖规则可能继续适用，因此后续报价也可能仍须是无条件的。提前报价可能改变拍卖时间安排。不要以为竞拍成功后还能添加条件；提交拍卖前报价或之后通过协商作出承诺前，先咨询律师。"
+      }
+    }
+  },
+  {
+    "id": "sales-6",
+    "topic": "sales",
+    "question": "What is a multi-offer process, and can I improve my offer later?",
+    "answer": "A multi-offer process requires more than one current written offer. Ask the agent how this agency’s process works and when your offer expires. You may not get a chance to improve it. The seller can weigh conditions and timing as well as price, reject all offers or negotiate further. Stay within your limit and keep the legal protections you need.",
+    "source": "Settled · multiple offers",
+    "url": "https://www.settled.govt.nz/buying-a-home/making-an-offer/understanding-a-multi-offer-process/",
+    "translations": {
+      "pt-BR": {
+        "question": "O que é um processo de múltiplas propostas? Posso melhorar a minha depois?",
+        "answer": "Um processo de múltiplas propostas exige mais de uma proposta escrita vigente. Pergunte ao corretor como funciona o processo daquela imobiliária e quando sua proposta expira. Talvez você não tenha chance de melhorá-la. O vendedor pode considerar condições e prazos além do preço, rejeitar todas as propostas ou continuar negociando. Respeite seu limite e mantenha as proteções jurídicas de que precisa."
+      },
+      "es": {
+        "question": "¿Qué es un proceso de ofertas múltiples? ¿Puedo mejorar mi oferta después?",
+        "answer": "Un proceso de ofertas múltiples requiere más de una oferta escrita vigente. Pregunta al agente cómo funciona el proceso de esa agencia y cuándo caduca tu oferta. Puede que no tengas ocasión de mejorarla. El vendedor puede valorar condiciones y plazos además del precio, rechazar todas las ofertas o seguir negociando. Respeta tu límite y mantén las protecciones legales que necesitas."
+      },
+      "zh-Hans": {
+        "question": "什么是多报价流程？以后还能提高报价吗？",
+        "answer": "多报价流程需要同时存在不止一份有效书面报价。向中介询问该机构的具体流程，以及你的报价何时失效。你可能没有机会提高报价。卖家可以同时考虑价格、条件与时间，拒绝所有报价，或继续协商。守住自己的上限，保留所需的法律保护。"
+      }
+    }
+  },
+  {
+    "id": "sales-7",
+    "topic": "sales",
+    "question": "How do I buy directly from a private owner?",
+    "answer": "Confirm the seller’s identity and authority, and have your lawyer prepare or review the sale and purchase agreement. Arrange the same property, finance and insurance checks. Have your lawyer or conveyancer arrange safe trust-account handling of the deposit; do not assume a direct transfer to the seller is appropriate. Private sellers must disclose known issues, but REA’s agent-complaints process does not cover a private unlicensed seller. Legal protections depend on the circumstances.",
+    "source": "Settled · agents and private sales",
+    "url": "https://www.settled.govt.nz/buying-a-home/finding-a-property/buying-with-an-agent-or-privately/",
+    "translations": {
+      "pt-BR": {
+        "question": "Como compro diretamente de um proprietário particular?",
+        "answer": "Confirme a identidade e a autoridade do vendedor e peça ao seu advogado que prepare ou revise o contrato de compra e venda. Providencie as mesmas verificações de imóvel, financiamento e seguro. Peça ao advogado ou conveyancer (profissional de transferência imobiliária) que organize o recebimento seguro do sinal em uma trust account (conta de valores de clientes); não presuma que uma transferência direta ao vendedor seja adequada. Vendedores particulares devem informar problemas conhecidos, mas o processo da REA contra corretores não cobre um vendedor particular sem licença. As proteções jurídicas dependem das circunstâncias."
+      },
+      "es": {
+        "question": "¿Cómo compro directamente a un propietario particular?",
+        "answer": "Confirma la identidad y la autoridad del vendedor y pide a tu abogado que prepare o revise el contrato de compraventa. Organiza las mismas comprobaciones del inmueble, financiación y seguro. Pide al abogado o conveyancer (profesional de tramitación de compraventas) que organice la custodia segura de la señal en una trust account (cuenta de fondos de clientes); no supongas que una transferencia directa al vendedor sea adecuada. Los vendedores particulares deben comunicar los problemas conocidos, pero el proceso de REA contra agentes no cubre a un vendedor particular sin licencia. Las protecciones legales dependen de las circunstancias."
+      },
+      "zh-Hans": {
+        "question": "如何直接向私人业主买房？",
+        "answer": "确认卖家身份及出售权限，请律师起草或审查买卖协议。同样要安排房产、贷款和保险核查。请律师或 conveyancer（房产过户专业人士）通过 trust account（客户资金专用账户）安全处理合同预付款；不要以为直接转账给卖家就合适。私人卖家必须披露已知问题，但 REA 的中介投诉程序不适用于不持中介执照的私人卖家。法律保护取决于具体情况。"
+      }
+    }
+  },
+  {
+    "id": "sales-8",
+    "topic": "sales",
+    "question": "What extra risks come with a mortgagee sale?",
+    "answer": "Here the lender is exercising its power to sell. Contract protections and warranties may differ, and access, vacant possession, included items or insurance can be uncertain. Get specialist legal advice on the exact terms and risk before bidding or signing. Confirm what you can inspect, when you become responsible and whether your lender and insurer accept the arrangement. The sale may be removed if the owner repays the mortgage before settlement.",
+    "source": "Settled · property options",
+    "url": "https://www.settled.govt.nz/buying-a-home/finding-a-property/considering-your-property-options/",
+    "translations": {
+      "pt-BR": {
+        "question": "Quais riscos extras existem numa mortgagee sale?",
+        "answer": "Numa mortgagee sale, o credor exerce seu poder de vender o imóvel hipotecado. As proteções e garantias contratuais podem ser diferentes, e acesso, entrega desocupada, itens incluídos ou seguro podem ser incertos. Obtenha orientação jurídica especializada sobre os termos exatos e os riscos antes de dar lances ou assinar. Confirme o que pode inspecionar, quando passa a ser responsável e se seu financiador e sua seguradora aceitam o arranjo. A venda pode ser retirada se o proprietário quitar a hipoteca antes do settlement (conclusão da compra)."
+      },
+      "es": {
+        "question": "¿Qué riesgos adicionales tiene una mortgagee sale?",
+        "answer": "En una mortgagee sale, el prestamista ejerce su facultad de vender el inmueble hipotecado. Las protecciones y garantías del contrato pueden ser distintas, y el acceso, la entrega desocupada, los elementos incluidos o el seguro pueden ser inciertos. Busca asesoramiento legal especializado sobre los términos exactos y el riesgo antes de pujar o firmar. Confirma qué puedes inspeccionar, cuándo asumes la responsabilidad y si tu prestamista y aseguradora aceptan el acuerdo. La venta puede retirarse si el propietario paga la hipoteca antes del settlement (finalización de la compraventa)."
+      },
+      "zh-Hans": {
+        "question": "抵押权人出售有哪些额外风险？",
+        "answer": "在 mortgagee sale（抵押权人出售）中，贷款机构行使其出售权。合同保护及保证可能不同，能否进入房屋、能否空置交付、包含哪些物品及保险安排都可能不确定。竞拍或签署前，就具体条款和风险寻求专业法律意见。确认你能检查什么、何时开始承担责任，以及你的贷款机构和保险公司是否接受该安排。如果业主在 settlement（交割）前还清抵押贷款，出售可能被撤回。"
+      }
+    }
+  },
+  {
+    "id": "sales-9",
+    "topic": "sales",
+    "question": "What changes when the seller is a deceased estate or a trust?",
+    "answer": "Ask your lawyer to confirm who has authority to sign and whether any estate or trust steps affect the timing. Check the actual warranties, inclusions and settlement terms rather than assuming a standard sale. These describe the seller’s circumstances, not a separate bidding process: the home may still be sold by negotiation, tender or auction.",
+    "source": "Settled · estates and trusts",
+    "url": "https://www.settled.govt.nz/selling-a-home/thinking-of-selling/planning-to-sell/",
+    "translations": {
+      "pt-BR": {
+        "question": "O que muda quando o vendedor é um espólio ou um trust?",
+        "answer": "Peça ao seu advogado que confirme quem tem autoridade para assinar e se alguma etapa do espólio ou trust (estrutura de gestão de bens) afeta os prazos. Confira as garantias, os itens incluídos e os termos de settlement (conclusão da compra), em vez de presumir uma venda padrão. Esses nomes descrevem a situação do vendedor, não um processo separado de lances: o imóvel ainda pode ser vendido por negociação, tender ou leilão."
+      },
+      "es": {
+        "question": "¿Qué cambia si el vendedor es una herencia o un trust?",
+        "answer": "Pide a tu abogado que confirme quién tiene autoridad para firmar y si algún trámite de la herencia o del trust (estructura de gestión de bienes) afecta a los plazos. Revisa las garantías, los elementos incluidos y los términos de settlement (finalización de la compraventa), sin dar por hecha una venta estándar. Estos términos describen las circunstancias del vendedor, no un proceso de puja aparte: la vivienda puede venderse por negociación, tender o subasta."
+      },
+      "zh-Hans": {
+        "question": "卖家是遗产管理方或信托时，有什么不同？",
+        "answer": "请律师确认谁有权签署，以及遗产或 trust（信托）的相关手续是否影响时间安排。核查实际保证、包含物品和 settlement（交割）条款，不要假设与普通出售相同。这些词描述的是卖家的情况，并非独立的竞价流程：房产仍可能通过协商、密封投标或拍卖出售。"
+      }
+    }
+  }
+]

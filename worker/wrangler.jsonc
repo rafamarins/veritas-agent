@@ -1,0 +1,42 @@
+{
+  "$schema": "../node_modules/wrangler/config-schema.json",
+  "name": "veritas-agent",
+  "main": "../src/worker.js",
+  "compatibility_date": "2026-11-18",
+  "ai": {
+    "binding": "AI"
+  },
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "QUALITY",
+        "class_name": "VeritasQuality"
+      }
+    ]
+  },
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": [
+        "VeritasQuality"
+      ]
+    }
+  ],
+  "workers_dev": false,
+  "preview_urls": false,
+  "ratelimits": [
+    {
+      "name": "REQUEST_LIMIT",
+      "namespace_id": "4981",
+      "simple": {
+        "limit": 12,
+        "period": 60
+      }
+    }
+  ],
+  "triggers": {
+    "crons": [
+      "17 4 * * *"
+    ]
+  }
+}
