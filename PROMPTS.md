@@ -18,3 +18,21 @@ Rafael’s prompts to Codex, in order.
 7. “and use the same arrows as home-veritas”
 
 8. “be sure that there's nothing in the public repo that could create any security concerns, no keys, env vars or anything like that, keep what needs to be local local and what can be public public”
+
+9. “make sure you run a clean up on the repo for unsued items
+   another unslop round
+   rename where necesary for veritas-agent
+   include promptfoo evals, some basic sample evals only
+   make sure we proptect our agent against prompt injection, bad behaviour, ddos, spam and all the standards for any sort of agentic chats.
+   keep chat history in the users broswer storage
+   cloudflare storage to be used for improving answers and self improvement of the agent via scheduled/cron workflows on the server running daily to verify questions and answers and run some decision model like kev on it to help improve responses as needed.”
+
+   When Codex asked which Kev project he meant, Rafael linked [jaredpalmer/kev](https://github.com/jaredpalmer/kev).
+
+10. “pause the work if we drop under 60% usage, use subagents intelligently to manage usage and split up work as need with different models used based on the tasks requirements.”
+
+11. “we should get feedback on the answers provided with thumbs up or down icon buttons below the answer to know how good that was and save that in our CF memory”
+
+12. “include screenshots in the readme”
+
+13. “update the chat response to streamed and make the Reading the guide and references… pulsing between opacity .5 and 1 while it loads the answer”
