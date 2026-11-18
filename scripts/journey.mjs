@@ -31,7 +31,57 @@ const read = (tab = page) =>
         localStorage.getItem('veritas-agent.chat.v1') || '{"messages":[]}',
       ).messages,
   );
-async function submit(question) {
+async function submit(question, reducedMotion = false) {
+  await page.emulateMedia({
+    reducedMotion: reducedMotion ? 'reduce' : 'no-preference',
+  });
+  const prior = (await read()).length;
+  await page.evaluate((prior) => {
+    const thread = document.querySelector('#thread');
+    const trace = {
+      loading: null,
+      first: '',
+      last: '',
+      updates: 0,
+      savedEarly: false,
+      overflow: false,
+    };
+    window.streamTrace = trace;
+    const observer = new MutationObserver(() => {
+      const answer = thread.querySelector('.turn:last-child .answer');
+      if (!document.querySelector('#send').disabled) {
+        if (trace.loading) observer.disconnect();
+        return;
+      }
+      if (!answer) return;
+      if (answer.classList.contains('is-reading')) {
+        trace.loading = {
+          text: answer.textContent,
+          opacity:
+            answer
+              .getAnimations()[0]
+              ?.effect.getKeyframes()
+              .map((f) => Number(f.opacity)) || [],
+        };
+      } else if (answer.textContent !== trace.last) {
+        trace.first ||= answer.textContent;
+        trace.last = answer.textContent;
+        trace.updates++;
+        const saved = JSON.parse(
+          localStorage.getItem('veritas-agent.chat.v1') || '{"messages":[]}',
+        );
+        trace.savedEarly ||=
+          saved.messages.length !== prior ||
+          Boolean(answer.parentElement.querySelector('.answer-feedback'));
+        trace.overflow ||= document.documentElement.scrollWidth > innerWidth;
+      }
+    });
+    observer.observe(thread, {
+      childList: true,
+      subtree: true,
+      characterData: true,
+    });
+  }, prior);
   await page.getByRole('textbox', { name: 'Your question' }).fill(question);
   await page.locator('#send').click();
   await page.waitForFunction(
@@ -49,9 +99,17 @@ async function submit(question) {
   assert.equal(
     turn.mode,
     'assistant',
-    'The visit needs a running local model.',
+    'Expected a cited model reply for the fictional visit.',
   );
   assert.doesNotMatch(turn.answer, /local information memorandum/i);
+  const trace = await page.evaluate(() => window.streamTrace);
+  assert.equal(trace.loading?.text, 'Reading the guide and references…');
+  assert.deepEqual(trace.loading.opacity, reducedMotion ? [] : [0.5, 1]);
+  assert.ok(trace.updates > 1 && trace.first.length < turn.answer.length);
+  assert.ok(turn.answer.startsWith(trace.first));
+  assert.equal(trace.savedEarly, false);
+  assert.equal(trace.overflow, false);
+  assert.equal(await page.locator('.is-reading').count(), 0);
   return turn;
 }
 try {
@@ -87,8 +145,10 @@ try {
   );
   await page.reload();
   assert.equal((await read())[0].id, first.id);
+  if (!screenshot) await page.setViewportSize({ width: 390, height: 844 });
   const second = await submit(
     'The council paperwork only mentions a carport. Does that answer my earlier question?',
+    true,
   );
   assert.match(second.answer, /garage|bedroom/i);
   assert.match(second.answer, /carport/i);
@@ -192,7 +252,7 @@ try {
   assert.deepEqual(errors, []);
   assert.deepEqual(external, []);
   console.log(
-    'Passed source quote, two-turn recall, device storage, isolated browser, update/remove vote, clear across tabs and responsive controls.',
+    'Passed streamed replies, loading pulse and reduced motion, source quote, two-turn recall, device storage, isolated browser, update/remove vote, clear across tabs and responsive controls.',
   );
 } finally {
   await browser.close();

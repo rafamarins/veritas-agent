@@ -32,7 +32,7 @@ Open the source under the reply. The quotation links to the publisher and shows 
 
 > The council paperwork only mentions a carport. Does that answer my earlier question?
 
-Veritas can refer back to what you saw and suggest which records to ask for. The thumbs below each answer mark it helpful or unhelpful. Click the same thumb again to remove your vote.
+You can read the answer as it arrives. Your browser saves the finished reply and its sources for your next question. Use the thumbs to mark an answer helpful or unhelpful. Click the same thumb again to remove your vote.
 
 ## The guide and its sources
 

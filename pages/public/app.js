@@ -5,6 +5,7 @@ import {
   savedToDevice,
   updateHistory,
 } from './history.js';
+import { readChat } from './stream.js';
 const $ = (selector) => document.querySelector(selector);
 const form = $('#composer'),
   question = $('#question'),
@@ -70,7 +71,11 @@ function turnView(turn, last) {
   row.append(
     q,
     element('h2', 'author', 'Veritas'),
-    element('p', 'answer', turn.answer || 'Reading the guide and references…'),
+    element(
+      'p',
+      turn.answer ? 'answer' : 'answer is-reading',
+      turn.answer || 'Reading the guide and references…',
+    ),
   );
   if (turn.citations?.length) {
     const details = element('details', 'sources');
@@ -113,10 +118,9 @@ function turnView(turn, last) {
   return row;
 }
 function render() {
-  const list = pending
-    ? [...state.messages, { question: pending }]
-    : state.messages;
+  const list = pending ? [...state.messages, pending] : state.messages;
   const active = list.length > 0;
+  status.classList.toggle('visually-hidden', sending);
   document.body.toggleAttribute('data-chat', active);
   clear.hidden = !state.messages.length;
   clear.disabled = sending;
@@ -133,17 +137,31 @@ function render() {
   for (const btn of document.querySelectorAll('.starter'))
     btn.disabled = sending;
 }
-async function post(path, data) {
+function appendAnswer(text) {
+  const answer = thread.lastElementChild.querySelector('.answer');
+  if (!pending.answer) {
+    answer.classList.remove('is-reading');
+    answer.textContent = '';
+    status.textContent = 'Writing the answer…';
+  }
+  pending.answer += text;
+  answer.textContent = pending.answer;
+}
+async function post(path, data, onText) {
   const response = await fetch(path, {
     method: 'POST',
     credentials: 'omit',
-    headers: { 'content-type': 'application/json' },
+    headers: {
+      'content-type': 'application/json',
+      accept: onText ? 'application/x-ndjson' : 'application/json',
+    },
     body: JSON.stringify(data),
   });
-  const result = await response.json();
   if (!response.ok)
-    throw Error(result.error || 'Unable to finish this request.');
-  return result;
+    throw Error(
+      (await response.json()).error || 'Unable to finish this request.',
+    );
+  return onText ? readChat(response.body, onText) : response.json();
 }
 async function rate(turn, value) {
   if (voting.has(turn.receipt)) return;
@@ -179,17 +197,21 @@ form.addEventListener('submit', async (event) => {
   if (!text || sending) return;
   const before = readHistory();
   sending = true;
-  pending = text;
+  pending = { question: text, answer: '' };
   question.value = '';
   question.readOnly = true;
   status.textContent = 'Finding sources…';
   render();
   showLatest();
   try {
-    const reply = await post('/api/chat', {
-      question: text,
-      history: earlierTurns(before.messages, text),
-    });
+    const reply = await post(
+      '/api/chat',
+      {
+        question: text,
+        history: earlierTurns(before.messages, text),
+      },
+      appendAnswer,
+    );
     const appended = await updateHistory((s) => {
       if (
         s.epoch !== before.epoch ||
@@ -220,7 +242,6 @@ form.addEventListener('submit', async (event) => {
     sending = false;
     question.readOnly = false;
     render();
-    if (!question.value) showLatest();
   }
 });
 question.addEventListener('keydown', (event) => {

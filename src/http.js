@@ -14,6 +14,44 @@ const json = (value, status = 200, headers = {}) =>
     },
   });
 const problem = (error, status, headers) => json({ error }, status, headers);
+const requestFailed = 'Could not finish this request. Try again shortly.';
+
+function streamReply(request, complete) {
+  const { readable, writable } = new TransformStream();
+  const writer = writable.getWriter();
+  const encoder = new TextEncoder();
+  const connection = new AbortController();
+  const signal = AbortSignal.any([request.signal, connection.signal]);
+  const stop = () => writer.abort(signal.reason).catch(() => {});
+  signal.addEventListener('abort', stop, { once: true });
+  writer.closed.catch(() => connection.abort());
+  const write = (event) =>
+    writer.write(encoder.encode(JSON.stringify(event) + '\n'));
+
+  async function send() {
+    try {
+      const reply = await complete({
+        onText: (text) => write({ type: 'delta', text }),
+        signal,
+      });
+      await write({ type: 'done', reply });
+    } catch {
+      if (!signal.aborted) await write({ type: 'error', error: requestFailed });
+    } finally {
+      signal.removeEventListener('abort', stop);
+      await writer.close();
+    }
+  }
+  send().catch(stop);
+  return new Response(readable, {
+    headers: {
+      'content-type': 'application/x-ndjson; charset=utf-8',
+      'cache-control': 'no-store, no-transform',
+      'x-content-type-options': 'nosniff',
+      vary: 'Accept',
+    },
+  });
+}
 
 async function body(request) {
   if (
@@ -131,16 +169,25 @@ export async function handleRequest(request, env) {
         'The daily chat limit has been reached. Try again tomorrow UTC.',
         429,
       );
-    const reply = instructionRequest.test(question)
-      ? scopeReply
-      : await ask(env, context, style);
-    const receipt = await store.record(
-      reply.mode === 'scope' ? null : context.topic,
-      reply.mode,
-    );
-    return json({ ...reply, receipt });
+    async function complete(options) {
+      options.signal.throwIfAborted();
+      const reply = instructionRequest.test(question)
+        ? scopeReply
+        : await ask(env, context, style, options);
+      options.signal.throwIfAborted();
+      const receipt = await store.record(
+        reply.mode === 'scope' ? null : context.topic,
+        reply.mode,
+      );
+      return { ...reply, receipt };
+    }
+    if (request.headers.get('accept')?.includes('application/x-ndjson'))
+      return streamReply(request, complete);
+    return json(await complete({ signal: request.signal }), 200, {
+      vary: 'Accept',
+    });
   } catch (error) {
     if (error instanceof Response) return error;
-    return problem('Could not finish this request. Try again shortly.', 503);
+    return problem(requestFailed, 503);
   }
 }

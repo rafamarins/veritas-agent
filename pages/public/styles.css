@@ -293,6 +293,19 @@ body[data-chat] :is(.house, .intro-text, .starters, .return-note) {
   overflow-wrap: anywhere;
   font-size: 1.05rem;
 }
+@media (prefers-reduced-motion: no-preference) {
+  .answer.is-reading {
+    animation: reading 1s ease-in-out infinite alternate;
+  }
+}
+@keyframes reading {
+  from {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+  }
+}
 .sources {
   margin-top: 15px;
 }
