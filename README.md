@@ -1,8 +1,14 @@
 # Ask Veritas
 
-Ask Veritas helps people buying a home in New Zealand. Ask what to look for at a viewing, open the passage behind the answer, then come back when the agent sends the paperwork.
+Ask Veritas helps people buying a home in New Zealand. Ask what to look for at a viewing, open the passage behind the answer, then come back when the agent sends the paperwork. [Run it locally](#try-it-locally)
 
-[![Ask Veritas with the Home Veritas house illustration and chat input](docs/ask-veritas.png)](docs/ask-veritas.png)
+## Screenshots
+
+[![Ask Veritas start page with the chat input and suggested questions for a home viewing](docs/ask-veritas.png)](docs/ask-veritas.png)
+
+The buyer saw a garage converted into a bedroom. When they ask about a carport in the council file, Veritas remembers the conversion and quotes MBIE's guidance.
+
+[![Veritas answers the carport follow-up with a quotation from MBIE Building Performance and thumbs-up and thumbs-down buttons](docs/cited-reply.png)](docs/cited-reply.png)
 
 ## Try it locally
 
@@ -27,13 +33,6 @@ Open the source under the reply. The quotation links to the publisher and shows 
 > The council paperwork only mentions a carport. Does that answer my earlier question?
 
 Veritas can refer back to what you saw and suggest which records to ask for. The thumbs below each answer mark it helpful or unhelpful. Click the same thumb again to remove your vote.
-
-<details>
-<summary>See the follow-up in the local browser test</summary>
-
-![The reply to the carport question, its quotations and the feedback buttons](docs/cited-reply.png)
-
-</details>
 
 ## The guide and its sources
 
