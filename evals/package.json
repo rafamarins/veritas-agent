@@ -1,0 +1,15 @@
+{
+  "name": "veritas-agent-evals",
+  "private": true,
+  "dependencies": {
+    "promptfoo": "0.125.1"
+  },
+  "overrides": {
+    "@hono/node-server": "2.1.9",
+    "glob": "14.0.6",
+    "minimatch": "11.0.9"
+  },
+  "scripts": {
+    "evaluate": "PROMPTFOO_DISABLE_TELEMETRY=1 PROMPTFOO_DISABLE_UPDATE=1 promptfoo eval -c promptfooconfig.yaml --no-cache --no-write --no-table --max-concurrency 1"
+  }
+}
