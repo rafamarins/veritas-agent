@@ -22,7 +22,9 @@ npm run model:local
 npm run dev
 ```
 
-Open [Ask Veritas on localhost](http://127.0.0.1:8794). The setup command lists your installed models and saves your choice in the ignored file `worker/.dev.vars`. Kev is optional for chat. You can also skip model setup to explore the indexed excerpts. Local development needs no Cloudflare account.
+Open [Ask Veritas on localhost](http://127.0.0.1:8794). The setup command lists your installed models and saves your choice in the ignored file `worker/.dev.vars`. The daily Jev review is optional for chat. You can also skip model setup to explore the indexed excerpts. Local development needs no Cloudflare account.
+
+For a faster local demo, install `qwen2.5:7b` with Ollama and choose it during setup. To switch an existing checkout, change `OLLAMA_MODEL` in `worker/.dev.vars` and restart Wrangler. The 7B model gave its first readable words in a median of 2.1 seconds on an M3 Pro, compared with 8.8 seconds for Qwen3.8. It missed some source details in testing. [Model comparison and sample questions](docs/model-comparison.md)
 
 ### Try a follow-up
 
@@ -33,6 +35,22 @@ Open the source under the reply. The quotation links to the publisher and shows 
 > The council paperwork only mentions a carport. Does that answer my earlier question?
 
 You can read the answer as it arrives. Your browser saves the finished reply and its sources for your next question. Use the thumbs to mark an answer helpful or unhelpful. Click the same thumb again to remove your vote.
+
+**Chat home** lists the conversations saved in this browser, most recent first. Open one to continue it, or choose **New chat** to start with an empty history. Each chat has its own link on this device. **Clear chat** removes the open conversation.
+
+### Speak or listen
+
+Open **Voice**, choose a language, and select **Dictate**. Review or edit the transcript before sending. **Read aloud** plays a finished answer. In voice mode you can also have Veritas read new replies automatically. Navigation stops the microphone and playback.
+
+To include on-device speech models, run this once before starting Wrangler or building the Pages site:
+
+```sh
+npm run voice:prepare
+```
+
+Whisper Tiny transcribes up to 30 seconds at a time in English, Portuguese, Spanish or Chinese. First use downloads about 66 MB. Kokoro reads English replies aloud and downloads about 117 MB on first use. Both run in the browser and share a runtime, so trying the second model uses less data. The preparation script checks the files against pinned checksums. Pages serves them from the same site. [Whisper Tiny model](https://huggingface.co/openai/whisper-tiny) · [Kokoro model](https://huggingface.co/hexgrad/Kokoro-82M)
+
+Without these assets, the app offers installed device voices and dictation where the browser supports it. Browser dictation may use the browser vendor's speech service. The voice panel shows which option is available before you record.
 
 ## The guide and its sources
 
@@ -53,24 +71,24 @@ The indexer checks each page for its reviewed excerpt before accepting more text
 
 | | What it keeps |
 | --- | --- |
-| Buyer's browser | The last 30 exchanges, citations, anonymous answer receipts and selected thumbs. Clear chat clears this device's conversation. |
-| Worker request | The question and up to eight relevant earlier turns for this reply. Buyer messages and replies do not go into the server database. |
+| Buyer's browser | Up to 30 chats, each with its latest 30 exchanges, citations, anonymous receipts and votes. An existing single-chat history appears under Your chats. |
+| Worker request | The question and up to eight relevant earlier turns from the open chat. Buyer messages and replies do not go into the server database. |
 | Cloudflare Durable Object | A random receipt per answer, its public guide topic, answer mode, UTC day and current vote. A receipt identifies one answer. There is no buyer or conversation ID. The daily job removes receipts older than 30 days. |
-| Daily review | Copies of generated answers to public guide questions, source IDs, Kev scores and the decision for each topic. Active answer styles stay available for later requests. |
+| Daily review | Copies of generated answers to public guide questions, source IDs, Jev scores, judge model and the decision for each topic. Active answer styles stay available for later requests. |
 
 On localhost, Wrangler emulates Cloudflare storage and Ollama answers on the machine. On Cloudflare, Workers AI runs Llama 3.3 70B. Pages serves this one page and calls the Worker through a service binding. The browser only calls its own origin.
 
-## Daily review with Kev
+Workers Free includes 10,000 AI neurons per account per day. A long question with several sources uses more than a short one, so the app's 200-question daily limit cannot guarantee 200 generated answers. If inference runs out of quota, the chat can still return source excerpts. On-device speech uses no AI neurons. The daily Jev review uses TypeSafe credits separately. [Workers AI pricing](https://developers.cloudflare.com/workers-ai/platform/pricing/)
+
+## Daily review with Jev
 
 At 04:17 UTC a Workers Cron Trigger reviews up to two public guide questions. It starts with topics that received thumbs down or produced source-only answers in the past week. A rotating guide question keeps the review active on quiet days. Each vote can be changed or removed for 30 days.
 
-The Worker answers each public question with two fixed styles. One gives the usual answer. The other starts with what a source establishes. It checks the quotations, then sends each answer and its cited passages to [Jared Palmer's Kev](https://github.com/jaredpalmer/kev). Kev scores source support and usefulness independently through its System One API.
+The Worker answers each public question with two fixed styles. One gives the usual answer. The other starts with what a source establishes. It checks the quotations, then sends the public question, generated answer and cited passages to TypeSafe's System One endpoint at `https://api.typesafe.ai/v1/systemone`. Jev `jev-1.14.0` scores source support and usefulness in one request. A review of two topics uses up to four requests against the configured TypeSafe account. [Jev documentation](https://docs.typesafe.ai/)
 
 The alternate style needs at least 0.85 for support and 0.75 for usefulness. When both answers can be scored, neither score may fall and their combined improvement must reach 0.15. These are initial thresholds for this project. If neither answer meets both thresholds, the run flags the topic for review. A failed judge run keeps the current style. Votes can move a question up the review list. They cannot rewrite prompts or edit guidance.
 
-To try a review, start a local Kev server using the [upstream setup](https://github.com/jaredpalmer/kev#run-it-locally). Enter its loopback URL when running `npm run model:local`, or set `KEV_URL` in the ignored `worker/.dev.vars`. Restart the dev server, then run `npm run review:local`. Wrangler dispatches the real cron handler to the local Worker. Repeating a completed day skips the model calls.
-
-For a future deployment, provide an operator-controlled HTTPS Kev endpoint through the Worker's `KEV_URL` secret and `KEV_TOKEN` if the endpoint requires it. Kev receives only public review examples.
+For a fresh local setup, export `TYPESAFE_API_KEY` from your secret manager before running `npm run model:local`. The setup script writes it to the private, ignored `worker/.dev.vars`. For an existing checkout, add that key to the same file and restart Wrangler. Run `npm run review:local` to dispatch the cron handler locally. Repeating a completed day skips the model calls. On Cloudflare, configure the key as a Worker secret.
 
 ## Chat safeguards
 
@@ -86,9 +104,13 @@ npm run build
 npx playwright install chromium webkit
 npm run test:journey
 npm run test:journey -- --webkit
+npm run test:history
+npm run test:voice
 npm run eval:setup
 npm run eval
 ```
+
+With the voice assets prepared, run `npm run test:voice -- --kokoro` to check playback of two sentences and `node test/transcribe.browser.mjs` to dictate a fictional question. Add `--webkit` to either command to check WebKit.
 
 The build compiles both Cloudflare bundles locally. The browser journeys and three Promptfoo samples need the running app with a local chat model. The samples cover a cited answer, a viewing follow-up and a request outside the agent's role. Eval setup installs a separate locked Promptfoo toolchain and skips optional peer dependencies. The eval command disables sharing, telemetry, caching and saved reports.
 
@@ -97,9 +119,10 @@ The build compiles both Cloudflare bundles locally. The browser journeys and thr
 | [Project prompt history](PROMPTS.md) | Rafael's prompts for this assignment |
 | [Chat prompt and output checks](src/assistant.js) | Worker AI binding, local model and citation validation |
 | [Retrieval](src/retrieval.js) | How the guide, the index and previous turns inform an answer |
-| [Browser chat](pages/public/app.js) and [device history](pages/public/history.js) | Follow-ups, votes and clearing a conversation |
+| [Browser chat](pages/public/app.js) and [device history](pages/public/history.js) | Saved chats, migration from the original history, follow-ups and votes |
 | [HTTP handler](src/http.js) and [shared storage](src/quality-store.js) | Input limits, receipts, votes and the daily budget |
-| [Daily review](src/review.js) and [sample evals](evals/promptfooconfig.yaml) | Kev decisions and reproducible checks |
+| [Voice controls](pages/public/voice.js) | Editable dictation and on-device playback |
+| [Daily review](src/review.js) and [sample evals](evals/promptfooconfig.yaml) | Jev decisions and reproducible checks |
 | [Worker configuration](worker/wrangler.jsonc) and [Pages configuration](pages/wrangler.jsonc) | Llama, Durable Objects, rate limiting, cron and service binding |
 
 [Contributor instructions](AGENTS.md) · [Verification skill](.agents/skills/verify-veritas/SKILL.md)
