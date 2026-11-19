@@ -18,7 +18,10 @@
     "eval": "npm --prefix evals run evaluate",
     "preeval": "node scripts/index-references.mjs",
     "review:local": "node scripts/review-local.mjs",
-    "eval:setup": "cd evals && npm ci --legacy-peer-deps --include=optional --no-fund"
+    "eval:setup": "cd evals && npm ci --legacy-peer-deps --include=optional --no-fund",
+    "voice:prepare": "node scripts/prepare-kokoro.mjs && node scripts/prepare-whisper.mjs",
+    "test:history": "node test/history.browser.mjs",
+    "test:voice": "node test/voice.browser.mjs"
   },
   "devDependencies": {
     "pdfjs-dist": "6.5.438",

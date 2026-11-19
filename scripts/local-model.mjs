@@ -30,22 +30,6 @@ try {
     Number((await prompts.question('Chat model [1]: ')).trim() || 1) - 1;
   if (!Number.isInteger(index) || !models[index])
     throw Error('Select a model from the list.');
-  const kevInput = (
-    await prompts.question('Local Kev server URL for daily reviews [skip]: ')
-  ).trim();
-  let kev;
-  if (kevInput) {
-    kev = new URL(kevInput);
-    if (
-      !['localhost', '127.0.0.1', '[::1]'].includes(kev.hostname) ||
-      !['http:', 'https:'].includes(kev.protocol) ||
-      kev.username ||
-      kev.password ||
-      kev.search ||
-      kev.hash
-    )
-      throw Error('Enter a loopback Kev URL without credentials.');
-  }
   const path = new URL('../worker/.dev.vars', import.meta.url);
   const file = await open(path, 'wx', 0o600);
   try {
@@ -55,7 +39,11 @@ try {
         '\nOLLAMA_MODEL=' +
         JSON.stringify(models[index].name) +
         '\n' +
-        (kev ? 'KEV_URL=' + JSON.stringify(kev.origin) + '\n' : ''),
+        (process.env.TYPESAFE_API_KEY
+          ? 'TYPESAFE_API_KEY=' +
+            JSON.stringify(process.env.TYPESAFE_API_KEY) +
+            '\n'
+          : ''),
     );
   } finally {
     await file.close();

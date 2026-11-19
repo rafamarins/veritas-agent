@@ -52,6 +52,25 @@ test('an exact translated guide question retrieves its original topic', () => {
     );
 });
 
+test('a translated guide question keeps its known language beside English evidence', async () => {
+  const question = answers[0].translations['pt-BR'].question;
+  let messages;
+  const env = {
+    AI: {
+      async run(_, request) {
+        messages = request.messages;
+        return { response: '{"answer":"Sem dados.","sources":[]}' };
+      },
+    },
+  };
+  await ask(env, contextFor([], question));
+  assert.match(
+    messages[0].content,
+    /Write the entire answer in Brazilian Portuguese/,
+  );
+  assert.equal(JSON.parse(messages[1].content).question, question);
+});
+
 test('a follow-up uses the prior conversation and retrieves relevant sources again', () => {
   const first = 'What does a LIM say about council records?';
   const primary = contextFor([], first).sources.find(

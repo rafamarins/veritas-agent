@@ -22,3 +22,6 @@ src/guide/reference-index.json.*.tmp
 playwright-report/
 evals/results/
 .promptfoo/
+
+/pages/public/voice-assets/
+/pages/public/whisper-assets/

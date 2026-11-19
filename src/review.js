@@ -1,6 +1,8 @@
 import { ask } from './assistant.js';
 import { contextFor, reviewQuestions } from './retrieval.js';
 
+const judgeModel = 'jev-1.14.0';
+
 const questions = {
   grounded: {
     type: 'noul',
@@ -16,34 +18,23 @@ const questions = {
 
 export async function judgeAnswer(env, question, reply, sources) {
   if (reply.mode !== 'assistant' || !reply.citations.length) return null;
-  const endpoint = new URL(env.KEV_URL);
-  const local = ['localhost', '127.0.0.1', '[::1]'].includes(endpoint.hostname);
-  if (
-    endpoint.username ||
-    endpoint.password ||
-    endpoint.search ||
-    endpoint.hash ||
-    (endpoint.protocol !== 'https:' &&
-      !(endpoint.protocol === 'http:' && local && env.OLLAMA_URL))
-  ) {
-    throw Error('Invalid reviewer endpoint');
-  }
+  if (!env.TYPESAFE_API_KEY) throw Error('Reviewer unconfigured');
   const evidence = reply.citations.map(
     (c) =>
       sources.find((s) => s.sourceId === c.sourceId && s.text.includes(c.quote))
         ?.text,
   );
   if (evidence.some((text) => !text)) return null;
-  const response = await fetch(new URL('/v1/systemone', endpoint), {
+  const response = await fetch('https://api.typesafe.ai/v1/systemone', {
     method: 'POST',
     redirect: 'manual',
     signal: AbortSignal.timeout(45000),
     headers: {
       'content-type': 'application/json',
-      ...(env.KEV_TOKEN ? { authorization: 'Bearer ' + env.KEV_TOKEN } : {}),
+      authorization: 'Bearer ' + env.TYPESAFE_API_KEY,
     },
     body: JSON.stringify({
-      model: 'kev-latest',
+      model: judgeModel,
       questions,
       state: JSON.stringify({ question, answer: reply.answer, evidence }),
     }),
@@ -82,6 +73,7 @@ async function evaluate(env, topic, style) {
   const scores = await judgeAnswer(env, question, reply, context.sources);
   return {
     style,
+    judgeModel,
     mode: reply.mode,
     answer: reply.answer,
     sourceIds: reply.citations.map((c) => c.sourceId),
@@ -96,7 +88,7 @@ export async function runDailyReview(env, day) {
   if (job.running) return 'in-progress';
   const results = [];
   try {
-    if (!env.KEV_URL) throw Error('Reviewer unconfigured');
+    if (!env.TYPESAFE_API_KEY) throw Error('Reviewer unconfigured');
     for (const { topic, style } of job.topics) {
       const current = await evaluate(env, topic, style);
       const alternate = await evaluate(

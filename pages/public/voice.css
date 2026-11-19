@@ -1,0 +1,65 @@
+.form-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+}
+#dictate {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  color: var(--ink);
+  background: transparent;
+}
+#dictate:not(:disabled):hover {
+  background: #eeefe9;
+}
+#dictate:disabled {
+  opacity: 0.45;
+}
+#dictate[data-active],
+#dictate[data-active]:hover {
+  color: var(--paper);
+  background: var(--ink);
+}
+#dictate .mic-stop,
+#dictate[data-active] .mic-icon {
+  display: none;
+}
+#dictate[data-active] .mic-stop {
+  display: inline;
+}
+#dictation-note,
+#voice-status {
+  grid-column: 1 / -1;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+#voice-status:empty {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+.listen {
+  min-height: 44px;
+  border: 0;
+  padding: 0 6px;
+  background: transparent;
+  color: var(--blue);
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 650;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+@media (max-width: 570px) {
+  #composer {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

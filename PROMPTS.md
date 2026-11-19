@@ -36,3 +36,12 @@ Rafael’s prompts to Codex, in order.
 12. “include screenshots in the readme”
 
 13. “update the chat response to streamed and make the Reading the guide and references… pulsing between opacity .5 and 1 while it loads the answer”
+
+14. “We could use Jev instead I have some credits there and we can use their endpoint, look at the configs for [$chrome-agent-jev-cua] that will have the endpoit to use.
+    And for the chat we should have a way to go back to the initial screen and see past chats to open and such and the ability to start new chats.
+    We could also enable voice mode for the chat, we could use Kokoro TTS or other lightweight voice models for that.
+    Also look at any other OSS models for the chat that might be faster, we're doing rag here with the data so we can chose something lighter that might work best for rag.”
+
+    The local path to the Chrome Agent and Jev skill was omitted. Codex compared Ollama models using the same guide questions, checked Jev against public examples, and tested navigation and on-device speech in separate browser profiles.
+
+15. “the voice feature is too complicated, should just be like the codex one, a microphone and we start listening to what the user has to say”
