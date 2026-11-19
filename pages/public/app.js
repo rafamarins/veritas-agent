@@ -1,4 +1,5 @@
 import {
+  chatLimit,
   earlierTurns,
   onHistoryChange,
   readHistory,
@@ -6,13 +7,20 @@ import {
   updateHistory,
 } from './history.js';
 import { readChat } from './stream.js';
+import { listenButton, finishVoiceReply, stopVoice } from './voice.js';
 const $ = (selector) => document.querySelector(selector);
 const form = $('#composer'),
   question = $('#question'),
   thread = $('#thread'),
   clear = $('#clear'),
   status = $('#status');
-let state = readHistory();
+let chats = readHistory();
+function routeId() {
+  return /^#chat\/(previous|[a-f0-9-]{36})$/.exec(location.hash)?.[1];
+}
+const currentChat = () => chats.find((chat) => chat.id === routeId());
+let requestController;
+
 let sending = false;
 let pending = null;
 const voting = new Set();
@@ -113,16 +121,33 @@ function turnView(turn, last) {
       button.addEventListener('click', () => rate(turn, value));
       controls.append(button);
     }
-    row.append(controls);
+    row.append(controls, listenButton(turn.answer, turn.receipt));
   }
   return row;
 }
 function render() {
-  const list = pending ? [...state.messages, pending] : state.messages;
+  const messages = currentChat()?.messages || [];
+  const list = pending ? [...messages, pending] : messages;
+  const library = $('#library');
+  library.hidden = Boolean(
+    list.length || location.hash === '#new' || !chats.length,
+  );
+  if (!library.hidden) {
+    $('#chat-list').replaceChildren(
+      ...chats.map((chat) => {
+        const item = element('li');
+        const link = element('a', '', chat.title);
+        link.href = '#chat/' + chat.id;
+        item.append(link);
+        return item;
+      }),
+    );
+  }
+  $('#chat-nav').hidden = !list.length && location.hash !== '#new';
   const active = list.length > 0;
   status.classList.toggle('visually-hidden', sending);
   document.body.toggleAttribute('data-chat', active);
-  clear.hidden = !state.messages.length;
+  clear.hidden = !messages.length;
   clear.disabled = sending;
   thread.hidden = !active;
   const slot = $(active ? '#continue-composer' : '#start-composer');
@@ -147,9 +172,10 @@ function appendAnswer(text) {
   pending.answer += text;
   answer.textContent = pending.answer;
 }
-async function post(path, data, onText) {
+async function post(path, data, onText, signal) {
   const response = await fetch(path, {
     method: 'POST',
+    signal,
     credentials: 'omit',
     headers: {
       'content-type': 'application/json',
@@ -165,22 +191,32 @@ async function post(path, data, onText) {
 }
 async function rate(turn, value) {
   if (voting.has(turn.receipt)) return;
+  const id = routeId();
   const focus = document.activeElement?.id;
   voting.add(turn.receipt);
   render();
   try {
     const vote = turn.vote === value ? 0 : value;
     await post('/api/feedback', { receipt: turn.receipt, vote });
-    await updateHistory((s) => ({
-      ...s,
-      messages: s.messages.map((m) => (m.id === turn.id ? { ...m, vote } : m)),
-    }));
-    status.textContent = vote ? 'Feedback saved.' : 'Feedback removed.';
+    await updateHistory((all) =>
+      all.map((chat) =>
+        chat.id === id
+          ? {
+              ...chat,
+              messages: chat.messages.map((m) =>
+                m.id === turn.id ? { ...m, vote } : m,
+              ),
+            }
+          : chat,
+      ),
+    );
+    if (id === routeId())
+      status.textContent = vote ? 'Feedback saved.' : 'Feedback removed.';
   } catch (e) {
-    status.textContent = e.message;
+    if (id === routeId()) status.textContent = e.message;
   } finally {
     voting.delete(turn.receipt);
-    state = readHistory();
+    chats = readHistory();
     render();
     if (focus && document.activeElement === document.body)
       document.getElementById(focus)?.focus({ preventScroll: true });
@@ -195,7 +231,15 @@ form.addEventListener('submit', async (event) => {
   event.preventDefault();
   const text = question.value.trim();
   if (!text || sending) return;
-  const before = readHistory();
+  const before = currentChat();
+  if (!before && chats.length >= chatLimit) {
+    status.textContent = 'Clear a saved chat to make room for a new one.';
+    return;
+  }
+  const id = before?.id || crypto.randomUUID();
+  const controller = new AbortController();
+  stopVoice();
+  requestController = controller;
   sending = true;
   pending = { question: text, answer: '' };
   question.value = '';
@@ -208,36 +252,53 @@ form.addEventListener('submit', async (event) => {
       '/api/chat',
       {
         question: text,
-        history: earlierTurns(before.messages, text),
+        history: earlierTurns(before?.messages || [], text),
       },
-      appendAnswer,
+      (delta) => {
+        if (requestController === controller) appendAnswer(delta);
+      },
+      controller.signal,
     );
-    const appended = await updateHistory((s) => {
-      if (
-        s.epoch !== before.epoch ||
-        s.messages.at(-1)?.id !== before.messages.at(-1)?.id
-      )
+    const appended = await updateHistory((all) => {
+      if (controller.signal.aborted) return null;
+      const chat = all.find((item) => item.id === id);
+      if (chat?.messages.at(-1)?.id !== before?.messages.at(-1)?.id)
         return null;
-      return {
-        ...s,
-        messages: [
-          ...s.messages,
-          { id: crypto.randomUUID(), question: text, ...reply, vote: 0 },
-        ],
+      if (!chat && all.length >= chatLimit)
+        throw Error('Clear a saved chat to make room for a new one.');
+      const turn = {
+        id: crypto.randomUUID(),
+        question: text,
+        ...reply,
+        vote: 0,
       };
+      return [
+        {
+          id,
+          title: chat?.title || text,
+          messages: [...(chat?.messages || []), turn].slice(-30),
+        },
+        ...all.filter((item) => item.id !== id),
+      ];
     });
+    if (controller.signal.aborted) return;
     if (!appended)
       throw Error(
         'This chat changed in another tab. Check the latest message and send again.',
       );
+    if (!before) history.pushState(null, '', '#chat/' + id);
+    finishVoiceReply(reply.answer, reply.receipt);
     status.textContent = savedToDevice()
       ? 'Reply saved on this device.'
       : 'Browser storage is unavailable. This reply will last until you close the tab.';
   } catch (e) {
+    if (controller.signal.aborted) return;
     question.value = text;
     status.textContent = e.message;
   } finally {
-    state = readHistory();
+    if (requestController !== controller) return;
+    requestController = null;
+    chats = readHistory();
     pending = null;
     sending = false;
     question.readOnly = false;
@@ -263,15 +324,47 @@ for (const btn of document.querySelectorAll('.starter'))
 clear.addEventListener('click', async () => {
   if (sending || !confirm('Clear the saved conversation on this device?'))
     return;
-  await updateHistory(() => ({ epoch: crypto.randomUUID(), messages: [] }));
-  state = readHistory();
-  question.value = '';
+  const id = routeId();
+  await updateHistory((all) => all.filter((chat) => chat.id !== id));
+  history.replaceState(null, '', location.pathname + location.search);
+  navigate();
   status.textContent = 'Conversation cleared.';
-  render();
-  question.focus({ preventScroll: true });
 });
+function navigate({ focus = true } = {}) {
+  stopVoice();
+  requestController?.abort();
+  requestController = null;
+  pending = null;
+  sending = false;
+  question.readOnly = false;
+  question.value = '';
+  status.textContent = '';
+  chats = readHistory();
+  if (routeId() && !currentChat())
+    history.replaceState(null, '', location.pathname + location.search);
+  render();
+  if (focus) {
+    const heading = $('#page-title');
+    heading.tabIndex = -1;
+    (location.hash === '#new' ? question : heading).focus({
+      preventScroll: true,
+    });
+    window.scrollTo(0, 0);
+  }
+}
+$('.skip').addEventListener('click', (event) => {
+  event.preventDefault();
+  question.focus();
+});
+for (const link of document.querySelectorAll('a[href="#"], a[href="#new"]')) {
+  link.addEventListener('click', () => {
+    if (link.href === location.href) navigate();
+  });
+}
+window.addEventListener('hashchange', navigate);
 onHistoryChange(() => {
-  state = readHistory();
-  render();
+  chats = readHistory();
+  if (routeId() && !currentChat()) navigate();
+  else render();
 });
-render();
+navigate({ focus: false });

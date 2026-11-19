@@ -506,3 +506,57 @@ body[data-chat] :is(.house, .intro-text, .starters, .return-note) {
 .vote .down {
   transform: rotate(180deg);
 }
+
+#chat-nav:not([hidden]) {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 18px;
+}
+#chat-nav a,
+.new-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--blue);
+  font-weight: 650;
+}
+#library {
+  padding-block: 25px 0;
+}
+#library h2 {
+  display: inline-block;
+  font-size: 2rem;
+  margin-right: 24px;
+}
+#chat-list {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0;
+  border-top: 1px solid var(--line);
+}
+#chat-list li {
+  border-bottom: 1px solid var(--line);
+}
+#chat-list a {
+  display: block;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  padding: 14px 0;
+  color: var(--ink);
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+#chat-list a:hover {
+  color: var(--blue);
+  text-decoration: underline;
+}
+@media (max-width: 740px) {
+  body[data-chat] .hero-layout {
+    flex-wrap: wrap;
+  }
+  #chat-nav {
+    grid-column: 1 / -1;
+  }
+}

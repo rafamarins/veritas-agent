@@ -11,13 +11,14 @@
     />
     <link rel="icon" href="/favicon.svg" />
     <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/voice.css" />
     <script type="module" src="/app.js"></script>
   </head>
   <body>
     <a class="skip" href="#question">Skip to your question</a>
     <header class="masthead">
       <div class="wrap masthead-inner">
-        <a class="brand" href="/" aria-label="Home Veritas, chat home"
+        <a class="brand" href="#" aria-label="Home Veritas, chat home"
           >Home Veritas<span>.</span></a
         >
         <a
@@ -57,6 +58,14 @@
                   placeholder="What would you like to know?"
                 ></textarea>
                 <div class="form-actions">
+                  <button
+                    type="button"
+                    id="voice-toggle"
+                    aria-expanded="false"
+                    aria-controls="voice-tools"
+                  >
+                    Voice
+                  </button>
                   <button id="send" type="submit" disabled>
                     Send
                     <span class="block-arrow" aria-hidden="true"
@@ -68,11 +77,54 @@
                     /></span>
                   </button>
                 </div>
+                <div id="voice-tools" hidden>
+                  <p>
+                    Dictate a question or listen to replies. You can edit your
+                    words before sending.
+                  </p>
+                  <div class="voice-options">
+                    <label
+                      >Language
+                      <select id="voice-language">
+                        <option value="en-NZ">English</option>
+                        <option value="pt-BR">Português</option>
+                        <option value="es">Español</option>
+                        <option value="zh-CN">中文</option>
+                      </select>
+                    </label>
+                    <label
+                      >Playback
+                      <select id="voice-engine">
+                        <option value="device">Device voice</option>
+                        <option value="kokoro" hidden disabled>
+                          Kokoro · English
+                        </option>
+                      </select>
+                    </label>
+                    <button
+                      type="button"
+                      id="dictate"
+                      aria-pressed="false"
+                      aria-describedby="dictation-note"
+                    >
+                      Dictate
+                    </button>
+                  </div>
+                  <label class="auto-read"
+                    ><input type="checkbox" id="auto-read" checked /> Read new
+                    replies aloud</label
+                  >
+                  <p id="dictation-note">
+                    Your browser may use its speech service for dictation.
+                  </p>
+                  <p id="kokoro-note" hidden>
+                    The first playback downloads about 117 MB to this browser.
+                  </p>
+                </div>
+                <p id="voice-status" role="status"></p>
               </form>
             </div>
-            <p class="return-note">
-              This browser saves your conversation on this device.
-            </p>
+            <p class="return-note">Your chats are saved on this device.</p>
           </div>
           <img
             class="house"
@@ -82,10 +134,18 @@
             alt=""
             fetchpriority="high"
           />
-          <button id="clear" type="button" hidden>Clear chat</button>
+          <nav id="chat-nav" aria-label="Chat navigation" hidden>
+            <a href="#">Chat home</a><a href="#new">New chat</a>
+            <button id="clear" type="button" hidden>Clear chat</button>
+          </nav>
         </div>
       </section>
 
+      <section class="wrap" id="library" aria-labelledby="saved-title" hidden>
+        <h2 id="saved-title">Your chats</h2>
+        <a class="new-link" href="#new">New chat</a>
+        <ul id="chat-list"></ul>
+      </section>
       <section class="wrap starters" aria-labelledby="starter-title">
         <h2 id="starter-title">A few places to start</h2>
         <div class="starter-list">

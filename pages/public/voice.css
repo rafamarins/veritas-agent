@@ -1,0 +1,97 @@
+.form-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+#voice-toggle,
+#dictate,
+.listen {
+  background: transparent;
+  font: inherit;
+  font-weight: 650;
+  min-height: 44px;
+  border: 0;
+  padding: 0 6px;
+}
+#voice-toggle[aria-expanded='true'],
+#dictate[aria-pressed='true'],
+.listen[aria-pressed='true'] {
+  color: var(--blue);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+#voice-tools,
+#voice-status {
+  grid-column: 1 / -1;
+}
+#voice-tools {
+  border-top: 1px solid var(--line);
+  padding: 12px 4px 4px;
+  font-size: 0.88rem;
+}
+.voice-options {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 8px 14px;
+  margin: 10px 0;
+}
+.voice-options label {
+  display: grid;
+  gap: 3px;
+  font-weight: 600;
+}
+.voice-options select {
+  appearance: none;
+  width: 100%;
+  min-height: 44px;
+  border: 1px solid var(--ink);
+  border-radius: 0;
+  font: inherit;
+  color: var(--ink);
+  padding: 5px 44px 5px 10px;
+  background: var(--paper) url('/art/chevron.svg') no-repeat right 15px center /
+    12px;
+}
+.voice-options select:focus-visible,
+.auto-read input:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+#dictate {
+  border: 1px solid var(--ink);
+  padding-inline: 12px;
+}
+#dictate:disabled {
+  color: var(--muted);
+  cursor: default;
+}
+.auto-read {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 36px;
+}
+#dictation-note,
+#kokoro-note,
+#voice-status {
+  font-size: 0.81rem;
+  color: var(--muted);
+}
+#voice-status:empty {
+  display: none;
+}
+.listen {
+  color: var(--blue);
+  font-size: 0.85rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+@media (max-width: 570px) {
+  #composer {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .form-actions {
+    justify-content: space-between;
+  }
+}

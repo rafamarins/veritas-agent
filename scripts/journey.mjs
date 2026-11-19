@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { checkChatHistory } from '../test/history.browser.mjs';
 import { mkdir, readFile } from 'node:fs/promises';
 import { chromium, webkit } from 'playwright';
 
@@ -25,12 +26,14 @@ page.on('request', (r) => {
     votes.push(r.postDataJSON());
 });
 const read = (tab = page) =>
-  tab.evaluate(
-    () =>
-      JSON.parse(
-        localStorage.getItem('veritas-agent.chat.v1') || '{"messages":[]}',
-      ).messages,
-  );
+  tab.evaluate(() => {
+    const chats = JSON.parse(
+      localStorage.getItem('veritas-agent.chats.v2') || '[]',
+    );
+    return (
+      chats.find((chat) => '#chat/' + chat.id === location.hash)?.messages || []
+    );
+  });
 async function submit(question, reducedMotion = false) {
   await page.emulateMedia({
     reducedMotion: reducedMotion ? 'reduce' : 'no-preference',
@@ -67,11 +70,14 @@ async function submit(question, reducedMotion = false) {
         trace.first ||= answer.textContent;
         trace.last = answer.textContent;
         trace.updates++;
-        const saved = JSON.parse(
-          localStorage.getItem('veritas-agent.chat.v1') || '{"messages":[]}',
+        const chats = JSON.parse(
+          localStorage.getItem('veritas-agent.chats.v2') || '[]',
+        );
+        const saved = chats.find(
+          (chat) => '#chat/' + chat.id === location.hash,
         );
         trace.savedEarly ||=
-          saved.messages.length !== prior ||
+          (saved?.messages.length || 0) !== prior ||
           Boolean(answer.parentElement.querySelector('.answer-feedback'));
         trace.overflow ||= document.documentElement.scrollWidth > innerWidth;
       }
@@ -113,6 +119,7 @@ async function submit(question, reducedMotion = false) {
   return turn;
 }
 try {
+  await checkChatHistory(browser, origin);
   await page.goto(origin + '/#/ask');
   assert.equal(new URL(page.url()).hash, '');
   assert.equal(
@@ -169,9 +176,9 @@ try {
     await last.getByRole('button', { name: label, exact: true }).click();
     await page.waitForFunction(
       (v) =>
-        JSON.parse(localStorage.getItem('veritas-agent.chat.v1')).messages.at(
-          -1,
-        ).vote === v,
+        JSON.parse(localStorage.getItem('veritas-agent.chats.v2'))
+          .find((chat) => '#chat/' + chat.id === location.hash)
+          .messages.at(-1).vote === v,
       value,
     );
     assert.equal(
@@ -204,6 +211,8 @@ try {
   );
   const anotherTab = await context.newPage();
   await anotherTab.goto(origin);
+  await anotherTab.locator('#chat-list a').first().click();
+  await anotherTab.locator('article.turn').first().waitFor();
   assert.equal((await read(anotherTab)).length, 2);
   const other = await browser.newContext();
   const separate = await other.newPage();
