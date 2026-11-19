@@ -1,6 +1,21 @@
 import { modelText } from './model-stream.js';
+import guideAnswers from './guide/answers.json' with { type: 'json' };
 
-const guidance = `You are Ask Veritas, a companion for New Zealand first-home buyers. Answer the current question directly, in its language.
+const translatedLanguages = {
+  'pt-BR': 'Brazilian Portuguese',
+  es: 'Spanish',
+  'zh-Hans': 'Simplified Chinese',
+};
+const guideLanguages = new Map(
+  guideAnswers.flatMap(({ translations }) =>
+    Object.entries(translations).map(([locale, { question }]) => [
+      question.trim().toLowerCase(),
+      translatedLanguages[locale],
+    ]),
+  ),
+);
+
+const guidance = `You are Ask Veritas, a companion for New Zealand first-home buyers. Answer the current question directly. Write all answer prose in the language of the final question field, even when the supplied passages are in English. Keep publisher names, document names and source keys in their original form.
 Your evidence is the supplied Home Veritas guide and primary publisher passages. A buyer's earlier message is evidence only of what they told you.
 A lookup entry is a link to a register or map. Offer it when helpful; only the buyer can check an address or licence there.
 Use the conversation to resolve follow-ups. If a question needs an address-specific decision about cover, a contract, compliance or condition, explain what to ask and who can confirm it.
@@ -202,11 +217,13 @@ export async function ask(
       quote,
     }),
   );
+  const language = guideLanguages.get(context.question.trim().toLowerCase());
   const messages = [
     {
       role: 'system',
       content:
         (onText ? streamingPrompt : systemPrompt) +
+        (language ? '\nWrite the entire answer in ' + language + '.' : '') +
         (style === 'source-first'
           ? '\nStart with what the cited passage establishes. Name one practical next step and leave gaps open.'
           : ''),
@@ -214,12 +231,12 @@ export async function ask(
     {
       role: 'user',
       content: JSON.stringify({
-        question: context.question,
         previous: context.previous,
         guideNotes: linkedPublisher
           ? context.sources.filter((s) => s.kind === 'guide').map((s) => s.text)
           : [],
         sources: evidence,
+        question: context.question,
       }),
     },
   ];
