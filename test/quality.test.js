@@ -146,13 +146,13 @@ test('a daily style change needs stronger evidence and usefulness', () => {
     'promote',
   );
 });
-test('Kev receives only the supplied public replay and scores both checks', async (t) => {
+test('Jev receives only the supplied public replay and scores both checks', async (t) => {
   const mock = t.mock.method(globalThis, 'fetch', async () =>
     Response.json({
       answers: { grounded: { noul: 0.91 }, useful: { noul: 0.84 } },
     }),
   );
-  const env = { KEV_URL: 'https://review.example' };
+  const env = { TYPESAFE_API_KEY: 'test-only' };
   const reply = {
     mode: 'assistant',
     answer: 'Compare the plans.',
@@ -166,20 +166,28 @@ test('Kev receives only the supplied public replay and scores both checks', asyn
   );
   assert.deepEqual(result, { grounded: 0.91, useful: 0.84 });
   const [endpoint, options] = mock.mock.calls[0].arguments;
-  assert.equal(endpoint.pathname, '/v1/systemone');
+  assert.equal(endpoint, 'https://api.typesafe.ai/v1/systemone');
+  assert.equal(options.headers.authorization, 'Bearer test-only');
+  assert.equal(JSON.parse(options.body).model, 'jev-1.14.0');
   assert.equal(options.redirect, 'manual');
   assert.deepEqual(
     Object.keys(JSON.parse(JSON.parse(options.body).state)).sort(),
     ['answer', 'evidence', 'question'],
   );
   await assert.rejects(
-    judgeAnswer(
-      { ...env, KEV_URL: 'http://remote.example' },
-      'Question',
-      reply,
-      [],
-    ),
+    judgeAnswer({}, 'Question', reply, []),
+    /Reviewer unconfigured/,
   );
+  mock.mock.mockImplementation(async () =>
+    Response.redirect('https://example.org/'),
+  );
+  await assert.rejects(
+    judgeAnswer(env, 'Question', reply, [
+      { sourceId: 'ref-9', text: 'Compare the plans.' },
+    ]),
+    /Reviewer unavailable/,
+  );
+  assert.equal(mock.mock.callCount(), 2);
 });
 test('an incomplete reviewer leaves the current policy unchanged and a repeated day is skipped', async () => {
   const finished = [];
