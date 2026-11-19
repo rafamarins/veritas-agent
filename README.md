@@ -38,19 +38,19 @@ You can read the answer as it arrives. Your browser saves the finished reply and
 
 **Chat home** lists the conversations saved in this browser, most recent first. Open one to continue it, or choose **New chat** to start with an empty history. Each chat has its own link on this device. **Clear chat** removes the open conversation.
 
-### Speak or listen
+### Dictate a message
 
-Open **Voice**, choose a language, and select **Dictate**. Review or edit the transcript before sending. **Read aloud** plays a finished answer. In voice mode you can also have Veritas read new replies automatically. Navigation stops the microphone and playback.
+Tap the microphone beside **Send** and speak. The first time, allow microphone access in your browser. Tap the stop button to finish. Your words appear in the message box, where you can edit them and send when you're ready. Press **Escape** to discard the recording. To listen to a finished answer, choose **Read aloud** under the reply.
 
-To include on-device speech models, run this once before starting Wrangler or building the Pages site:
+To include on-device speech models, run this once before starting Wrangler or building the Pages site.
 
 ```sh
 npm run voice:prepare
 ```
 
-Whisper Tiny transcribes up to 30 seconds at a time in English, Portuguese, Spanish or Chinese. First use downloads about 66 MB. Kokoro reads English replies aloud and downloads about 117 MB on first use. Both run in the browser and share a runtime, so trying the second model uses less data. The preparation script checks the files against pinned checksums. Pages serves them from the same site. [Whisper Tiny model](https://huggingface.co/openai/whisper-tiny) · [Kokoro model](https://huggingface.co/hexgrad/Kokoro-82M)
+Whisper Tiny detects the spoken language and transcribes up to 30 seconds at a time on your device. First use downloads about 66 MB. **Read aloud** uses a locally installed voice in your browser's language. If an English voice is missing, it can use Kokoro, which downloads about 117 MB on first playback. Both models share a runtime and load from this site. [Whisper Tiny model](https://huggingface.co/openai/whisper-tiny) · [Kokoro model](https://huggingface.co/hexgrad/Kokoro-82M)
 
-Without these assets, the app offers installed device voices and dictation where the browser supports it. Browser dictation may use the browser vendor's speech service. The voice panel shows which option is available before you record.
+If on-device dictation is unavailable, supported browsers offer their own speech recognition in the browser's language. A note under the microphone tells you when the browser may use its speech service.
 
 ## The guide and its sources
 

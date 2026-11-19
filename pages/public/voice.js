@@ -1,16 +1,13 @@
+import { beginDictation } from './transcribe.js';
+
 const byId = (id) => document.getElementById(id);
-const toggle = byId('voice-toggle');
-const tools = byId('voice-tools');
-const engine = byId('voice-engine');
-const language = byId('voice-language');
 const dictate = byId('dictate');
 const question = byId('question');
 const status = byId('voice-status');
 const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-let recognition;
-let localDictation;
-let whisperAvailable = false;
-let whisperReady;
+const locale = navigator.language || document.documentElement.lang;
+let provider;
+let capture;
 let playback;
 let kokoroReady;
 let kokoroModule;
@@ -30,26 +27,32 @@ function stopReading() {
   playback = null;
   updatePlayback();
 }
-function resetMic() {
-  recognition = null;
-  dictate.textContent = 'Dictate';
-  dictate.setAttribute('aria-pressed', 'false');
-}
-function stopDictation() {
-  const mic = recognition;
-  localDictation?.controller.abort();
-  localDictation = null;
-  resetMic();
-  mic?.abort();
-}
 export function stopVoice() {
   stopReading();
-  stopDictation();
+  capture?.controller.abort();
+  capture = null;
+  syncComposerActions();
   status.textContent = '';
+}
+export function syncComposerActions() {
+  const busy = question.readOnly || Boolean(capture);
+  byId('send').disabled = busy;
+  for (const button of document.querySelectorAll('.starter'))
+    button.disabled = busy;
+  dictate.disabled = !provider || question.readOnly;
+  const listening = capture?.listening === true;
+  const label = listening
+    ? 'Finish dictation'
+    : capture
+      ? 'Cancel dictation'
+      : 'Dictate message';
+  dictate.title = label;
+  dictate.setAttribute('aria-label', label);
+  dictate.toggleAttribute('data-active', Boolean(capture));
 }
 function chunks(text) {
   // Short segments also let the listener interrupt a long answer between sentences.
-  const sentences = new Intl.Segmenter(language.value, {
+  const sentences = new Intl.Segmenter(locale, {
     granularity: 'sentence',
   }).segment(text);
   const parts = [];
@@ -69,7 +72,7 @@ function deviceVoice() {
   const voices =
     window.speechSynthesis?.getVoices().filter((voice) => voice.localService) ||
     [];
-  const requested = language.value.toLowerCase();
+  const requested = locale.toLowerCase();
   return (
     voices.find((voice) => voice.lang.toLowerCase() === requested) ||
     voices.find(
@@ -114,11 +117,7 @@ function say(text, voice, signal) {
     };
     utterance.onerror = () => {
       signal.removeEventListener('abort', cancel);
-      reject(
-        Error(
-          'Your device could not play this voice. Try another playback option.',
-        ),
-      );
+      reject(Error('Your device could not play this reply.'));
     };
     speechSynthesis.speak(utterance);
   });
@@ -153,32 +152,36 @@ async function playAudio(blob, signal) {
     source.start();
   });
 }
-async function readAloud(text, receipt, manual = false) {
+async function readAloud(text, receipt) {
   stopVoice();
   const controller = new AbortController();
   const { signal } = controller;
   playback = { receipt, controller };
   updatePlayback();
   try {
-    const kokoro = engine.value === 'kokoro';
-    let voice;
-    if (kokoro) {
-      if (manual) await activatePlayer();
+    // A browser may publish its device voices after this click. Unlock the
+    // English fallback here while the user gesture is still active.
+    const fallback =
+      !deviceVoice() && /^en\b/i.test(locale)
+        ? activatePlayer().then(
+            () => true,
+            () => false,
+          )
+        : null;
+    const voice = await waitForDeviceVoice(signal);
+    if (!voice) {
+      if (!fallback)
+        throw Error('No installed voice matches your browser language.');
+      kokoroReady ??= assetsPrepared('/voice-assets/ready.json');
+      if (!(await fallback) || !(await kokoroReady))
+        throw Error('No voice is available to read this reply.');
       signal.throwIfAborted();
-      if (player?.state !== 'running')
-        throw Error('Tap Read aloud on the reply to start playback.');
       status.textContent = 'Loading the English voice…';
       kokoroModule ??= await import('./kokoro.js');
-    } else {
-      voice = await waitForDeviceVoice(signal);
-      if (!voice)
-        throw Error(
-          'No installed voice matches this language. Choose another voice under Voice.',
-        );
     }
     for (const part of chunks(text)) {
       signal.throwIfAborted();
-      if (kokoro) {
+      if (!voice) {
         const audio = await kokoroModule.synthesizeKokoro(part, { signal });
         signal.throwIfAborted();
         status.textContent = '';
@@ -205,25 +208,14 @@ export function listenButton(text, receipt) {
   updateListenButton(button);
   button.addEventListener('click', () => {
     if (playback?.receipt === receipt) stopVoice();
-    else readAloud(text, receipt, true);
+    else readAloud(text, receipt);
   });
   return button;
-}
-export function finishVoiceReply(text, receipt) {
-  if (!tools.hidden && byId('auto-read').checked) readAloud(text, receipt);
-}
-async function updateEngines() {
-  const available = await kokoroReady;
-  const option = engine.querySelector('[value="kokoro"]');
-  option.disabled = option.hidden =
-    !available || !language.value.startsWith('en');
-  if (option.disabled) engine.value = 'device';
-  byId('kokoro-note').hidden = engine.value !== 'kokoro';
 }
 async function assetsPrepared(path) {
   // Pages may return index.html with 200 for a missing static asset.
   try {
-    const response = await fetch(path);
+    const response = await fetch(path, { signal: AbortSignal.timeout(5000) });
     if (
       !response.ok ||
       !response.headers.get('content-type')?.includes('application/json')
@@ -235,67 +227,68 @@ async function assetsPrepared(path) {
     return false;
   }
 }
-function describeDictation() {
-  dictate.disabled = !whisperAvailable && !Recognition;
-  if (whisperAvailable) {
-    byId('dictation-note').textContent =
-      'Whisper downloads about 66 MB on first use. Record up to 30 seconds on this device.';
-  } else {
-    byId('dictation-note').textContent = Recognition
-      ? 'Your browser may use its speech service for dictation.'
-      : 'This browser does not offer dictation. You can type a question and listen to the reply.';
-  }
-}
-toggle.addEventListener('click', () => {
-  tools.hidden = !tools.hidden;
-  toggle.setAttribute('aria-expanded', String(!tools.hidden));
-  if (tools.hidden) {
-    stopVoice();
-    kokoroModule?.releaseKokoro();
-    return;
-  }
-  window.speechSynthesis?.getVoices();
-  kokoroReady ??= assetsPrepared('/voice-assets/ready.json');
-  if (
+async function prepareMicrophone() {
+  const canRecord =
     navigator.mediaDevices?.getUserMedia &&
     window.AudioContext &&
     window.AudioWorkletNode &&
-    window.OfflineAudioContext
-  ) {
-    dictate.disabled = true;
-    byId('dictation-note').textContent = 'Checking for on-device dictation…';
-    whisperReady ??= assetsPrepared('/whisper-assets/ready.json');
-    whisperReady.then((ready) => {
-      whisperAvailable = ready;
-      describeDictation();
-    });
+    window.OfflineAudioContext;
+  if (canRecord && (await assetsPrepared('/whisper-assets/ready.json'))) {
+    provider = 'whisper';
+  } else if (Recognition) {
+    provider = 'browser';
+    byId('dictation-note').hidden = false;
+    dictate.setAttribute('aria-describedby', 'dictation-note');
+  } else {
+    provider = 'unavailable';
   }
-  updateEngines();
-});
-language.addEventListener('change', () => {
-  stopVoice();
-  updateEngines();
-});
-function primeSelectedVoice() {
-  if (engine.value === 'kokoro') activatePlayer().catch(() => {});
+  syncComposerActions();
 }
-engine.addEventListener('change', () => {
-  stopVoice();
-  if (engine.value === 'device') kokoroModule?.releaseKokoro();
-  primeSelectedVoice();
-  updateEngines();
-});
-byId('composer').addEventListener(
-  'submit',
-  () => {
-    if (!tools.hidden && byId('auto-read').checked) primeSelectedVoice();
-  },
-  true,
-);
-window.speechSynthesis?.getVoices();
-byId('auto-read').addEventListener('change', () => {
-  if (!byId('auto-read').checked) stopReading();
-});
+
+function beginBrowserDictation({ signal, onRecording, onProcessing }) {
+  const mic = new Recognition();
+  mic.lang = locale;
+  mic.continuous = false;
+  mic.interimResults = false;
+  let abort;
+  const result = new Promise((resolve, reject) => {
+    let transcript = '';
+    abort = () => {
+      reject(signal.reason);
+      mic.abort();
+    };
+    signal.addEventListener('abort', abort, { once: true });
+    mic.onstart = onRecording;
+    mic.onresult = ({ results }) => {
+      transcript = Array.from(results)
+        .filter((result) => result.isFinal)
+        .map((result) => result[0].transcript)
+        .join(' ');
+    };
+    mic.onerror = ({ error }) => {
+      if (error === 'not-allowed' || error === 'service-not-allowed') {
+        reject(
+          new DOMException('Microphone access is off.', 'NotAllowedError'),
+        );
+      } else {
+        reject(Error('Could not hear a question. Try again or type it.'));
+      }
+    };
+    mic.onend = () => resolve(transcript);
+    mic.start();
+  }).finally(() => {
+    signal.removeEventListener('abort', abort);
+    mic.onstart = mic.onend = mic.onresult = mic.onerror = null;
+  });
+  return {
+    result,
+    stop() {
+      onProcessing();
+      mic.stop();
+    },
+  };
+}
+
 function insertTranscript(words) {
   const text = [question.value.trimEnd(), words.trim()]
     .filter(Boolean)
@@ -304,112 +297,77 @@ function insertTranscript(words) {
   question.dispatchEvent(new Event('input', { bubbles: true }));
   status.textContent =
     text.length > question.maxLength
-      ? 'Your question reached the character limit. Edit it before sending.'
-      : 'Review your question, then send it.';
+      ? 'Your message reached the character limit. Edit it before sending.'
+      : '';
   question.focus({ preventScroll: true });
 }
-async function dictateOnDevice() {
-  const controller = new AbortController();
-  const current = { controller };
-  localDictation = current;
-  dictate.textContent = 'Cancel';
+
+async function startDictation() {
+  stopVoice();
+  if (provider === 'unavailable') {
+    status.textContent =
+      'This browser cannot use dictation. You can type your message.';
+    question.focus();
+    return;
+  }
+  const current = { controller: new AbortController(), listening: false };
+  capture = current;
+  syncComposerActions();
   status.textContent = 'Waiting for microphone access…';
   try {
-    const { beginDictation } = await import('./transcribe.js');
-    controller.signal.throwIfAborted();
-    const session = beginDictation({
-      lang: language.value,
-      signal: controller.signal,
+    const begin =
+      provider === 'whisper' ? beginDictation : beginBrowserDictation;
+    // Start capture inside the click so the browser can request microphone access.
+    const session = begin({
+      signal: current.controller.signal,
       onRecording() {
-        current.recording = true;
-        dictate.textContent = 'Finish dictation';
-        dictate.setAttribute('aria-pressed', 'true');
+        if (capture !== current) return;
+        current.listening = true;
+        syncComposerActions();
         status.textContent = 'Listening…';
       },
       onProcessing() {
-        current.recording = false;
-        dictate.textContent = 'Cancel';
-        dictate.setAttribute('aria-pressed', 'false');
-        status.textContent = 'Transcribing on this device…';
+        if (capture !== current) return;
+        current.listening = false;
+        syncComposerActions();
+        status.textContent = 'Transcribing…';
       },
     });
     current.stop = session.stop;
-    const transcript = await session.result;
-    controller.signal.throwIfAborted();
-    if (!transcript.trim())
-      throw Error('No speech was detected. Try again or type your question.');
-    if (!question.readOnly) insertTranscript(transcript);
+    const words = await session.result;
+    if (capture !== current) return;
+    if (!words.trim()) throw Error('No speech detected. Try again.');
+    insertTranscript(words);
   } catch (error) {
-    if (!controller.signal.aborted)
+    if (capture === current)
       status.textContent =
         error.name === 'NotAllowedError'
-          ? 'Microphone access is off. Allow it in your browser or type your question.'
-          : error.message || 'Dictation could not start.';
+          ? 'Allow microphone access for this site, then tap the microphone again.'
+          : error.message || 'Could not start dictation.';
   } finally {
-    if (localDictation === current) {
-      localDictation = null;
-      resetMic();
+    if (capture === current) {
+      capture = null;
+      syncComposerActions();
     }
   }
 }
-describeDictation();
+
 dictate.addEventListener('click', () => {
-  if (localDictation) {
-    if (localDictation.recording) localDictation.stop();
-    else stopVoice();
-    return;
+  if (capture?.listening) capture.stop();
+  else if (capture) stopVoice();
+  else if (!question.readOnly) startDictation();
+});
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && capture) {
+    event.preventDefault();
+    stopVoice();
   }
-  if (recognition) {
-    recognition.stop();
-    return;
-  }
-  if (question.readOnly) return;
-  stopVoice();
-  if (whisperAvailable) {
-    dictateOnDevice();
-    return;
-  }
-  if (!Recognition) return;
-  const mic = new Recognition();
-  recognition = mic;
-  mic.lang = language.value;
-  mic.continuous = false;
-  mic.interimResults = false;
-  mic.onstart = () => {
-    if (recognition !== mic) return;
-    dictate.textContent = 'Finish dictation';
-    dictate.setAttribute('aria-pressed', 'true');
-    status.textContent = 'Listening…';
-  };
-  mic.onresult = (event) => {
-    if (recognition !== mic || question.readOnly) return;
-    const words = Array.from(event.results)
-      .slice(event.resultIndex)
-      .filter((result) => result.isFinal)
-      .map((result) => result[0].transcript)
-      .join(' ');
-    if (words.trim()) insertTranscript(words);
-  };
-  mic.onerror = (event) => {
-    if (recognition !== mic) return;
-    status.textContent =
-      event.error === 'not-allowed'
-        ? 'Microphone access is off. Allow it in your browser or type your question.'
-        : 'Could not hear a question. Try dictating again or type it.';
-  };
-  mic.onend = () => {
-    if (recognition !== mic) return;
-    resetMic();
-    if (status.textContent === 'Listening…') status.textContent = '';
-  };
-  try {
-    mic.start();
-  } catch {
-    resetMic();
-    status.textContent = 'Dictation could not start in this browser.';
-  }
+});
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden && capture) stopVoice();
 });
 window.addEventListener('pagehide', () => {
   stopVoice();
   kokoroModule?.releaseKokoro();
 });
+prepareMicrophone();

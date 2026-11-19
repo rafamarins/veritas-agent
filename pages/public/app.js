@@ -7,7 +7,7 @@ import {
   updateHistory,
 } from './history.js';
 import { readChat } from './stream.js';
-import { listenButton, finishVoiceReply, stopVoice } from './voice.js';
+import { listenButton, stopVoice, syncComposerActions } from './voice.js';
 const $ = (selector) => document.querySelector(selector);
 const form = $('#composer'),
   question = $('#question'),
@@ -158,9 +158,7 @@ function render() {
   thread.replaceChildren(
     ...list.map((t, i) => turnView(t, i === list.length - 1)),
   );
-  $('#send').disabled = sending;
-  for (const btn of document.querySelectorAll('.starter'))
-    btn.disabled = sending;
+  syncComposerActions();
 }
 function appendAnswer(text) {
   const answer = thread.lastElementChild.querySelector('.answer');
@@ -230,7 +228,7 @@ function showLatest() {
 form.addEventListener('submit', async (event) => {
   event.preventDefault();
   const text = question.value.trim();
-  if (!text || sending) return;
+  if (!text || $('#send').disabled) return;
   const before = currentChat();
   if (!before && chats.length >= chatLimit) {
     status.textContent = 'Clear a saved chat to make room for a new one.';
@@ -287,7 +285,6 @@ form.addEventListener('submit', async (event) => {
         'This chat changed in another tab. Check the latest message and send again.',
       );
     if (!before) history.pushState(null, '', '#chat/' + id);
-    finishVoiceReply(reply.answer, reply.receipt);
     status.textContent = savedToDevice()
       ? 'Reply saved on this device.'
       : 'Browser storage is unavailable. This reply will last until you close the tab.';

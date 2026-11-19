@@ -4,86 +4,102 @@ import assert from 'node:assert/strict';
 import { chromium, webkit } from 'playwright';
 
 const origin = 'http://127.0.0.1:8794';
-const browser = await (
-  process.argv.includes('--webkit') ? webkit : chromium
-).launch();
+const browser = process.argv.includes('--webkit')
+  ? await webkit.launch()
+  : await chromium.launch({
+      args: [
+        '--autoplay-policy=document-user-activation-required',
+        '--mute-audio',
+      ],
+    });
 try {
   const context = await browser.newContext();
   const page = await context.newPage();
   const requests = [];
   context.on('request', (request) => requests.push(request.url()));
-  await page.goto(origin);
-  assert.ok(!requests.some((url) => url.includes('decoder-0.bin')));
-  await page.evaluate(() => {
-    document.querySelector('#voice-toggle').addEventListener(
-      'click',
-      () => {
-        window.audio = new AudioContext();
-        window.unlocked = audio.resume();
-      },
-      { once: true },
-    );
+  // Supply a synthetic input track only when the application requests the mic.
+  // Its source context is separate from the app's recording context.
+  await page.addInitScript(() => {
     Object.defineProperty(
       Object.getPrototypeOf(navigator.mediaDevices),
       'getUserMedia',
       {
         configurable: true,
-        value: () =>
-          new Promise((resolve) => {
-            window.grant = resolve;
-          }),
+        value() {
+          if (window.denyPermission)
+            return Promise.reject(
+              new DOMException('Permission denied', 'NotAllowedError'),
+            );
+          window.audio = new AudioContext();
+          window.unlocked = audio.resume();
+          window.mic = audio.createMediaStreamDestination();
+          if (!window.waitForPermission) return Promise.resolve(mic.stream);
+          return new Promise((resolve) => {
+            window.grant = () => resolve(mic.stream);
+          });
+        },
       },
     );
   });
-  await page.getByRole('button', { name: 'Voice', exact: true }).click();
-  await page.getByText('Whisper downloads', { exact: false }).waitFor();
-  const dictate = page.locator('#dictate');
+  await page.goto(origin);
+  const dictate = page.getByRole('button', {
+    name: 'Dictate message',
+    exact: true,
+  });
+  assert.ok(!requests.some((url) => url.includes('decoder-0.bin')));
+  await page.evaluate(() => {
+    window.denyPermission = true;
+  });
+  await dictate.click();
+  await page
+    .getByText(
+      'Allow microphone access for this site, then tap the microphone again.',
+    )
+    .waitFor();
+  assert.equal(await dictate.isEnabled(), true);
+  await page.evaluate(() => {
+    window.denyPermission = false;
+    window.waitForPermission = true;
+  });
   await dictate.click();
   await page.waitForFunction(() => !!window.grant, null, { polling: 100 });
-  await page.getByRole('button', { name: 'Cancel', exact: true }).click();
-  await page.evaluate(() => {
-    window.cancelled = audio.createMediaStreamDestination().stream;
-    grant(cancelled);
-  });
+  await page
+    .getByRole('button', { name: 'Cancel dictation', exact: true })
+    .click();
+  await page.evaluate(() => grant());
   await page.waitForFunction(
-    () => cancelled.getTracks().every((track) => track.readyState === 'ended'),
+    () => mic.stream.getTracks().every((track) => track.readyState === 'ended'),
     null,
     { polling: 100 },
   );
   assert.equal(await page.locator('#question').inputValue(), '');
+  await page.evaluate(() => audio.close());
 
+  await page.reload();
   await page.evaluate(async () => {
-    await unlocked;
     const { synthesizeKokoro, releaseKokoro } = await import('/kokoro.js');
-    let wav;
     try {
-      wav = await synthesizeKokoro('Ask the council for the house plans.');
+      const wav = await synthesizeKokoro(
+        'Ask the council for the house plans.',
+      );
+      window.wav = await wav.arrayBuffer();
     } finally {
       releaseKokoro();
     }
-    window.sample = await audio.decodeAudioData(await wav.arrayBuffer());
-    window.mic = audio.createMediaStreamDestination();
-    Object.defineProperty(
-      Object.getPrototypeOf(navigator.mediaDevices),
-      'getUserMedia',
-      {
-        configurable: true,
-        value: async () => mic.stream,
-      },
-    );
   });
   await dictate.click();
   await page.getByText('Listening…', { exact: true }).waitFor();
-  await page.evaluate(
-    () =>
-      new Promise((resolve) => {
-        const source = audio.createBufferSource();
-        source.buffer = sample;
-        source.connect(mic);
-        source.onended = () => resolve();
-        source.start(audio.currentTime + 0.2);
-      }),
-  );
+  await page.evaluate(async () => {
+    await unlocked;
+    const sample = await audio.decodeAudioData(wav);
+    return new Promise((resolve) => {
+      const source = audio.createBufferSource();
+      source.buffer = sample;
+      source.connect(mic);
+      source.onended = () => resolve();
+      source.start(audio.currentTime + 0.2);
+    });
+  });
   await page.getByRole('button', { name: 'Finish dictation' }).click();
   assert.ok(
     await page.evaluate(() =>
@@ -110,7 +126,7 @@ try {
   );
   await page.evaluate(() => audio.close());
   console.log(
-    'Dictation controls produced an editable draft on-device:',
+    'One microphone click recorded an editable draft on-device:',
     draft,
   );
 } finally {

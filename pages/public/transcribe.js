@@ -2,10 +2,7 @@ const sampleRate = 16000;
 const seconds = 30;
 const abortError = () => new DOMException('Dictation stopped.', 'AbortError');
 
-export async function transcribeSamples(
-  samples,
-  { lang = 'en-NZ', signal } = {},
-) {
+export async function transcribeSamples(samples, { signal } = {}) {
   signal?.throwIfAborted();
   if (
     !(samples instanceof Float32Array) ||
@@ -31,7 +28,7 @@ export async function transcribeSamples(
           reject(Error(data.error || 'No speech detected. Try again.'));
         else resolve(data.text);
       };
-      worker.postMessage({ samples, lang });
+      worker.postMessage({ samples });
     });
   } finally {
     worker.terminate();
@@ -41,12 +38,7 @@ export async function transcribeSamples(
 
 // Stop finishes the recording; abort discards it, including any permission
 // request that the browser resolves after the person has left the chat.
-export function beginDictation({
-  lang,
-  signal,
-  onRecording,
-  onProcessing,
-} = {}) {
+export function beginDictation({ signal, onRecording, onProcessing } = {}) {
   let stream,
     audio,
     capture,
@@ -132,7 +124,7 @@ export function beginDictation({
           player.start();
           const mono = (await output.startRendering()).getChannelData(0);
           signal?.throwIfAborted();
-          return transcribeSamples(mono, { lang, signal });
+          return transcribeSamples(mono, { signal });
         }
         transcribe().then(resolve, reject);
       };

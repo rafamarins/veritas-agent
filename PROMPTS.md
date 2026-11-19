@@ -43,3 +43,5 @@ Rafael’s prompts to Codex, in order.
     Also look at any other OSS models for the chat that might be faster, we're doing rag here with the data so we can chose something lighter that might work best for rag.”
 
     The local path to the Chrome Agent and Jev skill was omitted. Codex compared Ollama models using the same guide questions, checked Jev against public examples, and tested navigation and on-device speech in separate browser profiles.
+
+15. “the voice feature is too complicated, should just be like the codex one, a microphone and we start listening to what the user has to say”

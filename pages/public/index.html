@@ -60,11 +60,38 @@
                 <div class="form-actions">
                   <button
                     type="button"
-                    id="voice-toggle"
-                    aria-expanded="false"
-                    aria-controls="voice-tools"
+                    id="dictate"
+                    aria-label="Dictate message"
+                    title="Dictate message"
+                    disabled
                   >
-                    Voice
+                    <svg
+                      width="22"
+                      height="22"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                      aria-hidden="true"
+                    >
+                      <g class="mic-icon">
+                        <rect x="9" y="2.5" width="6" height="12" rx="3" />
+                        <path
+                          d="M5.5 10.5v1a6.5 6.5 0 0 0 13 0v-1M12 18v3.5m-3.5 0h7"
+                        />
+                      </g>
+                      <rect
+                        class="mic-stop"
+                        x="5.5"
+                        y="5.5"
+                        width="13"
+                        height="13"
+                        rx="2"
+                        fill="currentColor"
+                        stroke="none"
+                      />
+                    </svg>
                   </button>
                   <button id="send" type="submit" disabled>
                     Send
@@ -77,51 +104,10 @@
                     /></span>
                   </button>
                 </div>
-                <div id="voice-tools" hidden>
-                  <p>
-                    Dictate a question or listen to replies. You can edit your
-                    words before sending.
-                  </p>
-                  <div class="voice-options">
-                    <label
-                      >Language
-                      <select id="voice-language">
-                        <option value="en-NZ">English</option>
-                        <option value="pt-BR">Português</option>
-                        <option value="es">Español</option>
-                        <option value="zh-CN">中文</option>
-                      </select>
-                    </label>
-                    <label
-                      >Playback
-                      <select id="voice-engine">
-                        <option value="device">Device voice</option>
-                        <option value="kokoro" hidden disabled>
-                          Kokoro · English
-                        </option>
-                      </select>
-                    </label>
-                    <button
-                      type="button"
-                      id="dictate"
-                      aria-pressed="false"
-                      aria-describedby="dictation-note"
-                    >
-                      Dictate
-                    </button>
-                  </div>
-                  <label class="auto-read"
-                    ><input type="checkbox" id="auto-read" checked /> Read new
-                    replies aloud</label
-                  >
-                  <p id="dictation-note">
-                    Your browser may use its speech service for dictation.
-                  </p>
-                  <p id="kokoro-note" hidden>
-                    The first playback downloads about 117 MB to this browser.
-                  </p>
-                </div>
-                <p id="voice-status" role="status"></p>
+                <p id="dictation-note" hidden>
+                  Your browser may use its speech service for dictation.
+                </p>
+                <p id="voice-status" role="status" aria-atomic="true"></p>
               </form>
             </div>
             <p class="return-note">Your chats are saved on this device.</p>
