@@ -560,3 +560,141 @@ body[data-chat] :is(.house, .intro-text, .starters, .return-note) {
     grid-column: 1 / -1;
   }
 }
+
+/* Inside the buying guide the panel's toolbar supplies its title and close control. */
+[data-embedded] .masthead {
+  display: none;
+}
+[data-embedded] #page-title {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+[data-embedded] main {
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+[data-embedded] .panel-content {
+  flex: 1 1 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+[data-embedded] :is(.wrap, .reading, .status-row) {
+  width: calc(100% - 36px);
+  max-width: 52rem;
+}
+[data-embedded] .hero {
+  background: #f7f6ec;
+  border-bottom: 1px solid var(--line);
+}
+[data-embedded] .hero-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 28%;
+  align-items: center;
+  gap: 0 10px;
+  padding: 14px 0;
+}
+[data-embedded] .intro {
+  display: block;
+}
+/* Before the module docks the composer, let it span the whole welcome row. */
+[data-embedded] main:not(:has(.panel-content)) .intro {
+  display: contents;
+}
+[data-embedded] main:not(:has(.panel-content)) #start-composer {
+  grid-column: 1 / -1;
+}
+[data-embedded] .intro-text {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+[data-embedded] .house {
+  max-height: 90px;
+}
+[data-embedded][data-chat] .hero-layout {
+  display: block;
+  padding-block: 0;
+}
+[data-embedded] #chat-nav {
+  grid-column: 1/-1;
+}
+[data-embedded] #chat-nav a,
+[data-embedded] #clear {
+  font-size: 0.86rem;
+}
+[data-embedded] #clear {
+  color: var(--muted);
+  margin-left: auto;
+}
+[data-embedded] :is(.starters, #library) {
+  padding-block: 17px 8px;
+}
+[data-embedded] :is(.starters h2, #library h2) {
+  font-size: 1.45rem;
+  margin-bottom: 10px;
+}
+[data-embedded] .starter-list {
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+[data-embedded] .starter {
+  font-size: 0.93rem;
+  min-height: 46px;
+  padding: 8px 0;
+}
+[data-embedded] .starter-list .starter:last-child {
+  border-bottom: 1px solid var(--ink);
+}
+[data-embedded] #continue-composer {
+  position: static;
+  flex: none;
+  padding-block: 10px 8px;
+}
+[data-embedded] #composer {
+  padding: 6px;
+  gap: 4px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  box-shadow: 2px 2px 0 var(--ink);
+}
+[data-embedded] #question {
+  min-height: 48px;
+  max-height: min(130px, 25dvh);
+  resize: none;
+}
+@media (min-width: 440px) {
+  [data-embedded] #composer {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+[data-embedded] .return-note {
+  margin: 0;
+  padding: 0 18px 10px;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+[data-embedded] #thread {
+  padding-block: 12px 0;
+}
+[data-embedded] .turn {
+  padding-bottom: 14px;
+}
+[data-embedded] .answer {
+  font-size: 1rem;
+}
+[data-embedded] .status-row:has(#status:not(:empty)) {
+  padding: 2px 0 7px;
+}
+@media (max-height: 280px) {
+  [data-embedded] main {
+    height: auto;
+    min-height: 100dvh;
+  }
+  [data-embedded] .panel-content {
+    overflow: visible;
+    flex: auto;
+  }
+}

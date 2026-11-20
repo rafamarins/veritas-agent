@@ -14,6 +14,32 @@ const form = $('#composer'),
   thread = $('#thread'),
   clear = $('#clear'),
   status = $('#status');
+const embedded = document.body.hasAttribute('data-embedded');
+if (embedded) {
+  const content = document.createElement('div');
+  content.className = 'panel-content';
+  $('main').prepend(content);
+  content.append($('.hero'), $('#library'), $('.starters'), thread);
+  $('#continue-composer').after($('.return-note'));
+
+  if (window.parent !== window) {
+    window.addEventListener('message', (event) => {
+      if (
+        event.source === window.parent &&
+        event.origin === location.origin &&
+        event.data?.type === 'veritas:pause'
+      ) stopVoice();
+    });
+    window.addEventListener('keydown', (event) => {
+      // Dictation handles Escape on the document before it reaches the window.
+      if (event.key !== 'Escape' || event.defaultPrevented || event.repeat)
+        return;
+      event.preventDefault();
+      window.parent.postMessage({ type: 'veritas:close' }, location.origin);
+    });
+  }
+}
+
 let chats = readHistory();
 function routeId() {
   return /^#chat\/(previous|[a-f0-9-]{36})$/.exec(location.hash)?.[1];
@@ -150,7 +176,7 @@ function render() {
   clear.hidden = !messages.length;
   clear.disabled = sending;
   thread.hidden = !active;
-  const slot = $(active ? '#continue-composer' : '#start-composer');
+  const slot = $(embedded || active ? '#continue-composer' : '#start-composer');
   if (form.parentElement !== slot) slot.append(form);
   question.placeholder = active
     ? 'Ask a follow-up…'
@@ -221,9 +247,16 @@ async function rate(turn, value) {
   }
 }
 function showLatest() {
-  requestAnimationFrame(() =>
-    thread.lastElementChild?.scrollIntoView({ block: 'start' }),
-  );
+  requestAnimationFrame(() => {
+    const turn = thread.lastElementChild;
+    if (!turn) return;
+    if (embedded) {
+      const content = $('.panel-content');
+      content.scrollTop += turn.getBoundingClientRect().top - content.getBoundingClientRect().top;
+    } else {
+      turn.scrollIntoView({ block: 'start' });
+    }
+  });
 }
 form.addEventListener('submit', async (event) => {
   event.preventDefault();
@@ -284,7 +317,10 @@ form.addEventListener('submit', async (event) => {
       throw Error(
         'This chat changed in another tab. Check the latest message and send again.',
       );
-    if (!before) history.pushState(null, '', '#chat/' + id);
+    if (!before) {
+      if (embedded) history.replaceState(null, '', '#chat/' + id);
+      else history.pushState(null, '', '#chat/' + id);
+    }
     status.textContent = savedToDevice()
       ? 'Reply saved on this device.'
       : 'Browser storage is unavailable. This reply will last until you close the tab.';
@@ -327,36 +363,51 @@ clear.addEventListener('click', async () => {
   navigate();
   status.textContent = 'Conversation cleared.';
 });
-function navigate({ focus = true } = {}) {
+function navigate({ focus = true, keepDraft = false } = {}) {
   stopVoice();
   requestController?.abort();
   requestController = null;
   pending = null;
   sending = false;
   question.readOnly = false;
-  question.value = '';
+  if (!keepDraft) question.value = '';
   status.textContent = '';
   chats = readHistory();
   if (routeId() && !currentChat())
     history.replaceState(null, '', location.pathname + location.search);
   render();
   if (focus) {
-    const heading = $('#page-title');
-    heading.tabIndex = -1;
+    const heading = embedded
+      ? $('.turn .author') || $('#library:not([hidden]) h2') || question
+      : $('#page-title');
+    if (heading !== question) heading.tabIndex = -1;
     (location.hash === '#new' ? question : heading).focus({
       preventScroll: true,
     });
-    window.scrollTo(0, 0);
+    if (embedded) $('.panel-content').scrollTop = 0;
+    else window.scrollTo(0, 0);
   }
 }
 $('.skip').addEventListener('click', (event) => {
   event.preventDefault();
   question.focus();
 });
-for (const link of document.querySelectorAll('a[href="#"], a[href="#new"]')) {
-  link.addEventListener('click', () => {
-    if (link.href === location.href) navigate();
+if (embedded) {
+  // Frame history is shared with the tab. Back should take the buyer to the previous guide topic.
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest('#library a, #chat-nav a');
+    if (!link || event.defaultPrevented || event.metaKey || event.ctrlKey ||
+        event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    history.replaceState(null, '', link.href);
+    navigate();
   });
+} else {
+  for (const link of document.querySelectorAll('a[href="#"], a[href="#new"]')) {
+    link.addEventListener('click', () => {
+      if (link.href === location.href) navigate();
+    });
+  }
 }
 window.addEventListener('hashchange', navigate);
 onHistoryChange(() => {
@@ -364,4 +415,4 @@ onHistoryChange(() => {
   if (routeId() && !currentChat()) navigate();
   else render();
 });
-navigate({ focus: false });
+navigate({ focus: false, keepDraft: true });

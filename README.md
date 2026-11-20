@@ -2,6 +2,8 @@
 
 Ask Veritas helps people buying a home in New Zealand. Ask what to look for at a viewing, open the passage behind the answer, then come back when the agent sends the paperwork. [Run it locally](#try-it-locally)
 
+In the buying guide, open **Ask Veritas** to ask a question while keeping your place. Close the panel to return to the guide. Reopening it on the same page restores your conversation and any unfinished draft.
+
 ## Screenshots
 
 [![Ask Veritas start page with the chat input and suggested questions for a home viewing](docs/ask-veritas.png)](docs/ask-veritas.png)

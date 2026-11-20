@@ -123,32 +123,58 @@ try {
     const guideURL = new URL('../', appURL);
     const topicURL = new URL('?lang=es#/records', guideURL);
     const topicPath = topicURL.pathname + topicURL.search + topicURL.hash;
-    const entryURL = new URL(topicURL);
-    entryURL.searchParams.set('utm_source', 'example');
-    // The link back is usable even if the chat module has not initialized.
-    const moduleURL = new URL('app.js', appURL).href;
-    await page.route(moduleURL, (route) => route.fulfill({
-      contentType: 'text/javascript', body: '',
-    }));
-    await page.goto(entryURL.href);
-    await page.locator('body:not([data-loading]) #ask-link').click();
-    assert.equal(new URL(page.url()).pathname, appURL.pathname);
-    assert.equal(new URL(page.url()).searchParams.get('from'), topicPath);
-    const guide = page.getByRole('link', { name: 'Buying guide' });
-    await guide.click();
-    await page.waitForURL(topicURL.href);
+    const chatRequests = [];
+    const trackChat = (request) => {
+      if (request.url().startsWith(appURL.href)) chatRequests.push(request.url());
+    };
+    page.on('request', trackChat);
+    await page.goto(topicURL.href);
+    const launcher = page.locator('#ask-launcher');
+    const dialog = page.locator('#ask-dialog');
+    await page.locator('body:not([data-loading]) #ask-launcher').waitFor();
+    assert.equal(chatRequests.length, 0);
+    let loadModule;
+    const pendingModule = new Promise((resolve) => { loadModule = resolve; });
+    await page.route(new URL('app.js', appURL).href, async (route) => {
+      await pendingModule;
+      await route.continue();
+    }, { times: 1 });
+    await launcher.click();
+    const chat = page.frameLocator('#ask-frame');
+    const draft = chat.getByRole('textbox', { name: 'Your question' });
+    await draft.fill('Which documents should I bring to a viewing?');
+    loadModule();
+    await chat.locator('.panel-content').waitFor();
+    assert.equal(await draft.inputValue(), 'Which documents should I bring to a viewing?');
+    await chat.getByRole('heading', { name: 'A few places to start' }).waitFor();
+    assert.ok(await draft.evaluate((field) => {
+      const form = field.form;
+      const style = getComputedStyle(form);
+      const available = form.clientWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight);
+      return field.offsetWidth >= available - 1;
+    }), 'The desktop question field fills its composer row.');
+    assert.equal(page.url(), topicURL.href);
+    await draft.press('Escape');
+    await dialog.waitFor({ state: 'hidden' });
+    assert.equal(await launcher.evaluate((button) => button === document.activeElement), true);
+    await launcher.click();
+    assert.equal(await draft.inputValue(), 'Which documents should I bring to a viewing?');
+    await page.locator('#ask-close').click();
+    await dialog.waitFor({ state: 'hidden' });
+    assert.equal(page.url(), topicURL.href);
+    page.off('request', trackChat);
 
-    for (const from of [
-      'https://example.org/outros/home-veritas/',
-      '/outros/',
+    // Direct chat links still lead back to the guide before the module loads.
+    for (const [from, expected] of [
+      [topicPath, topicURL.href],
+      ['https://example.org/outros/home-veritas/', guideURL.href],
+      ['/outros/', guideURL.href],
     ]) {
       const entry = new URL(appURL);
       entry.searchParams.set('from', from);
-      await page.goto(entry.href);
-      await guide.click();
-      await page.waitForURL(guideURL.href);
+      const response = await context.request.get(entry.href);
+      assert.ok((await response.text()).includes('href="' + expected.slice(appURL.origin.length) + '"'));
     }
-    await page.unroute(moduleURL);
   }
   await checkChatHistory(browser, appURL.href);
   await page.goto(new URL('#/ask', appURL).href);
