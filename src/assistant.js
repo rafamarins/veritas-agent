@@ -222,7 +222,11 @@ export async function ask(
     {
       role: 'system',
       content:
-        (onText ? streamingPrompt : systemPrompt) +
+        (onText
+          ? streamingPrompt + '\nAllowed source keys for this answer: ' +
+            selectable.map((s) => s.key).join(', ') +
+            '. Select only from these keys. The previous turns and guideNotes provide context and cannot be cited by field name.'
+          : systemPrompt) +
         (language ? '\nWrite the entire answer in ' + language + '.' : '') +
         (style === 'source-first'
           ? '\nStart with what the cited passage establishes. Name one practical next step and leave gaps open.'
