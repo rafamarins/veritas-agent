@@ -170,7 +170,11 @@ test('daily neuron exhaustion shows the next NZ reset and keeps the matching sou
     t.mock.timers.setTime(Date.parse(now));
     const reply = await ask(failure(message), context);
     assert.equal(reply.mode, 'sources');
-    assert.ok(reply.answer.includes(expected + ' (New Zealand time)'), reply.answer);
+    assert.equal(reply.answer, `Chat is unavailable until ${expected} (New Zealand time).`);
+    const reset = Date.parse(reply.availability.reopensAt);
+    assert.ok(reset > Date.now() && reset <= Date.now() + 86_400_000);
+    assert.equal(reset % 86_400_000, 0);
+    assert.ok(reply.availability.quickAnswers.length > 0);
     assert.ok(reply.citations.length > 0);
     for (const ref of reply.citations) {
       const source = context.sources.find((s) => s.sourceId === ref.sourceId);
@@ -180,6 +184,7 @@ test('daily neuron exhaustion shows the next NZ reset and keeps the matching sou
   }
   const busy = await ask(failure('3040: Capacity temporarily exceeded'), context);
   assert.match(busy.answer, /couldn’t verify/);
+  assert.equal(busy.availability, undefined);
 });
 
 test('buyer input cannot select an external model URL', async () => {

@@ -12,6 +12,7 @@ const $ = (selector) => document.querySelector(selector);
 const form = $('#composer'),
   question = $('#question'),
   thread = $('#thread'),
+  quickAnswers = $('#quick-answers'),
   clear = $('#clear'),
   status = $('#status');
 const embedded = document.body.hasAttribute('data-embedded');
@@ -19,7 +20,7 @@ if (embedded) {
   const content = document.createElement('div');
   content.className = 'panel-content';
   $('main').prepend(content);
-  content.append($('.hero'), $('#library'), $('.starters'), thread);
+  content.append($('.hero'), $('#library'), $('.starters'), thread, quickAnswers);
   $('#continue-composer').after($('.return-note'));
 
   if (window.parent !== window) {
@@ -59,6 +60,51 @@ function element(tag, className, text) {
   if (text) node.textContent = text;
   return node;
 }
+const availabilityKey = 'veritas-agent.daily-limit';
+let reopenTimer;
+
+function showQuickAnswers(availability, notice) {
+  const remaining = Date.parse(availability?.reopensAt) - Date.now();
+  if (!(remaining > 0) || !availability.quickAnswers?.length) return;
+
+  $('#reopening-notice').textContent = notice;
+  const topics = $('#quick-topics');
+  const answer = $('#quick-answer');
+  answer.replaceChildren();
+  topics.replaceChildren();
+  for (const item of availability.quickAnswers) {
+    const button = element('button', '', item.label);
+    button.type = 'button';
+    button.setAttribute('aria-pressed', 'false');
+    button.setAttribute('aria-controls', answer.id);
+    button.addEventListener('click', () => {
+      for (const other of topics.children)
+        other.setAttribute('aria-pressed', String(other === button));
+      answer.replaceChildren(element('h3', '', item.question), element('p', '', item.answer));
+      if (typeof item.url === 'string' && item.url.startsWith('https://')) {
+        const link = element('a', '', item.source);
+        link.href = item.url;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        answer.append(link);
+      }
+    });
+    topics.append(button);
+  }
+  quickAnswers.hidden = false;
+  // Only public guide answers and the expiry are cached, never the buyer's draft.
+  try { sessionStorage.setItem(availabilityKey, JSON.stringify({ availability, notice })); } catch {}
+  clearTimeout(reopenTimer);
+  reopenTimer = setTimeout(() => {
+    const hadFocus = quickAnswers.contains(document.activeElement);
+    quickAnswers.hidden = true;
+    try { sessionStorage.removeItem(availabilityKey); } catch {}
+    render();
+    status.textContent = 'Chat is available again.';
+    if (hadFocus) question.focus();
+  }, remaining);
+}
+
 function citationFigure(c) {
   const fig = element('figure', 'citation'),
     caption = element('figcaption');
@@ -184,6 +230,18 @@ function render() {
   thread.replaceChildren(
     ...list.map((t, i) => turnView(t, i === list.length - 1)),
   );
+  const paused = !quickAnswers.hidden;
+  question.readOnly = sending || paused;
+  form.hidden = paused && !question.value;
+  const label = form.querySelector('label[for="question"]');
+  label.classList.toggle('visually-hidden', !paused);
+  label.textContent = paused ? 'Your unsent question' : 'Your question';
+  $('.starters').hidden = paused;
+  const skip = $('.skip');
+  skip.href = paused ? '#quick-title' : '#question';
+  skip.textContent = paused ? 'Skip to quick answers' : 'Skip to your question';
+  document.body.toggleAttribute('data-chat-paused', paused);
+  $('#reopening-notice').hidden = paused && messages.at(-1)?.answer === $('#reopening-notice').textContent;
   syncComposerActions();
 }
 function appendAnswer(text) {
@@ -207,10 +265,12 @@ async function post(path, data, onText, signal) {
     },
     body: JSON.stringify(data),
   });
-  if (!response.ok)
-    throw Error(
-      (await response.json()).error || 'Unable to finish this request.',
-    );
+  if (!response.ok) {
+    const problem = await response.json();
+    const error = Error(problem.error || 'Unable to finish this request.');
+    if (response.status === 429) error.availability = problem.availability;
+    throw error;
+  }
   return onText ? readChat(response.body, onText) : response.json();
 }
 async function rate(turn, value) {
@@ -279,7 +339,7 @@ form.addEventListener('submit', async (event) => {
   render();
   showLatest();
   try {
-    const reply = await post(
+    const { availability, ...reply } = await post(
       './api/chat',
       {
         question: text,
@@ -290,6 +350,8 @@ form.addEventListener('submit', async (event) => {
       },
       controller.signal,
     );
+    if (controller.signal.aborted) return;
+    if (availability) showQuickAnswers(availability, reply.answer);
     const appended = await updateHistory((all) => {
       if (controller.signal.aborted) return null;
       const chat = all.find((item) => item.id === id);
@@ -327,15 +389,16 @@ form.addEventListener('submit', async (event) => {
   } catch (e) {
     if (controller.signal.aborted) return;
     question.value = text;
-    status.textContent = e.message;
+    if (e.availability) showQuickAnswers(e.availability, e.message);
+    status.textContent = e.availability && !quickAnswers.hidden ? '' : e.message;
   } finally {
     if (requestController !== controller) return;
     requestController = null;
     chats = readHistory();
     pending = null;
     sending = false;
-    question.readOnly = false;
     render();
+    if (!quickAnswers.hidden) $('#quick-title').focus();
   }
 });
 question.addEventListener('keydown', (event) => {
@@ -381,16 +444,16 @@ function navigate({ focus = true, keepDraft = false } = {}) {
       ? $('.turn .author') || $('#library:not([hidden]) h2') || question
       : $('#page-title');
     if (heading !== question) heading.tabIndex = -1;
-    (location.hash === '#new' ? question : heading).focus({
-      preventScroll: true,
-    });
+    const target = location.hash === '#new' ? question : heading;
+    (target === question && !quickAnswers.hidden ? $('#quick-title') : target)
+      .focus({ preventScroll: true });
     if (embedded) $('.panel-content').scrollTop = 0;
     else window.scrollTo(0, 0);
   }
 }
 $('.skip').addEventListener('click', (event) => {
   event.preventDefault();
-  question.focus();
+  (quickAnswers.hidden ? question : $('#quick-title')).focus();
 });
 if (embedded) {
   // Frame history is shared with the tab. Back should take the buyer to the previous guide topic.
@@ -415,4 +478,10 @@ onHistoryChange(() => {
   if (routeId() && !currentChat()) navigate();
   else render();
 });
+try {
+  const saved = JSON.parse(sessionStorage.getItem(availabilityKey));
+  if (saved && Date.parse(saved.availability.reopensAt) > Date.now())
+    showQuickAnswers(saved.availability, saved.notice);
+  else sessionStorage.removeItem(availabilityKey);
+} catch {}
 navigate({ focus: false, keepDraft: true });

@@ -144,7 +144,8 @@ test('a quota error in the provider stream finishes with the NZ reset and source
   const response = await chat(upstream.body, async () => 'receipt');
   const reply = await readChat(response.body);
   assert.equal(reply.mode, 'sources');
-  assert.match(reply.answer, /AI replies will be back on .+ \(New Zealand time\)/);
+  assert.match(reply.answer, /^Chat is unavailable until .+ \(New Zealand time\)\.$/);
+  assert.ok(reply.availability.quickAnswers.some((entry) => entry.question && entry.answer));
   assert.ok(reply.citations.some((source) => source.quote && source.url));
 });
 

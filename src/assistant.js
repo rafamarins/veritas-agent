@@ -1,3 +1,4 @@
+import { dailyChatPause } from './chat-availability.js';
 import { modelText } from './model-stream.js';
 import guideAnswers from './guide/answers.json' with { type: 'json' };
 
@@ -166,21 +167,6 @@ async function readStreamingAnswer(tokens, sources, onText) {
   return finishAnswer(text, selected);
 }
 
-function dailyNeuronLimitMessage() {
-  // Workers AI restores the allowance at the next midnight UTC.
-  const reset = new Date();
-  reset.setUTCHours(24, 0, 0, 0);
-  const when = reset.toLocaleString('en-NZ', {
-    timeZone: 'Pacific/Auckland',
-    weekday: 'long',
-    day: 'numeric',
-    month: 'long',
-    hour: 'numeric',
-    hour12: true,
-  });
-  return `We’ve reached today’s AI reply limit. AI replies will be back on ${when} (New Zealand time). You can still read the sources below.`;
-}
-
 export async function ask(
   env,
   context,
@@ -327,11 +313,12 @@ export async function ask(
       /^3036:/u.test(error?.message) ||
       /^You have used up your daily free allocation of 10,000 neurons\b/iu.test(error?.message)
     );
+    const pause = dailyLimit ? dailyChatPause() : undefined;
     return {
       mode: 'sources',
-      answer: dailyLimit
-        ? dailyNeuronLimitMessage()
-        : 'I couldn’t verify an AI answer this time. Here are the closest passages I found.',
+      answer: pause?.message ??
+        'I couldn’t verify an AI answer this time. Here are the closest passages I found.',
+      ...(pause && { availability: pause.availability }),
       citations: context.sources
         .filter(
           (s, i, all) =>

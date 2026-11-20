@@ -1,4 +1,5 @@
 import { ask } from './assistant.js';
+import { dailyChatPause } from './chat-availability.js';
 import { contextFor } from './retrieval.js';
 
 const maxBytes = 32768;
@@ -164,11 +165,10 @@ export async function handleRequest(request, env) {
     const history = historyFrom(input.history);
     const context = contextFor(history, question);
     const { allowed, style } = await store.reserve(context.topic);
-    if (!allowed)
-      return problem(
-        'The daily chat limit has been reached. Try again tomorrow UTC.',
-        429,
-      );
+    if (!allowed) {
+      const { message, availability } = dailyChatPause();
+      return json({ error: message, availability }, 429);
+    }
     async function complete(options) {
       options.signal.throwIfAborted();
       const reply = instructionRequest.test(question)

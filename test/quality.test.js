@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
+import answers from '../src/guide/answers.json' with { type: 'json' };
 import { handleRequest } from '../src/http.js';
 import { judgeAnswer, runDailyMaintenance, reviewDecision } from '../src/review.js';
 
@@ -33,6 +34,34 @@ test('cross-site messages and rate-limited requests stop before inference or sto
   const denied = await handleRequest(post('/api/chat', {}), env);
   assert.equal(denied.status, 429);
   assert.equal(denied.headers.get('retry-after'), '60');
+  assert.equal((await denied.json()).availability, undefined);
+});
+test('the shared daily cap offers reviewed guide answers and the exact NZ reopening without running AI', async (t) => {
+  t.mock.timers.enable({ apis: ['Date'], now: Date.parse('2026-11-20T23:59:59Z') });
+  const env = {
+    REQUEST_LIMIT: accepted,
+    QUALITY: { getByName: () => ({ reserve: async () => ({ allowed: false }) }) },
+    AI: { run: t.mock.fn() },
+  };
+  const response = await handleRequest(post('/api/chat', {
+    question: 'What should I look for at a viewing?',
+  }, { accept: 'application/x-ndjson' }), env);
+  assert.equal(env.AI.run.mock.callCount(), 0);
+  assert.equal(response.status, 429);
+  const { error, availability } = await response.json();
+  assert.equal(error, 'Chat is unavailable until Saturday 21 November at 1 pm (New Zealand time).');
+  assert.equal(availability.reopensAt, '2026-11-21T00:00:00.000Z');
+  const topics = availability.quickAnswers;
+  assert.equal(topics.length, 5);
+  assert.equal(new Set(topics.map((entry) => entry.label)).size, topics.length);
+  for (const topic of topics) {
+    const entry = answers.find((candidate) => candidate.question === topic.question);
+    assert.ok(entry && topic.label);
+    assert.equal(topic.answer, entry.answer);
+    assert.equal(topic.source, entry.source);
+    assert.equal(topic.url, entry.url);
+    assert.equal(new URL(topic.url).protocol, 'https:');
+  }
 });
 test('bounded JSON, history and feedback are checked before use', async () => {
   const env = { REQUEST_LIMIT: accepted, QUALITY: { getByName: () => ({}) } };
@@ -96,7 +125,9 @@ test('the shared store only receives a public topic and an outcome for a buyer t
     env,
   );
   assert.equal(r.status, 200);
-  assert.ok((await r.json()).receipt);
+  const reply = await r.json();
+  assert.ok(reply.receipt);
+  assert.equal(reply.availability, undefined);
   assert.equal(calls.length, 1);
   assert.equal(calls[0].length, 2);
   assert.equal(calls[0][1], 'assistant');
