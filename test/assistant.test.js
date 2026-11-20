@@ -155,6 +155,33 @@ test('unknown evidence and unavailable inference degrade to labelled excerpts', 
   );
 });
 
+test('daily neuron exhaustion shows the next NZ reset and keeps the matching sources', async (t) => {
+  t.mock.timers.enable({ apis: ['Date'] });
+  const context = contextFor([], 'What does a LIM tell me?');
+  const failure = (message) => ({
+    AI: { async run() { throw Error(message); } },
+  });
+  for (const [now, expected, message] of [
+    ['2026-11-20T23:59:59Z', 'Saturday 21 November at 1 pm', '3036: Account limited'],
+    ['2026-04-04T23:59:59Z', 'Sunday 5 April at 12 pm', '3036: Account limited'],
+    ['2026-09-26T23:59:59Z', 'Sunday 27 September at 1 pm', '3036: Account limited'],
+    ['2026-06-30T00:00:00Z', 'Wednesday 1 July at 12 pm', 'You have used up your daily free allocation of 10,000 neurons.'],
+  ]) {
+    t.mock.timers.setTime(Date.parse(now));
+    const reply = await ask(failure(message), context);
+    assert.equal(reply.mode, 'sources');
+    assert.ok(reply.answer.includes(expected + ' (New Zealand time)'), reply.answer);
+    assert.ok(reply.citations.length > 0);
+    for (const ref of reply.citations) {
+      const source = context.sources.find((s) => s.sourceId === ref.sourceId);
+      assert.equal(ref.url, source.url);
+      assert.equal(ref.quote, source.quote);
+    }
+  }
+  const busy = await ask(failure('3040: Capacity temporarily exceeded'), context);
+  assert.match(busy.answer, /couldn’t verify/);
+});
+
 test('buyer input cannot select an external model URL', async () => {
   const context = contextFor([], 'What does a LIM tell me?');
   const original = globalThis.fetch;

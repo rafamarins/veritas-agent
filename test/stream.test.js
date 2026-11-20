@@ -139,6 +139,15 @@ test('an incomplete provider stream ends with source excerpts, while an interrup
   );
 });
 
+test('a quota error in the provider stream finishes with the NZ reset and sources', async () => {
+  const upstream = new Response('data: {"error":{"code":3036,"message":"Account limited"}}\n\n');
+  const response = await chat(upstream.body, async () => 'receipt');
+  const reply = await readChat(response.body);
+  assert.equal(reply.mode, 'sources');
+  assert.match(reply.answer, /AI replies will be back on .+ \(New Zealand time\)/);
+  assert.ok(reply.citations.some((source) => source.quote && source.url));
+});
+
 test('Ollama streaming preserves split UTF-8 and excludes reasoning', async () => {
   const chunks = encode(
     JSON.stringify({

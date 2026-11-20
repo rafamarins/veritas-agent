@@ -166,6 +166,21 @@ async function readStreamingAnswer(tokens, sources, onText) {
   return finishAnswer(text, selected);
 }
 
+function dailyNeuronLimitMessage() {
+  // Workers AI restores the allowance at the next midnight UTC.
+  const reset = new Date();
+  reset.setUTCHours(24, 0, 0, 0);
+  const when = reset.toLocaleString('en-NZ', {
+    timeZone: 'Pacific/Auckland',
+    weekday: 'long',
+    day: 'numeric',
+    month: 'long',
+    hour: 'numeric',
+    hour12: true,
+  });
+  return `We’ve reached today’s AI reply limit. AI replies will be back on ${when} (New Zealand time). You can still read the sources below.`;
+}
+
 export async function ask(
   env,
   context,
@@ -305,12 +320,18 @@ export async function ask(
           : JSON.stringify(result.response);
     }
     return readAnswer(raw, selectable);
-  } catch {
+  } catch (error) {
     signal?.throwIfAborted();
+    // The Workers AI binding prefixes its error message with the internal code.
+    const dailyLimit = !env.OLLAMA_URL && (
+      /^3036:/u.test(error?.message) ||
+      /^You have used up your daily free allocation of 10,000 neurons\b/iu.test(error?.message)
+    );
     return {
       mode: 'sources',
-      answer:
-        'I couldn’t verify an AI answer this time. Here are the closest passages I found.',
+      answer: dailyLimit
+        ? dailyNeuronLimitMessage()
+        : 'I couldn’t verify an AI answer this time. Here are the closest passages I found.',
       citations: context.sources
         .filter(
           (s, i, all) =>
