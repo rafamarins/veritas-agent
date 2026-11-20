@@ -125,6 +125,11 @@ try {
     const topicPath = topicURL.pathname + topicURL.search + topicURL.hash;
     const entryURL = new URL(topicURL);
     entryURL.searchParams.set('utm_source', 'example');
+    // The link back is usable even if the chat module has not initialized.
+    const moduleURL = new URL('app.js', appURL).href;
+    await page.route(moduleURL, (route) => route.fulfill({
+      contentType: 'text/javascript', body: '',
+    }));
     await page.goto(entryURL.href);
     await page.locator('body:not([data-loading]) #ask-link').click();
     assert.equal(new URL(page.url()).pathname, appURL.pathname);
@@ -143,6 +148,7 @@ try {
       await guide.click();
       await page.waitForURL(guideURL.href);
     }
+    await page.unroute(moduleURL);
   }
   await checkChatHistory(browser, appURL.href);
   await page.goto(new URL('#/ask', appURL).href);

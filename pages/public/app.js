@@ -14,20 +14,6 @@ const form = $('#composer'),
   thread = $('#thread'),
   clear = $('#clear'),
   status = $('#status');
-const guidePath = '/outros/home-veritas/';
-if (location.pathname === guidePath + 'ask/') {
-  const link = $('.guide-link');
-  const from = new URL(location.href).searchParams.get('from');
-  const url = from && URL.canParse(from, location.href)
-    ? new URL(from, location.href)
-    : null;
-  link.href =
-    url?.origin === location.origin && url.pathname === guidePath
-      ? guidePath + url.search + url.hash
-      : guidePath;
-  link.removeAttribute('target');
-}
-
 let chats = readHistory();
 function routeId() {
   return /^#chat\/(previous|[a-f0-9-]{36})$/.exec(location.hash)?.[1];
