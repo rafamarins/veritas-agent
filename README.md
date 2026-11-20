@@ -76,7 +76,7 @@ The indexer checks each page for its reviewed excerpt before accepting more text
 | Cloudflare Durable Object | A random receipt per answer, its public guide topic, answer mode, UTC day and current vote. A receipt identifies one answer. There is no buyer or conversation ID. The daily job removes receipts older than 30 days. |
 | Daily review | Copies of generated answers to public guide questions, source IDs, Jev scores, judge model and the decision for each topic. Active answer styles stay available for later requests. |
 
-On localhost, Wrangler emulates Cloudflare storage and Ollama answers on the machine. On Cloudflare, Workers AI runs Llama 3.3 70B. Pages serves this one page and calls the Worker through a service binding. The browser only calls its own origin.
+On localhost, Wrangler emulates Cloudflare storage and Ollama answers on the machine. On Cloudflare, Workers AI runs Llama 3.3 70B. The standalone Pages site calls the Worker through a service binding. The Home Veritas guide binds directly to the same Worker for its chat page, API and speech assets under `/outros/home-veritas/ask/`. Choose **Buying guide** there to return to the topic and language you were reading. Run `npm run voice:prepare` before packaging the Worker for the guide. Both frontends call their own origin.
 
 Workers Free includes 10,000 AI neurons per account per day. A long question with several sources uses more than a short one, so the app's 200-question daily limit cannot guarantee 200 generated answers. If inference runs out of quota, the chat can still return source excerpts. On-device speech uses no AI neurons. The daily Jev review uses TypeSafe credits separately. [Workers AI pricing](https://developers.cloudflare.com/workers-ai/platform/pricing/)
 
@@ -112,7 +112,7 @@ npm run eval
 
 With the voice assets prepared, run `npm run test:voice -- --kokoro` to check playback of two sentences and `node test/transcribe.browser.mjs` to dictate a fictional question. Add `--webkit` to either command to check WebKit.
 
-The build compiles both Cloudflare bundles locally. The browser journeys and three Promptfoo samples need the running app with a local chat model. The samples cover a cited answer, a viewing follow-up and a request outside the agent's role. Eval setup installs a separate locked Promptfoo toolchain and skips optional peer dependencies. The eval command disables sharing, telemetry, caching and saved reports.
+Set `VERITAS_BASE_URL=http://127.0.0.1:8787/outros/home-veritas/ask/` in the environment to run the journeys and evals against the integrated local guide. The build compiles both Cloudflare bundles locally. The browser journeys and three Promptfoo samples need the running app with a local chat model. The samples cover a cited answer, a viewing follow-up and a request outside the agent's role. Eval setup installs a separate locked Promptfoo toolchain and skips optional peer dependencies. The eval command disables sharing, telemetry, caching and saved reports.
 
 | File | What to look for |
 | --- | --- |

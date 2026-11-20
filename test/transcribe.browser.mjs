@@ -3,7 +3,7 @@
 import assert from 'node:assert/strict';
 import { chromium, webkit } from 'playwright';
 
-const origin = 'http://127.0.0.1:8794';
+import { appURL } from './local-app.mjs';
 const browser = process.argv.includes('--webkit')
   ? await webkit.launch()
   : await chromium.launch({
@@ -41,7 +41,7 @@ try {
       },
     );
   });
-  await page.goto(origin);
+  await page.goto(appURL.href);
   const dictate = page.getByRole('button', {
     name: 'Dictate message',
     exact: true,
@@ -77,7 +77,7 @@ try {
 
   await page.reload();
   await page.evaluate(async () => {
-    const { synthesizeKokoro, releaseKokoro } = await import('/kokoro.js');
+    const { synthesizeKokoro, releaseKokoro } = await import('./kokoro.js');
     try {
       const wav = await synthesizeKokoro(
         'Ask the council for the house plans.',
@@ -115,12 +115,12 @@ try {
   assert.match(draft, /plan/i);
   await page.locator('#question').fill('An edited question.');
   assert.equal(
-    requests.filter((url) => new URL(url).pathname === '/api/chat').length,
+    requests.filter((url) => url === new URL('api/chat', appURL).href).length,
     0,
   );
   assert.deepEqual(
     requests.filter(
-      (url) => /^https?:/.test(url) && new URL(url).origin !== origin,
+      (url) => /^https?:/.test(url) && new URL(url).origin !== appURL.origin,
     ),
     [],
   );

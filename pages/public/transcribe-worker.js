@@ -1,13 +1,13 @@
-import { env, pipeline } from '/whisper-assets/transformers.min.js';
+import { env, pipeline } from './whisper-assets/transformers.min.js';
 
-const base = new URL('/whisper-assets/', location.origin);
+const base = new URL('./whisper-assets/', import.meta.url);
 env.allowRemoteModels = false;
 env.allowLocalModels = true;
 env.localModelPath = new URL('models/', base).href;
 env.backends.onnx.wasm.numThreads = 1;
 env.backends.onnx.wasm.wasmPaths = new URL(
-  '/voice-assets/',
-  location.origin,
+  './voice-assets/',
+  import.meta.url,
 ).href;
 
 const decoder = new URL(

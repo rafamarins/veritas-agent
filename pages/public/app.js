@@ -14,6 +14,20 @@ const form = $('#composer'),
   thread = $('#thread'),
   clear = $('#clear'),
   status = $('#status');
+const guidePath = '/outros/home-veritas/';
+if (location.pathname === guidePath + 'ask/') {
+  const link = $('.guide-link');
+  const from = new URL(location.href).searchParams.get('from');
+  const url = from && URL.canParse(from, location.href)
+    ? new URL(from, location.href)
+    : null;
+  link.href =
+    url?.origin === location.origin && url.pathname === guidePath
+      ? guidePath + url.search + url.hash
+      : guidePath;
+  link.removeAttribute('target');
+}
+
 let chats = readHistory();
 function routeId() {
   return /^#chat\/(previous|[a-f0-9-]{36})$/.exec(location.hash)?.[1];
@@ -195,7 +209,7 @@ async function rate(turn, value) {
   render();
   try {
     const vote = turn.vote === value ? 0 : value;
-    await post('/api/feedback', { receipt: turn.receipt, vote });
+    await post('./api/feedback', { receipt: turn.receipt, vote });
     await updateHistory((all) =>
       all.map((chat) =>
         chat.id === id
@@ -247,7 +261,7 @@ form.addEventListener('submit', async (event) => {
   showLatest();
   try {
     const reply = await post(
-      '/api/chat',
+      './api/chat',
       {
         question: text,
         history: earlierTurns(before?.messages || [], text),

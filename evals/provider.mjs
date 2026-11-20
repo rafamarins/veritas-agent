@@ -1,4 +1,5 @@
 import { readFile } from 'node:fs/promises';
+import { appURL } from '../test/local-app.mjs';
 import { readChat } from '../pages/public/stream.js';
 const index = JSON.parse(
   await readFile(new URL('../src/guide/reference-index.json', import.meta.url)),
@@ -12,7 +13,7 @@ export default class VeritasProvider {
     return 'veritas-agent-local';
   }
   async callApi(question, context) {
-    const response = await fetch('http://127.0.0.1:8794/api/chat', {
+    const response = await fetch(new URL('api/chat', appURL), {
       method: 'POST',
       headers: {
         'content-type': 'application/json',

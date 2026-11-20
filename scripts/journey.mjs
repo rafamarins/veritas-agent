@@ -3,7 +3,7 @@ import { checkChatHistory } from '../test/history.browser.mjs';
 import { mkdir, readFile } from 'node:fs/promises';
 import { chromium, webkit } from 'playwright';
 
-const origin = 'http://127.0.0.1:8794';
+import { appURL } from '../test/local-app.mjs';
 const screenshot = process.argv.includes('--screenshots');
 const browser = await (
   process.argv.includes('--webkit') ? webkit : chromium
@@ -20,9 +20,9 @@ const index = JSON.parse(
 );
 page.on('pageerror', (e) => errors.push(e.message));
 page.on('request', (r) => {
-  if (r.url().startsWith('http') && new URL(r.url()).origin !== origin)
+  if (r.url().startsWith('http') && new URL(r.url()).origin !== appURL.origin)
     external.push(r.url());
-  if (new URL(r.url()).pathname === '/api/feedback')
+  if (r.url() === new URL('api/feedback', appURL).href)
     votes.push(r.postDataJSON());
 });
 const read = (tab = page) =>
@@ -119,8 +119,28 @@ async function submit(question, reducedMotion = false) {
   return turn;
 }
 try {
-  await checkChatHistory(browser, origin);
-  await page.goto(origin + '/#/ask');
+  if (appURL.pathname === '/outros/home-veritas/ask/') {
+    const guideURL = new URL('../', appURL);
+    const topicURL = new URL('?lang=es#/records', guideURL);
+    const topicPath = topicURL.pathname + topicURL.search + topicURL.hash;
+    await page.goto(topicURL.href);
+    await page.locator('#ask-link').click();
+    assert.equal(new URL(page.url()).pathname, appURL.pathname);
+    assert.equal(new URL(page.url()).searchParams.get('from'), topicPath);
+    const guide = page.getByRole('link', { name: 'Buying guide' });
+    await guide.click();
+    await page.waitForURL(topicURL.href);
+
+    for (const from of ['https://example.org/outros/home-veritas/', '/outros/']) {
+      const entry = new URL(appURL);
+      entry.searchParams.set('from', from);
+      await page.goto(entry.href);
+      await guide.click();
+      await page.waitForURL(guideURL.href);
+    }
+  }
+  await checkChatHistory(browser, appURL.href);
+  await page.goto(new URL('#/ask', appURL).href);
   assert.equal(new URL(page.url()).hash, '');
   assert.equal(
     await page.getByRole('heading', { level: 1 }).textContent(),
@@ -210,23 +230,23 @@ try {
     ),
   );
   const anotherTab = await context.newPage();
-  await anotherTab.goto(origin);
+  await anotherTab.goto(appURL.href);
   await anotherTab.locator('#chat-list a').first().click();
   await anotherTab.locator('article.turn').first().waitFor();
   assert.equal((await read(anotherTab)).length, 2);
   const other = await browser.newContext();
   const separate = await other.newPage();
-  await separate.goto(origin);
+  await separate.goto(appURL.href);
   assert.deepEqual(await read(separate), []);
   await other.close();
-  assert.equal((await context.request.get(origin + '/api/chat')).status(), 405);
+  assert.equal((await context.request.get(new URL('api/chat', appURL).href)).status(), 405);
   assert.deepEqual(
     (await context.cookies()).filter((c) => c.name === 'veritas'),
     [],
   );
   assert.equal(
     (
-      await context.request.post(origin + '/api/feedback', {
+      await context.request.post(new URL('api/feedback', appURL).href, {
         headers: { origin: 'https://example.org' },
         data: {},
       })

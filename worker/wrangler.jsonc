@@ -6,6 +6,11 @@
   "ai": {
     "binding": "AI"
   },
+  "assets": {
+    "directory": "../pages/public",
+    "binding": "ASSETS",
+    "html_handling": "none"
+  },
   "durable_objects": {
     "bindings": [
       {

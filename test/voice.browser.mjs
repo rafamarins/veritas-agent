@@ -2,6 +2,8 @@
 import assert from 'node:assert/strict';
 import { chromium, webkit } from 'playwright';
 
+import { appURL } from './local-app.mjs';
+
 const useWebKit = process.argv.includes('--webkit');
 const withKokoro = process.argv.includes('--kokoro');
 const browser = useWebKit
@@ -91,7 +93,7 @@ try {
       body: JSON.stringify({ type: 'done', reply }) + '\n',
     });
   });
-  await page.goto('http://127.0.0.1:8794/');
+  await page.goto(appURL.href);
   const mic = page.getByRole('button', {
     name: 'Dictate message',
     exact: true,
@@ -189,7 +191,7 @@ try {
   );
   assert.deepEqual(
     requests.filter(
-      (url) => /^https?:/.test(url) && new URL(url).hostname !== '127.0.0.1',
+      (url) => /^https?:/.test(url) && new URL(url).origin !== appURL.origin,
     ),
     [],
   );

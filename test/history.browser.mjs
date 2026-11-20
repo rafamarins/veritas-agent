@@ -1,7 +1,9 @@
 import assert from 'node:assert/strict';
 import { chromium, webkit } from 'playwright';
 
-export async function checkChatHistory(browser, origin) {
+import { appURL } from './local-app.mjs';
+
+export async function checkChatHistory(browser, baseURL) {
   const context = await browser.newContext({
     viewport: { width: 375, height: 812 },
   });
@@ -24,7 +26,7 @@ export async function checkChatHistory(browser, origin) {
           }) + '\n',
       });
     });
-    await page.goto(origin);
+    await page.goto(baseURL);
     await page.evaluate(() => {
       localStorage.setItem(
         'veritas-agent.chat.v1',
@@ -128,7 +130,7 @@ if (import.meta.main) {
   for (const engine of [chromium, webkit]) {
     const browser = await engine.launch();
     try {
-      await checkChatHistory(browser, 'http://127.0.0.1:8794');
+      await checkChatHistory(browser, appURL.href);
       console.log(
         'Verified chat migration, navigation and separate histories in ' +
           engine.name() +
