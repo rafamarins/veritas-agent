@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { handleRequest } from '../src/http.js';
-import { judgeAnswer, runDailyReview, reviewDecision } from '../src/review.js';
+import { judgeAnswer, runDailyMaintenance, reviewDecision } from '../src/review.js';
 
 const post = (path, data, headers = {}) =>
   new Request('https://veritas.example' + path, {
@@ -189,15 +189,29 @@ test('Jev receives only the supplied public replay and scores both checks', asyn
   );
   assert.equal(mock.mock.callCount(), 2);
 });
+test('scheduled cleanup runs without starting a Jev review unless explicitly enabled', async () => {
+  const cleaned = [];
+  const store = { pruneExpired: async (day) => cleaned.push(day) };
+  for (const flag of [false, undefined, 'true']) {
+    const env = {
+      QUALITY: { getByName: () => store },
+      ENABLE_JEV_REVIEW: flag,
+      TYPESAFE_API_KEY: 'test-only',
+    };
+    assert.equal(await runDailyMaintenance(env, '2026-01-01'), 'cleanup-only');
+  }
+  assert.deepEqual(cleaned, Array(3).fill('2026-01-01'));
+});
 test('an incomplete reviewer leaves the current policy unchanged and a repeated day is skipped', async () => {
   const finished = [];
   const store = {
+    pruneExpired: async () => {},
     beginReview: async () => ({ id: 'lease', topics: [] }),
     completeReview: async (...args) => finished.push(args),
   };
-  const env = { QUALITY: { getByName: () => store } };
-  await assert.rejects(runDailyReview(env, '2026-01-01'));
+  const env = { QUALITY: { getByName: () => store }, ENABLE_JEV_REVIEW: true };
+  await assert.rejects(runDailyMaintenance(env, '2026-01-01'));
   assert.deepEqual(finished[0].slice(2), [[], 'needs-review']);
   store.beginReview = async () => null;
-  assert.equal(await runDailyReview(env, '2026-01-01'), 'already-reviewed');
+  assert.equal(await runDailyMaintenance(env, '2026-01-01'), 'already-reviewed');
 });

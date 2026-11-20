@@ -80,17 +80,17 @@ The indexer checks each page for its reviewed excerpt before accepting more text
 
 On localhost, Wrangler emulates Cloudflare storage and Ollama answers on the machine. On Cloudflare, Workers AI runs Llama 3.3 70B. The standalone Pages site calls the Worker through a service binding. The Home Veritas guide binds directly to the same Worker for its chat page, API and speech assets under `/outros/home-veritas/ask/`. Choose **Buying guide** there to return to the topic and language you were reading. Run `npm run voice:prepare` before packaging the Worker for the guide. Both frontends call their own origin.
 
-Workers Free includes 10,000 AI neurons per account per day. A long question with several sources uses more than a short one, so the app's 200-question daily limit cannot guarantee 200 generated answers. If inference runs out of quota, the chat can still return source excerpts. On-device speech uses no AI neurons. The daily Jev review uses TypeSafe credits separately. [Workers AI pricing](https://developers.cloudflare.com/workers-ai/platform/pricing/)
+Workers Free includes 10,000 AI neurons per account per day. A long question with several sources uses more than a short one, so the app's 200-question daily limit cannot guarantee 200 generated answers. If inference runs out of quota, the chat can still return source excerpts. On-device speech uses no AI neurons. An optional local Jev review uses TypeSafe credits separately. [Workers AI pricing](https://developers.cloudflare.com/workers-ai/platform/pricing/)
 
 ## Daily review with Jev
 
-At 04:17 UTC a Workers Cron Trigger reviews up to two public guide questions. It starts with topics that received thumbs down or produced source-only answers in the past week. A rotating guide question keeps the review active on quiet days. Each vote can be changed or removed for 30 days.
+At 04:17 UTC the production Worker deletes receipts, budget counters and review records older than 30 days. Production has Jev disabled. The local configuration enables Jev for reviewing up to two public guide questions per run. It starts with topics that received thumbs down or produced source-only answers in the past week. A rotating guide question keeps the review active on quiet days. Each vote can be changed or removed for 30 days.
 
 The Worker answers each public question with two fixed styles. One gives the usual answer. The other starts with what a source establishes. It checks the quotations, then sends the public question, generated answer and cited passages to TypeSafe's System One endpoint at `https://api.typesafe.ai/v1/systemone`. Jev `jev-1.14.0` scores source support and usefulness in one request. A review of two topics uses up to four requests against the configured TypeSafe account. [Jev documentation](https://docs.typesafe.ai/)
 
 The alternate style needs at least 0.85 for support and 0.75 for usefulness. When both answers can be scored, neither score may fall and their combined improvement must reach 0.15. These are initial thresholds for this project. If neither answer meets both thresholds, the run flags the topic for review. A failed judge run keeps the current style. Votes can move a question up the review list. They cannot rewrite prompts or edit guidance.
 
-For a fresh local setup, export `TYPESAFE_API_KEY` from your secret manager before running `npm run model:local`. The setup script writes it to the private, ignored `worker/.dev.vars`. For an existing checkout, add that key to the same file and restart Wrangler. Run `npm run review:local` to dispatch the cron handler locally. Repeating a completed day skips the model calls. On Cloudflare, configure the key as a Worker secret.
+For a fresh local setup, export `TYPESAFE_API_KEY` from your secret manager before running `npm run model:local`. The setup script writes it to the private, ignored `worker/.dev.vars`. For an existing checkout, add that key to the same file and restart Wrangler. Run `npm run review:local` to dispatch the cron handler locally. Repeating a completed day skips the model calls.
 
 ## Chat safeguards
 

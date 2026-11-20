@@ -81,8 +81,10 @@ async function evaluate(env, topic, style) {
   };
 }
 
-export async function runDailyReview(env, day) {
+export async function runDailyMaintenance(env, day) {
   const store = env.QUALITY.getByName('veritas');
+  await store.pruneExpired(day);
+  if (env.ENABLE_JEV_REVIEW !== true) return 'cleanup-only';
   const job = await store.beginReview(day);
   if (!job) return 'already-reviewed';
   if (job.running) return 'in-progress';

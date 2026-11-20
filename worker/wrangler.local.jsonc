@@ -3,6 +3,9 @@
   "name": "veritas-agent",
   "main": "../src/worker.js",
   "compatibility_date": "2026-11-18",
+  "vars": {
+    "ENABLE_JEV_REVIEW": true
+  },
   "assets": {
     "directory": "../pages/public",
     "binding": "ASSETS",

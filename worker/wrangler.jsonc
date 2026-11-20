@@ -6,6 +6,9 @@
   "ai": {
     "binding": "AI"
   },
+  "vars": {
+    "ENABLE_JEV_REVIEW": false
+  },
   "assets": {
     "directory": "../pages/public",
     "binding": "ASSETS",
