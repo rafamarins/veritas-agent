@@ -1,6 +1,5 @@
 import assert from 'node:assert/strict';
 import { chromium, webkit } from 'playwright';
-
 import { appURL } from './local-app.mjs';
 
 export async function checkChatHistory(browser, baseURL) {

@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import { checkChatHistory } from '../test/history.browser.mjs';
 import { mkdir, readFile } from 'node:fs/promises';
 import { chromium, webkit } from 'playwright';
-
 import { appURL } from '../test/local-app.mjs';
+
 const screenshot = process.argv.includes('--screenshots');
 const browser = await (
   process.argv.includes('--webkit') ? webkit : chromium
@@ -123,15 +123,20 @@ try {
     const guideURL = new URL('../', appURL);
     const topicURL = new URL('?lang=es#/records', guideURL);
     const topicPath = topicURL.pathname + topicURL.search + topicURL.hash;
-    await page.goto(topicURL.href);
-    await page.locator('#ask-link').click();
+    const entryURL = new URL(topicURL);
+    entryURL.searchParams.set('utm_source', 'example');
+    await page.goto(entryURL.href);
+    await page.locator('body:not([data-loading]) #ask-link').click();
     assert.equal(new URL(page.url()).pathname, appURL.pathname);
     assert.equal(new URL(page.url()).searchParams.get('from'), topicPath);
     const guide = page.getByRole('link', { name: 'Buying guide' });
     await guide.click();
     await page.waitForURL(topicURL.href);
 
-    for (const from of ['https://example.org/outros/home-veritas/', '/outros/']) {
+    for (const from of [
+      'https://example.org/outros/home-veritas/',
+      '/outros/',
+    ]) {
       const entry = new URL(appURL);
       entry.searchParams.set('from', from);
       await page.goto(entry.href);
@@ -239,7 +244,10 @@ try {
   await separate.goto(appURL.href);
   assert.deepEqual(await read(separate), []);
   await other.close();
-  assert.equal((await context.request.get(new URL('api/chat', appURL).href)).status(), 405);
+  assert.equal(
+    (await context.request.get(new URL('api/chat', appURL).href)).status(),
+    405,
+  );
   assert.deepEqual(
     (await context.cookies()).filter((c) => c.name === 'veritas'),
     [],

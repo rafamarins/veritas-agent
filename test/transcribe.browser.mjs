@@ -2,8 +2,8 @@
 // the real audio capture worklet, never the machine's physical microphone or speakers.
 import assert from 'node:assert/strict';
 import { chromium, webkit } from 'playwright';
-
 import { appURL } from './local-app.mjs';
+
 const browser = process.argv.includes('--webkit')
   ? await webkit.launch()
   : await chromium.launch({

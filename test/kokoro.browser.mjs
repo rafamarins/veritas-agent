@@ -1,8 +1,8 @@
 // Run against the local Pages server after preparing the optional voice assets.
 import assert from 'node:assert/strict';
 import { chromium, webkit } from 'playwright';
-
 import { appURL } from './local-app.mjs';
+
 const browser = await (
   process.argv.includes('--webkit') ? webkit : chromium
 ).launch();

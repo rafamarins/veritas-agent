@@ -1,7 +1,6 @@
 // Browser speech services depend on the OS. Exercise their event contract with fictional text.
 import assert from 'node:assert/strict';
 import { chromium, webkit } from 'playwright';
-
 import { appURL } from './local-app.mjs';
 
 const useWebKit = process.argv.includes('--webkit');
