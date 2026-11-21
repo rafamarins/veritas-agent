@@ -194,6 +194,8 @@ const comparisonIntent =
   /\b(?:you (?:just )?compared|(?:the|those|these) two (?:checks|reports|documents)|the (?:other|first|second) (?:check|one|report|document)|both of (?:them|those))\b/iu;
 const inspectionSubject =
   /\b(?:roof|inspection|inspector|lim|title|property file|ownership|plans)\b/iu;
+const competingTopic =
+  /\b(?:mortgages?|lenders?|brokers?|fixed (?:or|and|versus|vs\.?|to) floating|interest rates?|insurance|insurers?|insurability|insurable|kiwisaver|deposits?|easements?|covenants?|flood(?:ing|s)?|natural hazards?)\b/iu;
 const recallIntent =
   /\b(did i (?:say|tell|mention)|did we (?:discuss|say)|i mentioned|remind me|qual (?:rua|endereco)|que te dije)\b/iu;
 const byScore = (a, b) => b.score - a.score;
@@ -218,10 +220,16 @@ export function contextFor(messages, question) {
   const last = messages.at(-1);
   const query = terms(question);
   const comparison = comparisonIntent.test(question);
-  const contextual = last && (comparison || recentIntent.test(question) || query.size < 3);
-  const inspectionFollowUp = last?.question === inspectionGuide.title &&
-    last.citations.some((source) => source.sourceId === inspectionGuide.id) &&
-    (comparison || (contextual && inspectionSubject.test(question)));
+  const fromInspectionPill = last?.question === inspectionGuide.title &&
+    last.citations.some((source) => source.sourceId === inspectionGuide.id);
+  // A named topic can override an ambiguous reference such as “the two reports”.
+  const changedTopic = fromInspectionPill && competingTopic.test(question);
+  const contextual = last && !changedTopic &&
+    (comparison || recentIntent.test(question) || query.size < 3);
+  const inspectionFollowUp = fromInspectionPill && contextual &&
+    (inspectionSubject.test(question) ||
+      /\byou (?:just )?compared\b/iu.test(question) ||
+      (comparison && query.size <= 3));
   const related = contextual ? terms(last.question) : new Set();
   const topGuides = inspectionFollowUp ? [{ doc: inspectionGuide }] : rankGuides(query, related)
     .filter((r) => r.score > 0)

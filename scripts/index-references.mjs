@@ -30,6 +30,7 @@ try {
 function seed(ref) {
   return {
     id: ref.id,
+    url: ref.url,
     checkedOn: ref.checkedOn,
     coverage: 'excerpt',
     passages: [{ heading: '', text: ref.excerpt }, ...(reviewedPassages[ref.id] ?? [])],
@@ -86,6 +87,7 @@ async function capture(page, ref) {
     status: 'refreshed',
     record: {
       id: ref.id,
+      url: ref.url,
       checkedOn: today,
       coverage: ref.scope === 'excerpt' ? 'excerpt' : 'article',
       passages:
@@ -96,24 +98,28 @@ async function capture(page, ref) {
   };
 }
 const refs = catalog.filter((ref) => ref.excerpt);
+const sameCatalogue = previous?.fingerprint === fingerprint;
+const previousRecords = new Map(previous?.records.map((record) => [record.id, record]));
 const records = new Map(
   refs.map((ref) => {
-    const old =
-      previous?.fingerprint === fingerprint &&
-      previous.records.find((r) => r.id === ref.id);
-    if (!old) return [ref.id, seed(ref)];
+    const old = previousRecords.get(ref.id);
+    // Legacy snapshots omit the URL. The catalogue hash can verify their origin.
+    const oldUrl = old?.url ?? (sameCatalogue ? ref.url : undefined);
+    if (!old || oldUrl !== ref.url || old.passages[0]?.text !== ref.excerpt ||
+      (ref.scope === 'excerpt' && old.coverage !== 'excerpt'))
+      return [ref.id, seed(ref)];
+
     const missing = (reviewedPassages[ref.id] ?? []).filter(
       (reviewed) => !old.passages.some((p) => p.text.includes(reviewed.text)),
     );
-    if (!missing.length) return [ref.id, old];
+    if (old.url && !missing.length) return [ref.id, old];
     const additions = missing.map((p) => ({ ...p, checkedOn: ref.checkedOn }));
-    return [ref.id, { ...old, passages: [...old.passages, ...additions] }];
+    return [ref.id, { ...old, url: ref.url, passages: [...old.passages, ...additions] }];
   }),
 );
-// Expanded snapshots keep their original passages and are reused when already complete.
 if (
   !refresh &&
-  previous?.fingerprint === fingerprint &&
+  sameCatalogue &&
   previous.records.length === records.size &&
   previous.records.every((r) => records.get(r.id) === r)
 ) process.exit(0);
@@ -126,26 +132,24 @@ if (refresh) {
     async function visit() {
       const page = await context.newPage();
       for (let ref; (ref = queue.shift()); ) {
-        const before = records.get(ref.id);
+        const before = previousRecords.get(ref.id);
         const { record, ...outcome } = await capture(page, ref);
-        if (record) {
-          records.set(ref.id, record);
-        } else {
-          console.warn(
-            `${ref.title}: ${outcome.reason}; keeping snapshot checked ${before.checkedOn}`,
-          );
-        }
+        if (record) records.set(ref.id, record);
         const after = records.get(ref.id);
+        if (!record)
+          console.warn(
+            `${ref.title}: ${outcome.reason}; using ${after.coverage} checked ${after.checkedOn}`,
+          );
         results.set(ref.id, {
           id: ref.id,
           title: ref.title,
           url: ref.url,
           ...outcome,
-          previousCheckedOn: before.checkedOn,
+          previousCheckedOn: before?.checkedOn ?? null,
           checkedOn: after.checkedOn,
           coverage: after.coverage,
           passagesChanged:
-            after.passages.length !== before.passages.length ||
+            after.passages.length !== before?.passages.length ||
             after.passages.some(
               (passage, i) =>
                 passage.heading !== before.passages[i].heading ||

@@ -67,7 +67,7 @@ npx playwright install chromium
 npm run references:refresh
 ```
 
-The indexer checks each page for its reviewed excerpt before accepting more text. If wording changes or a publisher blocks the fetch, it keeps the last verified text and date. The expanded index stays outside Git. The Worker searches the index when a buyer asks a question.
+The indexer checks each page for its reviewed excerpt before accepting more text. If wording changes or a publisher blocks the fetch, it keeps the last verified text and date for that URL. When a catalogue entry points to a new URL, the index starts with the reviewed excerpt for the new entry. The expanded index stays outside Git. The Worker searches the index when a buyer asks a question.
 
 Each refresh overwrites the local report at `test-results/source-refresh.json`. It lists each checked publisher page, its result, whether its indexed passages changed, and the check dates before and after the run. Use `review-needed` to find the exact reviewed passages that disappeared. Use `fetch-failed` or `extract-failed` to troubleshoot a page that could not be read.
 

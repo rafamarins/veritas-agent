@@ -99,6 +99,7 @@ test('the LIM pill grounds a comparison in the inspection and council records it
   for (const question of [
     'Of the two checks you just compared, which one would help me understand the condition of the roof, and what does the other one cover?',
     'Would either of those tell me what shape the roof is in?',
+    'What do the two reports cover?',
   ]) {
     const context = contextFor(history, question);
     const passages = context.sources.filter((s) => s.kind === 'reference');
@@ -114,6 +115,38 @@ test('the LIM pill grounds a comparison in the inspection and council records it
   }
   const next = contextFor(history, 'Which one is better, a fixed or floating mortgage?');
   assert.ok(next.sources.some((s) => s.kind === 'reference' && /mortgage|loan/i.test(s.text)));
+});
+
+test('an explicit topic change after the LIM pill retrieves evidence for the new topic', () => {
+  const pill = answers.find((answer) => answer.id === 'inspect-1');
+  const history = [{ ...pill, citations: [{ sourceId: pill.id }] }];
+  for (const [question, title, evidence] of [
+    [
+      'After that, how do I compare the two reports from my mortgage broker about fixed and floating rates?',
+      /Types of mortgages/i,
+      /Fixed provides.+Floating rates/i,
+    ],
+    [
+      'After that, how do I compare the two reports from my real estate agent about sale agreements?',
+      /agent/i,
+      /written agreement/i,
+    ],
+  ]) {
+    const context = contextFor(history, question);
+    assert.equal(context.previous[0].question, pill.question);
+    assert.ok(
+      context.sources.some((source) =>
+        source.kind === 'reference' &&
+        context.linkedUrls.includes(source.url) &&
+        title.test(source.title),
+      ),
+      question,
+    );
+    assert.ok(
+      context.sources.some((source) => source.kind === 'guide' && evidence.test(source.text)),
+      question,
+    );
+  }
 });
 
 test('selected excerpts from different sections of one source appear together', () => {
