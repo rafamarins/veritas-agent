@@ -1,6 +1,6 @@
 import guideAnswers from './guide/answers.json' with { type: 'json' };
 
-const quickAnswers = [
+export const quickTopics = [
   ['Deposits', 'deposit-3'],
   ['Open homes', 'search-9'],
   ['LIM reports', 'inspect-1'],
@@ -8,7 +8,7 @@ const quickAnswers = [
   ['Settlement day', 'settlement-1'],
 ].map(([label, id]) => {
   const { question, answer, source, url } = guideAnswers.find((entry) => entry.id === id);
-  return { label, question, answer, source, url };
+  return { id, label, question, answer, source, url };
 });
 
 export function dailyChatPause() {
@@ -25,6 +25,6 @@ export function dailyChatPause() {
   });
   return {
     message: `Chat is unavailable until ${when} (New Zealand time).`,
-    availability: { reopensAt: reset.toISOString(), quickAnswers },
+    availability: { reopensAt: reset.toISOString(), quickAnswers: quickTopics },
   };
 }

@@ -100,6 +100,25 @@ export async function checkChatHistory(browser, baseURL) {
     assert.equal(await page.locator('#chat-list li').count(), 1);
     assert.equal(await writing.locator('#question').inputValue(), '');
     await writing.close();
+
+    // Browsing topics is local. Only the topic on screen accompanies an explicit send.
+    const requestCount = requests.length;
+    const draft = page.getByRole('textbox', { name: 'Your question' });
+    await draft.fill('Who can help me check that?');
+    await page.getByRole('button', { name: 'Deposits', exact: true }).click();
+    await page.getByRole('button', { name: 'LIM reports', exact: true }).click();
+    const guideAnswer = await page.locator('#quick-answer p').innerText();
+    assert.equal(await draft.inputValue(), 'Who can help me check that?');
+    assert.equal(requests.length, requestCount);
+    await page.locator('#send').click();
+    await page.locator('.turn:nth-child(2) .answer-feedback').waitFor();
+    assert.equal(requests.length, requestCount + 1);
+    assert.deepEqual(requests.at(-1).history.map((m) => m.answer), [guideAnswer]);
+    await page.reload();
+    assert.equal(await page.locator('.turn').first().locator('.answer').innerText(), guideAnswer);
+    await page.getByRole('link', { name: 'Chat home', exact: true }).click();
+    await page.locator('#quick-topics').waitFor();
+    assert.equal(await page.locator('#quick-topics [aria-pressed="true"]').count(), 0);
     await page.evaluate(() => {
       const key = 'veritas-agent.chats.v2';
       const [chat] = JSON.parse(localStorage.getItem(key));

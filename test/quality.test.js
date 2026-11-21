@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
+import { quickTopics } from '../pages/public/quick-answers.js';
 import answers from '../src/guide/answers.json' with { type: 'json' };
 import { handleRequest } from '../src/http.js';
 import { judgeAnswer, runDailyMaintenance, reviewDecision } from '../src/review.js';
@@ -52,11 +53,13 @@ test('the shared daily cap offers reviewed guide answers and the exact NZ reopen
   assert.equal(error, 'Chat is unavailable until Saturday 21 November at 1 pm (New Zealand time).');
   assert.equal(availability.reopensAt, '2026-11-21T00:00:00.000Z');
   const topics = availability.quickAnswers;
+  assert.deepEqual(topics, quickTopics);
   assert.equal(topics.length, 5);
   assert.equal(new Set(topics.map((entry) => entry.label)).size, topics.length);
   for (const topic of topics) {
-    const entry = answers.find((candidate) => candidate.question === topic.question);
+    const entry = answers.find((candidate) => candidate.id === topic.id);
     assert.ok(entry && topic.label);
+    assert.equal(topic.question, entry.question);
     assert.equal(topic.answer, entry.answer);
     assert.equal(topic.source, entry.source);
     assert.equal(topic.url, entry.url);
