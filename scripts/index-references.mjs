@@ -1,5 +1,5 @@
 import { createHash } from 'node:crypto';
-import { readFile, writeFile, rename } from 'node:fs/promises';
+import { mkdir, readFile, writeFile, rename } from 'node:fs/promises';
 import { chromium } from 'playwright';
 import reviewedPassages from '../sources/reviewed-passages.json' with { type: 'json' };
 import { htmlPassages, pdfPassages } from './source-text.mjs';
@@ -12,12 +12,14 @@ const fingerprint = createHash('sha256')
   .update(JSON.stringify(catalog))
   .digest('hex');
 const refresh = process.argv.includes('--refresh');
+const startedAt = new Date();
+const results = new Map();
 const today = new Intl.DateTimeFormat('en-CA', {
   timeZone: 'Pacific/Auckland',
   year: 'numeric',
   month: '2-digit',
   day: '2-digit',
-}).format(new Date());
+}).format(startedAt);
 let previous;
 try {
   previous = JSON.parse(await readFile(target));
@@ -48,30 +50,49 @@ function uniquePassages(rows) {
   });
 }
 async function capture(page, ref) {
-  const response = await fetch(ref.url, {
-    signal: AbortSignal.timeout(18000),
-    headers: {
-      'user-agent': 'HomeVeritas/1.0 (NZ home buying guide reference check)',
-    },
-  });
-  if (!response.ok) throw Error('HTTP ' + response.status);
-  const bytes = await response.arrayBuffer();
-  const pdf = new TextDecoder().decode(bytes.slice(0, 4)) === '%PDF';
-  const { passages } = pdf
-    ? await pdfPassages(bytes)
-    : await htmlPassages(page, new TextDecoder().decode(bytes));
-  for (const reviewed of seed(ref).passages) {
-    if (!passages.some((p) => p.text.includes(reviewed.text)))
-      throw Error('reviewed excerpt absent from article');
+  let bytes;
+  try {
+    const response = await fetch(ref.url, {
+      signal: AbortSignal.timeout(18000),
+      headers: {
+        'user-agent': 'HomeVeritas/1.0 (NZ home buying guide reference check)',
+      },
+    });
+    if (!response.ok) throw Error('HTTP ' + response.status);
+    bytes = await response.arrayBuffer();
+  } catch (error) {
+    return { status: 'fetch-failed', reason: error.cause?.message ?? error.message };
+  }
+  let passages;
+  try {
+    const pdf = new TextDecoder().decode(bytes.slice(0, 4)) === '%PDF';
+    ({ passages } = pdf
+      ? await pdfPassages(bytes)
+      : await htmlPassages(page, new TextDecoder().decode(bytes)));
+  } catch (error) {
+    return { status: 'extract-failed', reason: error.message };
+  }
+  const missing = seed(ref).passages.filter(
+    (reviewed) => !passages.some((p) => p.text.includes(reviewed.text)),
+  );
+  if (missing.length) {
+    return {
+      status: 'review-needed',
+      reason: 'reviewed excerpt absent from article',
+      missingPassages: missing,
+    };
   }
   return {
-    id: ref.id,
-    checkedOn: today,
-    coverage: ref.scope === 'excerpt' ? 'excerpt' : 'article',
-    passages:
-      ref.scope === 'excerpt'
-        ? seed(ref).passages
-        : uniquePassages([{ heading: '', text: ref.excerpt }, ...passages]),
+    status: 'refreshed',
+    record: {
+      id: ref.id,
+      checkedOn: today,
+      coverage: ref.scope === 'excerpt' ? 'excerpt' : 'article',
+      passages:
+        ref.scope === 'excerpt'
+          ? seed(ref).passages
+          : uniquePassages([{ heading: '', text: ref.excerpt }, ...passages]),
+    },
   };
 }
 const refs = catalog.filter((ref) => ref.excerpt);
@@ -102,40 +123,62 @@ if (refresh) {
     const context = await browser.newContext({ javaScriptEnabled: false });
     await context.route('**/*', (route) => route.abort());
     const queue = [...refs];
-    const successes = [];
     async function visit() {
       const page = await context.newPage();
       for (let ref; (ref = queue.shift()); ) {
-        try {
-          records.set(ref.id, await capture(page, ref));
-          successes.push(ref.id);
-        } catch (error) {
+        const before = records.get(ref.id);
+        const { record, ...outcome } = await capture(page, ref);
+        if (record) {
+          records.set(ref.id, record);
+        } else {
           console.warn(
-            ref.title +
-              ': ' +
-              error.message +
-              '; keeping snapshot checked ' +
-              records.get(ref.id).checkedOn,
+            `${ref.title}: ${outcome.reason}; keeping snapshot checked ${before.checkedOn}`,
           );
         }
+        const after = records.get(ref.id);
+        results.set(ref.id, {
+          id: ref.id,
+          title: ref.title,
+          url: ref.url,
+          ...outcome,
+          previousCheckedOn: before.checkedOn,
+          checkedOn: after.checkedOn,
+          coverage: after.coverage,
+          passagesChanged:
+            after.passages.length !== before.passages.length ||
+            after.passages.some(
+              (passage, i) =>
+                passage.heading !== before.passages[i].heading ||
+                passage.text !== before.passages[i].text,
+            ),
+        });
       }
     }
     await Promise.all([visit(), visit(), visit()]);
-    console.log(
-      'Matched reviewed text on ' +
-        successes.length +
-        ' of ' +
-        refs.length +
-        ' pages.',
-    );
   } finally {
     await browser.close();
   }
 }
 const index = { fingerprint, records: [...records.values()] };
-const temp = new URL(target.href + '.' + process.pid + '.tmp');
-await writeFile(temp, JSON.stringify(index) + '\n');
-await rename(temp, target);
+async function writeJson(file, value, spacing) {
+  const temp = new URL(file.href + '.' + process.pid + '.tmp');
+  await writeFile(temp, JSON.stringify(value, null, spacing) + '\n');
+  await rename(temp, file);
+}
+await writeJson(target, index);
+if (refresh) {
+  const directory = new URL('../test-results/', import.meta.url);
+  await mkdir(directory, { recursive: true });
+  const sources = refs.map((ref) => results.get(ref.id));
+  await writeJson(
+    new URL('source-refresh.json', directory),
+    { startedAt: startedAt.toISOString(), sources },
+    2,
+  );
+  const matched = sources.filter((source) => source.status === 'refreshed').length;
+  console.log(`Matched reviewed text on ${matched} of ${sources.length} pages.`);
+  console.log('Report: test-results/source-refresh.json');
+}
 console.log(
   index.records.length +
     ' cited pages, ' +

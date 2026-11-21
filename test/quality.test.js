@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
+import { earlierTurns } from '../pages/public/history.js';
 import { quickTopics } from '../pages/public/quick-answers.js';
 import answers from '../src/guide/answers.json' with { type: 'json' };
 import { handleRequest } from '../src/http.js';
@@ -136,6 +137,65 @@ test('the shared store only receives a public topic and an outcome for a buyer t
   assert.equal(calls[0][1], 'assistant');
   assert.match(calls[0][0], /^[a-z]+-\d+$/);
   assert.equal(r.headers.get('set-cookie'), null);
+});
+test('the LIM pill roof follow-up carries the guide answer and cites evidence for both checks', async (t) => {
+  const topic = quickTopics.find(({ label }) => label === 'LIM reports');
+  const question =
+    'Of the two checks you just compared, which one would help me understand the condition of the roof, and what does the other one cover?';
+  const history = earlierTurns(
+    [{
+      id: crypto.randomUUID(),
+      question: topic.question,
+      answer: topic.answer,
+      citations: [{ sourceId: topic.id }],
+    }],
+    question,
+  );
+  const answer =
+    'A building inspection can assess the roof within its scope. A LIM summarises information the council holds about the property.';
+  const run = t.mock.fn(async (_, request) => {
+    const { sources } = JSON.parse(request.messages[1].content);
+    const roof = sources.find((source) =>
+      /property inspector/i.test(source.text) && /roof/i.test(source.quote),
+    );
+    const lim = sources.find((source) =>
+      /land information memorandum.*summary.*local council/i.test(source.quote),
+    );
+    return { response: JSON.stringify({ answer, sources: [roof?.key, lim?.key] }) };
+  });
+  const response = await handleRequest(post('/api/chat', { question, history }), {
+    REQUEST_LIMIT: accepted,
+    QUALITY: {
+      getByName: () => ({
+        reserve: async () => ({ allowed: true, style: 'standard' }),
+        record: async () => crypto.randomUUID(),
+      }),
+    },
+    AI: { run },
+  });
+  assert.equal(response.status, 200);
+  assert.equal(run.mock.callCount(), 1);
+  const [, request] = run.mock.calls[0].arguments;
+  const payload = JSON.parse(request.messages[1].content);
+  assert.equal(payload.question, question);
+  assert.deepEqual(payload.previous, [{ question: topic.question, answer: topic.answer }]);
+  for (const distinction of [
+    /property file at the council.*original plans/i,
+    /legal owner of the property/i,
+    /interests on a title/i,
+    /consents filed in the property file or the LIM/i,
+  ]) {
+    assert.ok(payload.sources.some(({ text }) => distinction.test(text)), String(distinction));
+  }
+  const reply = await response.json();
+  assert.equal(reply.mode, 'assistant');
+  assert.equal(reply.answer, answer);
+  assert.deepEqual(reply.citations.map(({ url }) => url), [
+    'https://www.settled.govt.nz/buying-a-home/finding-a-property/viewing-an-open-home/',
+    'https://www.settled.govt.nz/buying-a-home/researching-the-property/doing-your-homework/',
+  ]);
+  assert.match(reply.citations[0].quote, /feedback about the roof/i);
+  assert.match(reply.citations[1].quote, /summary.*held.*local council/i);
 });
 test('requests for privileged instructions stay outside the model', async () => {
   const env = {
