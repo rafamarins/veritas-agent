@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import { checkChatHistory } from '../test/history.browser.mjs';
 import { mkdir, readFile } from 'node:fs/promises';
 import { chromium, webkit } from 'playwright';
+import { appURL } from '../test/local-app.mjs';
 
-const origin = 'http://127.0.0.1:8794';
 const screenshot = process.argv.includes('--screenshots');
 const browser = await (
   process.argv.includes('--webkit') ? webkit : chromium
@@ -20,9 +20,9 @@ const index = JSON.parse(
 );
 page.on('pageerror', (e) => errors.push(e.message));
 page.on('request', (r) => {
-  if (r.url().startsWith('http') && new URL(r.url()).origin !== origin)
+  if (r.url().startsWith('http') && new URL(r.url()).origin !== appURL.origin)
     external.push(r.url());
-  if (new URL(r.url()).pathname === '/api/feedback')
+  if (r.url() === new URL('api/feedback', appURL).href)
     votes.push(r.postDataJSON());
 });
 const read = (tab = page) =>
@@ -119,8 +119,65 @@ async function submit(question, reducedMotion = false) {
   return turn;
 }
 try {
-  await checkChatHistory(browser, origin);
-  await page.goto(origin + '/#/ask');
+  if (appURL.pathname === '/outros/home-veritas/ask/') {
+    const guideURL = new URL('../', appURL);
+    const topicURL = new URL('?lang=es#/records', guideURL);
+    const topicPath = topicURL.pathname + topicURL.search + topicURL.hash;
+    const chatRequests = [];
+    const trackChat = (request) => {
+      if (request.url().startsWith(appURL.href)) chatRequests.push(request.url());
+    };
+    page.on('request', trackChat);
+    await page.goto(topicURL.href);
+    const launcher = page.locator('#ask-launcher');
+    const dialog = page.locator('#ask-dialog');
+    await page.locator('body:not([data-loading]) #ask-launcher').waitFor();
+    assert.equal(chatRequests.length, 0);
+    let loadModule;
+    const pendingModule = new Promise((resolve) => { loadModule = resolve; });
+    await page.route(new URL('app.js', appURL).href, async (route) => {
+      await pendingModule;
+      await route.continue();
+    }, { times: 1 });
+    await launcher.click();
+    const chat = page.frameLocator('#ask-frame');
+    const draft = chat.getByRole('textbox', { name: 'Your question' });
+    await draft.fill('Which documents should I bring to a viewing?');
+    loadModule();
+    await chat.locator('.panel-content').waitFor();
+    assert.equal(await draft.inputValue(), 'Which documents should I bring to a viewing?');
+    await chat.getByRole('heading', { name: 'A few places to start' }).waitFor();
+    assert.ok(await draft.evaluate((field) => {
+      const form = field.form;
+      const style = getComputedStyle(form);
+      const available = form.clientWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight);
+      return field.offsetWidth >= available - 1;
+    }), 'The desktop question field fills its composer row.');
+    assert.equal(page.url(), topicURL.href);
+    await draft.press('Escape');
+    await dialog.waitFor({ state: 'hidden' });
+    assert.equal(await launcher.evaluate((button) => button === document.activeElement), true);
+    await launcher.click();
+    assert.equal(await draft.inputValue(), 'Which documents should I bring to a viewing?');
+    await page.locator('#ask-close').click();
+    await dialog.waitFor({ state: 'hidden' });
+    assert.equal(page.url(), topicURL.href);
+    page.off('request', trackChat);
+
+    // Direct chat links still lead back to the guide before the module loads.
+    for (const [from, expected] of [
+      [topicPath, topicURL.href],
+      ['https://example.org/outros/home-veritas/', guideURL.href],
+      ['/outros/', guideURL.href],
+    ]) {
+      const entry = new URL(appURL);
+      entry.searchParams.set('from', from);
+      const response = await context.request.get(entry.href);
+      assert.ok((await response.text()).includes('href="' + expected.slice(appURL.origin.length) + '"'));
+    }
+  }
+  await checkChatHistory(browser, appURL.href);
+  await page.goto(new URL('#/ask', appURL).href);
   assert.equal(new URL(page.url()).hash, '');
   assert.equal(
     await page.getByRole('heading', { level: 1 }).textContent(),
@@ -210,23 +267,26 @@ try {
     ),
   );
   const anotherTab = await context.newPage();
-  await anotherTab.goto(origin);
+  await anotherTab.goto(appURL.href);
   await anotherTab.locator('#chat-list a').first().click();
   await anotherTab.locator('article.turn').first().waitFor();
   assert.equal((await read(anotherTab)).length, 2);
   const other = await browser.newContext();
   const separate = await other.newPage();
-  await separate.goto(origin);
+  await separate.goto(appURL.href);
   assert.deepEqual(await read(separate), []);
   await other.close();
-  assert.equal((await context.request.get(origin + '/api/chat')).status(), 405);
+  assert.equal(
+    (await context.request.get(new URL('api/chat', appURL).href)).status(),
+    405,
+  );
   assert.deepEqual(
     (await context.cookies()).filter((c) => c.name === 'veritas'),
     [],
   );
   assert.equal(
     (
-      await context.request.post(origin + '/api/feedback', {
+      await context.request.post(new URL('api/feedback', appURL).href, {
         headers: { origin: 'https://example.org' },
         data: {},
       })

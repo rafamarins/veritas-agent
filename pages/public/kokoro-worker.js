@@ -1,6 +1,6 @@
 // The packaged loader requests Hugging Face URLs for the model and voice. Resolve
 // those exact files locally inside this worker; no text or audio goes to a server.
-const assets = new URL('/voice-assets/', location.origin);
+const assets = new URL('./voice-assets/', import.meta.url);
 const modelId = 'onnx-community/Kokoro-82M-v1.0-ONNX';
 const remotePrefix = 'https://huggingface.co/' + modelId + '/resolve/main/';
 const localFetch = self.fetch.bind(self);
@@ -48,7 +48,7 @@ async function loadEngine() {
       return localFetch(new URL(file.split('/').at(-1), assets));
     return new Response(null, { status: 404 });
   };
-  const { KokoroTTS, env } = await import('/voice-assets/kokoro.web.js');
+  const { KokoroTTS, env } = await import('./voice-assets/kokoro.web.js');
   env.wasmPaths = assets.href;
   return KokoroTTS.from_pretrained(modelId, { dtype: 'q8', device: 'wasm' });
 }

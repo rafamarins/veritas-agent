@@ -172,7 +172,7 @@ async function readAloud(text, receipt) {
     if (!voice) {
       if (!fallback)
         throw Error('No installed voice matches your browser language.');
-      kokoroReady ??= assetsPrepared('/voice-assets/ready.json');
+      kokoroReady ??= assetsPrepared('./voice-assets/ready.json');
       if (!(await fallback) || !(await kokoroReady))
         throw Error('No voice is available to read this reply.');
       signal.throwIfAborted();
@@ -233,7 +233,7 @@ async function prepareMicrophone() {
     window.AudioContext &&
     window.AudioWorkletNode &&
     window.OfflineAudioContext;
-  if (canRecord && (await assetsPrepared('/whisper-assets/ready.json'))) {
+  if (canRecord && (await assetsPrepared('./whisper-assets/ready.json'))) {
     provider = 'whisper';
   } else if (Recognition) {
     provider = 'browser';

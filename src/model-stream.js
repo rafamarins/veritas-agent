@@ -14,8 +14,12 @@ export async function* modelText(body, provider, signal) {
       const data = line.slice(5).trimStart();
       if (data === '[DONE]') return;
       const token = JSON.parse(data);
-      if (token.error || token.finish_reason === 'length')
-        throw Error('Workers AI inference failed');
+      if (token.error) {
+        const code = token.error.internalCode ?? token.error.code ?? token.code;
+        const message = token.error.message ?? token.error;
+        throw Error(code ? `${code}: ${message}` : message);
+      }
+      if (token.finish_reason === 'length') throw Error('Workers AI inference failed');
       if (typeof token.response === 'string' && token.response)
         yield token.response;
     }

@@ -6,6 +6,14 @@
   "ai": {
     "binding": "AI"
   },
+  "vars": {
+    "ENABLE_JEV_REVIEW": false
+  },
+  "assets": {
+    "directory": "../pages/public",
+    "binding": "ASSETS",
+    "html_handling": "none"
+  },
   "durable_objects": {
     "bindings": [
       {

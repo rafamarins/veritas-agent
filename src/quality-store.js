@@ -59,6 +59,13 @@ export class VeritasQuality extends DurableObject {
         .toArray().length > 0
     );
   }
+  pruneExpired(day) {
+    for (const table of ['replies', 'budget', 'reviews'])
+      this.sql.exec(
+        'DELETE FROM ' + table + " WHERE day < date(?, '-30 days')",
+        day,
+      );
+  }
   beginReview(day) {
     const current = this.sql
       .exec('SELECT status,started FROM reviews WHERE day=?', day)
@@ -73,11 +80,6 @@ export class VeritasQuality extends DurableObject {
       id,
       Date.now(),
     );
-    for (const table of ['replies', 'budget', 'reviews'])
-      this.sql.exec(
-        'DELETE FROM ' + table + " WHERE day < date(?, '-30 days')",
-        day,
-      );
     const rows = this.sql
       .exec(
         `

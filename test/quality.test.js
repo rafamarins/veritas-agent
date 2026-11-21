@@ -1,7 +1,10 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
+import { earlierTurns } from '../pages/public/history.js';
+import { quickTopics } from '../pages/public/quick-answers.js';
+import answers from '../src/guide/answers.json' with { type: 'json' };
 import { handleRequest } from '../src/http.js';
-import { judgeAnswer, runDailyReview, reviewDecision } from '../src/review.js';
+import { judgeAnswer, runDailyMaintenance, reviewDecision } from '../src/review.js';
 
 const post = (path, data, headers = {}) =>
   new Request('https://veritas.example' + path, {
@@ -33,6 +36,36 @@ test('cross-site messages and rate-limited requests stop before inference or sto
   const denied = await handleRequest(post('/api/chat', {}), env);
   assert.equal(denied.status, 429);
   assert.equal(denied.headers.get('retry-after'), '60');
+  assert.equal((await denied.json()).availability, undefined);
+});
+test('the shared daily cap offers reviewed guide answers and the exact NZ reopening without running AI', async (t) => {
+  t.mock.timers.enable({ apis: ['Date'], now: Date.parse('2026-11-20T23:59:59Z') });
+  const env = {
+    REQUEST_LIMIT: accepted,
+    QUALITY: { getByName: () => ({ reserve: async () => ({ allowed: false }) }) },
+    AI: { run: t.mock.fn() },
+  };
+  const response = await handleRequest(post('/api/chat', {
+    question: 'What should I look for at a viewing?',
+  }, { accept: 'application/x-ndjson' }), env);
+  assert.equal(env.AI.run.mock.callCount(), 0);
+  assert.equal(response.status, 429);
+  const { error, availability } = await response.json();
+  assert.equal(error, 'Chat is unavailable until Saturday 21 November at 1 pm (New Zealand time).');
+  assert.equal(availability.reopensAt, '2026-11-21T00:00:00.000Z');
+  const topics = availability.quickAnswers;
+  assert.deepEqual(topics, quickTopics);
+  assert.equal(topics.length, 5);
+  assert.equal(new Set(topics.map((entry) => entry.label)).size, topics.length);
+  for (const topic of topics) {
+    const entry = answers.find((candidate) => candidate.id === topic.id);
+    assert.ok(entry && topic.label);
+    assert.equal(topic.question, entry.question);
+    assert.equal(topic.answer, entry.answer);
+    assert.equal(topic.source, entry.source);
+    assert.equal(topic.url, entry.url);
+    assert.equal(new URL(topic.url).protocol, 'https:');
+  }
 });
 test('bounded JSON, history and feedback are checked before use', async () => {
   const env = { REQUEST_LIMIT: accepted, QUALITY: { getByName: () => ({}) } };
@@ -96,12 +129,73 @@ test('the shared store only receives a public topic and an outcome for a buyer t
     env,
   );
   assert.equal(r.status, 200);
-  assert.ok((await r.json()).receipt);
+  const reply = await r.json();
+  assert.ok(reply.receipt);
+  assert.equal(reply.availability, undefined);
   assert.equal(calls.length, 1);
   assert.equal(calls[0].length, 2);
   assert.equal(calls[0][1], 'assistant');
   assert.match(calls[0][0], /^[a-z]+-\d+$/);
   assert.equal(r.headers.get('set-cookie'), null);
+});
+test('the LIM pill roof follow-up carries the guide answer and cites evidence for both checks', async (t) => {
+  const topic = quickTopics.find(({ label }) => label === 'LIM reports');
+  const question =
+    'Of the two checks you just compared, which one would help me understand the condition of the roof, and what does the other one cover?';
+  const history = earlierTurns(
+    [{
+      id: crypto.randomUUID(),
+      question: topic.question,
+      answer: topic.answer,
+      citations: [{ sourceId: topic.id }],
+    }],
+    question,
+  );
+  const answer =
+    'A building inspection can assess the roof within its scope. A LIM summarises information the council holds about the property.';
+  const run = t.mock.fn(async (_, request) => {
+    const { sources } = JSON.parse(request.messages[1].content);
+    const roof = sources.find((source) =>
+      /property inspector/i.test(source.text) && /roof/i.test(source.quote),
+    );
+    const lim = sources.find((source) =>
+      /land information memorandum.*summary.*local council/i.test(source.quote),
+    );
+    return { response: JSON.stringify({ answer, sources: [roof?.key, lim?.key] }) };
+  });
+  const response = await handleRequest(post('/api/chat', { question, history }), {
+    REQUEST_LIMIT: accepted,
+    QUALITY: {
+      getByName: () => ({
+        reserve: async () => ({ allowed: true, style: 'standard' }),
+        record: async () => crypto.randomUUID(),
+      }),
+    },
+    AI: { run },
+  });
+  assert.equal(response.status, 200);
+  assert.equal(run.mock.callCount(), 1);
+  const [, request] = run.mock.calls[0].arguments;
+  const payload = JSON.parse(request.messages[1].content);
+  assert.equal(payload.question, question);
+  assert.deepEqual(payload.previous, [{ question: topic.question, answer: topic.answer }]);
+  for (const distinction of [
+    /property file at the council.*original plans/i,
+    /legal owner of the property/i,
+    /interests on a title/i,
+    /consents filed in the property file or the LIM/i,
+  ]) {
+    assert.ok(payload.sources.some(({ text }) => distinction.test(text)), String(distinction));
+  }
+  const reply = await response.json();
+  assert.equal(reply.mode, 'assistant');
+  assert.equal(reply.answer, answer);
+  assert.deepEqual(reply.citations.map(({ url }) => url), [
+    'https://www.settled.govt.nz/buying-a-home/finding-a-property/viewing-an-open-home/',
+    'https://www.settled.govt.nz/buying-a-home/researching-the-property/doing-your-homework/',
+  ]);
+  assert.match(reply.citations[0].quote, /feedback about the roof/i);
+  assert.match(reply.citations[1].quote, /summary.*held.*local council/i);
 });
 test('requests for privileged instructions stay outside the model', async () => {
   const env = {
@@ -189,15 +283,29 @@ test('Jev receives only the supplied public replay and scores both checks', asyn
   );
   assert.equal(mock.mock.callCount(), 2);
 });
+test('scheduled cleanup runs without starting a Jev review unless explicitly enabled', async () => {
+  const cleaned = [];
+  const store = { pruneExpired: async (day) => cleaned.push(day) };
+  for (const flag of [false, undefined, 'true']) {
+    const env = {
+      QUALITY: { getByName: () => store },
+      ENABLE_JEV_REVIEW: flag,
+      TYPESAFE_API_KEY: 'test-only',
+    };
+    assert.equal(await runDailyMaintenance(env, '2026-01-01'), 'cleanup-only');
+  }
+  assert.deepEqual(cleaned, Array(3).fill('2026-01-01'));
+});
 test('an incomplete reviewer leaves the current policy unchanged and a repeated day is skipped', async () => {
   const finished = [];
   const store = {
+    pruneExpired: async () => {},
     beginReview: async () => ({ id: 'lease', topics: [] }),
     completeReview: async (...args) => finished.push(args),
   };
-  const env = { QUALITY: { getByName: () => store } };
-  await assert.rejects(runDailyReview(env, '2026-01-01'));
+  const env = { QUALITY: { getByName: () => store }, ENABLE_JEV_REVIEW: true };
+  await assert.rejects(runDailyMaintenance(env, '2026-01-01'));
   assert.deepEqual(finished[0].slice(2), [[], 'needs-review']);
   store.beginReview = async () => null;
-  assert.equal(await runDailyReview(env, '2026-01-01'), 'already-reviewed');
+  assert.equal(await runDailyMaintenance(env, '2026-01-01'), 'already-reviewed');
 });

@@ -93,6 +93,79 @@ test('a follow-up uses the prior conversation and retrieves relevant sources aga
   );
 });
 
+test('the LIM pill grounds a comparison in the inspection and council records it described', () => {
+  const pill = answers.find((answer) => answer.id === 'inspect-1');
+  const history = [{ ...pill, citations: [{ sourceId: pill.id }] }];
+  for (const question of [
+    'Of the two checks you just compared, which one would help me understand the condition of the roof, and what does the other one cover?',
+    'Would either of those tell me what shape the roof is in?',
+    'What do the two reports cover?',
+  ]) {
+    const context = contextFor(history, question);
+    const passages = context.sources.filter((s) => s.kind === 'reference');
+    assert.deepEqual(new Set(passages.map((s) => s.sourceId)), new Set(['ref-31', 'ref-39']));
+    assert.ok(passages.every((s) => context.linkedUrls.includes(s.url) && s.text.includes(s.quote)));
+    assert.match(passages.find((s) => s.sourceId === 'ref-31').quote, /feedback about the roof/i);
+    const records = passages.filter((s) => s.sourceId === 'ref-39');
+    assert.ok(records.some((s) => /LIM.+summary.+local council/i.test(s.quote)));
+    assert.ok(records.some((s) => /property file.+plans/i.test(s.text)));
+    assert.ok(records.some((s) => s.section === 'Title search' && /legal owner/i.test(s.text)));
+    assert.ok(records.some((s) => /interests on a title/i.test(s.text)));
+    assert.ok(records.some((s) => /consents filed in the property file or the LIM/i.test(s.text)));
+  }
+  const next = contextFor(history, 'Which one is better, a fixed or floating mortgage?');
+  assert.ok(next.sources.some((s) => s.kind === 'reference' && /mortgage|loan/i.test(s.text)));
+});
+
+test('an explicit topic change after the LIM pill retrieves evidence for the new topic', () => {
+  const pill = answers.find((answer) => answer.id === 'inspect-1');
+  const history = [{ ...pill, citations: [{ sourceId: pill.id }] }];
+  for (const [question, title, evidence] of [
+    [
+      'After that, how do I compare the two reports from my mortgage broker about fixed and floating rates?',
+      /Types of mortgages/i,
+      /Fixed provides.+Floating rates/i,
+    ],
+    [
+      'After that, how do I compare the two reports from my real estate agent about sale agreements?',
+      /agent/i,
+      /written agreement/i,
+    ],
+  ]) {
+    const context = contextFor(history, question);
+    assert.equal(context.previous[0].question, pill.question);
+    assert.ok(
+      context.sources.some((source) =>
+        source.kind === 'reference' &&
+        context.linkedUrls.includes(source.url) &&
+        title.test(source.title),
+      ),
+      question,
+    );
+    assert.ok(
+      context.sources.some((source) => source.kind === 'guide' && evidence.test(source.text)),
+      question,
+    );
+  }
+});
+
+test('selected excerpts from different sections of one source appear together', () => {
+  const pill = answers.find((a) => a.id === 'inspect-1');
+  const { sources } = contextFor([{ ...pill, citations: [{ sourceId: pill.id }] }],
+    'Which of those records identifies the owner and where are the original plans?');
+  const title = sources.find((s) => /legal owner/i.test(s.quote) && s.section === 'Title search');
+  const plans = sources.find((s) => /original plans/i.test(s.quote));
+  const reply = readAnswer(JSON.stringify({
+    answer: 'Check the title for ownership and the property file for the plans.',
+    sources: [title.key, plans.key, plans.key],
+  }), sources);
+  assert.equal(reply.citations.length, 1);
+  assert.equal(reply.citations[0].quote, title.quote);
+  assert.deepEqual(reply.citations[0].additionalQuotes, [
+    { quote: plans.quote, shortened: plans.shortened, section: plans.section },
+  ]);
+});
+
 test('an interactive lookup has a link and no invented publisher quotation', () => {
   const context = contextFor([], 'Where can I find the Auckland flood map?');
   const s = context.sources.find((s) => s.kind === 'lookup');
@@ -153,6 +226,38 @@ test('unknown evidence and unavailable inference degrade to labelled excerpts', 
     (await ask(env, { question: 'unrelated', sources: [], previous: [] })).mode,
     'insufficient',
   );
+});
+
+test('daily neuron exhaustion shows the next NZ reset and keeps the matching sources', async (t) => {
+  t.mock.timers.enable({ apis: ['Date'] });
+  const context = contextFor([], 'What does a LIM tell me?');
+  const failure = (message) => ({
+    AI: { async run() { throw Error(message); } },
+  });
+  for (const [now, expected, message] of [
+    ['2026-11-20T23:59:59Z', 'Saturday 21 November at 1 pm', '3036: Account limited'],
+    ['2026-04-04T23:59:59Z', 'Sunday 5 April at 12 pm', '3036: Account limited'],
+    ['2026-09-26T23:59:59Z', 'Sunday 27 September at 1 pm', '3036: Account limited'],
+    ['2026-06-30T00:00:00Z', 'Wednesday 1 July at 12 pm', 'You have used up your daily free allocation of 10,000 neurons.'],
+  ]) {
+    t.mock.timers.setTime(Date.parse(now));
+    const reply = await ask(failure(message), context);
+    assert.equal(reply.mode, 'sources');
+    assert.equal(reply.answer, `Chat is unavailable until ${expected} (New Zealand time).`);
+    const reset = Date.parse(reply.availability.reopensAt);
+    assert.ok(reset > Date.now() && reset <= Date.now() + 86_400_000);
+    assert.equal(reset % 86_400_000, 0);
+    assert.ok(reply.availability.quickAnswers.length > 0);
+    assert.ok(reply.citations.length > 0);
+    for (const ref of reply.citations) {
+      const source = context.sources.find((s) => s.sourceId === ref.sourceId);
+      assert.equal(ref.url, source.url);
+      assert.equal(ref.quote, source.quote);
+    }
+  }
+  const busy = await ask(failure('3040: Capacity temporarily exceeded'), context);
+  assert.match(busy.answer, /couldn’t verify/);
+  assert.equal(busy.availability, undefined);
 });
 
 test('buyer input cannot select an external model URL', async () => {

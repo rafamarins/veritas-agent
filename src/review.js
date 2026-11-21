@@ -19,10 +19,10 @@ const questions = {
 export async function judgeAnswer(env, question, reply, sources) {
   if (reply.mode !== 'assistant' || !reply.citations.length) return null;
   if (!env.TYPESAFE_API_KEY) throw Error('Reviewer unconfigured');
-  const evidence = reply.citations.map(
-    (c) =>
-      sources.find((s) => s.sourceId === c.sourceId && s.text.includes(c.quote))
-        ?.text,
+  const evidence = reply.citations.flatMap((citation) =>
+    [citation, ...(citation.additionalQuotes ?? [])].map(({ quote }) =>
+      sources.find((s) => s.sourceId === citation.sourceId && s.text.includes(quote))?.text,
+    ),
   );
   if (evidence.some((text) => !text)) return null;
   const response = await fetch('https://api.typesafe.ai/v1/systemone', {
@@ -81,8 +81,10 @@ async function evaluate(env, topic, style) {
   };
 }
 
-export async function runDailyReview(env, day) {
+export async function runDailyMaintenance(env, day) {
   const store = env.QUALITY.getByName('veritas');
+  await store.pruneExpired(day);
+  if (env.ENABLE_JEV_REVIEW !== true) return 'cleanup-only';
   const job = await store.beginReview(day);
   if (!job) return 'already-reviewed';
   if (job.running) return 'in-progress';

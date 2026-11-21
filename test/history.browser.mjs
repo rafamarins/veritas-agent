@@ -1,7 +1,8 @@
 import assert from 'node:assert/strict';
 import { chromium, webkit } from 'playwright';
+import { appURL } from './local-app.mjs';
 
-export async function checkChatHistory(browser, origin) {
+export async function checkChatHistory(browser, baseURL) {
   const context = await browser.newContext({
     viewport: { width: 375, height: 812 },
   });
@@ -24,7 +25,7 @@ export async function checkChatHistory(browser, origin) {
           }) + '\n',
       });
     });
-    await page.goto(origin);
+    await page.goto(baseURL);
     await page.evaluate(() => {
       localStorage.setItem(
         'veritas-agent.chat.v1',
@@ -99,6 +100,25 @@ export async function checkChatHistory(browser, origin) {
     assert.equal(await page.locator('#chat-list li').count(), 1);
     assert.equal(await writing.locator('#question').inputValue(), '');
     await writing.close();
+
+    // Browsing topics is local. Only the topic on screen accompanies an explicit send.
+    const requestCount = requests.length;
+    const draft = page.getByRole('textbox', { name: 'Your question' });
+    await draft.fill('Who can help me check that?');
+    await page.getByRole('button', { name: 'Deposits', exact: true }).click();
+    await page.getByRole('button', { name: 'LIM reports', exact: true }).click();
+    const guideAnswer = await page.locator('#quick-answer p').innerText();
+    assert.equal(await draft.inputValue(), 'Who can help me check that?');
+    assert.equal(requests.length, requestCount);
+    await page.locator('#send').click();
+    await page.locator('.turn:nth-child(2) .answer-feedback').waitFor();
+    assert.equal(requests.length, requestCount + 1);
+    assert.deepEqual(requests.at(-1).history.map((m) => m.answer), [guideAnswer]);
+    await page.reload();
+    assert.equal(await page.locator('.turn').first().locator('.answer').innerText(), guideAnswer);
+    await page.getByRole('link', { name: 'Chat home', exact: true }).click();
+    await page.locator('#quick-topics').waitFor();
+    assert.equal(await page.locator('#quick-topics [aria-pressed="true"]').count(), 0);
     await page.evaluate(() => {
       const key = 'veritas-agent.chats.v2';
       const [chat] = JSON.parse(localStorage.getItem(key));
@@ -128,7 +148,7 @@ if (import.meta.main) {
   for (const engine of [chromium, webkit]) {
     const browser = await engine.launch();
     try {
-      await checkChatHistory(browser, 'http://127.0.0.1:8794');
+      await checkChatHistory(browser, appURL.href);
       console.log(
         'Verified chat migration, navigation and separate histories in ' +
           engine.name() +
