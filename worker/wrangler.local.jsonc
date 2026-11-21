@@ -4,7 +4,7 @@
   "main": "../src/worker.js",
   "compatibility_date": "2026-11-18",
   "vars": {
-    "ENABLE_JEV_REVIEW": true
+    "ENABLE_JEV_REVIEW": false
   },
   "assets": {
     "directory": "../pages/public",

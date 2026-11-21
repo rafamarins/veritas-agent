@@ -84,13 +84,13 @@ Workers Free includes 10,000 AI neurons per account per day. A long question wit
 
 ## Daily review with Jev
 
-At 04:17 UTC the production Worker deletes receipts, budget counters and review records older than 30 days. Production has Jev disabled. The local configuration enables Jev for reviewing up to two public guide questions per run. It starts with topics that received thumbs down or produced source-only answers in the past week. A rotating guide question keeps the review active on quiet days. Each vote can be changed or removed for 30 days.
+At 04:17 UTC the production Worker deletes receipts, budget counters and review records older than 30 days. Jev is disabled by default in production and local development. If explicitly enabled locally, it reviews up to two public guide questions per run. It starts with topics that received thumbs down or produced source-only answers in the past week. A rotating guide question keeps the review active on quiet days. Each vote can be changed or removed for 30 days.
 
 The Worker answers each public question with two fixed styles. One gives the usual answer. The other starts with what a source establishes. It checks the quotations, then sends the public question, generated answer and cited passages to TypeSafe's System One endpoint at `https://api.typesafe.ai/v1/systemone`. Jev `jev-1.14.0` scores source support and usefulness in one request. A review of two topics uses up to four requests against the configured TypeSafe account. [Jev documentation](https://docs.typesafe.ai/)
 
 The alternate style needs at least 0.85 for support and 0.75 for usefulness. When both answers can be scored, neither score may fall and their combined improvement must reach 0.15. These are initial thresholds for this project. If neither answer meets both thresholds, the run flags the topic for review. A failed judge run keeps the current style. Votes can move a question up the review list. They cannot rewrite prompts or edit guidance.
 
-For a fresh local setup, export `TYPESAFE_API_KEY` from your secret manager before running `npm run model:local`. The setup script writes it to the private, ignored `worker/.dev.vars`. For an existing checkout, add that key to the same file and restart Wrangler. Run `npm run review:local` to dispatch the cron handler locally. Repeating a completed day skips the model calls.
+For a fresh local setup, export `TYPESAFE_API_KEY` from your secret manager before running `npm run model:local`. The setup script writes it to the private, ignored `worker/.dev.vars`. For an existing checkout, add that key to the same file and restart Wrangler. For an intentional local Jev review, enable `ENABLE_JEV_REVIEW` in the local Worker configuration before starting Wrangler, then run `npm run review:local`. Repeating a completed day skips the model calls.
 
 ## Chat safeguards
 

@@ -1,6 +1,7 @@
 import { createHash } from 'node:crypto';
 import { readFile, writeFile, rename } from 'node:fs/promises';
 import { chromium } from 'playwright';
+import reviewedPassages from '../sources/reviewed-passages.json' with { type: 'json' };
 import { htmlPassages, pdfPassages } from './source-text.mjs';
 
 const catalog = JSON.parse(
@@ -23,14 +24,13 @@ try {
 } catch (error) {
   if (error.code !== 'ENOENT') throw error;
 }
-if (!refresh && previous?.fingerprint === fingerprint) process.exit(0);
 
 function seed(ref) {
   return {
     id: ref.id,
     checkedOn: ref.checkedOn,
     coverage: 'excerpt',
-    passages: [{ heading: '', text: ref.excerpt }],
+    passages: [{ heading: '', text: ref.excerpt }, ...(reviewedPassages[ref.id] ?? [])],
   };
 }
 function uniquePassages(rows) {
@@ -60,8 +60,10 @@ async function capture(page, ref) {
   const { passages } = pdf
     ? await pdfPassages(bytes)
     : await htmlPassages(page, new TextDecoder().decode(bytes));
-  if (!passages.some((p) => p.text.includes(ref.excerpt)))
-    throw Error('reviewed excerpt absent from article');
+  for (const reviewed of seed(ref).passages) {
+    if (!passages.some((p) => p.text.includes(reviewed.text)))
+      throw Error('reviewed excerpt absent from article');
+  }
   return {
     id: ref.id,
     checkedOn: today,
@@ -78,9 +80,22 @@ const records = new Map(
     const old =
       previous?.fingerprint === fingerprint &&
       previous.records.find((r) => r.id === ref.id);
-    return [ref.id, old || seed(ref)];
+    if (!old) return [ref.id, seed(ref)];
+    const missing = (reviewedPassages[ref.id] ?? []).filter(
+      (reviewed) => !old.passages.some((p) => p.text.includes(reviewed.text)),
+    );
+    if (!missing.length) return [ref.id, old];
+    const additions = missing.map((p) => ({ ...p, checkedOn: ref.checkedOn }));
+    return [ref.id, { ...old, passages: [...old.passages, ...additions] }];
   }),
 );
+// Expanded snapshots keep their original passages and are reused when already complete.
+if (
+  !refresh &&
+  previous?.fingerprint === fingerprint &&
+  previous.records.length === records.size &&
+  previous.records.every((r) => records.get(r.id) === r)
+) process.exit(0);
 if (refresh) {
   const browser = await chromium.launch();
   try {

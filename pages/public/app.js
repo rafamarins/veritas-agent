@@ -122,8 +122,10 @@ function pauseChat(availability, notice) {
 function citationFigure(c) {
   const fig = element('figure', 'citation'),
     caption = element('figcaption');
-  if (c.quote)
-    fig.append(element('blockquote', '', c.quote + (c.shortened ? '…' : '')));
+  const passages = [c, ...(c.additionalQuotes ?? [])];
+  for (const { quote, shortened } of passages) {
+    if (quote) fig.append(element('blockquote', '', quote + (shortened ? '…' : '')));
+  }
   if (c.url && /^https:\/\//u.test(c.url)) {
     const a = element('a', '', c.title);
     a.href = c.url;
@@ -148,7 +150,7 @@ function citationFigure(c) {
       '',
       [
         c.publisher,
-        c.kind === 'lookup' ? 'Lookup tool' : c.section,
+        c.kind === 'lookup' ? 'Lookup tool' : [...new Set(passages.map((p) => p.section).filter(Boolean))].join(' / '),
         date ? 'Source checked ' + date : '',
       ]
         .filter(Boolean)

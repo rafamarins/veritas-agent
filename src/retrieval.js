@@ -1,6 +1,7 @@
 import answers from './guide/answers.json' with { type: 'json' };
 import cards from './guide/cards.json' with { type: 'json' };
 import catalog from '../sources/references.json' with { type: 'json' };
+import reviewedPassages from '../sources/reviewed-passages.json' with { type: 'json' };
 import snapshot from './guide/reference-index.json' with { type: 'json' };
 
 const lookupTopics = [
@@ -133,12 +134,25 @@ const official = snapshot.records.flatMap((r) => {
     publisher: ref.publisher,
     url: ref.url,
     kind: 'reference',
-    checkedOn: r.checkedOn,
+    checkedOn: p.checkedOn ?? r.checkedOn,
     section: p.heading,
     text: p.text,
     keywords: ref.publisher + ' ' + p.heading,
   }));
 });
+
+// Pin the publisher evidence for a comparison from the LIM quick answer. The
+// buyer can refer to either check without repeating the names in the next turn.
+const inspectionGuide = guide.find((doc) => doc.id === 'inspect-1');
+const inspectionEvidence = ['ref-31', 'ref-39'].flatMap((id) =>
+  reviewedPassages[id].map(({ text, quote }) => {
+    const passage = official.find((doc) =>
+      doc.sourceId === id && doc.text.includes(text),
+    );
+    if (!passage) throw Error('Missing reviewed inspection evidence: ' + id);
+    return { ...passage, text, quote };
+  }),
+);
 
 // Document frequency downweights words shared by most of the guide, such as "bank" or "buy".
 function searchIndex(documents) {
@@ -176,6 +190,10 @@ const rankGuides = searchIndex(guide);
 const rankReferences = searchIndex(official);
 const recentIntent =
   /\b(it|that|those|this|same|they|then|instead|still|mentioned|did i|did we|isso|essa|esse|disso|ellos|esto|eso)\b|那|这个/iu;
+const comparisonIntent =
+  /\b(?:you (?:just )?compared|(?:the|those|these) two (?:checks|reports|documents)|the (?:other|first|second) (?:check|one|report|document)|both of (?:them|those))\b/iu;
+const inspectionSubject =
+  /\b(?:roof|inspection|inspector|lim|title|property file|ownership|plans)\b/iu;
 const recallIntent =
   /\b(did i (?:say|tell|mention)|did we (?:discuss|say)|i mentioned|remind me|qual (?:rua|endereco)|que te dije)\b/iu;
 const byScore = (a, b) => b.score - a.score;
@@ -199,9 +217,13 @@ function quotation(text, query) {
 export function contextFor(messages, question) {
   const last = messages.at(-1);
   const query = terms(question);
-  const contextual = last && (recentIntent.test(question) || query.size < 3);
+  const comparison = comparisonIntent.test(question);
+  const contextual = last && (comparison || recentIntent.test(question) || query.size < 3);
+  const inspectionFollowUp = last?.question === inspectionGuide.title &&
+    last.citations.some((source) => source.sourceId === inspectionGuide.id) &&
+    (comparison || (contextual && inspectionSubject.test(question)));
   const related = contextual ? terms(last.question) : new Set();
-  const topGuides = rankGuides(query, related)
+  const topGuides = inspectionFollowUp ? [{ doc: inspectionGuide }] : rankGuides(query, related)
     .filter((r) => r.score > 0)
     .sort(byScore)
     .slice(0, 4);
@@ -213,12 +235,12 @@ export function contextFor(messages, question) {
   // The guide's translated questions connect non-English queries to English primary sources.
   for (const { doc } of topGuides.slice(0, 2))
     for (const t of terms(doc.title)) expanded.add(t);
-  const ranked = rankReferences(query, expanded);
+  const ranked = inspectionFollowUp ? [] : rankReferences(query, expanded);
   for (const row of ranked) {
     if (linked.has(row.doc.url)) row.score += 3;
     if (previousIds.has(row.doc.sourceId)) row.score += 5;
   }
-  const picked = [],
+  const picked = inspectionFollowUp ? [...inspectionEvidence] : [],
     perPage = new Map();
   for (const { doc, score } of ranked.sort(byScore)) {
     if (score <= 0 || picked.length === 7) break;
@@ -226,6 +248,9 @@ export function contextFor(messages, question) {
     if (count >= 2) continue;
     picked.push(doc);
     perPage.set(doc.url, count + 1);
+  }
+  if (inspectionFollowUp) {
+    for (const source of inspectionEvidence) linked.add(source.url);
   }
   picked.push(...topGuides.slice(0, 3).map((r) => r.doc));
   for (const [id, match, description] of lookupTopics) {
@@ -272,7 +297,9 @@ export function contextFor(messages, question) {
       const { quote, shortened } =
         doc.kind === 'lookup'
           ? { quote: '', shortened: false }
-          : quotation(doc.text, focus);
+          : doc.quote
+            ? { quote: doc.quote, shortened: false }
+            : quotation(doc.text, focus);
       return {
         key: 'S' + (i + 1),
         sourceId: doc.sourceId,

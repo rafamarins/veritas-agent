@@ -39,6 +39,7 @@ export default class VeritasProvider {
         mode,
         answer,
         publisherQuotes: verified.length,
+        publisherSourceIds: verified.map((c) => c.sourceId),
       }),
     };
   }

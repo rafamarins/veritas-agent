@@ -93,6 +93,46 @@ test('a follow-up uses the prior conversation and retrieves relevant sources aga
   );
 });
 
+test('the LIM pill grounds a comparison in the inspection and council records it described', () => {
+  const pill = answers.find((answer) => answer.id === 'inspect-1');
+  const history = [{ ...pill, citations: [{ sourceId: pill.id }] }];
+  for (const question of [
+    'Of the two checks you just compared, which one would help me understand the condition of the roof, and what does the other one cover?',
+    'Would either of those tell me what shape the roof is in?',
+  ]) {
+    const context = contextFor(history, question);
+    const passages = context.sources.filter((s) => s.kind === 'reference');
+    assert.deepEqual(new Set(passages.map((s) => s.sourceId)), new Set(['ref-31', 'ref-39']));
+    assert.ok(passages.every((s) => context.linkedUrls.includes(s.url) && s.text.includes(s.quote)));
+    assert.match(passages.find((s) => s.sourceId === 'ref-31').quote, /feedback about the roof/i);
+    const records = passages.filter((s) => s.sourceId === 'ref-39');
+    assert.ok(records.some((s) => /LIM.+summary.+local council/i.test(s.quote)));
+    assert.ok(records.some((s) => /property file.+plans/i.test(s.text)));
+    assert.ok(records.some((s) => s.section === 'Title search' && /legal owner/i.test(s.text)));
+    assert.ok(records.some((s) => /interests on a title/i.test(s.text)));
+    assert.ok(records.some((s) => /consents filed in the property file or the LIM/i.test(s.text)));
+  }
+  const next = contextFor(history, 'Which one is better, a fixed or floating mortgage?');
+  assert.ok(next.sources.some((s) => s.kind === 'reference' && /mortgage|loan/i.test(s.text)));
+});
+
+test('selected excerpts from different sections of one source appear together', () => {
+  const pill = answers.find((a) => a.id === 'inspect-1');
+  const { sources } = contextFor([{ ...pill, citations: [{ sourceId: pill.id }] }],
+    'Which of those records identifies the owner and where are the original plans?');
+  const title = sources.find((s) => /legal owner/i.test(s.quote) && s.section === 'Title search');
+  const plans = sources.find((s) => /original plans/i.test(s.quote));
+  const reply = readAnswer(JSON.stringify({
+    answer: 'Check the title for ownership and the property file for the plans.',
+    sources: [title.key, plans.key, plans.key],
+  }), sources);
+  assert.equal(reply.citations.length, 1);
+  assert.equal(reply.citations[0].quote, title.quote);
+  assert.deepEqual(reply.citations[0].additionalQuotes, [
+    { quote: plans.quote, shortened: plans.shortened, section: plans.section },
+  ]);
+});
+
 test('an interactive lookup has a link and no invented publisher quotation', () => {
   const context = contextFor([], 'Where can I find the Auckland flood map?');
   const s = context.sources.find((s) => s.kind === 'lookup');
